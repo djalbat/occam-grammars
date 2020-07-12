@@ -21,6 +21,8 @@ In Occam parlance, a grammar is a combination of lexical entries for a lexer and
 * Custom grammar BNF
 * Custom grammar lexical pattern
 
+This package exports the lexers and parsers to support these grammars.
+
 ## Installation
 
 With [npm](https://www.npmjs.com/):
@@ -39,11 +41,31 @@ You will need to do this if you want to look at the examples.
 
 ## Usage
 
-///
+Import the requisite lexer and parser from this package. Then call their fromNothing(...) factory methods.
+
+```
+import { FlorenceLexer } from "occam-grammars";
+import { FlorenceParser } from "occam-grammars"
+
+const florenceLexer = FlorenceLexer.fromNothing(),
+      florenceParser = FlorenceParser.fromNothing();
+
+const content = `
+
+        ...
+
+      `,
+      tokens = florenceLexer.tokenise(content),
+      node = florenceParser.parse(tokens);
+
+...
+```
+
+The tokens returned from the lexers's `tokenise(...)`` method can be passed directly to the parser's `parse(...) method`, which itself returns a node or `null`.
 
 ## Examples
 
-///
+There are examples for each grammar. To view them, open the `index.html` file in the root of the repository. Each example shows a representation of the parse tree, which is useful for debugging.
 
 ## Building
 
