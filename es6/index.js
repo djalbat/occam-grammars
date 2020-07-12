@@ -13,3 +13,5 @@ export { default as MetaJSONParser } from "./metaJSON/parser";
 export { default as FlorenceParser } from "./florence/parser";
 export { default as CustomGrammarBNFParser } from "./customGrammarBNF/parser";
 export { default as CustomGrammarLexicalPatternParser } from "./customGrammarLexicalPattern/parser";
+
+export { default as defaultCustomGrammar } from "./florence/defaultCustomGrammar";
