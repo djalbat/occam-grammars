@@ -4,14 +4,15 @@
   "version": "1.0.0",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/jecs-imperial/occam-grammars",
-  "description": "Occam's parsers.",
+  "description": "Occam's grammars.",
   "repository": {
     "type": "git",
     "url": "https://github.com/jecs-imperial/occam-grammars"
   },
   "dependencies": {
     "necessary": "^4.1.10",
-    "occam-lexers": "^12.0.10"
+    "occam-lexers": "^12.0.10",
+    "occam-parsers": "^12.0.41"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
