@@ -13,7 +13,13 @@
 
 ## Introduction
 
-///
+In Occam parlance, a grammar is a combination of lexical entries for a lexer and BNF for a parser. This package contains all the grammars for Occam, specifically:
+
+* Florence
+* Plain
+* Meta JSON
+* Custom grammar BNF
+* Custom grammar lexical pattern
 
 ## Installation
 
