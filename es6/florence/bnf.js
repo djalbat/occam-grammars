@@ -4,21 +4,21 @@ const bnf = `document                             ::=   ( rule | axiom | lemma |
 
 
 
-rule                                 ::=   "Rule" parenthesisedLabels <END_OF_LINE> ( premise | premises )? conclusion metaproof? ;
+rule                                 ::=   "Rule" "(" labels ")" <END_OF_LINE> ( premise | premises )? conclusion metaproof? ;
 
-axiom                                ::=   "Axiom" parenthesisedLabels <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) ; 
+axiom                                ::=   "Axiom" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) ; 
 
-lemma                                ::=   "Lemma" parenthesisedLabels? <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof ;
+lemma                                ::=   "Lemma" "(" labels ")"? <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof ;
 
-theorem                              ::=   "Theorem" parenthesisedLabels <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof ;
+theorem                              ::=   "Theorem" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof ;
 
-conjecture                           ::=   "Conjecture" parenthesisedLabels <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof? ;
+conjecture                           ::=   "Conjecture" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof? ;
 
-metalemma                            ::=   "Metalemma" parenthesisedLabels <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) metaproof ;
+metalemma                            ::=   "Metalemma" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) metaproof ;
 
-metatheorem                          ::=   "Metatheorem" parenthesisedLabels <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) metaproof ;
+metatheorem                          ::=   "Metatheorem" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) metaproof ;
 
-metaconjecture                       ::=   "Metaconjecture" parenthesisedLabels <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) ;
+metaconjecture                       ::=   "Metaconjecture" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) ;
 
 declaration                          ::=   "Types" typesDeclaration <END_OF_LINE>
 
@@ -208,15 +208,11 @@ qualifiedNonsense                    ::=   nonsense! qualification? <END_OF_LINE
 
 
 
-nonsense                             ::=   ( [name] | [custom] | [special] | [reserved] | [unassigned] )+ ;
+nonsense                             ::=   .+ ;
 
 
 
 qualification                        ::=   ( "by" | "from" ) reference ;
-
-
-
-parenthesisedLabels                  ::=   "(" labels ")" ;                    
 
 
 
