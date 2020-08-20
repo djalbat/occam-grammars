@@ -184,11 +184,11 @@ sublemma                             ::=   "Suppose" <END_OF_LINE>
 
 
 
-metastatementDefinition              ::=   "let" unqualifiedMetastatement ;                                           
+metastatementDefinition              ::=   "Let" unqualifiedMetastatement ;                                           
                                           
-statementDefinition                  ::=   "let" unqualifiedStatement ;                                           
+statementDefinition                  ::=   "Let" unqualifiedStatement ;                                           
 
-nonsenseDefinition                   ::=   "let" unqualifiedNonsense ;                                           
+nonsenseDefinition                   ::=   "Let" unqualifiedNonsense ;                                           
 
 
 
@@ -208,7 +208,7 @@ qualifiedNonsense                    ::=   nonsense! qualification? <END_OF_LINE
 
 
 
-nonsense                             ::=   .+ ;
+nonsense                             ::=   ( [name] | [custom] | [special] | [reserved] | [unassigned] )+ ;
 
 
 
