@@ -20,88 +20,76 @@ metatheorem                          ::=   "Metatheorem" "(" labels ")" <END_OF_
 
 metaconjecture                       ::=   "Metaconjecture" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) ;
 
-declaration                          ::=   "Types" typesDeclaration <END_OF_LINE>
 
-                                       |   "Contexts" contextsDeclaration <END_OF_LINE>
- 
-                                       |   "Operators" operatorsDeclaration <END_OF_LINE>
- 
-                                       |   "Variables" variablesDeclaration <END_OF_LINE>
- 
-                                       |   "Constructors" constructorsDeclaration <END_OF_LINE>
- 
-                                       |   "DependentTypes" dependentTypesDeclaration <END_OF_LINE>
- 
-                                       |   "DisjointTypes" disjointTypesDeclaration <END_OF_LINE>
- 
-                                       |   "Metavariables" metavariablesDeclaration <END_OF_LINE>
- 
-                                       |   "Abbreviations" abbreviationsDeclaration <END_OF_LINE>
 
-                                       |   "Type" typeDeclaration <END_OF_LINE>
- 
-                                       |   "Context" contextDeclaration <END_OF_LINE>
- 
-                                       |   "Variable" variableDeclaration <END_OF_LINE>
- 
-                                       |   "Operator" operatorDeclaration <END_OF_LINE>
- 
-                                       |   "Constructor" constructorDeclaration <END_OF_LINE>
- 
-                                       |   "DependentType" dependentTypeDeclaration <END_OF_LINE>
+declaration                          ::=   typeDeclaration 
+                                           
+                                       |   variableDeclaration 
+                                           
+                                       |   operatorDeclaration 
+                                           
+                                       |   constructorDeclaration 
+                                           
+                                       |   disjointTypeDeclaration 
+                                           
+                                       |   metavariableDeclaration 
+                                           
+                                       |   dependentTypeDeclaration 
+                                           
+                                       |   abbreviationDeclaration 
+                                           
+                                       |   typesDeclaration 
+                                           
+                                       |   variablesDeclaration 
+                                           
+                                       |   operatorsDeclaration 
+                                           
+                                       |   constructorsDeclaration 
+                                           
+                                       |   disjointTypesDeclaration 
+                                           
+                                       |   metavariablesDeclaration 
+                                           
+                                       |   dependentTypesDeclaration 
+                                           
+                                       |   abbreviationsDeclaration
                                        
-                                       |   "DisjointType" disjointTypeDeclaration <END_OF_LINE>
-                                       
-                                       |   "Metavariable" metavariableDeclaration <END_OF_LINE>
- 
-                                       |   "Abbreviation" abbreviationDeclaration <END_OF_LINE>
- 
                                        ;
-                                      
-
-
-typesDeclaration                     ::=   typeName ( "," typeName )+ ( ":" typeNames )? ;
-
-contextsDeclaration                  ::=   contextDeclaration ( "," contextDeclaration )+ ;
-
-operatorsDeclaration                 ::=   expression ( "," expression )+  ( ":" typeName )? ;
-
-variablesDeclaration                 ::=   name ( "," name )+ ":" typeName ;
-
-constructorsDeclaration              ::=   term ( "," term )+ ( ":" typeName )? ;
-
-dependentTypesDeclaration            ::=   dependentTypeDeclaration ( "," dependentTypeDeclaration )+ ;
-
-disjointTypesDeclaration             ::=   typeName ( "," typeName )+ ":" typeName ( "," typeName )+ ;
-
-metavariablesDeclaration             ::=   metavariableDeclaration ( "," metavariableDeclaration )+ ;
-
-abbreviationsDeclaration             ::=   abbreviationDeclaration ( "," abbreviationDeclaration )+;
 
 
 
-typeDeclaration                      ::=   typeName ( ":" typeName )? ;
-
-contextDeclaration                   ::=   contextName ( <NO_WHITESPACE>"(" typeName ")" )? ;
-
-operatorDeclaration                  ::=   expression ( ":" typeName )? ;
-
-variableDeclaration                  ::=   name ( ":" typeName )? ;
-
-constructorDeclaration               ::=   term ( ":" typeName )? ;
-
-dependentTypeDeclaration             ::=   typeName <NO_WHITESPACE>"(" typeName ")" ;
-
-disjointTypeDeclaration              ::=   typeName ":" typeName ( "," typeName )+ ;
-
-metavariableDeclaration              ::=   metavariableName ( <NO_WHITESPACE>"(" typeName ")" )? ;
-
-abbreviationDeclaration              ::=   [custom] "for" [custom] 
-
-                                       |   name "for" name
+typeDeclaration                      ::=   "Type" typeName ( ":" typeName )? <END_OF_LINE> ;
+ 
+variableDeclaration                  ::=   "Variable" contextName typeParameter? <END_OF_LINE> ;
+ 
+operatorDeclaration                  ::=   "Operator" expression ( ":" typeName )? <END_OF_LINE> ;
+ 
+constructorDeclaration               ::=   "Constructor" variableName ( ":" typeName )? <END_OF_LINE> ;
+ 
+disjointTypeDeclaration              ::=   "DisjointType" term ( ":" typeName )? <END_OF_LINE> ;
                                        
-                                       ; 
+metavariableDeclaration              ::=   "Metavariable" typeName ":" typeNames <END_OF_LINE> ;
+ 
+dependentTypeDeclaration             ::=   "DependentType" metavariableName typeParameter? ":" secondOrderType <END_OF_LINE> ;
+                                       
+abbreviationDeclaration              ::=   "Abbreviation" typeName typeParameter <END_OF_LINE> ;
 
+typesDeclaration                     ::=   "Types" typeNames ( ":" typeName )? <END_OF_LINE> ;
+
+variablesDeclaration                 ::=   "Variables" variableNames ":" typeName <END_OF_LINE> ;
+ 
+operatorsDeclaration                 ::=   "Operators" expressions  ( ":" typeName )? <END_OF_LINE> ;
+ 
+constructorsDeclaration              ::=   "Constructors" terms ( ":" typeName )? <END_OF_LINE> ;
+ 
+disjointTypesDeclaration             ::=   "DisjointTypes" typeNames ":" typeNames <END_OF_LINE> ;
+ 
+metavariablesDeclaration             ::=   "Metavariables" metavariableName typeParameter? ":" secondOrderType ( "," metavariableName typeParameter? ":" secondOrderType )+ <END_OF_LINE> ;
+ 
+dependentTypesDeclaration            ::=   "DependentTypes" typeName typeParameter ( "," typeName typeParameter )+ <END_OF_LINE> ;
+ 
+abbreviationsDeclaration             ::=   "Abbreviations" abbreviations <END_OF_LINE> ;
+ 
 
   
 premise                              ::=   "Premise" <END_OF_LINE> ( unqualifiedMetastatement | unqualifiedNonsense ) ;
@@ -216,6 +204,18 @@ qualification                        ::=   ( "by" | "from" ) reference ;
 
 
 
+secondOrderType                      ::=   ( "Context" | "Statement" ) ;
+
+
+
+typeParameter                        ::=   ( <NO_WHITESPACE>"(" typeName ")" ) ;
+
+
+
+abbreviation                         ::=   [custom] "for" [custom] | name "for" name ;
+
+
+
 metavariable                         ::=   metavariableName ( <NO_WHITESPACE>"(" term ")" )? ;
 
 reference                            ::=   referenceName ( <NO_WHITESPACE>"(" term ")" )? ;
@@ -226,15 +226,25 @@ label                                ::=   labelName ( <NO_WHITESPACE>"(" term "
 
 
 
+variableNames                        ::=   variableName ( "," variableName )* ;
+
+abbreviations                        ::=   abbreviation ( "," expression )* ;
+
+expressions                          ::=   expression ( "," expression )* ;
+
 typeNames                            ::=   typeName ( "," typeName )* ;
 
 labels                               ::=   label ( "," label )* ;
+
+terms                                ::=   term ( "," term )+ ;
 
 
 
 metavariableName                     ::=   [name] ;
 
 referenceName                        ::=   [name] ;
+
+variableName                         ::=   [name] ;
 
 contextName                          ::=   [name] ;
 

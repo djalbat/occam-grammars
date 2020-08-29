@@ -2,11 +2,11 @@
 
 const entries = [
 
-  { "special": "^(?:,|=|::|:|\\|-|\\(|\\))" },
+  { "special": "^(?:,|=|::|:|\\|-|\\(|\\))|\\[|\\]|\\.\\.\\." },
 
-  { "keyword": "^(?:Rule|Axiom|Theorem|Lemma|Conjecture|Metalemma|Metatheorem|Premises|Premise|Conclusion|Proof|Therefore|Suppose|Then|Hence|Types|Type|Contexts|Context|Operators|Operator|Variables|Variable|Constructors|Constructor|DependentTypes|DependentType|DisjointTypes|DisjointType|Metavariables|Metavariable|Abbreviations|Abbreviation|Let|for|from|by)\\b" },
+  { "keyword": "^(?:Rule|Axiom|Theorem|Lemma|Conjecture|Metalemma|Metatheorem|Premises|Premise|Conclusion|Proof|Therefore|Suppose|Then|Hence|Types|Type|Contexts|Context|Operators|Operator|Variables|Variable|Constructors|Constructor|DependentTypes|DependentType|DisjointTypes|DisjointType|Metavariables|Metavariable|Abbreviations|Abbreviation|Statement|Let|for|from|by)\\b" },
 
-  { "reserved": "^(?:undefined|free|not|in|is|suppose|hence)\\b" },
+  { "reserved": "^(?:undefined|free|not|in|is)\\b" },
 
   { "name": "^[A-Za-zΑ-Ωα-ω_0-9]+" },
 
