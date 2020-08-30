@@ -60,7 +60,7 @@ declaration                          ::=   typeDeclaration
 
 typeDeclaration                      ::=   "Type" typeName ( ":" typeName )? <END_OF_LINE> ;
  
-variableDeclaration                  ::=   "Variable" contextName typeParameter? <END_OF_LINE> ;
+variableDeclaration                  ::=   "Variable" variableName typeParameter? <END_OF_LINE> ;
  
 operatorDeclaration                  ::=   "Operator" expression ( ":" typeName )? <END_OF_LINE> ;
  
