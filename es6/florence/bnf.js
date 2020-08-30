@@ -60,25 +60,25 @@ declaration                          ::=   typeDeclaration
 
 typeDeclaration                      ::=   "Type" typeName ( ":" typeName )? <END_OF_LINE> ;
  
-variableDeclaration                  ::=   "Variable" variableName typeParameter? <END_OF_LINE> ;
+variableDeclaration                  ::=   "Variable" variableName ":" typeName <END_OF_LINE> ;
  
 operatorDeclaration                  ::=   "Operator" expression ( ":" typeName )? <END_OF_LINE> ;
  
-constructorDeclaration               ::=   "Constructor" variableName ( ":" typeName )? <END_OF_LINE> ;
+constructorDeclaration               ::=   "Constructor" term ( ":" typeName )? <END_OF_LINE> ;
  
-disjointTypeDeclaration              ::=   "DisjointType" term ( ":" typeName )? <END_OF_LINE> ;
+disjointTypeDeclaration              ::=   "DisjointType" typeName ":" typeNames <END_OF_LINE> ;
                                        
-metavariableDeclaration              ::=   "Metavariable" typeName ":" typeNames <END_OF_LINE> ;
+metavariableDeclaration              ::=   "Metavariable" metavariableName typeParameter? ":" secondOrderType <END_OF_LINE> ;
  
-dependentTypeDeclaration             ::=   "DependentType" metavariableName typeParameter? ":" secondOrderType <END_OF_LINE> ;
+dependentTypeDeclaration             ::=   "DependentType" typeName typeParameter ":" typeName <END_OF_LINE> ;
                                        
-abbreviationDeclaration              ::=   "Abbreviation" typeName typeParameter <END_OF_LINE> ;
+abbreviationDeclaration              ::=   "Abbreviation" abbreviation <END_OF_LINE> ;
 
 typesDeclaration                     ::=   "Types" typeNames ( ":" typeName )? <END_OF_LINE> ;
 
 variablesDeclaration                 ::=   "Variables" variableNames ":" typeName <END_OF_LINE> ;
  
-operatorsDeclaration                 ::=   "Operators" expressions  ( ":" typeName )? <END_OF_LINE> ;
+operatorsDeclaration                 ::=   "Operators" expressions ( ":" typeName )? <END_OF_LINE> ;
  
 constructorsDeclaration              ::=   "Constructors" terms ( ":" typeName )? <END_OF_LINE> ;
  
@@ -86,7 +86,7 @@ disjointTypesDeclaration             ::=   "DisjointTypes" typeNames ":" typeNam
  
 metavariablesDeclaration             ::=   "Metavariables" metavariableName typeParameter? ":" secondOrderType ( "," metavariableName typeParameter? ":" secondOrderType )+ <END_OF_LINE> ;
  
-dependentTypesDeclaration            ::=   "DependentTypes" typeName typeParameter ( "," typeName typeParameter )+ <END_OF_LINE> ;
+dependentTypesDeclaration            ::=   "DependentTypes" typeName typeParameter ( "," typeName typeParameter )+ ":" typeName <END_OF_LINE> ;
  
 abbreviationsDeclaration             ::=   "Abbreviations" abbreviations <END_OF_LINE> ;
  
