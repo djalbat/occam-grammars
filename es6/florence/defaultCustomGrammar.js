@@ -46,7 +46,7 @@ typeAssertion                        ::=   ( type | expression ) ":" typeName
 
 judgement                            ::=   reference "::" metastatement ;
 
-subproof                             ::=   "suppose" metastatement "hence" metastatement ;
+subproof                             ::=   "[" metastatement "]" "..." metastatement ;
 
                                        `;
 
