@@ -1,13 +1,13 @@
 {
   "name": "occam-grammars",
   "author": "James Smith",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "license": "MIT, Anti-996",
-  "homepage": "https://github.com/jecs-imperial/occam-grammars",
+  "homepage": "https://github.com/djalbat/occam-grammars",
   "description": "Occam's grammars.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jecs-imperial/occam-grammars"
+    "url": "https://github.com/djalbat/occam-grammars"
   },
   "dependencies": {
     "necessary": "^7.1.6",
