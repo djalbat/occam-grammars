@@ -15,7 +15,7 @@ export default class MetaJSONView extends View {
   readOnly = false;
 
   initialContent = `{
-  "repository": "https://github.com/jecs-imperial/strings",
+  "repository": "https://github.com/djalbat/strings",
   "dependencies": [
     "natural-numbers",
     "arithmetic"
