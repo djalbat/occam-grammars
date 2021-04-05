@@ -9,14 +9,14 @@ const bnf = `
     metaJSON          ::=  "{" ( ( repositoryPair ( "," dependenciesPair )? ) | ( dependenciesPair "," repositoryPair ) ) "}" ;
 
 
-    dependenciesPair  ::=  "\\"dependencies\\"" ":" dependencies ;
+    dependenciesPair  ::=  "\"dependencies\"" ":" dependencies ;
     
     
-    repositoryPair    ::=  "\\"repository\\"" ":" repository ;
+    repositoryPair    ::=  "\"repository\"" ":" repository ;
 
 
     dependencies      ::=  "[" (dependency ( "," dependency )*)? "]" ;
-
+  
 
     dependency        ::=  [string-literal] ;
 

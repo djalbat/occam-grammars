@@ -1,11 +1,5 @@
 (() => {
-  var __commonJS = (callback, module) => () => {
-    if (!module) {
-      module = {exports: {}};
-      callback(module.exports, module);
-    }
-    return module.exports;
-  };
+  var __commonJS = (cb, mod) => () => (mod || cb((mod = {exports: {}}).exports, mod), mod.exports);
 
   // node_modules/easy/lib/miscellaneous/offset.js
   var require_offset = __commonJS((exports) => {
@@ -23010,7 +23004,7 @@
       value: true
     });
     exports.default = void 0;
-    var bnf = '\n\n\n    document          ::=  ( metaJSON error* ) | error+ ;\n\n\n    metaJSON          ::=  "{" ( ( repositoryPair ( "," dependenciesPair )? ) | ( dependenciesPair "," repositoryPair ) ) "}" ;\n\n\n    dependenciesPair  ::=  "\\\\"dependencies\\\\"" ":" dependencies ;\n    \n    \n    repositoryPair    ::=  "\\\\"repository\\\\"" ":" repository ;\n\n\n    dependencies      ::=  "[" (dependency ( "," dependency )*)? "]" ;\n\n\n    dependency        ::=  [string-literal] ;\n\n\n    repository        ::=  [string-literal] ;\n\n\n    error             ::=  . ;\n\n\n';
+    var bnf = '\n\n\n    document          ::=  ( metaJSON error* ) | error+ ;\n\n\n    metaJSON          ::=  "{" ( ( repositoryPair ( "," dependenciesPair )? ) | ( dependenciesPair "," repositoryPair ) ) "}" ;\n\n\n    dependenciesPair  ::=  "\\"dependencies\\"" ":" dependencies ;\n    \n    \n    repositoryPair    ::=  "\\"repository\\"" ":" repository ;\n\n\n    dependencies      ::=  "[" (dependency ( "," dependency )*)? "]" ;\n  \n\n    dependency        ::=  [string-literal] ;\n\n\n    repository        ::=  [string-literal] ;\n\n\n    error             ::=  . ;\n\n\n';
     var _default = bnf;
     exports.default = _default;
   });
@@ -28167,7 +28161,7 @@
         _defineProperty(_assertThisInitialized(_this), "Parser", _index.MetaJSONParser);
         _defineProperty(_assertThisInitialized(_this), "heading", "Meta JSON example");
         _defineProperty(_assertThisInitialized(_this), "readOnly", false);
-        _defineProperty(_assertThisInitialized(_this), "initialContent", '{\n  "repository": "https://github.com/jecs-imperial/strings",\n  "dependencies": [\n    "natural-numbers",\n    "arithmetic"\n  ]\n}\n');
+        _defineProperty(_assertThisInitialized(_this), "initialContent", '{\n  "repository": "https://github.com/djalbat/strings",\n  "dependencies": [\n    "natural-numbers",\n    "arithmetic"\n  ]\n}\n');
         return _this;
       }
       return MetaJSONView2;
