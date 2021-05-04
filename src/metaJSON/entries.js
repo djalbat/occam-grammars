@@ -1,11 +1,12 @@
 "use strict";
 
 const entries = [
-
-  { "special": "^(?:,|:|\\[|\\]|\\{|\\})" },
-
-  { "unassigned": "^[^\\s]+" }
-
+  {
+    "special": "^(?:,|:|\\[|\\]|\\{|\\})"
+  },
+  {
+    "unassigned": "^[^\\s]+"
+  }
 ];
 
 export default entries;

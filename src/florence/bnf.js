@@ -68,7 +68,7 @@ constructorDeclaration               ::=   "Constructor" term ( ":" typeName )? 
  
 disjointTypeDeclaration              ::=   "DisjointType" typeName ":" typeNames <END_OF_LINE> ;
                                        
-metavariableDeclaration              ::=   "Metavariable" metavariableName typeParameter? ":" secondOrderType <END_OF_LINE> ;
+metavariableDeclaration              ::=   "Metavariable" metavariableName typeParameter? ":" ( "Statement" | "Context" ) <END_OF_LINE> ;
  
 dependentTypeDeclaration             ::=   "DependentType" typeName typeParameter ":" typeName <END_OF_LINE> ;
                                        
@@ -76,19 +76,19 @@ abbreviationDeclaration              ::=   "Abbreviation" abbreviation <END_OF_L
 
 typesDeclaration                     ::=   "Types" typeNames ( ":" typeName )? <END_OF_LINE> ;
 
-variablesDeclaration                 ::=   "Variables" variableNames ":" typeName <END_OF_LINE> ;
+variablesDeclaration                 ::=   "Variables" variableName ( "," variableName )+ ":" typeName <END_OF_LINE> ;
  
-operatorsDeclaration                 ::=   "Operators" expressions ( ":" typeName )? <END_OF_LINE> ;
+operatorsDeclaration                 ::=   "Operators" expression ( "," expression )+ ( ":" typeName )? <END_OF_LINE> ;
  
-constructorsDeclaration              ::=   "Constructors" terms ( ":" typeName )? <END_OF_LINE> ;
+constructorsDeclaration              ::=   "Constructors" term ( "," term )+ ( ":" typeName )? <END_OF_LINE> ;
  
 disjointTypesDeclaration             ::=   "DisjointTypes" typeNames ":" typeNames <END_OF_LINE> ;
  
-metavariablesDeclaration             ::=   "Metavariables" metavariableName typeParameter? ":" secondOrderType ( "," metavariableName typeParameter? ":" secondOrderType )+ <END_OF_LINE> ;
+metavariablesDeclaration             ::=   "Metavariables" metavariableName typeParameter? ( "," metavariableName typeParameter? )+ ":" ( "Statement" | "Context" ) <END_OF_LINE> ;
  
 dependentTypesDeclaration            ::=   "DependentTypes" typeName typeParameter ( "," typeName typeParameter )+ ":" typeName <END_OF_LINE> ;
  
-abbreviationsDeclaration             ::=   "Abbreviations" abbreviations <END_OF_LINE> ;
+abbreviationsDeclaration             ::=   "Abbreviations" abbreviation ( "," abbreviation )+ <END_OF_LINE> ;
  
 
   
@@ -112,7 +112,7 @@ metaproof                            ::=   "Proof" <END_OF_LINE>
                                           
                                           
 
-metaProofDerivation                  ::=   ( metaSublemma | qualifiedMetastatement | qualifiedStatement | qualifiedNonsense )+  
+metaProofDerivation                  ::=   ( metaSublimes | qualifiedMetastatement | qualifiedStatement | qualifiedNonsense )+  
 
                                            "Therefore" <END_OF_LINE> ;                                           
 
@@ -204,10 +204,6 @@ qualification                        ::=   ( "by" | "from" ) reference ;
 
 
 
-secondOrderType                      ::=   ( "Context" | "Statement" ) ;
-
-
-
 typeParameter                        ::=   ( <NO_WHITESPACE>"(" typeName ")" ) ;
 
 
@@ -226,17 +222,9 @@ label                                ::=   labelName ( <NO_WHITESPACE>"(" term "
 
 
 
-variableNames                        ::=   variableName ( "," variableName )* ;
-
-abbreviations                        ::=   abbreviation ( "," expression )* ;
-
-expressions                          ::=   expression ( "," expression )* ;
-
 typeNames                            ::=   typeName ( "," typeName )* ;
 
 labels                               ::=   label ( "," label )* ;
-
-terms                                ::=   term ( "," term )+ ;
 
 
 
