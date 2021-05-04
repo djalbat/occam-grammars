@@ -112,7 +112,7 @@ metaproof                            ::=   "Proof" <END_OF_LINE>
                                           
                                           
 
-metaProofDerivation                  ::=   ( metaSublimes | qualifiedMetastatement | qualifiedStatement | qualifiedNonsense )+  
+metaProofDerivation                  ::=   ( metaSublemma | qualifiedMetastatement | qualifiedStatement | qualifiedNonsense )+  
 
                                            "Therefore" <END_OF_LINE> ;                                           
 
