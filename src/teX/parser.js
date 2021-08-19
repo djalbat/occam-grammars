@@ -9,18 +9,18 @@ import bnf from "./bnf";
 const bnfLexer = BNFLexer.fromNothing(),
       bnfParser = BNFParser.fromNothing();
 
-export default class LaTeXParser extends CommonParser {
+export default class TeXParser extends CommonParser {
   static bnf = bnf;
 
   static fromBNF(bnf) {
     const tokens = bnfLexer.tokensFromBNF(bnf),
           rules = bnfParser.rulesFromTokens(tokens),
-          laTeXParser = LaTeXParser.fromRules(rules);
+          teXParser = TeXParser.fromRules(rules);
 
-    return laTeXParser;
+    return teXParser;
   }
 
-  static fromRules(rules) { return CommonParser.fromRules(LaTeXParser, rules); }
+  static fromRules(rules) { return CommonParser.fromRules(TeXParser, rules); }
 
-  static fromNothing() { return LaTeXParser.fromBNF(bnf); }
+  static fromNothing() { return TeXParser.fromBNF(bnf); }
 }

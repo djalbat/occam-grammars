@@ -4,7 +4,7 @@ import { CommonLexer } from "occam-lexers";
 
 import entries from "./entries";
 
-export default class LaTeXLexer extends CommonLexer {
+export default class TeXLexer extends CommonLexer {
   matchBrokenComment(content, inComment) { return null; }
 
   matchSingleLineComment(content, inComment) { return null; }
@@ -21,7 +21,7 @@ export default class LaTeXLexer extends CommonLexer {
 
   static entries = entries;
 
-  static fromNothing() { return CommonLexer.fromNothing(LaTeXLexer); }
+  static fromNothing() { return CommonLexer.fromNothing(TeXLexer); }
 
-  static fromEntries(entries) { return CommonLexer.fromEntries(LaTeXLexer, entries); }
+  static fromEntries(entries) { return CommonLexer.fromEntries(TeXLexer, entries); }
 }
