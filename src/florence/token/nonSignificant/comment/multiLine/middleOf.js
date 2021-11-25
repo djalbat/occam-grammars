@@ -8,10 +8,10 @@ const { middleOfMultiLineCommentType } = types;
 export default class MiddleOfMultiLineCommentToken extends NonSignificantToken {
   clone(startPosition, endPosition) { return super.clone(MiddleOfMultiLineCommentToken, startPosition, endPosition); }
 
-  isInComment() {
-    const inComment = true;
+  isInCommentPreserving() {
+    const inCommentPreserving = true;
 
-    return inComment;
+    return inCommentPreserving;
   }
 
   static type = middleOfMultiLineCommentType;

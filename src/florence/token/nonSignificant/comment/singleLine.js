@@ -8,10 +8,10 @@ const { singleLineCommentType } = types;
 export default class SingleLineCommentToken extends NonSignificantToken {
   clone(startPosition, endPosition) { return super.clone(SingleLineCommentToken, startPosition, endPosition); }
 
-  isInComment() {
-    const inComment = false;
+  isInCommentPreserving() {
+    const inCommentPreserving = false;
 
-    return inComment;
+    return inCommentPreserving;
   }
 
   static type = singleLineCommentType;

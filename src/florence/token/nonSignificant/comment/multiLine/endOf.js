@@ -8,10 +8,10 @@ const { endOfMultiLineCommentType } = types;
 export default class EndOfMultiLineCommentToken extends NonSignificantToken {
   clone(startPosition, endPosition) { return super.clone(EndOfMultiLineCommentToken, startPosition, endPosition); }
 
-  isInComment() {
-    const inComment = false;
+  isInCommentPreserving() {
+    const inCommentPreserving = false;
 
-    return inComment;
+    return inCommentPreserving;
   }
 
   static type = endOfMultiLineCommentType;
