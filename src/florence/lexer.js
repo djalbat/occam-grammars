@@ -30,6 +30,8 @@ export default class FlorenceLexer extends CommonLexer {
 
   static SinglyQuotedStringLiteralToken = null;
 
+  static fromRules(rules) { return CommonLexer.fromRules(FlorenceLexer, rules); }
+
   static fromNothing() { return CommonLexer.fromEntries(FlorenceLexer, entries); }
 
   static fromEntries(entries) { return CommonLexer.fromEntries(FlorenceLexer, entries); }
