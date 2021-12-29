@@ -10,7 +10,7 @@ export default class FlorenceView extends View {
 
   Parser = FlorenceParser;
 
-  heading = "Florence example";
+  heading = "Florence Example";
 
   readOnly = false;
 

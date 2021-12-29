@@ -10,7 +10,7 @@ export default class MetaJSONView extends View {
 
   Parser = MetaJSONParser;
 
-  heading = "Meta JSON example";
+  heading = "Meta JSON Example";
 
   readOnly = false;
 
