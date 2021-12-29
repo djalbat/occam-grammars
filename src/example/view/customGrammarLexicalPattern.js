@@ -10,8 +10,6 @@ export default class CustomGrammarLexicalPatternView extends View {
 
   Parser = CustomGrammarLexicalPatternParser;
 
-  heading = "Custom Grammar Lexical Pattern Example";
-
   readOnly = false;
 
   initialContent = "<=|>=|<|>|\\+|\\-|×|÷";

@@ -10,8 +10,6 @@ export default class CustomGrammarBNFView extends View {
 
   Parser = CustomGrammarBNFParser;
 
-  heading = "Custom Grammar BNF Example";
-
   readOnly = true;
 
   initialContent = `

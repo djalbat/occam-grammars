@@ -10,8 +10,6 @@ export default class PlainView extends View {
 
   Parser = PlainParser;
 
-  heading = "Plain Example";
-
   readOnly = false;
 
   initialContent = "";
