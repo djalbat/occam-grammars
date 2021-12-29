@@ -10,6 +10,8 @@ export const termBNF = `term                                 ::=   name
 
 export const expressionBNF = `expression                           ::=   "(" expression ")"
 
+                                       |   expression "=" expression 
+
                                        |   term 
                                        
                                        ;
