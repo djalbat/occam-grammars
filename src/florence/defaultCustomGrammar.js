@@ -18,7 +18,7 @@ export const expressionBNF = `expression                           ::=   "(" exp
 
 export const statementBNF = `statement                            ::=   "(" statement ")"
 
-                                       |   expression 
+                                       |   expression "=" expression
                                                   
                                        ;
 
