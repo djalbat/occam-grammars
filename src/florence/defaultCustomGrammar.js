@@ -20,6 +20,8 @@ export const statementBNF = `statement                            ::=   "(" stat
 
                                        |   expression "=" expression
                                                   
+                                       |   expression
+
                                        ;
 
                                        `;
