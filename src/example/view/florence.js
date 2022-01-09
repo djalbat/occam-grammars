@@ -6,13 +6,13 @@ import { FlorenceParser } from "../../index";  ///
 import View from "../view";
 
 export default class FlorenceView extends View {
-  Lexer = FlorenceLexer;
+  static Lexer = FlorenceLexer;
 
-  Parser = FlorenceParser;
+  static Parser = FlorenceParser;
 
-  readOnly = false;
+  static readOnly = false;
 
-  initialContent = `
+  static initialContent = `
   
 Rule (Explosion)
   Conclusion

@@ -6,13 +6,13 @@ import { PlainParser } from "../../index";  ///
 import View from "../view";
 
 export default class PlainView extends View {
-  Lexer = PlainLexer;
+  static Lexer = PlainLexer;
 
-  Parser = PlainParser;
+  static Parser = PlainParser;
 
-  readOnly = false;
+  static readOnly = false;
 
-  initialContent = "";
+  static initialContent = "";
 
   static defaultProperties = {
     className: "plain"

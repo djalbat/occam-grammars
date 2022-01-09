@@ -21,7 +21,7 @@ export default class TeXLexer extends CommonLexer {
 
   static DoublyQuotedStringLiteralToken = null;
 
-  static fromNothing() { return CommonLexer.fromEntries(TeXLexer, entries); }
+  static fromNothing() { return CommonLexer.fromNothing(TeXLexer); }
 
   static fromRules(rules) { return CommonLexer.fromRules(TeXLexer, rules); }
 

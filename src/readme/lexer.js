@@ -21,7 +21,7 @@ export default class ReadmeLexer extends CommonLexer {
 
   static DoublyQuotedStringLiteralToken = null;
 
-  static fromNothing() { return CommonLexer.fromEntries(ReadmeLexer, entries); }
+  static fromNothing() { return CommonLexer.fromNothing(ReadmeLexer); }
 
   static fromRules(rules) { return CommonLexer.fromRules(ReadmeLexer, rules); }
 

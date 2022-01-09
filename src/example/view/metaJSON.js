@@ -6,13 +6,13 @@ import { MetaJSONParser } from "../../index";  ///
 import View from "../view";
 
 export default class MetaJSONView extends View {
-  Lexer = MetaJSONLexer;
+  static Lexer = MetaJSONLexer;
 
-  Parser = MetaJSONParser;
+  static Parser = MetaJSONParser;
 
-  readOnly = false;
+  static readOnly = false;
 
-  initialContent = `{
+  static initialContent = `{
   "repository": "https://github.com/djalbat/strings",
   "dependencies": [
     "natural-numbers",

@@ -23,7 +23,7 @@ export default class PlainLexer extends CommonLexer {
 
   static DoublyQuotedStringLiteralToken = null;
 
-  static fromNothing() { return CommonLexer.fromEntries(PlainLexer, entries); }
+  static fromNothing() { return CommonLexer.fromNothing(PlainLexer); }
 
   static fromRules(rules) { return CommonLexer.fromRules(PlainLexer, rules); }
 

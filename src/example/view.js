@@ -16,9 +16,10 @@ import LexicalEntriesTextarea from "./textarea/lexicalEntries";
 
 class View extends Element {
   getTokens() {
-    const lexicalEntries = this.getLexicalEntries(),
+    const { Lexer } = this.constructor,
+          lexicalEntries = this.getLexicalEntries(),
           entries = lexicalEntries, ///
-          lexer = this.Lexer.fromEntries(entries),
+          lexer = Lexer.fromEntries(entries),
           content = this.getContent(),
           tokens = lexer.tokenise(content);
 
@@ -28,8 +29,9 @@ class View extends Element {
   getParseTree(tokens) {
     let parseTree = null;
 
-    const bnf = this.getBNF(),
-          parser = this.Parser.fromBNF(bnf),
+    const { Parser } = this.constructor,
+          bnf = this.getBNF(),
+          parser = Parser.fromBNF(bnf),
           ruleName = this.getRuleName(),
           ruleMap = parser.getRuleMap(),
           rule = ruleMap[ruleName],
@@ -60,7 +62,8 @@ class View extends Element {
   }
 
   childElements() {
-    const keyUpHandler = this.keyUpHandler.bind(this);
+    const { readOnly } = this.constructor,
+          keyUpHandler = this.keyUpHandler.bind(this);
 
     return ([
 
@@ -70,11 +73,11 @@ class View extends Element {
             <SubHeading>
               Lexical entries
             </SubHeading>
-            <LexicalEntriesTextarea onKeyUp={keyUpHandler} readOnly={this.readOnly} />
+            <LexicalEntriesTextarea onKeyUp={keyUpHandler} readOnly={readOnly} />
             <SubHeading>
               BNF
             </SubHeading>
-            <BNFTextarea onKeyUp={keyUpHandler} readOnly={this.readOnly} />
+            <BNFTextarea onKeyUp={keyUpHandler} readOnly={readOnly} />
             <SubHeading>
               Rule name
             </SubHeading>
@@ -106,9 +109,10 @@ class View extends Element {
   initialise() {
     this.assignContext();
 
-    const { bnf } = this.Parser,
-          { entries } = this.Lexer,
-          content = this.initialContent, ///
+    const { Lexer, Parser, initialContent } = this.constructor,
+          { bnf } = Parser,
+          { entries } = Lexer,
+          content = initialContent, ///
           lexicalEntries = entries; ///
 
     this.setBNF(bnf);

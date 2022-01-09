@@ -6,13 +6,13 @@ import { CustomGrammarLexicalPatternParser } from "../../index";  ///
 import View from "../view";
 
 export default class CustomGrammarLexicalPatternView extends View {
-  Lexer = CustomGrammarLexicalPatternLexer;
+  static Lexer = CustomGrammarLexicalPatternLexer;
 
-  Parser = CustomGrammarLexicalPatternParser;
+  static Parser = CustomGrammarLexicalPatternParser;
 
-  readOnly = false;
+  static readOnly = false;
 
-  initialContent = "<=|>=|<|>|\\+|\\-|×|÷";
+  static initialContent = "<=|>=|<|>|\\+|\\-|×|÷";
 
   static defaultProperties = {
     className: "custom-grammar-lexical-pattern"

@@ -19,7 +19,7 @@ export default class MetaJSONLexer extends CommonLexer {
 
   static SinglyQuotedStringLiteralToken = null;
 
-  static fromNothing() { return CommonLexer.fromEntries(MetaJSONLexer, entries); }
+  static fromNothing() { return CommonLexer.fromNothing(MetaJSONLexer); }
 
   static fromRules(rules) { return CommonLexer.fromRules(MetaJSONLexer, rules); }
 
