@@ -1,18 +1,15 @@
 "use strict";
 
-import { BNFLexer } from "occam-lexers";
-import { BNFParser } from "occam-parsers";
 import { CommonParser } from "occam-parsers";
 
 import bnf from "./bnf";
 
 import { termBNF, expressionBNF, statementBNF, metastatementBNF } from "./defaultCustomGrammar";
 
-const bnfLexer = BNFLexer.fromNothing(),
-      bnfParser = BNFParser.fromNothing();
-
 export default class FlorenceParser extends CommonParser {
   static bnf = bnf;
+
+  static fromNothing() { return CommonParser.fromNothing(FlorenceParser); }
 
   static fromBNF(bnf) {
     bnf = `
@@ -29,14 +26,8 @@ export default class FlorenceParser extends CommonParser {
       
     `; ///
 
-    const tokens = bnfLexer.tokensFromBNF(bnf),
-          rules = bnfParser.rulesFromTokens(tokens),
-          florenceParser = FlorenceParser.fromRules(rules);
-
-    return florenceParser;
+    return CommonParser.fromBNF(FlorenceParser, bnf);
   }
 
   static fromRules(rules) { return CommonParser.fromRules(FlorenceParser, rules); }
-
-  static fromNothing() { return FlorenceParser.fromBNF(bnf); }
 }
