@@ -1,13 +1,15 @@
 "use strict";
 
-import { CommonLexer } from "occam-lexers";
-import { EndOfLineSignificantToken } from "occam-lexers";
+import { CommonLexer,
+         WhitespaceToken,
+         EndOfLineSignificantToken,
+         DoublyQuotedStringLiteralToken,
+         PythonStyleSingleLineCommentToken,
+         PythonStyleEndOfMultiLineCommentToken,
+         PythonStyleStartOfMultiLineCommentToken,
+         PythonStyleMiddleOfMultiLineCommentToken } from "occam-lexers";
 
 import entries from "./entries";
-import SingleLineCommentToken from "./token/nonSignificant/pythonStyle/singleLine";
-import EndOfMultiLineCommentToken from "./token/nonSignificant/pythonStyle/multiLine/endOf";
-import StartOfMultiLineCommentToken from "./token/nonSignificant/pythonStyle/multiLine/startOf";
-import MiddleOfMultiLineCommentToken from "./token/nonSignificant/pythonStyle/multiLine/middleOf";
 
 export default class FlorenceLexer extends CommonLexer {
   matchRegularExpression(content) { return null; }
@@ -18,17 +20,21 @@ export default class FlorenceLexer extends CommonLexer {
 
   static EndOfLineToken = EndOfLineSignificantToken; ///
 
-  static SingleLineCommentToken = SingleLineCommentToken;
+  static WhitespaceToken = WhitespaceToken;
 
   static RegularExpressionToken = null;
 
-  static EndOfMultiLineCommentToken = EndOfMultiLineCommentToken;
+  static SingleLineCommentToken = PythonStyleSingleLineCommentToken;
 
-  static StartOfMultiLineCommentToken = StartOfMultiLineCommentToken;
+  static EndOfMultiLineCommentToken = PythonStyleEndOfMultiLineCommentToken;  ///
 
-  static MiddleOfMultiLineCommentToken = MiddleOfMultiLineCommentToken;
+  static StartOfMultiLineCommentToken = PythonStyleStartOfMultiLineCommentToken;  ///
 
-  static SinglyQuotedStringLiteralToken = null;
+  static MiddleOfMultiLineCommentToken = PythonStyleMiddleOfMultiLineCommentToken;  ///
+
+  static SinglyQuotedStringLiteralToken = null;  ///
+
+  static DoublyQuotedStringLiteralToken = DoublyQuotedStringLiteralToken;
 
   static fromNothing() { return CommonLexer.fromNothing(FlorenceLexer); }
 

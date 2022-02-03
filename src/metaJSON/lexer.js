@@ -1,15 +1,22 @@
 "use strict";
 
-import { CommonLexer } from "occam-lexers";
+import { CommonLexer,
+         WhitespaceToken,
+         EndOfLineNonSignificantToken,
+         DoublyQuotedStringLiteralToken } from "occam-lexers";
 
 import entries from "./entries";
 
 export default class MetaJSONLexer extends CommonLexer {
   static entries = entries;
 
-  static SingleLineCommentToken = null;
+  static EndOfLineToken = EndOfLineNonSignificantToken; ///
+
+  static WhitespaceToken = WhitespaceToken;
 
   static RegularExpressionToken = null;
+
+  static SingleLineCommentToken = null;
 
   static EndOfMultiLineCommentToken = null;
 
@@ -18,6 +25,8 @@ export default class MetaJSONLexer extends CommonLexer {
   static MiddleOfMultiLineCommentToken = null;
 
   static SinglyQuotedStringLiteralToken = null;
+
+  static DoublyQuotedStringLiteralToken = DoublyQuotedStringLiteralToken;
 
   static fromNothing() { return CommonLexer.fromNothing(MetaJSONLexer); }
 
