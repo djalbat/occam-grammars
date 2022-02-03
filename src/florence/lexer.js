@@ -4,10 +4,10 @@ import { CommonLexer } from "occam-lexers";
 import { EndOfLineSignificantToken } from "occam-lexers";
 
 import entries from "./entries";
-import SingleLineCommentToken from "./token/nonSignificant/comment/singleLine";
-import EndOfMultiLineCommentToken from "./token/nonSignificant/comment/multiLine/endOf";
-import StartOfMultiLineCommentToken from "./token/nonSignificant/comment/multiLine/startOf";
-import MiddleOfMultiLineCommentToken from "./token/nonSignificant/comment/multiLine/middleOf";
+import SingleLineCommentToken from "./token/nonSignificant/pythonStyle/singleLine";
+import EndOfMultiLineCommentToken from "./token/nonSignificant/pythonStyle/multiLine/endOf";
+import StartOfMultiLineCommentToken from "./token/nonSignificant/pythonStyle/multiLine/startOf";
+import MiddleOfMultiLineCommentToken from "./token/nonSignificant/pythonStyle/multiLine/middleOf";
 
 export default class FlorenceLexer extends CommonLexer {
   matchRegularExpression(content) { return null; }
