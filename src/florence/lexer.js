@@ -4,6 +4,7 @@ import { CommonLexer,
          WhitespaceToken,
          EndOfLineSignificantToken,
          DoublyQuotedStringLiteralToken,
+         EndOfLineCommentSignificantToken,
          PythonStyleSingleLineCommentToken,
          PythonStyleEndOfMultiLineCommentToken,
          PythonStyleStartOfMultiLineCommentToken,
@@ -23,6 +24,8 @@ export default class FlorenceLexer extends CommonLexer {
   static WhitespaceToken = WhitespaceToken;
 
   static RegularExpressionToken = null;
+
+  static EndOfLineCommentToken = EndOfLineCommentSignificantToken;
 
   static SingleLineCommentToken = PythonStyleSingleLineCommentToken;
 

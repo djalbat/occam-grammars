@@ -14,6 +14,8 @@ export default class MetaJSONLexer extends CommonLexer {
 
   static WhitespaceToken = WhitespaceToken;
 
+  static EndOfLineCommentToken = null;
+
   static RegularExpressionToken = null;
 
   static SingleLineCommentToken = null;

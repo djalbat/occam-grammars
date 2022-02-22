@@ -11,6 +11,8 @@ export default class TeXLexer extends CommonLexer {
 
   static WhitespaceToken = WhitespaceToken;
 
+  static EndOfLineCommentToken = null;
+
   static SingleLineCommentToken = null;
 
   static RegularExpressionToken = null;

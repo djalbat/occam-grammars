@@ -11,6 +11,8 @@ export default class CustomGrammarLexicalPatternLexer extends CommonLexer {
 
   static WhitespaceToken = WhitespaceToken;
 
+  static EndOfLineCommentToken = null;
+
   static SingleLineCommentToken = null;
 
   static RegularExpressionToken = null;
