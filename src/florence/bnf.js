@@ -1,28 +1,26 @@
 "use strict";
 
-const bnf = `document                             ::=   ( rule | axiom | lemma | theorem | conjecture | metalemma | metatheorem | metaconjecture | declaration | verticalSpace | error )+ ;
+const bnf = `document                             ::=   ( topLevelInstruction | verticalSpace | error )+ ;
 
 
 
-rule                                 ::=   "Rule" "(" labels ")" <END_OF_LINE> ( premise | premises )? conclusion metaproof? ;
+topLevelInstruction                  ::=   rule 
 
-axiom                                ::=   "Axiom" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) ; 
+                                       |   axiom 
 
-lemma                                ::=   "Lemma" "(" labels ")"? <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof ;
+                                       |   lemma 
 
-theorem                              ::=   "Theorem" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof ;
+                                       |   theorem 
 
-conjecture                           ::=   "Conjecture" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof? ;
+                                       |   conjecture 
 
-metalemma                            ::=   "Metalemma" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) metaproof ;
+                                       |   metalemma 
 
-metatheorem                          ::=   "Metatheorem" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) metaproof ;
+                                       |   metatheorem 
 
-metaconjecture                       ::=   "Metaconjecture" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) ;
+                                       |   metaconjecture 
 
-
-
-declaration                          ::=   typeDeclaration 
+                                       |   typeDeclaration 
                                            
                                        |   variableDeclaration 
                                            
@@ -57,6 +55,30 @@ declaration                          ::=   typeDeclaration
                                        ;
 
 
+
+verticalSpace                        ::=   <END_OF_LINE>+ ;
+
+
+
+error                                ::=   . ;
+
+
+
+rule                                 ::=   "Rule" "(" labels ")" <END_OF_LINE> ( premise | premises )? conclusion metaproof? ;
+
+axiom                                ::=   "Axiom" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) ; 
+
+lemma                                ::=   "Lemma" "(" labels ")"? <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof ;
+
+theorem                              ::=   "Theorem" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof ;
+
+conjecture                           ::=   "Conjecture" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof? ;
+
+metalemma                            ::=   "Metalemma" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) metaproof ;
+
+metatheorem                          ::=   "Metatheorem" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) metaproof ;
+
+metaconjecture                       ::=   "Metaconjecture" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) ;
 
 typeDeclaration                      ::=   "Type" typeName ( ":" typeName )? <END_OF_LINE> ;
  
@@ -240,14 +262,6 @@ labelName                            ::=   [name] ;
 
 typeName                             ::=   [name] ;
 
-name                                 ::=   [name] ;
-
-
-
-verticalSpace                        ::=   <END_OF_LINE>+ ;
-
-
-
-error                                ::=   . ;`;
+name                                 ::=   [name] ;`;
 
 export default bnf;
