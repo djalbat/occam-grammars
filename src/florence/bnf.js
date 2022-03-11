@@ -24,7 +24,7 @@ topLevelInstruction                  ::=   rule
                                            
                                        |   variableDeclaration 
                                            
-                                       |   operatorDeclaration 
+                                       |   combinatorDeclaration 
                                            
                                        |   constructorDeclaration 
                                            
@@ -40,7 +40,7 @@ topLevelInstruction                  ::=   rule
                                            
                                        |   variablesDeclaration 
                                            
-                                       |   operatorsDeclaration 
+                                       |   combinatorsDeclaration 
                                            
                                        |   constructorsDeclaration 
                                            
@@ -84,7 +84,7 @@ typeDeclaration                      ::=   "Type" typeName ( ":" typeName )? <EN
  
 variableDeclaration                  ::=   "Variable" variableName ":" typeName <END_OF_LINE> ;
  
-operatorDeclaration                  ::=   "Operator" expression ( ":" typeName )? <END_OF_LINE> ;
+combinatorDeclaration                ::=   "Combinator" expression ( ":" typeName )? <END_OF_LINE> ;
  
 constructorDeclaration               ::=   "Constructor" term ( ":" typeName )? <END_OF_LINE> ;
  
@@ -100,7 +100,7 @@ typesDeclaration                     ::=   "Types" typeNames ( ":" typeName )? <
 
 variablesDeclaration                 ::=   "Variables" variableName ( "," variableName )+ ":" typeName <END_OF_LINE> ;
  
-operatorsDeclaration                 ::=   "Operators" expression ( "," expression )+ ( ":" typeName )? <END_OF_LINE> ;
+combinatorsDeclaration               ::=   "Combinators" expression ( "," expression )+ ( ":" typeName )? <END_OF_LINE> ;
  
 constructorsDeclaration              ::=   "Constructors" term ( "," term )+ ( ":" typeName )? <END_OF_LINE> ;
  
