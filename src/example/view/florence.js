@@ -12,12 +12,9 @@ export default class FlorenceView extends View {
 
   static readOnly = false;
 
-  static initialContent = `
-  
-Rule (Explosion)
+  static initialContent = `Rule (Explosion)
   Conclusion
     A
-
   `;
 
   static defaultProperties = {

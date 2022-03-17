@@ -66,19 +66,19 @@ error                                ::=   . ;
 
 rule                                 ::=   "Rule" "(" labels ")" <END_OF_LINE> ( premise | premises )? conclusion metaproof? ;
 
-axiom                                ::=   "Axiom" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) ; 
+axiom                                ::=   "Axiom" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) ; 
 
-lemma                                ::=   "Lemma" "(" labels ")"? <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof ;
+lemma                                ::=   "Lemma" "(" labels ")"? <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof ;
 
-theorem                              ::=   "Theorem" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof ;
+theorem                              ::=   "Theorem" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof ;
 
-conjecture                           ::=   "Conjecture" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement | unqualifiedNonsense ) proof? ;
+conjecture                           ::=   "Conjecture" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof? ;
 
-metalemma                            ::=   "Metalemma" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) metaproof ;
+metalemma                            ::=   "Metalemma" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
 
-metatheorem                          ::=   "Metatheorem" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) metaproof ;
+metatheorem                          ::=   "Metatheorem" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
 
-metaconjecture                       ::=   "Metaconjecture" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement | unqualifiedNonsense ) ;
+metaconjecture                       ::=   "Metaconjecture" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) ;
 
 typeDeclaration                      ::=   "Type" typeName ( ":" typeName )? <END_OF_LINE> ;
  
@@ -114,11 +114,11 @@ abbreviationsDeclaration             ::=   "Abbreviations" abbreviation ( "," ab
  
 
   
-premise                              ::=   "Premise" <END_OF_LINE> ( unqualifiedMetastatement | unqualifiedNonsense ) ;
+premise                              ::=   "Premise" <END_OF_LINE> unqualifiedMetastatement ;
 
-premises                             ::=   "Premises" <END_OF_LINE> ( unqualifiedMetastatement | unqualifiedNonsense ) ( unqualifiedMetastatement | unqualifiedNonsense )+ ;
+premises                             ::=   "Premises" <END_OF_LINE> unqualifiedMetastatement unqualifiedMetastatement+ ;
 
-conclusion                           ::=   "Conclusion" <END_OF_LINE> ( qualifiedMetastatement | qualifiedNonsense ) ;
+conclusion                           ::=   "Conclusion" <END_OF_LINE> qualifiedMetastatement ;
 
 
 
@@ -126,35 +126,33 @@ metaproof                            ::=   "Proof" <END_OF_LINE>
 
                                            metastatementDefinition*
 
-                                           nonsenseDefinition*
-
                                            metaProofDerivation? 
                                           
-                                           ( qualifiedMetastatement | qualifiedNonsense ) ;
+                                           qualifiedMetastatement ;
                                           
                                           
 
-metaProofDerivation                  ::=   ( metaSublemma | qualifiedMetastatement | qualifiedStatement | qualifiedNonsense )+  
+metaProofDerivation                  ::=   ( metaSublemma | qualifiedMetastatement | qualifiedStatement )+  
 
                                            "Therefore" <END_OF_LINE> ;                                           
 
-metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> ( unqualifiedMetastatement | unqualifiedNonsense )+ 
+metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement+ 
 
-                                           "Hence" <END_OF_LINE> ( qualifiedMetastatement | qualifiedNonsense ) ;
+                                           "Hence" <END_OF_LINE> qualifiedMetastatement ;
 
 metaSublemma                         ::=   "Suppose" <END_OF_LINE> 
 
-                                           ( metaSublemma | qualifiedMetastatement | qualifiedStatement | qualifiedNonsense )+ 
+                                           ( metaSublemma | qualifiedMetastatement | qualifiedStatement )+ 
 
                                            ( 
                                           
                                              "Then" <END_OF_LINE> 
                                             
-                                             ( metaSublemma | qualifiedMetastatement | qualifiedStatement | qualifiedNonsense )+ 
+                                             ( metaSublemma | qualifiedMetastatement | qualifiedStatement )+ 
                                           
                                            )? 
                                           
-                                           "Hence" <END_OF_LINE> ( qualifiedMetastatement | qualifiedNonsense ) ;
+                                           "Hence" <END_OF_LINE> qualifiedMetastatement ;
 
 
 
@@ -162,35 +160,33 @@ proof                                ::=   "Proof" <END_OF_LINE>
 
                                            statementDefinition*
 
-                                           nonsenseDefinition*
-
                                            proofDerivation? 
                                           
-                                           ( qualifiedStatement | qualifiedNonsense ) ;
+                                           qualifiedStatement ;
                                                                                          
                                                                                          
                                                                                          
-proofDerivation                      ::=   ( sublemma | qualifiedStatement | qualifiedNonsense )+ 
+proofDerivation                      ::=   ( sublemma | qualifiedStatement )+ 
 
                                            "Therefore" <END_OF_LINE> ;
 
-indicativeConditional                ::=   "Suppose" <END_OF_LINE> ( unqualifiedStatement | unqualifiedNonsense )+ 
+indicativeConditional                ::=   "Suppose" <END_OF_LINE> unqualifiedStatement+ 
 
-                                           "Hence" <END_OF_LINE> ( qualifiedStatement | qualifiedNonsense ) ;
+                                           "Hence" <END_OF_LINE> qualifiedStatement ;
 
 sublemma                             ::=   "Suppose" <END_OF_LINE> 
 
-                                           ( subLemma | qualifiedStatement | qualifiedNonsense )+ 
+                                           ( subLemma | qualifiedStatement )+ 
 
                                            ( 
                                           
                                              "Then" <END_OF_LINE> 
                                             
-                                             ( subLemma | qualifiedStatement | qualifiedNonsense )+ 
+                                             ( subLemma | qualifiedStatement )+ 
                                           
                                            )? 
                                           
-                                           "Hence" <END_OF_LINE> ( qualifiedStatement | qualifiedNonsense ) ;
+                                           "Hence" <END_OF_LINE> qualifiedStatement ;
 
 
 
@@ -198,15 +194,11 @@ metastatementDefinition              ::=   "Let" unqualifiedMetastatement ;
                                           
 statementDefinition                  ::=   "Let" unqualifiedStatement ;                                           
 
-nonsenseDefinition                   ::=   "Let" unqualifiedNonsense ;                                           
-
 
 
 unqualifiedMetastatement             ::=   metastatement! <END_OF_LINE> ;
 
 unqualifiedStatement                 ::=   statement! <END_OF_LINE> ;
-
-unqualifiedNonsense                  ::=   nonsense! <END_OF_LINE> ;
 
 
 
@@ -214,11 +206,9 @@ qualifiedMetastatement               ::=   metastatement! qualification? <END_OF
 
 qualifiedStatement                   ::=   statement! qualification? <END_OF_LINE> ;
 
-qualifiedNonsense                    ::=   nonsense! qualification? <END_OF_LINE> ;
 
 
-
-nonsense                             ::=   ( [name] | [custom] | [special] | [reserved] | [unassigned] )+ ;
+nonsense                             ::=   ( [custom] | [special] | [keyword] | [reserved] | [name] | [unassigned] )+ ;
 
 
 

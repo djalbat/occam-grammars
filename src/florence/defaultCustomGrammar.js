@@ -22,6 +22,8 @@ export const statementBNF = `statement                            ::=   "(" stat
                                                   
                                        |   expression
 
+                                       |   nonsense
+
                                        ;
 
                                        `;
@@ -38,6 +40,8 @@ export const metastatementBNF = `metastatement                        ::=   "(" 
 
                                        |   subproof 
                                         
+                                       |   nonsense
+
                                        ;
 
 contextDefinition                    ::=   context "=" ( judgement | context ) ( "," ( judgement | context ) )* ;
