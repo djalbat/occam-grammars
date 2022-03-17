@@ -208,7 +208,7 @@ qualifiedStatement                   ::=   statement! qualification? <END_OF_LIN
 
 
 
-nonsense                             ::=   ( [custom] | [special] | [keyword] | [reserved] | [name] | [unassigned] )+ ;
+nonsense                             ::=   ( "by" | "from" | [custom] | [special] | [reserved] | [name] | [unassigned] )+ ;
 
 
 
