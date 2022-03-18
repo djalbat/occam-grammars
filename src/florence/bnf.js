@@ -118,7 +118,7 @@ premise                              ::=   "Premise" <END_OF_LINE> unqualifiedMe
 
 premises                             ::=   "Premises" <END_OF_LINE> unqualifiedMetastatement unqualifiedMetastatement+ ;
 
-conclusion                           ::=   "Conclusion" <END_OF_LINE> qualifiedMetastatement ;
+conclusion                           ::=   "Conclusion" <END_OF_LINE> unqualifiedMetastatement ;
 
 
 
