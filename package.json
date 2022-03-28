@@ -1,7 +1,7 @@
 {
   "name": "occam-grammars",
   "author": "James Smith",
-  "version": "1.0.161",
+  "version": "1.0.162",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/occam-grammars",
   "description": "Occam's grammars.",
@@ -23,7 +23,7 @@
     "express": "^4.17.1",
     "juxtapose": "^4.0.37",
     "lively-cli": "^2.0.34",
-    "watchful-cli": "^1.7.19"
+    "watchful-cli": "^1.7.22"
   },
   "scripts": {
     "start": "node ./bin/main.js",
