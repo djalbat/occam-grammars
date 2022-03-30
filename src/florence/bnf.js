@@ -34,8 +34,6 @@ topLevelInstruction                  ::=   rule
                                            
                                        |   dependentTypeDeclaration 
                                            
-                                       |   abbreviationDeclaration 
-                                           
                                        |   typesDeclaration 
                                            
                                        |   variablesDeclaration 
@@ -50,8 +48,6 @@ topLevelInstruction                  ::=   rule
                                            
                                        |   dependentTypesDeclaration 
                                            
-                                       |   abbreviationsDeclaration
-                                       
                                        ;
 
 
@@ -94,8 +90,6 @@ metavariableDeclaration              ::=   "Metavariable" metavariableName typeP
  
 dependentTypeDeclaration             ::=   "DependentType" typeName typeParameter ":" typeName <END_OF_LINE> ;
                                        
-abbreviationDeclaration              ::=   "Abbreviation" abbreviation <END_OF_LINE> ;
-
 typesDeclaration                     ::=   "Types" typeNames ( ":" typeName )? <END_OF_LINE> ;
 
 variablesDeclaration                 ::=   "Variables" variableName ( "," variableName )+ ":" typeName <END_OF_LINE> ;
@@ -109,9 +103,7 @@ disjointTypesDeclaration             ::=   "DisjointTypes" typeNames ":" typeNam
 metavariablesDeclaration             ::=   "Metavariables" metavariableName typeParameter? ( "," metavariableName typeParameter? )+ ":" ( "Statement" | "Context" ) <END_OF_LINE> ;
  
 dependentTypesDeclaration            ::=   "DependentTypes" typeName typeParameter ( "," typeName typeParameter )+ ":" typeName <END_OF_LINE> ;
- 
-abbreviationsDeclaration             ::=   "Abbreviations" abbreviation ( "," abbreviation )+ <END_OF_LINE> ;
- 
+  
 
   
 premise                              ::=   "Premise" <END_OF_LINE> unqualifiedMetastatement ;
@@ -231,10 +223,6 @@ qualification                        ::=   ( "by" | "from" ) reference ;
 
 
 typeParameter                        ::=   ( <NO_WHITESPACE>"(" typeName ")" ) ;
-
-
-
-abbreviation                         ::=   [custom] "for" [custom] | name "for" name ;
 
 
 
