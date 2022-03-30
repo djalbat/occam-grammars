@@ -14,7 +14,7 @@ export default class FlorenceView extends View {
 
   static initialContent = `Rule (Explosion)
   Conclusion
-    A
+    ρ |- R::P
   `;
 
   static defaultProperties = {
