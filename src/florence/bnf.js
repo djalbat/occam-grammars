@@ -196,29 +196,27 @@ statementDefinition                  ::=   "Let" unqualifiedStatement ;
 
 
 
-unqualifiedMetastatement             ::=   metastatement <END_OF_LINE> 
+unqualifiedMetastatement!            ::=   metastatement <END_OF_LINE> 
 
-                                       |   nonsense! <END_OF_LINE> 
+                                       |   nonsense... <END_OF_LINE> 
                                        
                                        ;
 
-unqualifiedStatement                 ::=   statement <END_OF_LINE>
+qualifiedMetastatement!              ::=   metastatement qualification? <END_OF_LINE> 
 
-                                       |   nonsense! <END_OF_LINE> 
-                                       
-                                       ;
-
-
-
-qualifiedMetastatement               ::=   metastatement qualification? <END_OF_LINE> 
-
-                                       |   nonsense! qualification? <END_OF_LINE> 
+                                       |   nonsense... qualification? <END_OF_LINE> 
                                         
                                        ;
 
-qualifiedStatement                   ::=   statement qualification? <END_OF_LINE> 
+unqualifiedStatement!                ::=   statement <END_OF_LINE>
 
-                                       |   nonsense! qualification? <END_OF_LINE> 
+                                       |   nonsense... <END_OF_LINE> 
+                                       
+                                       ;
+
+qualifiedStatement!                  ::=   statement qualification? <END_OF_LINE> 
+
+                                       |   nonsense... qualification? <END_OF_LINE> 
                                        
                                        ;
 
