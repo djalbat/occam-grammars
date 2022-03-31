@@ -12,34 +12,27 @@ export default class FlorenceParser extends CommonParser {
   static fromNothing() {
     let { bnf } = FlorenceParser;
 
-    bnf = augmentBNF(bnf);  ///
+    bnf = `${bnf} ${defaultCustomGrammarBNF}`; ///
 
-    return CommonParser.fromBNF(FlorenceParser, bnf);
+    const florenceParser = CommonParser.fromBNF(FlorenceParser, bnf);
+
+    return florenceParser;
   }
 
-  static fromBNF(bnf) {
-    bnf = augmentBNF(bnf);  ///
-
-    return CommonParser.fromBNF(FlorenceParser, bnf);
-  }
+  static fromBNF(bnf) { return CommonParser.fromBNF(FlorenceParser, bnf); }
 
   static fromRules(rules) { return CommonParser.fromRules(FlorenceParser, rules); }
 }
 
-function augmentBNF(bnf) {
-  bnf = `
+export const defaultCustomGrammarBNF = `
     
-      ${bnf}
-      
-      ${termBNF}
-      
-      ${expressionBNF}
-      
-      ${statementBNF}
-      
-      ${metastatementBNF}
-      
-    `; ///
+  ${termBNF}
+  
+  ${expressionBNF}
+  
+  ${statementBNF}
+  
+  ${metastatementBNF}
+    
+`;
 
-  return bnf;
-}
