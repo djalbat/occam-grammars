@@ -2,7 +2,7 @@
 
 const entries = [
   {
-    "special": "^(?:,|=|::|:|\\|-|\\(|\\))|\\[|\\]|\\.\\.\\."
+    "special": "^(?:,|=|::|:|\\|-|\\(|\\)|\\[|\\]|\\.\\.\\.)"
   },
   {
     "keyword": "^(?:Rule|Axiom|Theorem|Lemma|Conjecture|Metalemma|Metatheorem|Premises|Premise|Conclusion|Proof|Therefore|Suppose|Then|Hence|Types|Type|Variables|Variable|Constructors|Constructor|Combinators|Combinator|DependentTypes|DependentType|DisjointTypes|DisjointType|Metavariables|Metavariable|Let|for|from|by)\\b"

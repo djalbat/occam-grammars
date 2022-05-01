@@ -2,33 +2,13 @@
 
 export const lexicalPattern = "";
 
-export const termBNF = `term!                                ::=   name 
-                                 
-                                       ;
-                                       
-                                       `;
+export const termBNF = `term!                                ::=   _ ;`;
 
-export const expressionBNF = `expression!                          ::=   "(" expression ")"
+export const expressionBNF = `expression!                          ::=   _ ;`;
 
-                                       |   term 
-                                       
-                                       ;
-                                       
-                                       `;
+export const statementBNF = `statement!                           ::=   expression "=" expression ;`;
 
-export const statementBNF = `statement!                           ::=   "(" statement ")"
-
-                                       |   expression "=" expression
-                                                  
-                                       |   expression
-
-                                       ;
-
-                                       `;
-
-export const metastatementBNF = `metastatement!                       ::=   "(" metastatement ")"
-
-                                       |   contextDefinition 
+export const metastatementBNF = `metastatement!                       ::=   contextDefinition 
            
                                        |   proofAssertion
        
