@@ -18,11 +18,13 @@ topLevelInstruction                  ::=   rule
 
                                        |   metatheorem 
 
-                                       |   metaconjecture 
+                                       |   metaconjecture
 
                                        |   typeDeclaration 
                                            
                                        |   variableDeclaration 
+                                           
+                                       |   comparatorDeclaration 
                                            
                                        |   combinatorDeclaration 
                                            
@@ -37,6 +39,8 @@ topLevelInstruction                  ::=   rule
                                        |   typesDeclaration 
                                            
                                        |   variablesDeclaration 
+                                           
+                                       |   comparatorsDeclaration 
                                            
                                        |   combinatorsDeclaration 
                                            
@@ -80,6 +84,8 @@ typeDeclaration                      ::=   "Type" typeName ( ":" typeName )? <EN
  
 variableDeclaration                  ::=   "Variable" variableName ":" typeName <END_OF_LINE> ;
  
+comparatorDeclaration                ::=   "Comparator" statement <END_OF_LINE> ;
+ 
 combinatorDeclaration                ::=   "Combinator" expression ( ":" typeName )? <END_OF_LINE> ;
  
 constructorDeclaration               ::=   "Constructor" term ( ":" typeName )? <END_OF_LINE> ;
@@ -93,6 +99,8 @@ dependentTypeDeclaration             ::=   "DependentType" typeName typeParamete
 typesDeclaration                     ::=   "Types" typeNames ( ":" typeName )? <END_OF_LINE> ;
 
 variablesDeclaration                 ::=   "Variables" variableName ( "," variableName )+ ":" typeName <END_OF_LINE> ;
+ 
+comparatorsDeclaration               ::=   "Comparators" statement ( "," statement )+ <END_OF_LINE> ;
  
 combinatorsDeclaration               ::=   "Combinators" expression ( "," expression )+ ( ":" typeName )? <END_OF_LINE> ;
  
