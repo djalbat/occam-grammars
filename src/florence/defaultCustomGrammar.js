@@ -12,7 +12,7 @@ export const lexicalPattern = "";
 
                                        ;
 
-typeAssertion                        ::=   ( expression | typeName ) ":" typeName ;
+typeAssertion                        ::=   ( expression | [name]] ) ":" [name]] ;
 
 equality                             ::=   expression "=" expression ;`;
 

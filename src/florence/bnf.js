@@ -64,53 +64,53 @@ error                                ::=   . ;
 
 
 
-rule                                 ::=   "Rule" "(" labels ")" <END_OF_LINE> ( premise | premises )? conclusion metaproof? ;
+rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( premise | premises )? conclusion metaproof? ;
 
-axiom                                ::=   "Axiom" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) ; 
+axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) ; 
 
-lemma                                ::=   "Lemma" "(" labels ")"? <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof ;
+lemma                                ::=   "Lemma" "(" label ( "," label )* ")"? <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof ;
 
-theorem                              ::=   "Theorem" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof ;
+theorem                              ::=   "Theorem" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof ;
 
-conjecture                           ::=   "Conjecture" "(" labels ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof? ;
+conjecture                           ::=   "Conjecture" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof? ;
 
-metalemma                            ::=   "Metalemma" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
+metalemma                            ::=   "Metalemma" "(" label ( "," label )* ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
 
-metatheorem                          ::=   "Metatheorem" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
+metatheorem                          ::=   "Metatheorem" "(" label ( "," label )* ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
 
-metaconjecture                       ::=   "Metaconjecture" "(" labels ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) ;
+metaconjecture                       ::=   "Metaconjecture" "(" label ( "," label )* ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) ;
 
-typeDeclaration                      ::=   "Type" typeName ( ":" typeName )? <END_OF_LINE> ;
+typeDeclaration                      ::=   "Type" [name] ( ":" [name] )? <END_OF_LINE> ;
  
-variableDeclaration                  ::=   "Variable" variableName ":" typeName <END_OF_LINE> ;
+variableDeclaration                  ::=   "Variable" [name] ":" [name] <END_OF_LINE> ;
  
 comparatorDeclaration                ::=   "Comparator" statement <END_OF_LINE> ;
  
-combinatorDeclaration                ::=   "Combinator" expression ( ":" typeName )? <END_OF_LINE> ;
+combinatorDeclaration                ::=   "Combinator" expression ( ":" [name] )? <END_OF_LINE> ;
  
-constructorDeclaration               ::=   "Constructor" term ( ":" typeName )? <END_OF_LINE> ;
+constructorDeclaration               ::=   "Constructor" term ( ":" [name] )? <END_OF_LINE> ;
  
-disjointTypeDeclaration              ::=   "DisjointType" typeName ":" typeNames <END_OF_LINE> ;
+disjointTypeDeclaration              ::=   "DisjointType" [name] ":" [name] ( ":" [name] )? <END_OF_LINE> ;
                                        
-metavariableDeclaration              ::=   "Metavariable" metavariableName typeParameter? ":" ( "Statement" | "Context" ) <END_OF_LINE> ;
+metavariableDeclaration              ::=   "Metavariable" metavariable ":" ( "Statement" | "Context" ) <END_OF_LINE> ;
  
-dependentTypeDeclaration             ::=   "DependentType" typeName typeParameter ":" typeName <END_OF_LINE> ;
+dependentTypeDeclaration             ::=   "DependentType" dependentType ":" [name] <END_OF_LINE> ;
                                        
-typesDeclaration                     ::=   "Types" typeNames ( ":" typeName )? <END_OF_LINE> ;
+typesDeclaration                     ::=   "Types" [name] ( ":" [name] )? <END_OF_LINE> ;
 
-variablesDeclaration                 ::=   "Variables" variableName ( "," variableName )+ ":" typeName <END_OF_LINE> ;
+variablesDeclaration                 ::=   "Variables" [name] ( "," [name] )+ ":" [name] <END_OF_LINE> ;
  
 comparatorsDeclaration               ::=   "Comparators" statement ( "," statement )+ <END_OF_LINE> ;
  
-combinatorsDeclaration               ::=   "Combinators" expression ( "," expression )+ ( ":" typeName )? <END_OF_LINE> ;
+combinatorsDeclaration               ::=   "Combinators" expression ( "," expression )+ ( ":" [name] )? <END_OF_LINE> ;
  
-constructorsDeclaration              ::=   "Constructors" term ( "," term )+ ( ":" typeName )? <END_OF_LINE> ;
+constructorsDeclaration              ::=   "Constructors" term ( "," term )+ ( ":" [name] )? <END_OF_LINE> ;
  
-disjointTypesDeclaration             ::=   "DisjointTypes" typeNames ":" typeNames <END_OF_LINE> ;
+disjointTypesDeclaration             ::=   "DisjointTypes" [name] ( ":" [name] )? ":" [name] ( ":" [name] )? <END_OF_LINE> ;
  
-metavariablesDeclaration             ::=   "Metavariables" metavariableName typeParameter? ( "," metavariableName typeParameter? )+ ":" ( "Statement" | "Context" ) <END_OF_LINE> ;
+metavariablesDeclaration             ::=   "Metavariables" metavariable ( "," metavariable )+ ":" ( "Statement" | "Context" ) <END_OF_LINE> ;
  
-dependentTypesDeclaration            ::=   "DependentTypes" typeName typeParameter ( "," typeName typeParameter )+ ":" typeName <END_OF_LINE> ;
+dependentTypesDeclaration            ::=   "DependentTypes" dependentType ( "," dependentType )+ ":" [name] <END_OF_LINE> ;
   
 
   
@@ -222,7 +222,7 @@ qualifiedStatement!                  ::=   statement qualification? <END_OF_LINE
 
 
 
-nonsense                             ::=   ( "by" | "from" | [custom] | [special] | [reserved] | [name] | [unassigned] )+ ;
+nonsense                             ::=   ( "by" | "from" | [name] | [custom] | [special] | [reserved] | [unassigned] )+ ;
 
 
 
@@ -230,38 +230,16 @@ qualification                        ::=   ( "by" | "from" ) reference ;
 
 
 
-typeParameter                        ::=   ( <NO_WHITESPACE>"(" typeName ")" ) ;
+dependentType                        ::=   [name]<NO_WHITESPACE>"(" term ")" ;
 
 
 
-metavariable                         ::=   metavariableName ( <NO_WHITESPACE>"(" term ")" )? ;
+metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" term ")" )? ;
 
-reference                            ::=   referenceName ( <NO_WHITESPACE>"(" term ")" )? ;
+reference                            ::=   [name] ( <NO_WHITESPACE>"(" term ")" )? ;
 
-context                              ::=   contextName ( <NO_WHITESPACE>"(" term ")" )? ;
+context                              ::=   [name] ( <NO_WHITESPACE>"(" term ")" )? ;
 
-label                                ::=   labelName ( <NO_WHITESPACE>"(" term ")" )? ;
-
-
-
-typeNames                            ::=   typeName ( "," typeName )* ;
-
-labels                               ::=   label ( "," label )* ;
-
-
-
-metavariableName                     ::=   [name] ;
-
-referenceName                        ::=   [name] ;
-
-variableName                         ::=   [name] ;
-
-contextName                          ::=   [name] ;
-
-labelName                            ::=   [name] ;
-
-typeName                             ::=   [name] ;
-
-name                                 ::=   [name] ;`;
+label                                ::=   [name] ( <NO_WHITESPACE>"(" term ")" )? ;`;
 
 export default bnf;
