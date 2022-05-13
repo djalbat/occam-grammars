@@ -16,9 +16,7 @@ typeAssertion                        ::=   ( expression | [name] ) ":" [name] ;
 
 equality                             ::=   expression "=" expression ;`;
 
-export const metastatementBNF = `metastatement!                       ::=   statement 
-           
-                                       |   contextDefinition 
+export const metastatementBNF = `metastatement!                       ::=   contextDefinition 
            
                                        |   proofAssertion
        
