@@ -15,6 +15,23 @@ import ParseTreeTextarea from "./textarea/parseTree";
 import LexicalEntriesTextarea from "./textarea/lexicalEntries";
 
 class View extends Element {
+  keyUpHandler = (event, element) => {
+    try {
+      const tokens = this.getTokens(),
+            parseTree = this.getParseTree(tokens);
+
+      this.setTokens(tokens);
+
+      this.setParseTree(parseTree);
+    } catch (error) {
+      console.log(error);
+
+      this.clearTokens();
+
+      this.clearParseTree();
+    }
+  }
+
   getTokens() {
     const { Lexer } = this.constructor,
           lexicalEntries = this.getLexicalEntries(),
@@ -44,26 +61,8 @@ class View extends Element {
     return parseTree;
   }
 
-  keyUpHandler() {
-    try {
-      const tokens = this.getTokens(),
-            parseTree = this.getParseTree(tokens);
-
-      this.setTokens(tokens);
-
-      this.setParseTree(parseTree);
-    } catch (error) {
-      console.log(error);
-
-      this.clearTokens();
-
-      this.clearParseTree();
-    }
-  }
-
   childElements() {
-    const { readOnly } = this.constructor,
-          keyUpHandler = this.keyUpHandler.bind(this);
+    const { readOnly } = this.constructor;
 
     return ([
 
@@ -73,15 +72,15 @@ class View extends Element {
             <SubHeading>
               Lexical entries
             </SubHeading>
-            <LexicalEntriesTextarea onKeyUp={keyUpHandler} readOnly={readOnly} />
+            <LexicalEntriesTextarea onKeyUp={this.keyUpHandler} readOnly={readOnly} />
             <SubHeading>
               BNF
             </SubHeading>
-            <BNFTextarea onKeyUp={keyUpHandler} readOnly={readOnly} />
+            <BNFTextarea onKeyUp={this.keyUpHandler} readOnly={readOnly} />
             <SubHeading>
               Rule name
             </SubHeading>
-            <RuleNameInput onKeyUp={keyUpHandler} />
+            <RuleNameInput onKeyUp={this.keyUpHandler} />
           </RowsDiv>
         </SizeableDiv>
         <VerticalSplitterDiv />
@@ -90,7 +89,7 @@ class View extends Element {
             <SubHeading>
               Content
             </SubHeading>
-            <ContentTextarea onKeyUp={keyUpHandler} />
+            <ContentTextarea onKeyUp={this.keyUpHandler} />
             <SubHeading>
               Tokens
             </SubHeading>
