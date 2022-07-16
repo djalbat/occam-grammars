@@ -2,6 +2,8 @@
 
 export const lexicalPattern = "";
 
+         export const typeBNF = `type                                 ::=   _ ;`;
+
          export const termBNF = `term!                                ::=   _ ;`;
 
    export const expressionBNF = `expression!                          ::=   _ ;`;
@@ -36,6 +38,7 @@ subproof                             ::=   "[" metastatement "]" "..." metastate
 
 export default {
   lexicalPattern,
+  typeBNF,
   termBNF,
   expressionBNF,
   statementBNF,

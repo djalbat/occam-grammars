@@ -4,7 +4,7 @@ import { CommonParser } from "occam-parsers";
 
 import bnf from "./bnf";
 
-import { termBNF, expressionBNF, statementBNF, metastatementBNF } from "./defaultCustomGrammar";
+import { typeBNF, termBNF, expressionBNF, statementBNF, metastatementBNF } from "./defaultCustomGrammar";
 
 export default class FlorenceParser extends CommonParser {
   static bnf = bnf;
@@ -26,6 +26,8 @@ export default class FlorenceParser extends CommonParser {
 
 export const defaultCustomGrammarBNF = `
     
+  ${typeBNF}
+
   ${termBNF}
   
   ${expressionBNF}
@@ -35,4 +37,3 @@ export const defaultCustomGrammarBNF = `
   ${metastatementBNF}
     
 `;
-

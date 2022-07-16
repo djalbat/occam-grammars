@@ -246,8 +246,6 @@ label                                ::=   [name] ( <NO_WHITESPACE>"(" term ")" 
 
 disjointType                         ::=   [name] ;
 
-variable                             ::=   [name] ;
-
-type                                 ::=   [name] ;`;
+variable                             ::=   [name] ;`;
 
 export default bnf;
