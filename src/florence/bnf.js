@@ -226,6 +226,10 @@ nonsense                             ::=   ( "by" | "from" | [name] | [custom] |
 
 
 
+argument                             ::=   type | variable | term | expression ;
+
+
+
 qualification                        ::=   ( "by" | "from" ) reference ;
 
 
