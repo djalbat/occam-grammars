@@ -14,9 +14,9 @@ export const lexicalPattern = "";
 
                                        ;
 
-typeAssertion                        ::=   variable ":" type ;
+typeAssertion                        ::=   expression ":" type ;
 
-equality                             ::=   ( variable | expression ) "=" ( variable | expression );`;
+equality                             ::=   expression "=" expression ;`;
 
 export const metastatementBNF = `metastatement!                       ::=   contextDefinition 
            
