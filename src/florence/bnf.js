@@ -226,7 +226,7 @@ nonsense                             ::=   ( "by" | "from" | [name] | [custom] |
 
 
 
-argument                             ::=   type | variable | term | expression ;
+argument                             ::=   type | variable | expression ;
 
 
 
