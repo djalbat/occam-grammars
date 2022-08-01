@@ -11,7 +11,7 @@ import TeXView from "./example/view/tex";
 import PlainView from "./example/view/plain";
 import MetaJSONView from "./example/view/metaJSON";
 import CustomGrammarBNFView from "./example/view/customGrammarBNF";
-import CustomGrammarLexicalPatternView from "./example/view/customGrammarLexicalPattern";
+import CustomGrammarPatternView from "./example/view/customGrammarPattern";
 
 const { renderStyles } = withStyle;
 
@@ -26,7 +26,7 @@ switch (example) {
   case "plain" : View = PlainView; break;
   case "metaJSON" : View = MetaJSONView; break;
   case "customGrammarBNF" : View = CustomGrammarBNFView; break;
-  case "customGrammarLexicalPattern" : View = CustomGrammarLexicalPatternView; break;
+  case "customGrammarPattern" : View = CustomGrammarPatternView; break;
 }
 
 renderStyles();

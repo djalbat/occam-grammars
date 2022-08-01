@@ -13,5 +13,5 @@ export { default as FlorenceParser } from "./florence/parser";
 export { default as defaultCustomGrammar } from "./florence/defaultCustomGrammar";
 export { default as CustomGrammarBNFLexer } from "./customGrammarBNF/lexer";
 export { default as CustomGrammarBNFParser } from "./customGrammarBNF/parser";
-export { default as CustomGrammarLexicalPatternLexer } from "./customGrammarLexicalPattern/lexer";
-export { default as CustomGrammarLexicalPatternParser } from "./customGrammarLexicalPattern/parser";
+export { default as CustomGrammarPatternLexer } from "./customGrammarPattern/lexer";
+export { default as CustomGrammarPatternParser } from "./customGrammarPattern/parser";

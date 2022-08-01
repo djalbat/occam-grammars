@@ -19,7 +19,7 @@ In Occam parlance, a grammar is a combination of lexical entries for a lexer and
 * Plain
 * Meta JSON
 * Custom grammar BNF
-* Custom grammar lexical pattern
+* Custom grammar pattern
 
 This package exports the lexers and parsers to support these grammars.
 
