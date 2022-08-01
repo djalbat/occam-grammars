@@ -1,10 +1,10 @@
 "use strict";
 
-export const lexicalPattern = "";
+export const typePattern = "";
 
-         export const typeBNF = `type                                 ::=   _ ;`;
+export const operatorPattern = "";
 
-         export const termBNF = `term!                                ::=   _ ;`;
+export const termBNF = `term!                                ::=   _ ;`;
 
    export const expressionBNF = `expression!                          ::=   _ ;`;
 
@@ -37,8 +37,8 @@ judgement                            ::=   reference "::" metastatement ;
 subproof                             ::=   "[" metastatement "]" "..." metastatement ;`;
 
 export default {
-  lexicalPattern,
-  typeBNF,
+  typePattern,
+  operatorPattern,
   termBNF,
   expressionBNF,
   statementBNF,

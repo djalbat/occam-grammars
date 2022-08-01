@@ -222,10 +222,6 @@ qualifiedStatement!                  ::=   statement qualification? <END_OF_LINE
 
 
 
-nonsense                             ::=   ( "by" | "from" | [name] | [custom] | [special] | [reserved] | [unassigned] )+ ;
-
-
-
 argument                             ::=   type | expression ;
 
 
@@ -234,7 +230,15 @@ qualification                        ::=   ( "by" | "from" ) reference ;
 
 
 
-dependentType                        ::=   [name]<NO_WHITESPACE>"(" term ")" ;
+nonsense                             ::=   ( "by" | "from" | [type] | [operator] | [special] | [reserved] | [name] | [unassigned] )+ ;
+
+
+
+dependentType                        ::=   [type]<NO_WHITESPACE>"(" term ")" ;
+
+disjointType                         ::=   [type] ;
+
+type                                 ::=   [type] ;
 
 
 
@@ -247,8 +251,6 @@ context                              ::=   [name] ( <NO_WHITESPACE>"(" term ")" 
 label                                ::=   [name] ( <NO_WHITESPACE>"(" term ")" )? ;
 
 
-
-disjointType                         ::=   [name] ;
 
 variable                             ::=   [name] ;`;
 
