@@ -86,9 +86,9 @@ variableDeclaration                  ::=   "Variable" variable ":" type <END_OF_
  
 comparatorDeclaration                ::=   "Comparator" statement <END_OF_LINE> ;
  
-combinatorDeclaration                ::=   "Combinator" expression ( ":" type )? <END_OF_LINE> ;
+combinatorDeclaration                ::=   "Combinator" expression... ( ":" type )? <END_OF_LINE> ;
  
-constructorDeclaration               ::=   "Constructor" term ( ":" type )? <END_OF_LINE> ;
+constructorDeclaration               ::=   "Constructor" term... ( ":" type )? <END_OF_LINE> ;
  
 disjointTypeDeclaration              ::=   "DisjointType" disjointType ":" type ( "," type )+ <END_OF_LINE> ;
                                        
@@ -102,9 +102,9 @@ variablesDeclaration                 ::=   "Variables" variable ( "," variable )
  
 comparatorsDeclaration               ::=   "Comparators" statement ( "," statement )+ <END_OF_LINE> ;
  
-combinatorsDeclaration               ::=   "Combinators" expression ( "," expression )+ ( ":" type )? <END_OF_LINE> ;
+combinatorsDeclaration               ::=   "Combinators" expression... ( "," expression... )+ ( ":" type )? <END_OF_LINE> ;
  
-constructorsDeclaration              ::=   "Constructors" term ( "," term )+ ( ":" type )? <END_OF_LINE> ;
+constructorsDeclaration              ::=   "Constructors" term... ( "," term... )+ ( ":" type )? <END_OF_LINE> ;
  
 disjointTypesDeclaration             ::=   "DisjointTypes" disjointType ( "," disjointType )+ ":" type ( "," type )+ <END_OF_LINE> ;
  
@@ -196,25 +196,25 @@ statementDefinition                  ::=   "Let" unqualifiedStatement ;
 
 
 
-unqualifiedMetastatement!            ::=   metastatement <END_OF_LINE> 
+unqualifiedMetastatement!            ::=   metastatement... <END_OF_LINE> 
 
                                        |   nonsense... <END_OF_LINE> 
                                        
                                        ;
 
-qualifiedMetastatement!              ::=   metastatement qualification? <END_OF_LINE> 
+qualifiedMetastatement!              ::=   metastatement... qualification? <END_OF_LINE> 
 
                                        |   nonsense... qualification? <END_OF_LINE> 
                                         
                                        ;
 
-unqualifiedStatement!                ::=   statement <END_OF_LINE>
+unqualifiedStatement!                ::=   statement... <END_OF_LINE>
 
                                        |   nonsense... <END_OF_LINE> 
                                        
                                        ;
 
-qualifiedStatement!                  ::=   statement qualification? <END_OF_LINE> 
+qualifiedStatement!                  ::=   statement... qualification? <END_OF_LINE> 
 
                                        |   nonsense... qualification? <END_OF_LINE> 
                                        
@@ -234,7 +234,7 @@ nonsense                             ::=   ( "by" | "from" | [type] | [operator]
 
 
 
-dependentType                        ::=   [type]<NO_WHITESPACE>"(" term ")" ;
+dependentType                        ::=   [type]<NO_WHITESPACE>"(" expression... ")" ;
 
 disjointType                         ::=   [type] ;
 
@@ -242,13 +242,13 @@ type                                 ::=   [type] ;
 
 
 
-metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" term ")" )? ;
+metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" expression... ")" )? ;
 
-reference                            ::=   [name] ( <NO_WHITESPACE>"(" term ")" )? ;
+reference                            ::=   [name] ( <NO_WHITESPACE>"(" expression... ")" )? ;
 
-context                              ::=   [name] ( <NO_WHITESPACE>"(" term ")" )? ;
+context                              ::=   [name] ( <NO_WHITESPACE>"(" expression... ")" )? ;
 
-label                                ::=   [name] ( <NO_WHITESPACE>"(" term ")" )? ;
+label                                ::=   [name] ( <NO_WHITESPACE>"(" expression... ")" )? ;
 
 
 
