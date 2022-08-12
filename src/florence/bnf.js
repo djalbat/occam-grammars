@@ -24,8 +24,6 @@ topLevelInstruction                  ::=   rule
                                            
                                        |   variableDeclaration 
                                            
-                                       |   comparatorDeclaration 
-                                           
                                        |   combinatorDeclaration 
                                            
                                        |   constructorDeclaration 
@@ -39,12 +37,6 @@ topLevelInstruction                  ::=   rule
                                        |   typesDeclaration 
                                            
                                        |   variablesDeclaration 
-                                           
-                                       |   comparatorsDeclaration 
-                                           
-                                       |   combinatorsDeclaration 
-                                           
-                                       |   constructorsDeclaration 
                                            
                                        |   disjointTypesDeclaration 
                                            
@@ -84,9 +76,7 @@ typeDeclaration                      ::=   "Type" type ( ":" type )? <END_OF_LIN
  
 variableDeclaration                  ::=   "Variable" variable ":" type <END_OF_LINE> ;
  
-comparatorDeclaration                ::=   "Comparator" statement <END_OF_LINE> ;
- 
-combinatorDeclaration                ::=   "Combinator" expression... ( ":" type )? <END_OF_LINE> ;
+combinatorDeclaration                ::=   "Combinator" statement... ( ":" type )? <END_OF_LINE> ;
  
 constructorDeclaration               ::=   "Constructor" term... ( ":" type )? <END_OF_LINE> ;
  
@@ -99,12 +89,6 @@ dependentTypeDeclaration             ::=   "DependentType" dependentType ":" typ
 typesDeclaration                     ::=   "Types" type ( ":"  type )? <END_OF_LINE> ;
 
 variablesDeclaration                 ::=   "Variables" variable ( "," variable )+ ":" type <END_OF_LINE> ;
- 
-comparatorsDeclaration               ::=   "Comparators" statement ( "," statement )+ <END_OF_LINE> ;
- 
-combinatorsDeclaration               ::=   "Combinators" expression... ( "," expression... )+ ( ":" type )? <END_OF_LINE> ;
- 
-constructorsDeclaration              ::=   "Constructors" term... ( "," term... )+ ( ":" type )? <END_OF_LINE> ;
  
 disjointTypesDeclaration             ::=   "DisjointTypes" disjointType ( "," disjointType )+ ":" type ( "," type )+ <END_OF_LINE> ;
  
@@ -222,7 +206,7 @@ qualifiedStatement!                  ::=   statement... qualification? <END_OF_L
 
 
 
-argument                             ::=   type | expression ;
+argument                             ::=   term | type ;
 
 
 
@@ -234,7 +218,7 @@ nonsense                             ::=   ( "by" | "from" | [type] | [operator]
 
 
 
-dependentType                        ::=   [type]<NO_WHITESPACE>"(" expression... ")" ;
+dependentType                        ::=   [type]<NO_WHITESPACE>"(" term... ")" ;
 
 disjointType                         ::=   [type] ;
 
@@ -242,13 +226,13 @@ type                                 ::=   [type] ;
 
 
 
-metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" expression... ")" )? ;
+metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
-reference                            ::=   [name] ( <NO_WHITESPACE>"(" expression... ")" )? ;
+reference                            ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
-context                              ::=   [name] ( <NO_WHITESPACE>"(" expression... ")" )? ;
+context                              ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
-label                                ::=   [name] ( <NO_WHITESPACE>"(" expression... ")" )? ;
+label                                ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
 
 

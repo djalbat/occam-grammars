@@ -6,17 +6,15 @@ export const operatorPattern = "";
 
 export const termBNF = `term!                                ::=   _ ;`;
 
-   export const expressionBNF = `expression!                          ::=   _ ;`;
-
     export const statementBNF = `statement!                           ::=   typeAssertion 
                                                   
                                        |   equality 
 
                                        ;
 
-typeAssertion                        ::=   expression ":" type ;
+typeAssertion                        ::=   term ":" type ;
 
-equality                             ::=   expression "=" expression ;`;
+equality                             ::=   term "=" term ;`;
 
 export const metastatementBNF = `metastatement!                       ::=   contextDefinition 
            
@@ -40,7 +38,6 @@ export default {
   typePattern,
   operatorPattern,
   termBNF,
-  expressionBNF,
   statementBNF,
   metastatementBNF
 };
