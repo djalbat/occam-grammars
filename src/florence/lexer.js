@@ -13,10 +13,6 @@ import { CommonLexer,
 import entries from "./entries";
 
 export default class FlorenceLexer extends CommonLexer {
-  matchRegularExpression(content) { return null; }
-
-  matchSinglyQuotedStringLiteral(content) { return null; }
-
   static entries = entries;
 
   static EndOfLineToken = EndOfLineSignificantToken; ///
@@ -35,7 +31,7 @@ export default class FlorenceLexer extends CommonLexer {
 
   static MiddleOfMultiLineCommentToken = PythonStyleMiddleOfMultiLineCommentToken;  ///
 
-  static SinglyQuotedStringLiteralToken = null;  ///
+  static SinglyQuotedStringLiteralToken = null;
 
   static DoublyQuotedStringLiteralToken = DoublyQuotedStringLiteralToken;
 

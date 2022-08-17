@@ -7,7 +7,7 @@ import entries from "./entries";
 export default class PlainLexer extends CommonLexer {
   static entries = entries;
 
-  static EndOfLineToken = EndOfLineSignificantToken;
+  static EndOfLineToken = EndOfLineSignificantToken;  //.
 
   static WhitespaceToken = WhitespaceToken;
 
