@@ -34,16 +34,6 @@ topLevelInstruction                  ::=   rule
                                            
                                        |   dependentTypeDeclaration 
                                            
-                                       |   typesDeclaration 
-                                           
-                                       |   variablesDeclaration 
-                                           
-                                       |   disjointTypesDeclaration 
-                                           
-                                       |   metavariablesDeclaration 
-                                           
-                                       |   dependentTypesDeclaration 
-                                           
                                        ;
 
 
@@ -85,17 +75,7 @@ disjointTypeDeclaration              ::=   "DisjointType" disjointType ":" type 
 metavariableDeclaration              ::=   "Metavariable" metavariable ":" ( "Statement" | "Context" ) <END_OF_LINE> ;
  
 dependentTypeDeclaration             ::=   "DependentType" dependentType ":" type <END_OF_LINE> ;
-                                       
-typesDeclaration                     ::=   "Types" type ( ":"  type )? <END_OF_LINE> ;
-
-variablesDeclaration                 ::=   "Variables" variable ( "," variable )+ ":" type <END_OF_LINE> ;
- 
-disjointTypesDeclaration             ::=   "DisjointTypes" disjointType ( "," disjointType )+ ":" type ( "," type )+ <END_OF_LINE> ;
- 
-metavariablesDeclaration             ::=   "Metavariables" metavariable ( "," metavariable )+ ":" ( "Statement" | "Context" ) <END_OF_LINE> ;
- 
-dependentTypesDeclaration            ::=   "DependentTypes" dependentType ( "," dependentType )+ ":" type <END_OF_LINE> ;
-  
+                                         
 
   
 premise                              ::=   "Premise" <END_OF_LINE> unqualifiedMetastatement ;
