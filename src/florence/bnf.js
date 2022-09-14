@@ -186,7 +186,7 @@ qualifiedStatement!                  ::=   statement... qualification? <END_OF_L
 
 
 
-argument                             ::=   term | type ;
+argument                             ::=   type | term... ;
 
 
 
@@ -198,7 +198,7 @@ nonsense                             ::=   ( "by" | "from" | [type] | [operator]
 
 
 
-dependentType                        ::=   [type]<NO_WHITESPACE>"(" term... ")" ;
+dependentType                        ::=   [type]<NO_WHITESPACE>"(" argument ")" ;
 
 disjointType                         ::=   [type] ;
 
@@ -206,13 +206,13 @@ type                                 ::=   [type] ;
 
 
 
-metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
+metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" argument ")" )? ;
 
-reference                            ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
+reference                            ::=   [name] ( <NO_WHITESPACE>"(" argument ")" )? ;
 
-context                              ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
+context                              ::=   [name] ( <NO_WHITESPACE>"(" argument ")" )? ;
 
-label                                ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
+label                                ::=   [name] ( <NO_WHITESPACE>"(" argument ")" )? ;
 
 
 
