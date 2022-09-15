@@ -4,7 +4,7 @@ export const typePattern = "";
 
 export const operatorPattern = "";
 
-export const termBNF = `term!                                ::=   _ ;`;
+export const termBNF = `term!                                ::=   variable ;`;
 
     export const statementBNF = `statement!                           ::=   typeAssertion 
                                                   
