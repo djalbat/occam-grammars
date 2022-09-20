@@ -2,6 +2,8 @@
 
 export const typePattern = "";
 
+export const symbolPattern = "";
+
 export const operatorPattern = "";
 
 export const termBNF = `term!                                ::=   variable ;`;
@@ -35,9 +37,10 @@ judgement                            ::=   reference "::" metastatement ;
 subproof                             ::=   "[" metastatement "]" "..." metastatement ;`;
 
 export default {
-  typePattern,
-  operatorPattern,
   termBNF,
   statementBNF,
-  metastatementBNF
+  metastatementBNF,
+  typePattern,
+  symbolPattern,
+  operatorPattern
 };
