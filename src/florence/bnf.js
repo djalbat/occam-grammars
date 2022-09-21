@@ -64,9 +64,9 @@ metaconjecture                       ::=   "Metaconjecture" "(" label ( "," labe
 
 typeDeclaration                      ::=   "Type" type ( ":" type )? <END_OF_LINE> ;
  
-variableDeclaration                  ::=   "Variable" variable ":" type <END_OF_LINE> ;
+variableDeclaration                  ::=   "Variable" variable ( ":" type )? <END_OF_LINE> ;
  
-combinatorDeclaration                ::=   "Combinator" statement... ( ":" type )? <END_OF_LINE> ;
+combinatorDeclaration                ::=   "Combinator" statement... <END_OF_LINE> ;
  
 constructorDeclaration               ::=   "Constructor" term... ( ":" type )? <END_OF_LINE> ;
  
