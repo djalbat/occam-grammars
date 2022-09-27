@@ -96,7 +96,7 @@ metaproof                            ::=   "Proof" <END_OF_LINE>
                                           
                                           
 
-metaproofDerivation                  ::=   ( metaSublemma | qualifiedMetastatement )+  
+metaproofDerivation                  ::=   ( metaSublemma | qualifiedMetastatement | unqualifiedMetastatement )+  
 
                                            "Therefore" <END_OF_LINE> ;                                           
 
@@ -106,13 +106,13 @@ metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> unqualifiedMe
 
 metaSublemma                         ::=   "Suppose" <END_OF_LINE> 
 
-                                           ( metaSublemma | qualifiedMetastatement )+ 
+                                           ( metaSublemma | qualifiedMetastatement | unqualifiedMetastatement )+ 
 
                                            ( 
                                           
                                              "Then" <END_OF_LINE> 
                                             
-                                             ( metaSublemma | qualifiedMetastatement )+ 
+                                             ( metaSublemma | qualifiedMetastatement | unqualifiedMetastatement )+ 
                                           
                                            )? 
                                           
@@ -130,7 +130,7 @@ proof                                ::=   "Proof" <END_OF_LINE>
                                                                                          
                                                                                          
                                                                                          
-proofDerivation                      ::=   ( sublemma | qualifiedStatement )+ 
+proofDerivation                      ::=   ( sublemma | qualifiedStatement | unqualifiedStatement )+ 
 
                                            "Therefore" <END_OF_LINE> ;
 
@@ -140,13 +140,13 @@ indicativeConditional                ::=   "Suppose" <END_OF_LINE> unqualifiedSt
 
 sublemma                             ::=   "Suppose" <END_OF_LINE> 
 
-                                           ( subLemma | qualifiedStatement )+ 
+                                           ( subLemma | qualifiedStatement | unqualifiedStatement )+ 
 
                                            ( 
                                           
                                              "Then" <END_OF_LINE> 
                                             
-                                             ( subLemma | qualifiedStatement )+ 
+                                             ( subLemma | qualifiedStatement | unqualifiedStatement )+ 
                                           
                                            )? 
                                           
@@ -166,9 +166,9 @@ unqualifiedMetastatement!            ::=   metastatement... <END_OF_LINE>
                                        
                                        ;
 
-qualifiedMetastatement!              ::=   metastatement... qualification? <END_OF_LINE> 
+qualifiedMetastatement!              ::=   metastatement... qualification <END_OF_LINE> 
 
-                                       |   nonsense... qualification? <END_OF_LINE> 
+                                       |   nonsense... qualification <END_OF_LINE> 
                                         
                                        ;
 
@@ -178,9 +178,9 @@ unqualifiedStatement!                ::=   statement... <END_OF_LINE>
                                        
                                        ;
 
-qualifiedStatement!                  ::=   statement... qualification? <END_OF_LINE> 
+qualifiedStatement!                  ::=   statement... qualification <END_OF_LINE> 
 
-                                       |   nonsense... qualification? <END_OF_LINE> 
+                                       |   nonsense... qualification <END_OF_LINE> 
                                        
                                        ;
 
