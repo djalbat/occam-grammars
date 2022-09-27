@@ -90,13 +90,13 @@ metaproof                            ::=   "Proof" <END_OF_LINE>
 
                                            metastatementDefinition*
 
-                                           metaProofDerivation? 
+                                           metaproofDerivation? 
                                           
                                            qualifiedMetastatement ;
                                           
                                           
 
-metaProofDerivation                  ::=   ( metaSublemma | qualifiedMetastatement )+  
+metaproofDerivation                  ::=   ( metaSublemma | qualifiedMetastatement )+  
 
                                            "Therefore" <END_OF_LINE> ;                                           
 
