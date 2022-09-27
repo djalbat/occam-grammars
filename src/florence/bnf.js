@@ -96,7 +96,7 @@ metaproof                            ::=   "Proof" <END_OF_LINE>
                                           
                                           
 
-metaProofDerivation                  ::=   ( metaSublemma | qualifiedStatement | qualifiedMetastatement )+  
+metaProofDerivation                  ::=   ( metaSublemma | qualifiedMetastatement )+  
 
                                            "Therefore" <END_OF_LINE> ;                                           
 
@@ -106,13 +106,13 @@ metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> unqualifiedMe
 
 metaSublemma                         ::=   "Suppose" <END_OF_LINE> 
 
-                                           ( metaSublemma | qualifiedStatement | qualifiedMetastatement )+ 
+                                           ( metaSublemma | qualifiedMetastatement )+ 
 
                                            ( 
                                           
                                              "Then" <END_OF_LINE> 
                                             
-                                             ( metaSublemma | qualifiedStatement | qualifiedMetastatement )+ 
+                                             ( metaSublemma | qualifiedMetastatement )+ 
                                           
                                            )? 
                                           
