@@ -96,13 +96,15 @@ metaproof                            ::=   "Proof" <END_OF_LINE>
                                           
                                           
 
+metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement+ 
+
+                                           "Hence" <END_OF_LINE> ( qualifiedMetastatement | unqualifiedMetastatement ) ;
+
+metastatementDefinition              ::=   "Let" unqualifiedMetastatement ;                                           
+                                          
 metaproofDerivation                  ::=   ( metaSublemma | qualifiedMetastatement | unqualifiedMetastatement )+  
 
                                            "Therefore" <END_OF_LINE> ;                                           
-
-metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement+ 
-
-                                           "Hence" <END_OF_LINE> qualifiedMetastatement ;
 
 metaSublemma                         ::=   "Suppose" <END_OF_LINE> 
 
@@ -116,7 +118,7 @@ metaSublemma                         ::=   "Suppose" <END_OF_LINE>
                                           
                                            )? 
                                           
-                                           "Hence" <END_OF_LINE> qualifiedMetastatement ;
+                                           "Hence" <END_OF_LINE> ( qualifiedMetastatement | unqualifiedMetastatement ) ;
 
 
 
@@ -130,13 +132,15 @@ proof                                ::=   "Proof" <END_OF_LINE>
                                                                                          
                                                                                          
                                                                                          
+indicativeConditional                ::=   "Suppose" <END_OF_LINE> unqualifiedStatement+ 
+
+                                           "Hence" <END_OF_LINE> ( qualifiedStatement | unqualifiedStatement ) ;
+
+statementDefinition                  ::=   "Let" unqualifiedStatement ;                                           
+
 proofDerivation                      ::=   ( sublemma | qualifiedStatement | unqualifiedStatement )+ 
 
                                            "Therefore" <END_OF_LINE> ;
-
-indicativeConditional                ::=   "Suppose" <END_OF_LINE> unqualifiedStatement+ 
-
-                                           "Hence" <END_OF_LINE> qualifiedStatement ;
 
 sublemma                             ::=   "Suppose" <END_OF_LINE> 
 
@@ -150,13 +154,7 @@ sublemma                             ::=   "Suppose" <END_OF_LINE>
                                           
                                            )? 
                                           
-                                           "Hence" <END_OF_LINE> qualifiedStatement ;
-
-
-
-metastatementDefinition              ::=   "Let" unqualifiedMetastatement ;                                           
-                                          
-statementDefinition                  ::=   "Let" unqualifiedStatement ;                                           
+                                           "Hence" <END_OF_LINE> ( qualifiedStatement | unqualifiedStatement ) ;
 
 
 
