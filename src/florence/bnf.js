@@ -1,12 +1,10 @@
 "use strict";
 
-const bnf = `document                             ::=   ( topLevelInstruction | verticalSpace | error )+ ;
+const bnf = `document                             ::=   ( topLevelDeclaration | verticalSpace | error )+ ;
 
 
 
-topLevelInstruction                  ::=   rule 
-
-                                       |   axiom 
+topLevelDeclaration                  ::=   axiom 
 
                                        |   lemma 
 
@@ -14,11 +12,9 @@ topLevelInstruction                  ::=   rule
 
                                        |   conjecture 
 
+                                       |   rule 
+
                                        |   metalemma 
-
-                                       |   metatheorem 
-
-                                       |   metaconjecture
 
                                        |   typeDeclaration 
                                            
@@ -46,8 +42,6 @@ error                                ::=   . ;
 
 
 
-rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof? ;
-
 axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) ; 
 
 lemma                                ::=   "Lemma" "(" label ( "," label )* ")"? <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof ;
@@ -56,11 +50,9 @@ theorem                              ::=   "Theorem" "(" label ( "," label )* ")
 
 conjecture                           ::=   "Conjecture" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof? ;
 
+rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( inferenceConditional | unqualifiedMetastatement ) metaproof? ;
+
 metalemma                            ::=   "Metalemma" "(" label ( "," label )* ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
-
-metatheorem                          ::=   "Metatheorem" "(" label ( "," label )* ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
-
-metaconjecture                       ::=   "Metaconjecture" "(" label ( "," label )* ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof? ;
 
 typeDeclaration                      ::=   "Type" type ( ":" type )? <END_OF_LINE> ;
  
@@ -78,21 +70,13 @@ dependentTypeDeclaration             ::=   "DependentType" dependentType ":" typ
                                          
 
   
-premise                              ::=   "Premise" <END_OF_LINE> unqualifiedMetastatement ;
-
-premises                             ::=   "Premises" <END_OF_LINE> unqualifiedMetastatement unqualifiedMetastatement+ ;
-
-conclusion                           ::=   "Conclusion" <END_OF_LINE> unqualifiedMetastatement ;
-
-
-
 metaproof                            ::=   "Proof" <END_OF_LINE> 
 
                                            metastatementDeclaration*
 
                                            ( metaDerivation "Therefore" <END_OF_LINE> )? 
                                           
-                                           qualifiedMetastatement ;
+                                           qualifiedMetastatement ;                                  
                                           
 proof                                ::=   "Proof" <END_OF_LINE> 
 
@@ -104,11 +88,21 @@ proof                                ::=   "Proof" <END_OF_LINE>
                                                                                          
 
 
+metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> metaAntecedent 
+
+                                           "Hence" <END_OF_LINE>metaConsequent ;
+
+indicativeConditional                ::=   "Suppose" <END_OF_LINE> antecedent 
+
+                                           "Hence" <END_OF_LINE> consequent ;
+                                           
+
+
 metaSublemma                         ::=   "Suppose" <END_OF_LINE> metaAntecedent 
 
                                            ( "Then" <END_OF_LINE> metaDerivation )? 
                                            
-                                           "Hence" <END_OF_LINE> metaConsequent ;                                          
+                                           "Hence" <END_OF_LINE> metaConsequent ;                                        
 
 sublemma                             ::=   "Suppose" <END_OF_LINE> antecedent 
 
@@ -116,35 +110,37 @@ sublemma                             ::=   "Suppose" <END_OF_LINE> antecedent
                                            
                                            "Hence" <END_OF_LINE> consequent ;                                                                                         
                                                                                          
+                                           
 
+inferenceConditional                 ::=   ( ( "Premise" <END_OF_LINE> premise ) | ( "Premises" <END_OF_LINE> premises ) )  
 
-metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> metaAntecedent 
-
-                                           "Hence" <END_OF_LINE>metaConsequent ;
-
-indicativeConditional                ::=   "Suppose" <END_OF_LINE> antecedent 
-
-                                           "Hence" <END_OF_LINE> consequent;
+                                           "Conclusion" <END_OF_LINE> conclusion ;
 
 
 
 metastatementDeclaration             ::=   "Let" unqualifiedMetastatement ;                                           
                                           
-statementDeclaration                 ::=   "Let" unqualifiedStatement ;                                           
+premise                              ::=   unqualifiedMetastatement ;
 
+premises                             ::=   unqualifiedMetastatement unqualifiedMetastatement+ ;
 
-
-metaDerivation                       ::=   ( metaSublemma | qualifiedMetastatement | unqualifiedMetastatement )+  ;                                           
-
-derivation                           ::=   ( sublemma | qualifiedStatement | unqualifiedStatement )+  ;
+conclusion                           ::=   unqualifiedMetastatement ;
 
 metaAntecedent                       ::=   unqualifiedMetastatement+ ;
 
-antecedent                           ::=   unqualifiedStatement+ ; 
-
 metaConsequent                       ::=   qualifiedMetastatement | unqualifiedMetastatement ;
 
+metaDerivation                       ::=   ( metaSublemma | qualifiedMetastatement | unqualifiedMetastatement )+  ;                                           
+
+
+
+statementDeclaration                 ::=   "Let" unqualifiedStatement ;                                           
+
+antecedent                           ::=   unqualifiedStatement+ ; 
+
 consequent                           ::=   qualifiedStatement | unqualifiedStatement ;
+
+derivation                           ::=   ( sublemma | qualifiedStatement | unqualifiedStatement )+  ;
 
 
 
@@ -159,6 +155,8 @@ qualifiedMetastatement!              ::=   metastatement... qualification <END_O
                                        |   nonsense... qualification <END_OF_LINE> 
                                         
                                        ;
+                                       
+                                       
 
 unqualifiedStatement!                ::=   statement... <END_OF_LINE>
 
