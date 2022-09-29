@@ -90,51 +90,61 @@ metaproof                            ::=   "Proof" <END_OF_LINE>
 
                                            metastatementDeclaration*
 
-                                           metaDerivation? 
+                                           ( metaDerivation "Therefore" <END_OF_LINE> )? 
                                           
                                            qualifiedMetastatement ;
                                           
-metaSublemma                         ::=   metaAntecedent metaSubDerivation? metaConsequent ;                                          
+proof                                ::=   "Proof" <END_OF_LINE> 
 
-metaIndicativeConditional            ::=   metaAntecedent metaConsequent ;
+                                           statementDeclaration*
+
+                                           ( derivation "Therefore" <END_OF_LINE> )? 
+                                          
+                                           qualifiedStatement ;
+                                                                                         
+
+
+metaSublemma                         ::=   "Suppose" <END_OF_LINE> metaAntecedent 
+
+                                           ( "Then" <END_OF_LINE> metaDerivation )? 
+                                           
+                                           "Hence" <END_OF_LINE> metaConsequent ;                                          
+
+sublemma                             ::=   "Suppose" <END_OF_LINE> antecedent 
+
+                                           ( "Then" <END_OF_LINE> derivation )? 
+                                           
+                                           "Hence" <END_OF_LINE> consequent ;                                                                                         
+                                                                                         
+
+
+metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> metaAntecedent 
+
+                                           "Hence" <END_OF_LINE>metaConsequent ;
+
+indicativeConditional                ::=   "Suppose" <END_OF_LINE> antecedent 
+
+                                           "Hence" <END_OF_LINE> consequent;
 
 
 
 metastatementDeclaration             ::=   "Let" unqualifiedMetastatement ;                                           
                                           
-metaSubDerivation                    ::=   "Then" <END_OF_LINE> ( metaSublemma | qualifiedMetastatement | unqualifiedMetastatement )+ ;
-
-metaDerivation                       ::=   ( metaSublemma | qualifiedMetastatement | unqualifiedMetastatement )+ "Therefore" <END_OF_LINE> ;                                           
-
-metaAntecedent                       ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement+ ;
-
-metaConsequent                       ::=   "Hence" <END_OF_LINE> ( qualifiedMetastatement | unqualifiedMetastatement ) ;
-
-
-
-proof                                ::=   "Proof" <END_OF_LINE> 
-
-                                           statementDeclaration*
-
-                                           derivation? 
-                                          
-                                           qualifiedStatement ;
-                                                                                         
-sublemma                             ::=   antecedent subDerivation? consequent ;                                                                                         
-                                                                                         
-indicativeConditional                ::=   antecedent consequent;
-
-
-
 statementDeclaration                 ::=   "Let" unqualifiedStatement ;                                           
 
-subDerivation                        ::=   "Then" <END_OF_LINE> ( subLemma | qualifiedStatement | unqualifiedStatement )+ ;
 
-derivation                           ::=   ( sublemma | qualifiedStatement | unqualifiedStatement )+  "Therefore" <END_OF_LINE> ;
 
-antecedent                           ::=   "Suppose" <END_OF_LINE> unqualifiedStatement+ ; 
+metaDerivation                       ::=   ( metaSublemma | qualifiedMetastatement | unqualifiedMetastatement )+  ;                                           
 
-consequent                           ::=   "Hence" <END_OF_LINE> ( qualifiedStatement | unqualifiedStatement ) ;
+derivation                           ::=   ( sublemma | qualifiedStatement | unqualifiedStatement )+  ;
+
+metaAntecedent                       ::=   unqualifiedMetastatement+ ;
+
+antecedent                           ::=   unqualifiedStatement+ ; 
+
+metaConsequent                       ::=   qualifiedMetastatement | unqualifiedMetastatement ;
+
+consequent                           ::=   qualifiedStatement | unqualifiedStatement ;
 
 
 
