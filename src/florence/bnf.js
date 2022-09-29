@@ -44,7 +44,7 @@ error                                ::=   . ;
 
 axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) ; 
 
-lemma                                ::=   "Lemma" "(" label ( "," label )* ")"? <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof ;
+lemma                                ::=   "Lemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof ;
 
 theorem                              ::=   "Theorem" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof ;
 
@@ -52,7 +52,9 @@ conjecture                           ::=   "Conjecture" "(" label ( "," label )*
 
 rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( inferenceConditional | unqualifiedMetastatement ) metaproof? ;
 
-metalemma                            ::=   "Metalemma" "(" label ( "," label )* ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
+metalemma                            ::=   "Metalemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
+
+metatheorem                          ::=   "Metatheorem" "(" label ( "," label )* ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
 
 typeDeclaration                      ::=   "Type" type ( ":" type )? <END_OF_LINE> ;
  
