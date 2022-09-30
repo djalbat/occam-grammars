@@ -72,27 +72,49 @@ dependentTypeDeclaration             ::=   "DependentType" dependentType ":" typ
                                          
 
   
+inferenceConditional                 ::=   ( 
+
+                                             ( "Premises" <END_OF_LINE> premises ) 
+                                             
+                                             | 
+                                             
+                                             ( "Premise" <END_OF_LINE> premise ) 
+                                             
+                                           )  
+
+                                           "Conclusion" <END_OF_LINE> conclusion ;
+
+
+
+premise                              ::=   unqualifiedMetastatement ;
+
+premises                             ::=   unqualifiedMetastatement unqualifiedMetastatement+ ;
+
+conclusion                           ::=   unqualifiedMetastatement ;
+
+
+
 metaproof                            ::=   "Proof" <END_OF_LINE> 
 
                                            metastatementDeclaration*
 
-                                           ( metaDerivation "Therefore" <END_OF_LINE> )? 
-                                          
-                                           qualifiedMetastatement ;                                  
+                                           metaDerivation?
+                                           
+                                           "Therefore" <END_OF_LINE> qualifiedMetastatement ;                                  
                                           
 proof                                ::=   "Proof" <END_OF_LINE> 
 
                                            statementDeclaration*
 
-                                           ( derivation "Therefore" <END_OF_LINE> )? 
+                                           derivation? 
                                           
-                                           qualifiedStatement ;
+                                           "Therefore" <END_OF_LINE> qualifiedStatement ;
                                                                                          
 
 
 metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> metaAntecedent 
 
-                                           "Hence" <END_OF_LINE>metaConsequent ;
+                                           "Hence" <END_OF_LINE> metaConsequent ;
 
 indicativeConditional                ::=   "Suppose" <END_OF_LINE> antecedent 
 
@@ -102,45 +124,31 @@ indicativeConditional                ::=   "Suppose" <END_OF_LINE> antecedent
 
 metaSublemma                         ::=   "Suppose" <END_OF_LINE> metaAntecedent 
 
-                                           ( "Then" <END_OF_LINE> metaDerivation )? 
-                                           
-                                           "Hence" <END_OF_LINE> metaConsequent ;                                        
+                                           ( "Then" <END_OF_LINE> metaDerivation )?
+
+                                           "Therefore" <END_OF_LINE> qualifiedStatement ;
 
 sublemma                             ::=   "Suppose" <END_OF_LINE> antecedent 
 
-                                           ( "Then" <END_OF_LINE> derivation )? 
-                                           
-                                           "Hence" <END_OF_LINE> consequent ;                                                                                         
+                                           ( "Then" <END_OF_LINE> derivation )?
                                                                                          
+                                           "Therefore" <END_OF_LINE> qualifiedStatement ;
                                            
-
-inferenceConditional                 ::=   ( ( "Premise" <END_OF_LINE> premise ) | ( "Premises" <END_OF_LINE> premises ) )  
-
-                                           "Conclusion" <END_OF_LINE> conclusion ;
-
-
+                                           
 
 metastatementDeclaration             ::=   "Let" unqualifiedMetastatement ;                                           
                                           
-premise                              ::=   unqualifiedMetastatement ;
-
-premises                             ::=   unqualifiedMetastatement unqualifiedMetastatement+ ;
-
-conclusion                           ::=   unqualifiedMetastatement ;
+statementDeclaration                 ::=   "Let" unqualifiedStatement ;                                           
 
 metaAntecedent                       ::=   unqualifiedMetastatement+ ;
 
-metaConsequent                       ::=   qualifiedMetastatement | unqualifiedMetastatement ;
-
-metaDerivation                       ::=   ( metaSublemma | qualifiedMetastatement | unqualifiedMetastatement )+  ;                                           
-
-
-
-statementDeclaration                 ::=   "Let" unqualifiedStatement ;                                           
-
 antecedent                           ::=   unqualifiedStatement+ ; 
 
-consequent                           ::=   qualifiedStatement | unqualifiedStatement ;
+metaConsequent                       ::=   unqualifiedMetastatement ;
+
+consequent                           ::=   unqualifiedStatement ;
+
+metaDerivation                       ::=   ( metaSublemma | qualifiedMetastatement | unqualifiedMetastatement )+  ;                                           
 
 derivation                           ::=   ( sublemma | qualifiedStatement | unqualifiedStatement )+  ;
 
