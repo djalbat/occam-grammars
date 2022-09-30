@@ -126,7 +126,7 @@ metaSublemma                         ::=   "Suppose" <END_OF_LINE> metaAnteceden
 
                                            ( "Then" <END_OF_LINE> metaDerivation )?
 
-                                           "Therefore" <END_OF_LINE> qualifiedStatement ;
+                                           "Therefore" <END_OF_LINE> qualifiedMetastatement ;
 
 sublemma                             ::=   "Suppose" <END_OF_LINE> antecedent 
 
