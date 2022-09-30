@@ -98,17 +98,29 @@ metaproof                            ::=   "Proof" <END_OF_LINE>
 
                                            metastatementDeclaration*
 
-                                           metaDerivation?
+                                           ( 
                                            
-                                           "Therefore" <END_OF_LINE> qualifiedMetastatement ;                                  
+                                             metaDerivation 
+                                             
+                                             "Therefore" <END_OF_LINE> 
+                                             
+                                           )?
+                                           
+                                           qualifiedMetastatement ;                                  
                                           
 proof                                ::=   "Proof" <END_OF_LINE> 
 
                                            statementDeclaration*
 
-                                           derivation? 
-                                          
-                                           "Therefore" <END_OF_LINE> qualifiedStatement ;
+                                           ( 
+                                           
+                                             derivation 
+                                             
+                                             "Therefore" <END_OF_LINE> 
+                                             
+                                           )?
+                                           
+                                           qualifiedStatement ;
                                                                                          
 
 
@@ -124,15 +136,31 @@ indicativeConditional                ::=   "Suppose" <END_OF_LINE> antecedent
 
 metaSublemma                         ::=   "Suppose" <END_OF_LINE> metaAntecedent 
 
-                                           ( "Then" <END_OF_LINE> metaDerivation )?
+                                           ( 
+                                           
+                                             "Then" <END_OF_LINE> 
+                                             
+                                             metaDerivation 
+                                             
+                                             "Therefore" <END_OF_LINE> 
+                                             
+                                           )?
 
-                                           "Therefore" <END_OF_LINE> qualifiedMetastatement ;
+                                           qualifiedMetastatement ;
 
 sublemma                             ::=   "Suppose" <END_OF_LINE> antecedent 
 
-                                           ( "Then" <END_OF_LINE> derivation )?
+                                           ( 
+                                           
+                                             "Then" <END_OF_LINE> 
+                                             
+                                             derivation 
+                                             
+                                             "Therefore" <END_OF_LINE> 
+                                             
+                                           )?
                                                                                          
-                                           "Therefore" <END_OF_LINE> qualifiedStatement ;
+                                           qualifiedStatement ;
                                            
                                            
 
