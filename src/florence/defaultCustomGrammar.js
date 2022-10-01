@@ -8,7 +8,7 @@ export const operatorPattern = "";
 
 export const termBNF = `term!                                ::=   variable ;`;
 
-    export const statementBNF = `statement!                           ::=   "(" statement )" 
+    export const statementBNF = `statement!                           ::=   "(" statement ")" 
                                                   
                                        |   typeAssertion 
                                                   
@@ -20,7 +20,7 @@ typeAssertion                        ::=   term ":" type ;
 
 equality                             ::=   term "=" term ;`;
 
-export const metastatementBNF = `metastatement!                       ::=   "(" metastatement )" 
+export const metastatementBNF = `metastatement!                       ::=   "(" metastatement ")" 
            
                                        |   contextDefinition 
            
