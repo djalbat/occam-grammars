@@ -135,13 +135,13 @@ indicativeConditional                ::=   "Suppose" <END_OF_LINE> antecedent
                                            
 
 
-metaSublemma                         ::=   "Suppose" <END_OF_LINE> metaAntecedent 
+metaConditionalProof                 ::=   "Suppose" <END_OF_LINE> metaAntecedent 
 
                                            ( "Then" <END_OF_LINE> metaDerivation )?
 
                                            "Therefore" <END_OF_LINE> ( qualifiedMetastatement | unqualifiedMetastatement ) ;
 
-sublemma                             ::=   "Suppose" <END_OF_LINE> antecedent 
+conditionalProof                     ::=   "Suppose" <END_OF_LINE> antecedent 
 
                                            ( "Then" <END_OF_LINE> derivation )?
                                                                                          
@@ -161,9 +161,9 @@ metaConsequent                       ::=   unqualifiedMetastatement ;
 
 consequent                           ::=   unqualifiedStatement ;
 
-metaDerivation                       ::=   ( metaSublemma | qualifiedMetastatement | unqualifiedMetastatement )+  ;                                           
+metaDerivation                       ::=   ( metaConditionalProof | qualifiedMetastatement | unqualifiedMetastatement )+  ;                                           
 
-derivation                           ::=   ( sublemma | qualifiedStatement | unqualifiedStatement )+  ;
+derivation                           ::=   ( conditionalProof | qualifiedStatement | unqualifiedStatement )+  ;
 
 
 
