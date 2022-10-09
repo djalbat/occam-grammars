@@ -50,7 +50,7 @@ theorem                              ::=   "Theorem" "(" label ( "," label )* ")
 
 conjecture                           ::=   "Conjecture" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof? ;
 
-rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( inferenceConditional | unqualifiedMetastatement ) metaproof? ;
+rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( ( conditionalInference metaproof? ) | unconditionalInference ) ;
 
 metalemma                            ::=   "Metalemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
 
@@ -72,7 +72,9 @@ dependentTypeDeclaration             ::=   "DependentType" dependentType ":" typ
                                          
 
   
-inferenceConditional                 ::=   ( 
+unconditionalInference               ::=   unqualifiedMetastatement;  
+
+conditionalInference                 ::=   ( 
 
                                              ( "Premises" <END_OF_LINE> premises ) 
                                              

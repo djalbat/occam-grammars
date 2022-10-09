@@ -32,13 +32,13 @@ export const metastatementBNF = `metastatement!                       ::=   "(" 
                                         
                                        ;
 
+metaConditionalProofAssertion        ::=   "[" metastatement "]" "..." metastatement ;
+
 contextDefinition                    ::=   context "=" ( judgement | context ) ( "," ( judgement | context ) )* ;
 
 proofAssertion                       ::=   context "|-" judgement ;
  
-judgement                            ::=   reference "::" metastatement ;
-
-subproof                             ::=   "[" metastatement "]" "..." metastatement ;`;
+judgement                            ::=   reference "::" metastatement ;`;
 
 export default {
   termBNF,
