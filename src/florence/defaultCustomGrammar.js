@@ -22,7 +22,7 @@ equality                             ::=   term "=" term ;`;
 
 export const metastatementBNF = `metastatement!                       ::=   "(" metastatement ")" 
            
-                                       |   subMetaproofAssertion         
+                                       |   metaSubproofAssertion         
                                         
                                        |   contextDefinition 
            
@@ -32,7 +32,7 @@ export const metastatementBNF = `metastatement!                       ::=   "(" 
 
                                        ;
 
-subMetaproofAssertion                ::=   "[" metastatement "]" "..." metastatement ;
+metaSubproofAssertion                ::=   "[" metastatement "]" "..." metastatement ;
 
 contextDefinition                    ::=   context "=" ( judgement | context ) ( "," ( judgement | context ) )* ;
 
