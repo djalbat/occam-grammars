@@ -22,14 +22,14 @@ equality                             ::=   term "=" term ;`;
 
 export const metastatementBNF = `metastatement!                       ::=   "(" metastatement ")" 
            
+                                       |   metaConditionalProofAssertion 
+                                        
                                        |   contextDefinition 
            
                                        |   proofAssertion
        
                                        |   metavariable 
 
-                                       |   subproof 
-                                        
                                        ;
 
 metaConditionalProofAssertion        ::=   "[" metastatement "]" "..." metastatement ;
