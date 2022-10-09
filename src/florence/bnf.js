@@ -50,7 +50,7 @@ theorem                              ::=   "Theorem" "(" label ( "," label )* ")
 
 conjecture                           ::=   "Conjecture" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof? ;
 
-rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( ( conditionalInference metaproof? ) | unconditionalInference ) ;
+rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( conditionalInference | unconditionalInference ) ;
 
 metalemma                            ::=   "Metalemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
 
@@ -84,7 +84,9 @@ conditionalInference                 ::=   (
                                              
                                            )  
 
-                                           "Conclusion" <END_OF_LINE> conclusion ;
+                                           "Conclusion" <END_OF_LINE> conclusion 
+                                           
+                                           metaproof? ;
 
 
 
