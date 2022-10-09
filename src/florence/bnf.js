@@ -72,7 +72,7 @@ dependentTypeDeclaration             ::=   "DependentType" dependentType ":" typ
                                          
 
   
-unconditionalInference               ::=   unqualifiedMetastatement;  
+unconditionalInference               ::=   unqualifiedMetastatement metaproof? ;  
 
 conditionalInference                 ::=   ( 
 
