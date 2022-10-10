@@ -155,17 +155,19 @@ subproof                             ::=   "Suppose" <END_OF_LINE> antecedent
 
 metastatementDeclaration             ::=   "Let" unqualifiedMetastatement ;                                           
                                           
-statementDeclaration                 ::=   "Let" unqualifiedStatement ;                                           
-
-metaAntecedent                       ::=   unqualifiedMetastatement+ ;
-
-antecedent                           ::=   unqualifiedStatement+ ; 
+metaAntecedent                       ::=   unqualifiedMetastatement ;
 
 metaConsequent                       ::=   unqualifiedMetastatement ;
 
-consequent                           ::=   unqualifiedStatement ;
-
 metaDerivation                       ::=   ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  ;                                           
+
+
+
+statementDeclaration                 ::=   "Let" unqualifiedStatement ;                                           
+
+antecedent                           ::=   unqualifiedStatement ; 
+
+consequent                           ::=   unqualifiedStatement ;
 
 derivation                           ::=   ( subproof | qualifiedStatement | unqualifiedStatement )+  ;
 
