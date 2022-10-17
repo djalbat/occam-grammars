@@ -50,7 +50,7 @@ theorem                              ::=   "Theorem" "(" label ( "," label )* ")
 
 conjecture                           ::=   "Conjecture" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof? ;
 
-rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( conditionalInference | unconditionalInference ) ;
+rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( conditionalInference | unconditionalInference ) metaproof? ;
 
 metalemma                            ::=   "Metalemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
 
@@ -72,7 +72,7 @@ dependentTypeDeclaration             ::=   "DependentType" dependentType ":" typ
                                          
 
   
-unconditionalInference               ::=   unqualifiedMetastatement metaproof? ;  
+unconditionalInference               ::=   unqualifiedMetastatement ;  
 
 conditionalInference                 ::=   ( 
 
@@ -84,9 +84,7 @@ conditionalInference                 ::=   (
                                              
                                            )  
 
-                                           "Conclusion" <END_OF_LINE> conclusion 
-                                           
-                                           metaproof? ;
+                                           "Conclusion" <END_OF_LINE> conclusion ;
 
 
 
@@ -96,6 +94,16 @@ premises                             ::=   unqualifiedMetastatement unqualifiedM
 
 conclusion                           ::=   unqualifiedMetastatement ;
 
+
+
+metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> metaAntecedent 
+
+                                           "Then" <END_OF_LINE> metaConsequent ;
+
+indicativeConditional                ::=   "Suppose" <END_OF_LINE> antecedent 
+
+                                           "Then" <END_OF_LINE> consequent ;
+                                           
 
 
 metaproof                            ::=   "Proof" <END_OF_LINE> 
@@ -129,25 +137,15 @@ proof                                ::=   "Proof" <END_OF_LINE>
                                                                                          
 
 
-metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> metaAntecedent 
+metaSubproof                         ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement 
 
-                                           "Hence" <END_OF_LINE> metaConsequent ;
-
-indicativeConditional                ::=   "Suppose" <END_OF_LINE> antecedent 
-
-                                           "Hence" <END_OF_LINE> consequent ;
-                                           
-
-
-metaSubproof                         ::=   "Suppose" <END_OF_LINE> metaAntecedent 
-
-                                           ( "Then" <END_OF_LINE> metaDerivation )?
+                                           ( "Hence" <END_OF_LINE> metaDerivation )?
 
                                            "Therefore" <END_OF_LINE> ( qualifiedMetastatement | unqualifiedMetastatement ) ;
 
-subproof                             ::=   "Suppose" <END_OF_LINE> antecedent 
+subproof                             ::=   "Suppose" <END_OF_LINE> unqualifiedStatement 
 
-                                           ( "Then" <END_OF_LINE> derivation )?
+                                           ( "Hence" <END_OF_LINE> derivation )?
                                                                                          
                                            "Therefore" <END_OF_LINE> ( qualifiedStatement | unqualifiedStatement ) ;
                                            
