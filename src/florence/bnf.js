@@ -96,13 +96,13 @@ conclusion                           ::=   unqualifiedMetastatement ;
 
 
 
-metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> metaSupposition 
+metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement 
 
-                                           "Then" <END_OF_LINE> metaConsequent ;
+                                           "Then" <END_OF_LINE> unqualifiedMetastatement ;
 
-indicativeConditional                ::=   "Suppose" <END_OF_LINE> supposition 
+indicativeConditional                ::=   "Suppose" <END_OF_LINE> unqualifiedStatement 
 
-                                           "Then" <END_OF_LINE> consequent ;
+                                           "Then" <END_OF_LINE> unqualifiedStatement ;
                                            
 
 
@@ -153,19 +153,11 @@ subproof                             ::=   "Suppose" <END_OF_LINE> unqualifiedSt
 
 metaDeclaration                      ::=   "Let" unqualifiedMetastatement ;                                           
                                           
-metaSupposition                      ::=   unqualifiedMetastatement ;
-
-metaConsequent                       ::=   unqualifiedMetastatement ;
-
 metaDerivation                       ::=   ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  ;                                           
 
 
 
 declaration                          ::=   "Let" unqualifiedStatement ;                                           
-
-supposition                          ::=   unqualifiedStatement ; 
-
-consequent                           ::=   unqualifiedStatement ;
 
 derivation                           ::=   ( subproof | qualifiedStatement | unqualifiedStatement )+  ;
 
