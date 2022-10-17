@@ -96,11 +96,11 @@ conclusion                           ::=   unqualifiedMetastatement ;
 
 
 
-metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> metaAntecedent 
+metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> metaSupposition 
 
                                            "Then" <END_OF_LINE> metaConsequent ;
 
-indicativeConditional                ::=   "Suppose" <END_OF_LINE> antecedent 
+indicativeConditional                ::=   "Suppose" <END_OF_LINE> supposition 
 
                                            "Then" <END_OF_LINE> consequent ;
                                            
@@ -108,7 +108,7 @@ indicativeConditional                ::=   "Suppose" <END_OF_LINE> antecedent
 
 metaproof                            ::=   "Proof" <END_OF_LINE> 
 
-                                           metastatementDeclaration*
+                                           metaDeclaration*
                                            
                                            (
                                            
@@ -123,7 +123,7 @@ metaproof                            ::=   "Proof" <END_OF_LINE>
                                           
 proof                                ::=   "Proof" <END_OF_LINE> 
 
-                                           statementDeclaration*
+                                           declaration*
                                            
                                            (
                                            
@@ -151,9 +151,9 @@ subproof                             ::=   "Suppose" <END_OF_LINE> unqualifiedSt
                                            
                                            
 
-metastatementDeclaration             ::=   "Let" unqualifiedMetastatement ;                                           
+metaDeclaration                      ::=   "Let" unqualifiedMetastatement ;                                           
                                           
-metaAntecedent                       ::=   unqualifiedMetastatement ;
+metaSupposition                      ::=   unqualifiedMetastatement ;
 
 metaConsequent                       ::=   unqualifiedMetastatement ;
 
@@ -161,9 +161,9 @@ metaDerivation                       ::=   ( metaSubproof | qualifiedMetastateme
 
 
 
-statementDeclaration                 ::=   "Let" unqualifiedStatement ;                                           
+declaration                          ::=   "Let" unqualifiedStatement ;                                           
 
-antecedent                           ::=   unqualifiedStatement ; 
+supposition                          ::=   unqualifiedStatement ; 
 
 consequent                           ::=   unqualifiedStatement ;
 
