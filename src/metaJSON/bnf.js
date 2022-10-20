@@ -3,28 +3,49 @@
 const bnf = `
 
 
-    document          ::=  ( metaJSON error* ) | error+ ;
+    document                  ::=  ( metaJSON error* ) | error+ ;
 
 
-    metaJSON          ::=  "{" ( ( repositoryPair ( "," dependenciesPair )? ) | ( dependenciesPair "," repositoryPair ) ) "}" ;
+    metaJSON                  ::=  "{" 
+     
+                                     "\\"version\\"" ":" version ","
+                                      
+                                     "\\"repository\\"" ":" repository ","
+      
+                                     "\\"dependencies\\"" ":" dependencies 
+           
+                                   "}" ;
+      
+
+    version                   ::=  versionNumber ;
 
 
-    dependenciesPair  ::=  "\\"dependencies\\"" ":" dependencies ;
-    
-    
-    repositoryPair    ::=  "\\"repository\\"" ":" repository ;
+    repository                ::=  [string-literal] ;
 
 
-    dependencies      ::=  "[" (dependency ( "," dependency )*)? "]" ;
+    dependency                ::=  [string-literal] ":" shortenedVersionNumber ;
+
+
+    dependencies              ::=  "{" 
+       
+                                     ( dependency ( "," dependency )* )?
+
+                                   "}" ;
+      
+
+    repositoryName            ::=  [string-literal] ;
+
+
+    dependencyName            ::=  [string-literal] ;
+
+
+    versionNumber             ::=  /"(?:0|(?:[1-9]\\d*))\\.(?:0|(?:[1-9]\\d*))\\.(?:0|(?:[1-9]\\d*))\\"/ ;
   
-
-    dependency        ::=  [string-literal] ;
-
-
-    repository        ::=  [string-literal] ;
-
-
-    error             ::=  . ;
+  
+    shortenedVersionNumber    ::=  /"(?:0|(?:[1-9]\\d*))\\.(?:0|(?:[1-9]\\d*))\\"/ ;
+  
+  
+    error                     ::=  . ;
 
 `;
 
