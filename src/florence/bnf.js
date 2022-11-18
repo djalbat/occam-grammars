@@ -72,7 +72,7 @@ dependentTypeDeclaration             ::=   "DependentType" dependentType ":" typ
                                          
 
   
-unconditionalInference               ::=   unqualifiedMetastatement ;  
+unconditionalInference               ::=   "Conclusion" <END_OF_LINE> conclusion ;  
 
 conditionalInference                 ::=   ( 
 
@@ -203,7 +203,7 @@ argument                             ::=   term | type  ;
 
 
 
-dependentType                        ::=   [type]<NO_WHITESPACE>"(" argument... ")" ;
+dependentType                        ::=   [type]<NO_WHITESPACE>"(" argument ")" ;
 
 disjointType                         ::=   [type] ;
 
@@ -211,7 +211,7 @@ type                                 ::=   [type] ;
 
 
 
-metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" argument... ")" )? ;
+metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" argument ")" )? ;
 
 reference                            ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
