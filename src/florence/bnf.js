@@ -96,11 +96,11 @@ conclusion                           ::=   unqualifiedMetastatement ;
 
 
 
-metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement 
+metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement+ 
 
                                            "Then" <END_OF_LINE> unqualifiedMetastatement ;
 
-indicativeConditional                ::=   "Suppose" <END_OF_LINE> unqualifiedStatement 
+indicativeConditional                ::=   "Suppose" <END_OF_LINE> unqualifiedStatement+
 
                                            "Then" <END_OF_LINE> unqualifiedStatement ;
                                            
@@ -137,13 +137,13 @@ proof                                ::=   "Proof" <END_OF_LINE>
                                                                                          
 
 
-metaSubproof                         ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement 
+metaSubproof                         ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement+ 
 
                                            ( "Hence" <END_OF_LINE> metaDerivation )?
 
                                            "Therefore" <END_OF_LINE> ( qualifiedMetastatement | unqualifiedMetastatement ) ;
 
-subproof                             ::=   "Suppose" <END_OF_LINE> unqualifiedStatement 
+subproof                             ::=   "Suppose" <END_OF_LINE> unqualifiedStatement+ 
 
                                            ( "Hence" <END_OF_LINE> derivation )?
                                                                                          
