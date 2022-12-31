@@ -106,40 +106,33 @@ indicativeConditional                ::=   "Suppose" <END_OF_LINE> unqualifiedSt
                                            
 
 
-metaproof                            ::=   "Proof" <END_OF_LINE> 
-
-                                           ( metaDerivation "Therefore" <END_OF_LINE> )?
-                                             
-                                           qualifiedMetastatement ;
-
+metaproof                            ::=   "Proof" <END_OF_LINE> ( metaDerivation | qualifiedMetastatement ) ;
                                           
-proof                                ::=   "Proof" <END_OF_LINE> 
-
-                                           ( derivation "Therefore" <END_OF_LINE> )?
-                                             
-                                           qualifiedStatement ;
+proof                                ::=   "Proof" <END_OF_LINE> ( derivation | qualifiedStatement ) ;
                                                                                          
 
 
 metaSubproof                         ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement+ 
 
-                                           ( "Hence" <END_OF_LINE> metaDerivation )?
-
-                                           "Therefore" <END_OF_LINE> qualifiedMetastatement ;
+                                           "Hence" <END_OF_LINE> metaDerivation ;
 
 subproof                             ::=   "Suppose" <END_OF_LINE> unqualifiedStatement+ 
 
-                                           ( "Hence" <END_OF_LINE> derivation )?
-                                                                                         
-                                           "Therefore" <END_OF_LINE> qualifiedStatement ;
+                                           "Hence" <END_OF_LINE> derivation ;
                                            
                                            
 
-metaDerivation                       ::=   ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  ;                                           
+metaDerivation                       ::=   ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
 
+                                           "Therefore" <END_OF_LINE> 
+                                           
+                                           ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
 
+derivation                           ::=   ( subproof | qualifiedStatement | unqualifiedStatement )+ 
 
-derivation                           ::=   ( subproof | qualifiedStatement | unqualifiedStatement )+  ;
+                                           "Therefore" <END_OF_LINE> 
+                                           
+                                           ( qualifiedStatement | unqualifiedStatement ) ;                                           
 
 
 
@@ -183,7 +176,7 @@ nonsense                             ::=   ( "by" | "from" | [type] | [operator]
 
 
 
-argument                             ::=   term | type  ;
+argument                             ::=   term | type ;
 
 
 
