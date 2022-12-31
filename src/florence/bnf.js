@@ -4,15 +4,15 @@ const bnf = `document                             ::=   ( topLevelDeclaration | 
 
 
 
-topLevelDeclaration                  ::=   axiom 
+topLevelDeclaration                  ::=   rule 
+
+                                       |   axiom 
 
                                        |   lemma 
 
                                        |   theorem 
 
                                        |   conjecture 
-
-                                       |   rule 
 
                                        |   metalemma 
 
@@ -42,6 +42,8 @@ error                                ::=   . ;
 
 
 
+rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( conditionalInference | unconditionalInference ) metaproof? ;
+
 axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) ; 
 
 lemma                                ::=   "Lemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof ;
@@ -49,8 +51,6 @@ lemma                                ::=   "Lemma" ( "(" label ( "," label )* ")
 theorem                              ::=   "Theorem" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof ;
 
 conjecture                           ::=   "Conjecture" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof? ;
-
-rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( conditionalInference | unconditionalInference ) metaproof? ;
 
 metalemma                            ::=   "Metalemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
 
@@ -108,8 +108,6 @@ indicativeConditional                ::=   "Suppose" <END_OF_LINE> unqualifiedSt
 
 metaproof                            ::=   "Proof" <END_OF_LINE> 
 
-                                           metaDeclaration*
-                                           
                                            ( metaDerivation "Therefore" <END_OF_LINE> )?
                                              
                                            qualifiedMetastatement ;
@@ -117,8 +115,6 @@ metaproof                            ::=   "Proof" <END_OF_LINE>
                                           
 proof                                ::=   "Proof" <END_OF_LINE> 
 
-                                           declaration*
-                                           
                                            ( derivation "Therefore" <END_OF_LINE> )?
                                              
                                            qualifiedStatement ;
@@ -129,23 +125,19 @@ metaSubproof                         ::=   "Suppose" <END_OF_LINE> unqualifiedMe
 
                                            ( "Hence" <END_OF_LINE> metaDerivation )?
 
-                                           "Therefore" <END_OF_LINE> ( qualifiedMetastatement | unqualifiedMetastatement ) ;
+                                           "Therefore" <END_OF_LINE> qualifiedMetastatement ;
 
 subproof                             ::=   "Suppose" <END_OF_LINE> unqualifiedStatement+ 
 
                                            ( "Hence" <END_OF_LINE> derivation )?
                                                                                          
-                                           "Therefore" <END_OF_LINE> ( qualifiedStatement | unqualifiedStatement ) ;
+                                           "Therefore" <END_OF_LINE> qualifiedStatement ;
                                            
                                            
 
-metaDeclaration                      ::=   "Let" unqualifiedMetastatement ;                                           
-                                          
 metaDerivation                       ::=   ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  ;                                           
 
 
-
-declaration                          ::=   "Let" unqualifiedStatement ;                                           
 
 derivation                           ::=   ( subproof | qualifiedStatement | unqualifiedStatement )+  ;
 
