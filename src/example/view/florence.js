@@ -34,10 +34,22 @@ export default class FlorenceView extends View {
 
   static readOnly = false;
 
-  static initialContent = `Rule (Explosion)
+  static initialContent = `Rule (PositiveParadox)
   Conclusion
-    ρ |- R::P
-  `;
+    P => (Q => P)
+  Proof
+    Suppose
+      P
+    Hence
+      Suppose
+        Q
+      Therefore
+        P by construction
+    Therefore
+      Q => P by ImplicationIntroduction
+  Therefore
+    P => (Q => P) by ImplicationIntroduction
+`;
 
   static defaultProperties = {
     className: "florence"

@@ -114,13 +114,39 @@ proof                                ::=   "Proof" <END_OF_LINE> ( derivation | 
 
 metaSubproof                         ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement+ 
 
-                                           "Hence" <END_OF_LINE> metaDerivation ;
+                                           ( 
+                                             
+                                             abridgedMetaDerivation 
+                                             
+                                             | 
+                                             
+                                             ( "Hence" <END_OF_LINE> metaDerivation )
+                                             
+                                           ) ;
 
 subproof                             ::=   "Suppose" <END_OF_LINE> unqualifiedStatement+ 
 
-                                           "Hence" <END_OF_LINE> derivation ;
+                                           ( 
+                                             
+                                             abridgedDerivation 
+                                             
+                                             | 
+                                             
+                                             ( "Hence" <END_OF_LINE> derivation )
+                                             
+                                           ) ;
                                            
                                            
+
+abridgedMetaDerivation               ::=   "Therefore" <END_OF_LINE> 
+                                           
+                                           ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
+
+abridgedDerivation                   ::=   "Therefore" <END_OF_LINE> 
+                                           
+                                           ( qualifiedStatement | unqualifiedStatement ) ;                                           
+
+
 
 metaDerivation                       ::=   ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
 
