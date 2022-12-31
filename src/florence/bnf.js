@@ -110,30 +110,18 @@ metaproof                            ::=   "Proof" <END_OF_LINE>
 
                                            metaDeclaration*
                                            
-                                           (
-                                           
-                                             ( metaDerivation "Therefore" <END_OF_LINE> qualifiedMetastatement )
+                                           ( metaDerivation "Therefore" <END_OF_LINE> )?
                                              
-                                             |
-                                             
-                                             qualifiedMetastatement
-                                             
-                                           );
+                                           qualifiedMetastatement ;
 
                                           
 proof                                ::=   "Proof" <END_OF_LINE> 
 
                                            declaration*
                                            
-                                           (
-                                           
-                                             ( derivation "Therefore" <END_OF_LINE> qualifiedStatement )
+                                           ( derivation "Therefore" <END_OF_LINE> )?
                                              
-                                             |
-                                             
-                                             qualifiedStatement
-                                             
-                                           );
+                                           qualifiedStatement ;
                                                                                          
 
 
