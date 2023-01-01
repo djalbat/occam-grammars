@@ -44,17 +44,17 @@ error                                ::=   . ;
 
 rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( conditionalInference | unconditionalInference ) metaproof? ;
 
-axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) ; 
+axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> ( conditionalIndicative | unqualifiedStatement ) ; 
 
-lemma                                ::=   "Lemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof ;
+lemma                                ::=   "Lemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> ( unconditionalIndicative | conditionalIndicative ) proof ;
 
-theorem                              ::=   "Theorem" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof ;
+theorem                              ::=   "Theorem" "(" label ( "," label )* ")" <END_OF_LINE> ( unconditionalIndicative | conditionalIndicative ) proof ;
 
-conjecture                           ::=   "Conjecture" "(" label ( "," label )* ")" <END_OF_LINE> ( indicativeConditional | unqualifiedStatement ) proof? ;
+conjecture                           ::=   "Conjecture" "(" label ( "," label )* ")" <END_OF_LINE> ( unconditionalIndicative | conditionalIndicative ) proof? ;
 
-metalemma                            ::=   "Metalemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
+metalemma                            ::=   "Metalemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> ( metaUnconditionalIndicative | metaConditionalIndicative ) metaproof ;
 
-metatheorem                          ::=   "Metatheorem" "(" label ( "," label )* ")" <END_OF_LINE> ( metaIndicativeConditional | unqualifiedMetastatement ) metaproof ;
+metatheorem                          ::=   "Metatheorem" "(" label ( "," label )* ")" <END_OF_LINE> ( metaUnconditionalIndicative | metaConditionalIndicative ) metaproof ;
 
 typeDeclaration                      ::=   "Type" type ( ":" type )? <END_OF_LINE> ;
  
@@ -96,14 +96,32 @@ conclusion                           ::=   unqualifiedMetastatement ;
 
 
 
-metaIndicativeConditional            ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement+ 
+metaUnconditionalIndicative          ::=   metaConsequent ;
 
-                                           "Then" <END_OF_LINE> unqualifiedMetastatement ;
+unconditionalIndicative              ::=   consequent ;
 
-indicativeConditional                ::=   "Suppose" <END_OF_LINE> unqualifiedStatement+
 
-                                           "Then" <END_OF_LINE> unqualifiedStatement ;
+
+metaConditionalIndicative            ::=   "Suppose" <END_OF_LINE> metaAntecedent+ 
+
+                                           "Then" <END_OF_LINE> metaConsequent ;
+
+conditionalIndicative                ::=   "Suppose" <END_OF_LINE> antecedent+
+
+                                           "Then" <END_OF_LINE> consequent ;
                                            
+
+
+metaAntecedent                       ::=   unqualifiedMetastatement ;
+
+antecedent                           ::=   unqualifiedStatement ;
+
+
+
+metaConsequent                       ::=   unqualifiedMetastatement ;
+
+consequent                           ::=   unqualifiedStatement ;
+
 
 
 metaproof                            ::=   "Proof" <END_OF_LINE> ( metaDerivation | qualifiedMetastatement ) ;
