@@ -44,7 +44,7 @@ error                                ::=   . ;
 
 rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( conditionalInference | unconditionalInference ) metaproof? ;
 
-axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> ( conditionalIndicative | unqualifiedStatement ) ; 
+axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> ( unconditionalIndicative | conditionalIndicative ) ; 
 
 lemma                                ::=   "Lemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> ( unconditionalIndicative | conditionalIndicative ) proof ;
 
