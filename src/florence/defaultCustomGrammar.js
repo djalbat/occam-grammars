@@ -10,15 +10,13 @@ export const termBNF = `term!                                ::=   variable ;`;
 
     export const statementBNF = `statement!                           ::=   "(" statement ")" 
                                                   
+                                       |   term "=" term 
+
                                        |   typeAssertion 
                                                   
-                                       |   equality 
-
                                        ;
 
-typeAssertion                        ::=   term ":" type ;
-
-equality                             ::=   term "=" term ;`;
+typeAssertion                        ::=   term ":" type ;`;
 
 export const metastatementBNF = `metastatement!                       ::=   "(" metastatement ")" 
            
