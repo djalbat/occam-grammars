@@ -1,6 +1,6 @@
 "use strict";
 
-const bnf = `document                             ::=   ( topLevelDeclaration | verticalSpace | errorBlock )+ ;
+const bnf = `document                             ::=   ( topLevelDeclaration | verticalSpace | error )+ ;
 
 
 
@@ -38,7 +38,7 @@ verticalSpace                        ::=   <END_OF_LINE>+ ;
 
 
 
-errorBlock                           ::=   error+ ;
+error                                ::=   . ;
 
 
 
@@ -244,10 +244,6 @@ context                              ::=   [name] ( <NO_WHITESPACE>"(" term... "
 
 label                                ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
-variable                             ::=   [name] ;
-
-
-
-error                                ::=   . ;`;
+variable                             ::=   [name] ;`;
 
 export default bnf;
