@@ -1,6 +1,6 @@
 "use strict";
 
-const bnf = `document                             ::=   ( topLevelDeclaration | verticalSpace | error )+ ;
+const bnf = `document                             ::=   ( topLevelDeclaration | verticalSpace | errorBlock )+ ;
 
 
 
@@ -38,7 +38,7 @@ verticalSpace                        ::=   <END_OF_LINE>+ ;
 
 
 
-error                                ::=   . ;
+errorBlock                           ::=   error+ ;
 
 
 
@@ -124,57 +124,61 @@ consequent                           ::=   unqualifiedStatement ;
 
 
 
-metaproof                            ::=   "Proof" <END_OF_LINE> ( metaDerivation | qualifiedMetastatement ) ;
+metaproof                            ::=   "Proof" <END_OF_LINE> metaDerivation ;
                                           
-proof                                ::=   "Proof" <END_OF_LINE> ( derivation | qualifiedStatement ) ;
+proof                                ::=   "Proof" <END_OF_LINE> derivation ;
                                                                                          
 
 
-metaSubproof                         ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement+ 
+metaSubproof                         ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement+ metaSubDerivation ; 
 
-                                           ( 
-                                             
-                                             abridgedMetaDerivation 
-                                             
-                                             | 
-                                             
-                                             ( "Hence" <END_OF_LINE> metaDerivation )
-                                             
-                                           ) ;
-
-subproof                             ::=   "Suppose" <END_OF_LINE> unqualifiedStatement+ 
-
-                                           ( 
-                                             
-                                             abridgedDerivation 
-                                             
-                                             | 
-                                             
-                                             ( "Hence" <END_OF_LINE> derivation )
-                                             
-                                           ) ;
-                                           
+subproof                             ::=   "Suppose" <END_OF_LINE> unqualifiedStatement+ subDerivation ;
                                            
 
-abridgedMetaDerivation               ::=   "Therefore" <END_OF_LINE> 
+
+metaDerivation                       ::=   (
+
+                                             ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
+
+                                             "Therefore" <END_OF_LINE> 
+                                           
+                                           )? 
                                            
                                            ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
 
-abridgedDerivation                   ::=   "Therefore" <END_OF_LINE> 
+derivation                           ::=   (
+
+                                             ( subproof | qualifiedStatement | unqualifiedStatement )+ 
+
+                                             "Therefore" <END_OF_LINE>
+                                             
+                                           )? 
                                            
                                            ( qualifiedStatement | unqualifiedStatement ) ;                                           
 
 
 
-metaDerivation                       ::=   ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
+metaSubDerivation                    ::=   (
 
-                                           "Therefore" <END_OF_LINE> 
+                                             "Hence" <END_OF_LINE>
+
+                                             ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+ 
+                                             
+                                           )? 
+                                           
+                                           "Then" <END_OF_LINE> 
                                            
                                            ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
 
-derivation                           ::=   ( subproof | qualifiedStatement | unqualifiedStatement )+ 
+subDerivation                        ::=   (
 
-                                           "Therefore" <END_OF_LINE> 
+                                             "Hence" <END_OF_LINE>
+
+                                             ( subproof | qualifiedStatement | unqualifiedStatement )+ 
+                                             
+                                           )? 
+                                           
+                                           "Then" <END_OF_LINE> 
                                            
                                            ( qualifiedStatement | unqualifiedStatement ) ;                                           
 
@@ -240,6 +244,10 @@ context                              ::=   [name] ( <NO_WHITESPACE>"(" term... "
 
 label                                ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
-variable                             ::=   [name] ;`;
+variable                             ::=   [name] ;
+
+
+
+error                                ::=   . ;`;
 
 export default bnf;
