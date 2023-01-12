@@ -76,7 +76,7 @@ unconditionalInference               ::=   "Conclusion" <END_OF_LINE> conclusion
 
 conditionalInference                 ::=   ( 
 
-                                             ( "Premises" <END_OF_LINE> premises ) 
+                                             ( "Premises" <END_OF_LINE> premise premise+ ) 
                                              
                                              | 
                                              
@@ -89,8 +89,6 @@ conditionalInference                 ::=   (
 
 
 premise                              ::=   unqualifiedMetastatement ;
-
-premises                             ::=   unqualifiedMetastatement unqualifiedMetastatement+ ;
 
 conclusion                           ::=   unqualifiedMetastatement ;
 
