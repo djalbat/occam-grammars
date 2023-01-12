@@ -110,18 +110,6 @@ conditionalIndicative                ::=   "Suppose" <END_OF_LINE> antecedent+
                                            
 
 
-metaAntecedent                       ::=   unqualifiedMetastatement ;
-
-antecedent                           ::=   unqualifiedStatement ;
-
-
-
-metaConsequent                       ::=   unqualifiedMetastatement ;
-
-consequent                           ::=   unqualifiedStatement ;
-
-
-
 metaproof                            ::=   "Proof" <END_OF_LINE> metaDerivation ;
                                           
 proof                                ::=   "Proof" <END_OF_LINE> derivation ;
@@ -179,6 +167,18 @@ subDerivation                        ::=   (
                                            "Then" <END_OF_LINE> 
                                            
                                            ( qualifiedStatement | unqualifiedStatement ) ;                                           
+
+
+
+metaAntecedent                       ::=   unqualifiedMetastatement ;
+
+antecedent                           ::=   unqualifiedStatement ;
+
+
+
+metaConsequent                       ::=   unqualifiedMetastatement ;
+
+consequent                           ::=   unqualifiedStatement ;
 
 
 
