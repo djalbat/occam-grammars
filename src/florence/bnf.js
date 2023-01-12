@@ -128,9 +128,9 @@ proof                                ::=   "Proof" <END_OF_LINE> derivation ;
                                                                                          
 
 
-metaSubproof                         ::=   "Suppose" <END_OF_LINE> unqualifiedMetastatement+ metaSubDerivation ; 
+metaSubproof                         ::=   "Suppose" <END_OF_LINE> metaAntecedent+ metaSubDerivation ; 
 
-subproof                             ::=   "Suppose" <END_OF_LINE> unqualifiedStatement+ subDerivation ;
+subproof                             ::=   "Suppose" <END_OF_LINE> antecedent+ subDerivation ;
                                            
 
 
