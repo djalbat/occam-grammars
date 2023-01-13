@@ -10,8 +10,6 @@ export const termBNF = `term!                                ::=   variable ;`;
 
     export const statementBNF = `statement!                           ::=   "(" statement ")" 
                                                   
-                                       |   term "=" term 
-
                                        |   typeAssertion 
                                                   
                                        ;
