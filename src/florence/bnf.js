@@ -128,7 +128,7 @@ metalemma                            ::=   "Metalemma" ( "(" label ( "," label )
                                            
                                              (
                                              
-                                               "Suppose" <END_OF_LINE> metaAntecedent+ 
+                                               "Suppose" <END_OF_LINE> metaSupposition+ 
 
                                                "Then" <END_OF_LINE> metaConsequent
                                                
@@ -148,7 +148,7 @@ metatheorem                          ::=   "Metatheorem" "(" label ( "," label )
                                            
                                              (
                                              
-                                               "Suppose" <END_OF_LINE> metaAntecedent+ 
+                                               "Suppose" <END_OF_LINE> metaSupposition+ 
 
                                                "Then" <END_OF_LINE> metaConsequent
                                                
@@ -166,7 +166,7 @@ metatheorem                          ::=   "Metatheorem" "(" label ( "," label )
 
 metaproof                            ::=   "Proof" <END_OF_LINE> metaDerivation ;
                                           
-metaSubproof                         ::=   "Suppose" <END_OF_LINE> metaAntecedent+ metaSubDerivation ; 
+metaSubproof                         ::=   "Suppose" <END_OF_LINE> metaSupposition+ metaSubDerivation ; 
 
 
 
@@ -194,7 +194,7 @@ metaSubDerivation                    ::=   (
 
 
 
-metaAntecedent                       ::=   unqualifiedMetastatement ;
+metaSupposition                      ::=   unqualifiedMetastatement ;
 
 metaConsequent                       ::=   unqualifiedMetastatement ;
 
@@ -206,7 +206,7 @@ axiom                                ::=   "Axiom" "(" label ( "," label )* ")" 
                                            
                                              (
                                            
-                                               "Suppose" <END_OF_LINE> antecedent+
+                                               "Suppose" <END_OF_LINE> supposition+
 
                                                "Then" <END_OF_LINE> consequent 
                                              
@@ -224,7 +224,7 @@ lemma                                ::=   "Lemma" ( "(" label ( "," label )* ")
                                            
                                              (
                                            
-                                               "Suppose" <END_OF_LINE> antecedent+
+                                               "Suppose" <END_OF_LINE> supposition+
 
                                                "Then" <END_OF_LINE> consequent 
                                              
@@ -244,7 +244,7 @@ theorem                              ::=   "Theorem" "(" label ( "," label )* ")
                                            
                                              (
                                            
-                                               "Suppose" <END_OF_LINE> antecedent+
+                                               "Suppose" <END_OF_LINE> supposition+
 
                                                "Then" <END_OF_LINE> consequent 
                                              
@@ -264,7 +264,7 @@ conjecture                           ::=   "Conjecture" "(" label ( "," label )*
                                            
                                              (
                                            
-                                               "Suppose" <END_OF_LINE> antecedent+
+                                               "Suppose" <END_OF_LINE> supposition+
 
                                                "Then" <END_OF_LINE> consequent 
                                              
@@ -282,7 +282,7 @@ conjecture                           ::=   "Conjecture" "(" label ( "," label )*
 
 proof                                ::=   "Proof" <END_OF_LINE> derivation ;
                                                                                          
-subproof                             ::=   "Suppose" <END_OF_LINE> antecedent+ subDerivation ;
+subproof                             ::=   "Suppose" <END_OF_LINE> supposition+ subDerivation ;
                                            
 
 
@@ -309,8 +309,7 @@ subDerivation                        ::=   (
                                            ( qualifiedStatement | unqualifiedStatement ) ;                                           
 
 
-
-antecedent                           ::=   unqualifiedStatement ;
+supposition                          ::=   unqualifiedStatement ;
 
 consequent                           ::=   unqualifiedStatement ;
 
