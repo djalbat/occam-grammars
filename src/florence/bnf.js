@@ -42,19 +42,145 @@ error                                ::=   . ;
 
 
 
-rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> ( conditionalInference | unconditionalInference ) metaproof? ;
+rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> 
 
-axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> ( unconditionalIndicative | conditionalIndicative ) ; 
+                                           ( 
 
-lemma                                ::=   "Lemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> ( unconditionalIndicative | conditionalIndicative ) proof ;
+                                             ( "Premises" <END_OF_LINE> premise premise+ ) 
+                                             
+                                             | 
+                                             
+                                             ( "Premise" <END_OF_LINE> premise ) 
+                                             
+                                           )?
+                                             
+                                           "Conclusion" <END_OF_LINE> conclusion 
+                                           
+                                           metaproof? ;
+                                           
+                                           
 
-theorem                              ::=   "Theorem" "(" label ( "," label )* ")" <END_OF_LINE> ( unconditionalIndicative | conditionalIndicative ) proof ;
+axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> 
 
-conjecture                           ::=   "Conjecture" "(" label ( "," label )* ")" <END_OF_LINE> ( unconditionalIndicative | conditionalIndicative ) proof? ;
+                                           (
+                                           
+                                             (
+                                           
+                                               "Suppose" <END_OF_LINE> antecedent+
 
-metalemma                            ::=   "Metalemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> ( metaUnconditionalIndicative | metaConditionalIndicative ) metaproof ;
+                                               "Then" <END_OF_LINE> consequent 
+                                             
+                                             )
+                                             
+                                             |
+                                             
+                                             consequent
+                                             
+                                           ) ;
 
-metatheorem                          ::=   "Metatheorem" "(" label ( "," label )* ")" <END_OF_LINE> ( metaUnconditionalIndicative | metaConditionalIndicative ) metaproof ;
+lemma                                ::=   "Lemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
+
+                                           (
+                                           
+                                             (
+                                           
+                                               "Suppose" <END_OF_LINE> antecedent+
+
+                                               "Then" <END_OF_LINE> consequent 
+                                             
+                                             )
+                                             
+                                             |
+                                             
+                                             consequent
+                                             
+                                           )
+                                           
+                                           proof ;
+
+theorem                              ::=   "Theorem" "(" label ( "," label )* ")" <END_OF_LINE> 
+
+                                           (
+                                           
+                                             (
+                                           
+                                               "Suppose" <END_OF_LINE> antecedent+
+
+                                               "Then" <END_OF_LINE> consequent 
+                                             
+                                             )
+                                             
+                                             |
+                                             
+                                             consequent
+                                             
+                                           )
+                                           
+                                           proof ;
+
+conjecture                           ::=   "Conjecture" "(" label ( "," label )* ")" <END_OF_LINE>
+
+                                           (
+                                           
+                                             (
+                                           
+                                               "Suppose" <END_OF_LINE> antecedent+
+
+                                               "Then" <END_OF_LINE> consequent 
+                                             
+                                             )
+                                             
+                                             |
+                                             
+                                             consequent
+                                             
+                                           )
+                                           
+                                           proof? ;
+
+
+
+metalemma                            ::=   "Metalemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
+
+                                           ( 
+                                           
+                                             (
+                                             
+                                               "Suppose" <END_OF_LINE> metaAntecedent+ 
+
+                                               "Then" <END_OF_LINE> metaConsequent
+                                               
+                                             )
+                                            
+                                             | 
+                                             
+                                             metaConsequent
+                                              
+                                           ) 
+                                           
+                                           metaproof ;
+
+metatheorem                          ::=   "Metatheorem" "(" label ( "," label )* ")" <END_OF_LINE> 
+
+                                           ( 
+                                           
+                                             (
+                                             
+                                               "Suppose" <END_OF_LINE> metaAntecedent+ 
+
+                                               "Then" <END_OF_LINE> metaConsequent
+                                               
+                                             )
+                                            
+                                             | 
+                                             
+                                             metaConsequent
+                                              
+                                           ) 
+                                           
+                                           metaproof ;
+
+
 
 typeDeclaration                      ::=   "Type" type ( ":" type )? <END_OF_LINE> ;
  
@@ -72,44 +198,6 @@ dependentTypeDeclaration             ::=   "DependentType" dependentType ":" typ
                                          
 
   
-unconditionalInference               ::=   "Conclusion" <END_OF_LINE> conclusion ;  
-
-conditionalInference                 ::=   ( 
-
-                                             ( "Premises" <END_OF_LINE> premise premise+ ) 
-                                             
-                                             | 
-                                             
-                                             ( "Premise" <END_OF_LINE> premise ) 
-                                             
-                                           )  
-
-                                           "Conclusion" <END_OF_LINE> conclusion ;
-
-
-
-premise                              ::=   unqualifiedMetastatement ;
-
-conclusion                           ::=   unqualifiedMetastatement ;
-
-
-
-metaUnconditionalIndicative          ::=   metaConsequent ;
-
-unconditionalIndicative              ::=   consequent ;
-
-
-
-metaConditionalIndicative            ::=   "Suppose" <END_OF_LINE> metaAntecedent+ 
-
-                                           "Then" <END_OF_LINE> metaConsequent ;
-
-conditionalIndicative                ::=   "Suppose" <END_OF_LINE> antecedent+
-
-                                           "Then" <END_OF_LINE> consequent ;
-                                           
-
-
 metaproof                            ::=   "Proof" <END_OF_LINE> metaDerivation ;
                                           
 proof                                ::=   "Proof" <END_OF_LINE> derivation ;
@@ -167,6 +255,12 @@ subDerivation                        ::=   (
                                            "Then" <END_OF_LINE> 
                                            
                                            ( qualifiedStatement | unqualifiedStatement ) ;                                           
+
+
+
+premise                              ::=   unqualifiedMetastatement ;
+
+conclusion                           ::=   unqualifiedMetastatement ;
 
 
 
