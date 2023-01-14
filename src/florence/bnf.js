@@ -130,13 +130,13 @@ metalemma                            ::=   "Metalemma" ( "(" label ( "," label )
                                              
                                                "Suppose" <END_OF_LINE> metaSupposition+ 
 
-                                               "Then" <END_OF_LINE> metaConsequent
+                                               "Then" <END_OF_LINE> metaConsequence
                                                
                                              )
                                             
                                              | 
                                              
-                                             metaConsequent
+                                             metaConsequence
                                               
                                            ) 
                                            
@@ -150,13 +150,13 @@ metatheorem                          ::=   "Metatheorem" "(" label ( "," label )
                                              
                                                "Suppose" <END_OF_LINE> metaSupposition+ 
 
-                                               "Then" <END_OF_LINE> metaConsequent
+                                               "Then" <END_OF_LINE> metaConsequence
                                                
                                              )
                                             
                                              | 
                                              
-                                             metaConsequent
+                                             metaConsequence
                                               
                                            ) 
                                            
@@ -194,12 +194,6 @@ metaSubDerivation                    ::=   (
 
 
 
-metaSupposition                      ::=   unqualifiedMetastatement ;
-
-metaConsequent                       ::=   unqualifiedMetastatement ;
-
-
-
 axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> 
 
                                            (
@@ -208,13 +202,13 @@ axiom                                ::=   "Axiom" "(" label ( "," label )* ")" 
                                            
                                                "Suppose" <END_OF_LINE> supposition+
 
-                                               "Then" <END_OF_LINE> consequent 
+                                               "Then" <END_OF_LINE> consequence 
                                              
                                              )
                                              
                                              |
                                              
-                                             consequent
+                                             consequence
                                              
                                            ) ;
 
@@ -226,13 +220,13 @@ lemma                                ::=   "Lemma" ( "(" label ( "," label )* ")
                                            
                                                "Suppose" <END_OF_LINE> supposition+
 
-                                               "Then" <END_OF_LINE> consequent 
+                                               "Then" <END_OF_LINE> consequence 
                                              
                                              )
                                              
                                              |
                                              
-                                             consequent
+                                             consequence
                                              
                                            )
                                            
@@ -246,13 +240,13 @@ theorem                              ::=   "Theorem" "(" label ( "," label )* ")
                                            
                                                "Suppose" <END_OF_LINE> supposition+
 
-                                               "Then" <END_OF_LINE> consequent 
+                                               "Then" <END_OF_LINE> consequence 
                                              
                                              )
                                              
                                              |
                                              
-                                             consequent
+                                             consequence
                                              
                                            )
                                            
@@ -266,13 +260,13 @@ conjecture                           ::=   "Conjecture" "(" label ( "," label )*
                                            
                                                "Suppose" <END_OF_LINE> supposition+
 
-                                               "Then" <END_OF_LINE> consequent 
+                                               "Then" <END_OF_LINE> consequence 
                                              
                                              )
                                              
                                              |
                                              
-                                             consequent
+                                             consequence
                                              
                                            )
                                            
@@ -309,9 +303,16 @@ subDerivation                        ::=   (
                                            ( qualifiedStatement | unqualifiedStatement ) ;                                           
 
 
+
+metaSupposition                      ::=   unqualifiedMetastatement ;
+
+metaConsequence                      ::=   unqualifiedMetastatement ;
+
+
+
 supposition                          ::=   unqualifiedStatement ;
 
-consequent                           ::=   unqualifiedStatement ;
+consequence                          ::=   unqualifiedStatement ;
 
 
 
