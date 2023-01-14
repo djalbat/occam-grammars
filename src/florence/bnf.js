@@ -168,20 +168,6 @@ metaDerivation                       ::=   (
                                            
                                            ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
 
-metaSubDerivation                    ::=   (
-
-                                             "Hence" <END_OF_LINE>
-
-                                             ( qualifiedMetastatement | unqualifiedMetastatement )+ 
-                                             
-                                           )? 
-                                           
-                                           "Then" <END_OF_LINE> 
-                                           
-                                           ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
-
-
-
 axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> 
 
                                            (
