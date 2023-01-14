@@ -18,7 +18,7 @@ typeAssertion                        ::=   term ":" type ;`;
 
 export const metastatementBNF = `metastatement!                       ::=   "(" metastatement ")" 
            
-                                       |   metaSubproofAssertion         
+                                       |   ruleSubproofAssertion         
                                         
                                        |   contextDefinition 
            
@@ -28,7 +28,7 @@ export const metastatementBNF = `metastatement!                       ::=   "(" 
 
                                        ;
 
-metaSubproofAssertion                ::=   "[" metastatement ( "," metastatement )* "]" "..." metastatement ;
+ruleSubproofAssertion                ::=   "[" metastatement ( "," metastatement )* "]" "..." metastatement ;
 
 contextDefinition                    ::=   context "=" ( judgement | context ) ( "," ( judgement | context ) )* ;
 
