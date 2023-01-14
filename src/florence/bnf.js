@@ -4,19 +4,7 @@ const bnf = `document                             ::=   ( topLevelDeclaration | 
 
 
 
-topLevelDeclaration                  ::=   rule 
-
-                                       |   axiom 
-
-                                       |   lemma 
-
-                                       |   theorem 
-
-                                       |   conjecture 
-
-                                       |   metalemma 
-
-                                       |   typeDeclaration 
+topLevelDeclaration                  ::=   typeDeclaration 
                                            
                                        |   variableDeclaration 
                                            
@@ -30,6 +18,18 @@ topLevelDeclaration                  ::=   rule
                                            
                                        |   dependentTypeDeclaration 
                                            
+                                       |   rule 
+
+                                       |   axiom 
+
+                                       |   lemma 
+
+                                       |   theorem 
+
+                                       |   conjecture 
+
+                                       |   metalemma 
+
                                        ;
 
 
@@ -42,6 +42,22 @@ error                                ::=   . ;
 
 
 
+typeDeclaration                      ::=   "Type" type ( ":" type )? <END_OF_LINE> ;
+ 
+variableDeclaration                  ::=   "Variable" variable ( ":" type )? <END_OF_LINE> ;
+ 
+combinatorDeclaration                ::=   "Combinator" statement... <END_OF_LINE> ;
+ 
+constructorDeclaration               ::=   "Constructor" term... ( ":" type )? <END_OF_LINE> ;
+ 
+disjointTypeDeclaration              ::=   "DisjointType" disjointType ":" type ( "," type )+ <END_OF_LINE> ;
+                                       
+metavariableDeclaration              ::=   "Metavariable" metavariable ":" ( "Statement" | "Context" ) <END_OF_LINE> ;
+ 
+dependentTypeDeclaration             ::=   "DependentType" dependentType ":" type <END_OF_LINE> ;
+                                         
+
+  
 rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> 
 
                                            ( 
@@ -56,9 +72,133 @@ rule                                 ::=   "Rule" "(" label ( "," label )* ")" <
                                              
                                            "Conclusion" <END_OF_LINE> conclusion 
                                            
-                                           metaproof? ;
+                                           ruleProof?  ;
                                            
                                            
+
+ruleProof                            ::=   "Proof" <END_OF_LINE> ruleDerivation ;
+                                          
+ruleSubproof                         ::=   ( 
+
+                                             ( "Premises" <END_OF_LINE> premise premise+ ) 
+                                             
+                                             | 
+                                             
+                                             ( "Premise" <END_OF_LINE> premise ) 
+                                             
+                                           )
+                                            
+                                           ruleSubDerivation ; 
+
+
+
+ruleDerivation                       ::=   (
+
+                                             ( ruleSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
+
+                                             "Therefore" <END_OF_LINE> 
+                                           
+                                           )? 
+                                           
+                                           ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
+
+ruleSubDerivation                    ::=   (
+
+                                             "Hence" <END_OF_LINE>
+
+                                             ( ruleSubproof | qualifiedMetastatement | unqualifiedMetastatement )+ 
+                                             
+                                           )? 
+                                           
+                                           "Then" <END_OF_LINE> 
+                                           
+                                           ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
+
+
+
+premise                              ::=   unqualifiedMetastatement ;
+
+conclusion                           ::=   unqualifiedMetastatement ;
+
+
+
+metalemma                            ::=   "Metalemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
+
+                                           ( 
+                                           
+                                             (
+                                             
+                                               "Suppose" <END_OF_LINE> metaAntecedent+ 
+
+                                               "Then" <END_OF_LINE> metaConsequent
+                                               
+                                             )
+                                            
+                                             | 
+                                             
+                                             metaConsequent
+                                              
+                                           ) 
+                                           
+                                           metaproof ;
+
+metatheorem                          ::=   "Metatheorem" "(" label ( "," label )* ")" <END_OF_LINE> 
+
+                                           ( 
+                                           
+                                             (
+                                             
+                                               "Suppose" <END_OF_LINE> metaAntecedent+ 
+
+                                               "Then" <END_OF_LINE> metaConsequent
+                                               
+                                             )
+                                            
+                                             | 
+                                             
+                                             metaConsequent
+                                              
+                                           ) 
+                                           
+                                           metaproof ;
+
+
+
+metaproof                            ::=   "Proof" <END_OF_LINE> metaDerivation ;
+                                          
+metaSubproof                         ::=   "Suppose" <END_OF_LINE> metaAntecedent+ metaSubDerivation ; 
+
+
+
+metaDerivation                       ::=   (
+
+                                             ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
+
+                                             "Therefore" <END_OF_LINE> 
+                                           
+                                           )? 
+                                           
+                                           ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
+
+metaSubDerivation                    ::=   (
+
+                                             "Hence" <END_OF_LINE>
+
+                                             ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+ 
+                                             
+                                           )? 
+                                           
+                                           "Then" <END_OF_LINE> 
+                                           
+                                           ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
+
+
+
+metaAntecedent                       ::=   unqualifiedMetastatement ;
+
+metaConsequent                       ::=   unqualifiedMetastatement ;
+
+
 
 axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> 
 
@@ -140,85 +280,11 @@ conjecture                           ::=   "Conjecture" "(" label ( "," label )*
 
 
 
-metalemma                            ::=   "Metalemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
-
-                                           ( 
-                                           
-                                             (
-                                             
-                                               "Suppose" <END_OF_LINE> metaAntecedent+ 
-
-                                               "Then" <END_OF_LINE> metaConsequent
-                                               
-                                             )
-                                            
-                                             | 
-                                             
-                                             metaConsequent
-                                              
-                                           ) 
-                                           
-                                           metaproof ;
-
-metatheorem                          ::=   "Metatheorem" "(" label ( "," label )* ")" <END_OF_LINE> 
-
-                                           ( 
-                                           
-                                             (
-                                             
-                                               "Suppose" <END_OF_LINE> metaAntecedent+ 
-
-                                               "Then" <END_OF_LINE> metaConsequent
-                                               
-                                             )
-                                            
-                                             | 
-                                             
-                                             metaConsequent
-                                              
-                                           ) 
-                                           
-                                           metaproof ;
-
-
-
-typeDeclaration                      ::=   "Type" type ( ":" type )? <END_OF_LINE> ;
- 
-variableDeclaration                  ::=   "Variable" variable ( ":" type )? <END_OF_LINE> ;
- 
-combinatorDeclaration                ::=   "Combinator" statement... <END_OF_LINE> ;
- 
-constructorDeclaration               ::=   "Constructor" term... ( ":" type )? <END_OF_LINE> ;
- 
-disjointTypeDeclaration              ::=   "DisjointType" disjointType ":" type ( "," type )+ <END_OF_LINE> ;
-                                       
-metavariableDeclaration              ::=   "Metavariable" metavariable ":" ( "Statement" | "Context" ) <END_OF_LINE> ;
- 
-dependentTypeDeclaration             ::=   "DependentType" dependentType ":" type <END_OF_LINE> ;
-                                         
-
-  
-metaproof                            ::=   "Proof" <END_OF_LINE> metaDerivation ;
-                                          
 proof                                ::=   "Proof" <END_OF_LINE> derivation ;
                                                                                          
-
-
-metaSubproof                         ::=   "Suppose" <END_OF_LINE> metaAntecedent+ metaSubDerivation ; 
-
 subproof                             ::=   "Suppose" <END_OF_LINE> antecedent+ subDerivation ;
                                            
 
-
-metaDerivation                       ::=   (
-
-                                             ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
-
-                                             "Therefore" <END_OF_LINE> 
-                                           
-                                           )? 
-                                           
-                                           ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
 
 derivation                           ::=   (
 
@@ -228,21 +294,7 @@ derivation                           ::=   (
                                              
                                            )? 
                                            
-                                           ( qualifiedStatement | unqualifiedStatement ) ;                                           
-
-
-
-metaSubDerivation                    ::=   (
-
-                                             "Hence" <END_OF_LINE>
-
-                                             ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+ 
-                                             
-                                           )? 
-                                           
-                                           "Then" <END_OF_LINE> 
-                                           
-                                           ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
+                                           ( qualifiedStatement | unqualifiedStatement ) ;
 
 subDerivation                        ::=   (
 
@@ -258,19 +310,7 @@ subDerivation                        ::=   (
 
 
 
-premise                              ::=   unqualifiedMetastatement ;
-
-conclusion                           ::=   unqualifiedMetastatement ;
-
-
-
-metaAntecedent                       ::=   unqualifiedMetastatement ;
-
 antecedent                           ::=   unqualifiedStatement ;
-
-
-
-metaConsequent                       ::=   unqualifiedMetastatement ;
 
 consequent                           ::=   unqualifiedStatement ;
 
