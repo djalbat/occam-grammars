@@ -90,8 +90,6 @@ ruleSubproof                         ::=   (
                                             
                                            ruleSubDerivation ; 
 
-
-
 ruleDerivation                       ::=   (
 
                                              ( ruleSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
@@ -113,12 +111,6 @@ ruleSubDerivation                    ::=   (
                                            "Then" <END_OF_LINE> 
                                            
                                            ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
-
-
-
-premise                              ::=   unqualifiedMetastatement ;
-
-conclusion                           ::=   unqualifiedMetastatement ;
 
 
 
@@ -164,15 +156,11 @@ metatheorem                          ::=   "Metatheorem" "(" label ( "," label )
 
 
 
-metaproof                            ::=   "Proof" <END_OF_LINE> metaDerivation ;
-                                          
-metaSubproof                         ::=   "Suppose" <END_OF_LINE> metaSupposition+ metaSubDerivation ; 
-
-
+metaproof                            ::=   "Proof" <END_OF_LINE> metaDerivation ;                                 
 
 metaDerivation                       ::=   (
 
-                                             ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
+                                             ( qualifiedMetastatement | unqualifiedMetastatement )+  
 
                                              "Therefore" <END_OF_LINE> 
                                            
@@ -184,7 +172,7 @@ metaSubDerivation                    ::=   (
 
                                              "Hence" <END_OF_LINE>
 
-                                             ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+ 
+                                             ( qualifiedMetastatement | unqualifiedMetastatement )+ 
                                              
                                            )? 
                                            
@@ -277,8 +265,6 @@ conjecture                           ::=   "Conjecture" "(" label ( "," label )*
 proof                                ::=   "Proof" <END_OF_LINE> derivation ;
                                                                                          
 subproof                             ::=   "Suppose" <END_OF_LINE> supposition+ subDerivation ;
-                                           
-
 
 derivation                           ::=   (
 
@@ -301,6 +287,12 @@ subDerivation                        ::=   (
                                            "Then" <END_OF_LINE> 
                                            
                                            ( qualifiedStatement | unqualifiedStatement ) ;                                           
+
+
+
+premise                              ::=   unqualifiedMetastatement ;
+
+conclusion                           ::=   unqualifiedMetastatement ;
 
 
 
