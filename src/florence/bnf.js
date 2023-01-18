@@ -342,6 +342,8 @@ dependentType                        ::=   [type]<NO_WHITESPACE>"(" argument ")"
 
 disjointType                         ::=   [type] ;
 
+metatype                             ::=   [metatype] ;
+
 type                                 ::=   [type] ;
 
 

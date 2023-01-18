@@ -26,6 +26,8 @@ export const metastatementBNF = `metastatement!                       ::=   "(" 
        
                                        |   metavariable 
 
+                                       |   metatype 
+
                                        ;
 
 ruleSubproofAssertion                ::=   "[" metastatement ( "," metastatement )* "]" "..." metastatement ;
