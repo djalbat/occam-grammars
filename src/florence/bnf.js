@@ -334,6 +334,8 @@ nonsense                             ::=   ( "by" | "from" | [type] | [operator]
 
 
 
+metaargument                         ::=   statement | metatype ;
+
 argument                             ::=   term | type ;
 
 

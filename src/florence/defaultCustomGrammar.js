@@ -8,7 +8,7 @@ export const operatorPattern = "";
 
 export const termBNF = `term!                                ::=   variable ;`;
 
-    export const statementBNF = `statement!                           ::=   "(" statement ")" 
+    export const statementBNF = `statement!                           ::=   "(" metaargument ")" 
                                                   
                                        |   typeAssertion 
                                                   
@@ -25,8 +25,6 @@ export const metastatementBNF = `metastatement!                       ::=   "(" 
                                        |   proofAssertion
        
                                        |   metavariable 
-
-                                       |   metatype 
 
                                        ;
 
