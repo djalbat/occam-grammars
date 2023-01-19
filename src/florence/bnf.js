@@ -334,7 +334,7 @@ nonsense                             ::=   ( "by" | "from" | [type] | [operator]
 
 
 
-metaargument                         ::=   statement | metatype ;
+metaArgument                         ::=   statement | metaType ;
 
 argument                             ::=   term | type ;
 
@@ -344,7 +344,7 @@ dependentType                        ::=   [type]<NO_WHITESPACE>"(" argument ")"
 
 disjointType                         ::=   [type] ;
 
-metatype                             ::=   [metatype] ;
+metaType                             ::=   [meta-type] ;
 
 type                                 ::=   [type] ;
 

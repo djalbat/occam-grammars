@@ -8,7 +8,7 @@ export const operatorPattern = "";
 
 export const termBNF = `term!                                ::=   variable ;`;
 
-    export const statementBNF = `statement!                           ::=   "(" metaargument ")" 
+    export const statementBNF = `statement!                           ::=   "(" metaArgument ")" 
                                                   
                                        |   typeAssertion 
                                                   
