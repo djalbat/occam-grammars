@@ -10,6 +10,8 @@ export const termBNF = `term!                                ::=   variable ;`;
 
     export const statementBNF = `statement!                           ::=   "(" metaArgument ")" 
                                                   
+                                       |   metaArgument "=" metaArgument
+
                                        |   typeAssertion 
                                                   
                                        ;
