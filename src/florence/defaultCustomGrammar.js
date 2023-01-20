@@ -1,10 +1,10 @@
 "use strict";
 
-export const typePattern = "";
+export const typePattern = "Object";
 
 export const symbolPattern = "";
 
-export const operatorPattern = "";
+export const operatorPattern = "=";
 
 export const termBNF = `term!                                ::=   variable ;`;
 
