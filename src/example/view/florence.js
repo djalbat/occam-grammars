@@ -44,7 +44,7 @@ export default class FlorenceView extends View {
       Suppose
         Q
       Therefore
-        P by construction
+        P
     Therefore
       Q => P by ImplicationIntroduction
   Therefore

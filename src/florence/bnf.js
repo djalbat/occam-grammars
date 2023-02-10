@@ -322,11 +322,7 @@ qualifiedStatement!                  ::=   statement... qualification <END_OF_LI
 
 
 
-qualification                        ::=   "by" ( reference | "construction" )
-
-                                       |   "from" reference 
-                                       
-                                       ;
+qualification                        ::=   ( "by" | "from" ) reference ;
 
 
 
