@@ -52,7 +52,7 @@ constructorDeclaration               ::=   "Constructor" term... ( ":" type )? <
  
 disjointTypeDeclaration              ::=   "DisjointType" disjointType ":" type ( "," type )+ <END_OF_LINE> ;
                                        
-metavariableDeclaration              ::=   "Metavariable" metavariable ":" ( "Statement" | "Context" ) <END_OF_LINE> ;
+metavariableDeclaration              ::=   "Metavariable" metavariable ":" metaType <END_OF_LINE> ;
  
 dependentTypeDeclaration             ::=   "DependentType" dependentType ":" type <END_OF_LINE> ;
                                          
