@@ -12,9 +12,13 @@ export const termBNF = `term!                                ::=   variable ;`;
                                                   
                                        |   argument "=" argument
 
+                                       |   typeInference
+
                                        |   typeAssertion 
                                                   
                                        ;
+
+typeInference                        ::=   statement "|-" typeAssertion ;
 
 typeAssertion                        ::=   term ":" type ;`;
 
@@ -34,7 +38,7 @@ ruleSubproofAssertion                ::=   "[" metastatement ( "," metastatement
 
 contextDefinition                    ::=   context "=" ( judgement | context ) ( "," ( judgement | context ) )* ;
 
-proofAssertion                       ::=   context "|-" judgement ;
+proofAssertion                       ::=   context "|=" judgement ;
  
 judgement                            ::=   reference "::" metastatement ;`;
 
