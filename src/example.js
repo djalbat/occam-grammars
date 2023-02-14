@@ -6,7 +6,6 @@ import withStyle from "easy-with-style";  ///
 
 import { Body } from "easy";
 
-import FlorenceView from "./example/view/florence";
 import TeXView from "./example/view/tex";
 import PlainView from "./example/view/plain";
 import MetaJSONView from "./example/view/metaJSON";
@@ -21,7 +20,6 @@ const body = new Body(),
       example = window.location.search.substring(1);  ///
 
 switch (example) {
-  case "florence" : View = FlorenceView; break;
   case "tex" : View = TeXView; break;
   case "plain" : View = PlainView; break;
   case "metaJSON" : View = MetaJSONView; break;

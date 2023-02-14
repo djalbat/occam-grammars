@@ -8,20 +8,6 @@ import { typeBNF, termBNF, statementBNF, metastatementBNF } from "./defaultCusto
 
 export default class FlorenceParser extends CommonParser {
   static bnf = bnf;
-
-  static fromNothing() {
-    let { bnf } = FlorenceParser;
-
-    bnf = `${bnf} ${defaultCustomGrammarBNF}`; ///
-
-    const florenceParser = CommonParser.fromBNF(FlorenceParser, bnf);
-
-    return florenceParser;
-  }
-
-  static fromBNF(bnf) { return CommonParser.fromBNF(FlorenceParser, bnf); }
-
-  static fromRules(rules) { return CommonParser.fromRules(FlorenceParser, rules); }
 }
 
 export const defaultCustomGrammarBNF = `
