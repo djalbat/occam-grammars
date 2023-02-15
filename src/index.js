@@ -10,7 +10,6 @@ export { default as MetaJSONLexer } from "./metaJSON/lexer";
 export { default as MetaJSONParser } from "./metaJSON/parser";
 export { default as FlorenceLexer } from "./florence/lexer";
 export { default as FlorenceParser } from "./florence/parser";
-export { default as defaultCustomGrammar } from "./florence/defaultCustomGrammar";
 export { default as CustomGrammarBNFLexer } from "./customGrammarBNF/lexer";
 export { default as CustomGrammarBNFParser } from "./customGrammarBNF/parser";
 export { default as CustomGrammarPatternLexer } from "./customGrammarPattern/lexer";
