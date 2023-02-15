@@ -3,7 +3,7 @@
 const bnf = `
 
 
-    document                        ::=   ( delimitedTeX | everythingElse )+ ;
+    document                        ::=   ( delimitedTeX | plainMarkup )+ ;
     
     
     
@@ -41,7 +41,7 @@ const bnf = `
     
     
     
-    everythingElse                  ::=   . ;
+    plainMarkup                     ::=   . ;
 
 
 `;

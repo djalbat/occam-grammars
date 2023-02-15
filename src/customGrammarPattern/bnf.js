@@ -3,7 +3,11 @@
 const bnf = `
 
 
-    document       ::=  pattern ( verticalSpace | error )* | ( verticalSpace | error )+ ;
+    document       ::=  pattern ( verticalSpace | error )* 
+    
+                     |  ( verticalSpace | error )+ 
+                     
+                     ;
 
 
     pattern        ::=  [unassigned]+ ;

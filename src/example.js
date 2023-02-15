@@ -7,8 +7,8 @@ import withStyle from "easy-with-style";  ///
 import { Body } from "easy";
 
 import TeXView from "./example/view/tex";
-import PlainView from "./example/view/plain";
 import MetaJSONView from "./example/view/metaJSON";
+import PlainTextView from "./example/view/plainText";
 import CustomGrammarBNFView from "./example/view/customGrammarBNF";
 import CustomGrammarPatternView from "./example/view/customGrammarPattern";
 
@@ -21,10 +21,10 @@ const body = new Body(),
 
 switch (example) {
   case "tex" : View = TeXView; break;
-  case "plain" : View = PlainView; break;
-  case "metaJSON" : View = MetaJSONView; break;
-  case "customGrammarBNF" : View = CustomGrammarBNFView; break;
-  case "customGrammarPattern" : View = CustomGrammarPatternView; break;
+  case "meta-json" : View = MetaJSONView; break;
+  case "plain-text" : View = PlainTextView; break;
+  case "custom-grammar-bnf" : View = CustomGrammarBNFView; break;
+  case "custom-grammar-pattern" : View = CustomGrammarPatternView; break;
 }
 
 renderStyles();

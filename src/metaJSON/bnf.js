@@ -3,7 +3,11 @@
 const bnf = `
 
 
-    document                  ::=  ( metaJSON error* ) | error+ ;
+    document                  ::=  metaJSON error* 
+    
+                                |  error+ 
+                                
+                                ;
 
 
     metaJSON                  ::=  "{" 
