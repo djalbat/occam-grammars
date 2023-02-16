@@ -30,6 +30,8 @@ topLevelDeclaration                  ::=   typeDeclaration
 
                                        |   metalemma 
 
+                                       |   metatheorem 
+
                                        ;
 
 
