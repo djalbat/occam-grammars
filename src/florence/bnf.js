@@ -328,13 +328,17 @@ qualification                        ::=   ( "by" | "from" ) reference ;
 
 
 
-nonsense                             ::=   ( "by" | "from" | [type] | [operator] | [special] | [reserved] | [name] | [unassigned] )+ ;
+nonsense                             ::=   ( "from" | "by" | "for" | "undefined" | [type] | [operator] | [special] | [reserved] | [name] | [unassigned] )+ ;
 
 
 
 metaArgument                         ::=   statement | metaType ;
 
 argument                             ::=   term | type ;
+
+
+
+substitution                         ::=   "[" term "for" variable "]" ;
 
 
 
