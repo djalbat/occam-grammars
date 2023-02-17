@@ -296,9 +296,9 @@ consequence                          ::=   unqualifiedStatement ;
 
 
 
-unqualifiedMetastatement!            ::=   metastatement... ( substitution | inclusion )? <END_OF_LINE> 
+unqualifiedMetastatement!            ::=   metastatement... <END_OF_LINE> 
 
-                                       |   nonsense... ( substitution | inclusion )? <END_OF_LINE> 
+                                       |   nonsense... <END_OF_LINE> 
                                        
                                        ;
 
@@ -310,9 +310,9 @@ qualifiedMetastatement!              ::=   metastatement... qualification <END_O
                                        
                                        
 
-unqualifiedStatement!                ::=   statement... ( substitution | inclusion )? <END_OF_LINE>
+unqualifiedStatement!                ::=   statement... <END_OF_LINE>
 
-                                       |   nonsense... ( substitution | inclusion )? <END_OF_LINE> 
+                                       |   nonsense... <END_OF_LINE> 
                                        
                                        ;
 
@@ -328,7 +328,7 @@ qualification                        ::=   ( "by" | "from" ) reference ;
 
 substitution                         ::=   "[" term "for" variable "]" ;
 
-inclusion                            ::=   "includes" variable ;
+inclusion                            ::=   ( "omits" | "includes" } variable ;
 
 
 
