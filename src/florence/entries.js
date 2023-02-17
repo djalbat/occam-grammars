@@ -8,7 +8,7 @@ const entries = [
     "primary-keyword": "^(?:Rule|Axiom|Theorem|Lemma|Conjecture|Metalemma|Metatheorem|Premises|Premise|Conclusion|Proof|Therefore|Suppose|Hence|Then|Type|Variable|Constructor|Combinator|DependentType|DisjointType|Metavariable)\\b"
   },
   {
-    "secondary-keyword": "^(?:from|by|for|contains|undefined)\\b"
+    "secondary-keyword": "^(?:from|by|for|includes|undefined)\\b"
   },
   {
     "meta-type": "^(?:Statement|Context)\\b"
