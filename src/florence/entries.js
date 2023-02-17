@@ -5,7 +5,10 @@ const entries = [
     "special": "^(?:,|::|:|\\|-|\\|=|\\(|\\)|\\[|\\]|\\.\\.\\.)"
   },
   {
-    "keyword": "^(?:Rule|Axiom|Theorem|Lemma|Conjecture|Metalemma|Metatheorem|Premises|Premise|Conclusion|Proof|Therefore|Suppose|Hence|Then|Type|Variable|Constructor|Combinator|DependentType|DisjointType|Metavariable|from|by|for|undefined)\\b"
+    "primary-keyword": "^(?:Rule|Axiom|Theorem|Lemma|Conjecture|Metalemma|Metatheorem|Premises|Premise|Conclusion|Proof|Therefore|Suppose|Hence|Then|Type|Variable|Constructor|Combinator|DependentType|DisjointType|Metavariable)\\b"
+  },
+  {
+    "secondary-keyword": "^(?:from|by|for|contains|undefined)\\b"
   },
   {
     "meta-type": "^(?:Statement|Context)\\b"

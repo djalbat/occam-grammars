@@ -330,7 +330,7 @@ substitution                         ::=   "[" term "for" variable "]" ;
 
 
 
-nonsense                             ::=   ( "from" | "by" | "for" | "undefined" | [type] | [operator] | [special] | [reserved] | [name] | [unassigned] )+ ;
+nonsense                             ::=   ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ ;
 
 
 
