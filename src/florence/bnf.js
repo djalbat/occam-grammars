@@ -328,7 +328,7 @@ qualification                        ::=   ( "by" | "from" ) reference ;
 
 substitution                         ::=   "[" term "for" variable "]" ;
 
-inclusion                            ::=   ( "omits" | "includes" } variable ;
+inclusion                            ::=   ( "omits" | "includes" ) variable ;
 
 
 
