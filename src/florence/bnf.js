@@ -124,13 +124,13 @@ metalemma                            ::=   "Metalemma" ( "(" label ( "," label )
                                              
                                                "Suppose" <END_OF_LINE> metaSupposition+ 
 
-                                               "Then" <END_OF_LINE> metaConsequence
+                                               "Then" <END_OF_LINE> metaConsequent
                                                
                                              )
                                             
                                              | 
                                              
-                                             metaConsequence
+                                             metaConsequent
                                               
                                            ) 
                                            
@@ -144,13 +144,13 @@ metatheorem                          ::=   "Metatheorem" "(" label ( "," label )
                                              
                                                "Suppose" <END_OF_LINE> metaSupposition+ 
 
-                                               "Then" <END_OF_LINE> metaConsequence
+                                               "Then" <END_OF_LINE> metaConsequent
                                                
                                              )
                                             
                                              | 
                                              
-                                             metaConsequence
+                                             metaConsequent
                                               
                                            ) 
                                            
@@ -178,13 +178,13 @@ axiom                                ::=   "Axiom" "(" label ( "," label )* ")" 
                                            
                                                "Suppose" <END_OF_LINE> supposition+
 
-                                               "Then" <END_OF_LINE> consequence 
+                                               "Then" <END_OF_LINE> consequent 
                                              
                                              )
                                              
                                              |
                                              
-                                             consequence
+                                             consequent
                                              
                                            ) ;
 
@@ -196,13 +196,13 @@ lemma                                ::=   "Lemma" ( "(" label ( "," label )* ")
                                            
                                                "Suppose" <END_OF_LINE> supposition+
 
-                                               "Then" <END_OF_LINE> consequence 
+                                               "Then" <END_OF_LINE> consequent 
                                              
                                              )
                                              
                                              |
                                              
-                                             consequence
+                                             consequent
                                              
                                            )
                                            
@@ -216,13 +216,13 @@ theorem                              ::=   "Theorem" "(" label ( "," label )* ")
                                            
                                                "Suppose" <END_OF_LINE> supposition+
 
-                                               "Then" <END_OF_LINE> consequence 
+                                               "Then" <END_OF_LINE> consequent 
                                              
                                              )
                                              
                                              |
                                              
-                                             consequence
+                                             consequent
                                              
                                            )
                                            
@@ -236,13 +236,13 @@ conjecture                           ::=   "Conjecture" "(" label ( "," label )*
                                            
                                                "Suppose" <END_OF_LINE> supposition+
 
-                                               "Then" <END_OF_LINE> consequence 
+                                               "Then" <END_OF_LINE> consequent 
                                              
                                              )
                                              
                                              |
                                              
-                                             consequence
+                                             consequent
                                              
                                            )
                                            
@@ -286,13 +286,13 @@ conclusion                           ::=   unqualifiedMetastatement ;
 
 metaSupposition                      ::=   unqualifiedMetastatement ;
 
-metaConsequence                      ::=   unqualifiedMetastatement ;
+metaConsequent                       ::=   unqualifiedMetastatement ;
 
 
 
 supposition                          ::=   unqualifiedStatement ;
 
-consequence                          ::=   unqualifiedStatement ;
+consequent                           ::=   unqualifiedStatement ;
 
 
 
