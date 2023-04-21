@@ -64,7 +64,7 @@ class View extends Element {
   childElements() {
     const { readOnly } = this.constructor;
 
-    return ([
+    return (
 
       <ColumnsDiv>
         <SizeableDiv>
@@ -102,7 +102,7 @@ class View extends Element {
         </ColumnDiv>
       </ColumnsDiv>
 
-    ]);
+    );
   }
 
   initialise() {
