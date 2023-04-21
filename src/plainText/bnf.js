@@ -3,13 +3,26 @@
 const bnf = `
 
 
-    document       ::=  ( block | verticalSpace )+ ;
+    document       ::=  ( block | verticalSpace )* ;
 
 
-    block          ::=  singleLine+ ;
+    block          ::=  ( 
+    
+                          endedLine+ 
+                          
+                          | 
+                          
+                          ( endedLine* lastLine ) 
+                          
+                        ) 
+                        
+                      ;
 
 
-    singleLine     ::=  [unassigned]+ <END_OF_LINE> ;
+    lastLine       ::=  [unassigned]+ ;
+
+
+    endedLine      ::=  [unassigned]+ <END_OF_LINE> ;
 
 
     verticalSpace  ::=  <END_OF_LINE>+ ;
