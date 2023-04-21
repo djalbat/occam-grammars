@@ -6,17 +6,11 @@ const bnf = `
     document       ::=  ( block | verticalSpace )* ;
 
 
-    block          ::=  ( 
-    
-                          endedLine+ 
+    block          ::=  endedLine* lastLine 
                           
-                          | 
+                     |  endedLine+
                           
-                          ( endedLine* lastLine ) 
-                          
-                        ) 
-                        
-                      ;
+                     ;
 
 
     lastLine       ::=  [unassigned]+ ;
