@@ -3,7 +3,7 @@
 const bnf = `
 
 
-    document       ::=  ( block | verticalSpace )* ;
+    document       ::=  ( block | verticalSpace )+ ;
 
 
     block          ::=  endedLine* lastLine 
