@@ -160,15 +160,29 @@ metatheorem                          ::=   "Metatheorem" "(" label ( "," label )
 
 metaproof                            ::=   "Proof" <END_OF_LINE> metaDerivation ;                                 
 
+metaSubproof                         ::=   "Suppose" <END_OF_LINE> metaSupposition+ metaSubDerivation ;
+
 metaDerivation                       ::=   (
 
-                                             ( qualifiedMetastatement | unqualifiedMetastatement )+  
+                                             ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
 
                                              "Therefore" <END_OF_LINE> 
                                            
                                            )? 
                                            
                                            ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
+
+metaSubDerivation                    ::=   (
+
+                                             "Hence" <END_OF_LINE>
+
+                                             ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+ 
+                                             
+                                           )? 
+                                           
+                                           "Then" <END_OF_LINE> 
+                                           
+                                           ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                           
 
 axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> 
 
