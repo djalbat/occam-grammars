@@ -60,7 +60,7 @@ dependentTypeDeclaration             ::=   "DependentType" dependentType ":" typ
                                          
 
   
-rule                                 ::=   "Rule" "(" label ( "," label )* ")" <END_OF_LINE> 
+rule                                 ::=   "Rule" "(" labels... ")" <END_OF_LINE> 
 
                                            ( 
 
@@ -116,7 +116,7 @@ ruleSubDerivation                    ::=   (
 
 
 
-metalemma                            ::=   "Metalemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
+metalemma                            ::=   "Metalemma" ( "(" labels... ")" )? <END_OF_LINE> 
 
                                            ( 
                                            
@@ -136,7 +136,7 @@ metalemma                            ::=   "Metalemma" ( "(" label ( "," label )
                                            
                                            metaproof ;
 
-metatheorem                          ::=   "Metatheorem" "(" label ( "," label )* ")" <END_OF_LINE> 
+metatheorem                          ::=   "Metatheorem" "(" labels... ")" <END_OF_LINE> 
 
                                            ( 
                                            
@@ -184,7 +184,7 @@ metaSubDerivation                    ::=   (
                                            
                                            ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                           
 
-axiom                                ::=   "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> 
+axiom                                ::=   "Axiom" "(" labels... ")" <END_OF_LINE> 
 
                                            (
                                            
@@ -202,7 +202,7 @@ axiom                                ::=   "Axiom" "(" label ( "," label )* ")" 
                                              
                                            ) ;
 
-lemma                                ::=   "Lemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
+lemma                                ::=   "Lemma" ( "(" labels... ")" )? <END_OF_LINE> 
 
                                            (
                                            
@@ -222,7 +222,7 @@ lemma                                ::=   "Lemma" ( "(" label ( "," label )* ")
                                            
                                            proof ;
 
-theorem                              ::=   "Theorem" "(" label ( "," label )* ")" <END_OF_LINE> 
+theorem                              ::=   "Theorem" "(" labels... ")" <END_OF_LINE> 
 
                                            (
                                            
@@ -242,7 +242,7 @@ theorem                              ::=   "Theorem" "(" label ( "," label )* ")
                                            
                                            proof ;
 
-conjecture                           ::=   "Conjecture" "(" label ( "," label )* ")" <END_OF_LINE>
+conjecture                           ::=   "Conjecture" "(" labels... ")" <END_OF_LINE>
 
                                            (
                                            
@@ -366,13 +366,17 @@ type                                 ::=   [type] ;
 
 
 
+labels                               ::=   label ( "," label )* ;
+
+
+
 metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" argument ")" )? ;
 
 reference                            ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
 context                              ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
-label                                ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
+label                                ::=   [name] ( <NO_WHITESPACE>"(" ( term | nonsense ) ")" )? ;
 
 variable                             ::=   [name] ;`;
 
