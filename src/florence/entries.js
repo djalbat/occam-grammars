@@ -14,7 +14,7 @@ const entries = [
     "meta-type": "^(?:Statement|Context)\\b"
   },
   {
-    "name": "^[A-Za-zΑ-Ωα-ω_0-9]+"
+    "name": "^[A-Za-zΑ-Ωα-ω][A-Za-zΑ-Ωα-ω_0-9]*"
   },
   {
     "unassigned": "^[^\\s]+"
