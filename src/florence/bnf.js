@@ -350,9 +350,9 @@ nonsense                             ::=   ( [type] | [symbol] | [operator] | [s
 
 
 
-metaArgument                         ::=   statement | metaType ;
+metaArgument                         ::=   statement ( ) | metaType ;
 
-argument                             ::=   term | type ;
+argument                             ::=   term ( ) | type ;
 
 
 
