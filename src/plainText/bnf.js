@@ -13,10 +13,10 @@ const bnf = `
                      ;
 
 
-    lastLine       ::=  [unassigned]+ ;
+    lastLine       ::=  ( [alpha-numeric] | [punctuation] | [unassigned] )+ ;
 
 
-    endedLine      ::=  [unassigned]+ <END_OF_LINE> ;
+    endedLine      ::=  ( [alpha-numeric] | [punctuation] | [unassigned] )+ <END_OF_LINE> ;
 
 
     verticalSpace  ::=  <END_OF_LINE>+ ;
