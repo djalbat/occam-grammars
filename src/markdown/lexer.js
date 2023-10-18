@@ -4,7 +4,7 @@ import { CommonLexer, WhitespaceToken, EndOfLineSignificantToken } from "occam-l
 
 import entries from "./entries";
 
-export default class ReadmeLexer extends CommonLexer {
+export default class MarkdownLexer extends CommonLexer {
   static entries = entries;
 
   static EndOfLineToken = EndOfLineSignificantToken;
@@ -27,9 +27,9 @@ export default class ReadmeLexer extends CommonLexer {
 
   static DoublyQuotedStringLiteralToken = null;
 
-  static fromNothing() { return CommonLexer.fromNothing(ReadmeLexer); }
+  static fromNothing() { return CommonLexer.fromNothing(MarkdownLexer); }
 
-  static fromRules(rules) { return CommonLexer.fromRules(ReadmeLexer, rules); }
+  static fromRules(rules) { return CommonLexer.fromRules(MarkdownLexer, rules); }
 
-  static fromEntries(entries) { return CommonLexer.fromEntries(ReadmeLexer, entries); }
+  static fromEntries(entries) { return CommonLexer.fromEntries(MarkdownLexer, entries); }
 }
