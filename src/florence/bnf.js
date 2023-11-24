@@ -340,10 +340,6 @@ qualifiedStatement!                  ::=   statement... qualification <END_OF_LI
 
 qualification                        ::=   ( "by" | "from" ) reference ;
 
-substitution                         ::=   "[" term "for" variable "]" ;
-
-inclusion                            ::=   ( "omits" | "includes" ) variable ;
-
 
 
 nonsense                             ::=   ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ ;
