@@ -346,9 +346,17 @@ nonsense                             ::=   ( [type] | [symbol] | [operator] | [s
 
 
 
-metaArgument                         ::=   statement ( ) | metaType ;
+metaArgument                         ::=   statement ( ) 
 
-argument                             ::=   term ( ) | type ;
+                                       |   metaType ( ) 
+                                       
+                                       ;
+
+argument                             ::=   term ( ) 
+
+                                       |   type ( )
+                                       
+                                       ;
 
 
 
