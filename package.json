@@ -10,6 +10,7 @@
     "url": "https://github.com/djalbat/occam-grammars"
   },
   "dependencies": {
+    "highmark-grammar": "^0.0.3",
     "necessary": "^13.1.4",
     "occam-lexers": "^19.0.67",
     "occam-parsers": "^19.0.88"
