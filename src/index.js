@@ -1,7 +1,5 @@
 "use strict";
 
-export { MarkdownLexer, MarkdownParser } from "highmark-grammar";
-
 export { default as TeXLexer } from "./teX/lexer";
 export { default as MetaJSONLexer } from "./metaJSON/lexer";
 export { default as FlorenceLexer } from "./florence/lexer";
