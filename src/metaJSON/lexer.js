@@ -31,8 +31,4 @@ export default class MetaJSONLexer extends CommonLexer {
   static DoublyQuotedStringLiteralToken = DoublyQuotedStringLiteralToken;
 
   static fromNothing() { return CommonLexer.fromNothing(MetaJSONLexer); }
-
-  static fromRules(rules) { return CommonLexer.fromRules(MetaJSONLexer, rules); }
-
-  static fromEntries(entries) { return CommonLexer.fromEntries(MetaJSONLexer, entries); }
 }

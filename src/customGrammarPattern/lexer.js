@@ -28,8 +28,4 @@ export default class CustomGrammarPatternLexer extends CommonLexer {
   static DoublyQuotedStringLiteralToken = null;
 
   static fromNothing() { return CommonLexer.fromNothing(CustomGrammarPatternLexer); }
-
-  static fromRules(rules) { return CommonLexer.fromRules(CustomGrammarPatternLexer, rules); }
-
-  static fromEntries(entries) { return CommonLexer.fromEntries(CustomGrammarPatternLexer, entries); }
 }
