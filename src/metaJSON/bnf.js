@@ -46,7 +46,7 @@ const bnf = `
     shortenedVersionNumber    ::=  /"(?:0|(?:[1-9]\\d*))\\.(?:0|(?:[1-9]\\d*))\\"/ ;
   
   
-    error                     ::=  . ;
+    error!                    ::=  . ;
 
 `;
 

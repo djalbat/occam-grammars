@@ -16,7 +16,7 @@ const bnf = `
     verticalSpace  ::=  <END_OF_LINE>+ ;
 
 
-    error          ::=  . ;
+    error!         ::=  . ;
 
 
 `;

@@ -40,7 +40,7 @@ verticalSpace                        ::=   <END_OF_LINE>+ ;
 
 
 
-error                                ::=   . ;
+error!                               ::=   . ;
 
 
 
