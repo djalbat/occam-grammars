@@ -362,7 +362,7 @@ argument                             ::=   term ( )
 
 dependentType                        ::=   [type]<NO_WHITESPACE>"(" argument ")" ;
 
-disjointType                         ::=   [type] ;
+disjointType                         ::=   [type] ( "|" [type] )+ ;
 
 metaType                             ::=   [meta-type] ;
 
@@ -374,13 +374,15 @@ labels                               ::=   label ( "," label )* ;
 
 
 
+reference!                           ::=   [name] ( <NO_WHITESPACE>"(" ( term... | nonsense... ) ")" )? ;
+
+context!                             ::=   [name] ( <NO_WHITESPACE>"(" ( term... | nonsense... ) ")" )? ;
+
+label!                               ::=   [name] ( <NO_WHITESPACE>"(" ( term... | nonsense... ) ")" )? ;
+
+
+
 metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" argument ")" )? ;
-
-reference                            ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
-
-context                              ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
-
-label                                ::=   [name] ( <NO_WHITESPACE>"(" ( term | nonsense ) ")" )? ;
 
 variable                             ::=   [name] ;`;
 
