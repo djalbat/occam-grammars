@@ -60,7 +60,7 @@ dependentTypeDeclaration             ::=   "DependentType" dependentType ":" typ
                                          
 
   
-rule                                 ::=   "Rule" "(" labels... ")" <END_OF_LINE> 
+rule                                 ::=   "Rule" parenthesisedLabels <END_OF_LINE> 
 
                                            ( 
 
@@ -116,7 +116,7 @@ ruleSubDerivation                    ::=   (
 
 
 
-metalemma                            ::=   "Metalemma" ( "(" labels... ")" )? <END_OF_LINE> 
+metalemma                            ::=   "Metalemma" ( parenthesisedLabels )? <END_OF_LINE> 
 
                                            ( 
                                            
@@ -136,7 +136,7 @@ metalemma                            ::=   "Metalemma" ( "(" labels... ")" )? <E
                                            
                                            metaproof ;
 
-metatheorem                          ::=   "Metatheorem" "(" labels... ")" <END_OF_LINE> 
+metatheorem                          ::=   "Metatheorem" parenthesisedLabels <END_OF_LINE> 
 
                                            ( 
                                            
@@ -184,7 +184,7 @@ metaSubDerivation                    ::=   (
                                            
                                            ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                           
 
-axiom                                ::=   "Axiom" "(" labels... ")" <END_OF_LINE> 
+axiom                                ::=   "Axiom" parenthesisedLabels <END_OF_LINE> 
 
                                            (
                                            
@@ -202,7 +202,7 @@ axiom                                ::=   "Axiom" "(" labels... ")" <END_OF_LIN
                                              
                                            ) ;
 
-lemma                                ::=   "Lemma" ( "(" labels... ")" )? <END_OF_LINE> 
+lemma                                ::=   "Lemma" ( parenthesisedLabels )? <END_OF_LINE> 
 
                                            (
                                            
@@ -222,7 +222,7 @@ lemma                                ::=   "Lemma" ( "(" labels... ")" )? <END_O
                                            
                                            proof ;
 
-theorem                              ::=   "Theorem" "(" labels... ")" <END_OF_LINE> 
+theorem                              ::=   "Theorem" parenthesisedLabels <END_OF_LINE> 
 
                                            (
                                            
@@ -242,7 +242,7 @@ theorem                              ::=   "Theorem" "(" labels... ")" <END_OF_L
                                            
                                            proof ;
 
-conjecture                           ::=   "Conjecture" "(" labels... ")" <END_OF_LINE>
+conjecture                           ::=   "Conjecture" parenthesisedLabels <END_OF_LINE>
 
                                            (
                                            
@@ -357,6 +357,8 @@ metaType                             ::=   [meta-type] ;
 type                                 ::=   [type] ;
 
 
+
+parenthesisedLabels                  ::=  "(" labels... ")" ; 
 
 labels                               ::=   label ( "," label )* ;
 
