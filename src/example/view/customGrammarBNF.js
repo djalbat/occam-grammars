@@ -31,7 +31,7 @@ export default class CustomGrammarBNFView extends View {
 
   static initialContent = `
 
-                      term!  ::=  operation ( <NO_WHITESPACE>"(" term ")" )? ;
+                       term  ::=  operation ( <NO_WHITESPACE>"(" term ")" )? ;
 
 
                   operation  ::=  "insert"<NO_WHITESPACE>"(" term "," term ")"
