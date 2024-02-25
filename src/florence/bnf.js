@@ -342,25 +342,13 @@ qualification                        ::=   ( "by" | "from" ) reference ;
 
 
 
-nonsense                             ::=   ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ ;
-
-
-
 metaArgument                         ::=   statement ( ) 
 
                                        |   metaType ( ) 
                                        
                                        ;
 
-argument                             ::=   term ( ) 
-
-                                       |   type ( )
-                                       
-                                       ;
-
-
-
-dependentType                        ::=   [type]<NO_WHITESPACE>"(" argument ")" ;
+dependentType                        ::=   [type]<NO_WHITESPACE>"(" argument... ")" ;
 
 disjointType                         ::=   [type] ( "|" [type] )+ ;
 
@@ -382,8 +370,20 @@ label!                               ::=   [name] ( <NO_WHITESPACE>"(" ( term...
 
 
 
-metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" argument ")" )? ;
+nonsense                             ::=   ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ ;
 
-variable                             ::=   [name] ;`;
+
+
+metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" argument... ")" )? ;
+
+variable                             ::=   [name] ;
+
+
+
+argument                             ::=   term ( ) 
+
+                                       |   type ( )
+                                       
+                                       ;`;
 
 export default bnf;
