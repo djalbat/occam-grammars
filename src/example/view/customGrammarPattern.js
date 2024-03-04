@@ -1,7 +1,6 @@
 "use strict";
 
-import { CustomGrammarPatternLexer } from "../../index";  ///
-import { CustomGrammarPatternParser } from "../../index";  ///
+import { CustomGrammarPatternLexer, CustomGrammarPatternParser } from "../../index";  ///
 
 import View from "../view";
 

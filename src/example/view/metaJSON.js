@@ -1,7 +1,6 @@
 "use strict";
 
-import { MetaJSONLexer } from "../../index";  ///
-import { MetaJSONParser } from "../../index";  ///
+import { MetaJSONLexer, MetaJSONParser } from "../../index";  ///
 
 import View from "../view";
 

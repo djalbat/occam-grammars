@@ -1,7 +1,6 @@
 "use strict";
 
-import { CustomGrammarBNFLexer } from "../../index";  ///
-import { CustomGrammarBNFParser } from "../../index";  ///
+import { CustomGrammarBNFLexer, CustomGrammarBNFParser } from "../../index";  ///
 
 import View from "../view";
 

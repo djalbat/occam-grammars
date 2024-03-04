@@ -1,7 +1,6 @@
 "use strict";
 
-import { PlainTextLexer } from "../../index";  ///
-import { PlainTextParser } from "../../index";  ///
+import { PlainTextLexer, PlainTextParser } from "../../index";  ///
 
 import View from "../view";
 

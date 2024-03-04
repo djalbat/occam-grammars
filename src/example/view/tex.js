@@ -1,7 +1,6 @@
 "use strict";
 
-import { TeXLexer } from "../../index";  ///
-import { TeXParser } from "../../index";  ///
+import { TeXLexer, TeXParser } from "../../index";  ///
 
 import View from "../view";
 
