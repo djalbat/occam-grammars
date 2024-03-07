@@ -116,7 +116,7 @@ ruleSubDerivation                    ::=   (
 
 
 
-metalemma                            ::=   "Metalemma" ( parenthesisedLabels )? <END_OF_LINE> 
+metalemma                            ::=   "Metalemma" parenthesisedLabels? <END_OF_LINE> 
 
                                            ( 
                                            
@@ -202,7 +202,7 @@ axiom                                ::=   "Axiom" parenthesisedLabels <END_OF_L
                                              
                                            ) ;
 
-lemma                                ::=   "Lemma" ( parenthesisedLabels )? <END_OF_LINE> 
+lemma                                ::=   "Lemma" parenthesisedLabels? <END_OF_LINE> 
 
                                            (
                                            
