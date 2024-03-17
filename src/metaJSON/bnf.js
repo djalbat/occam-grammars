@@ -27,7 +27,7 @@ const bnf = `
     repository                ::=  [string-literal] ;
 
 
-    dependency!               ::=  name ":" shortenedVersionNumber ;
+    dependency.               ::=  name ":" shortenedVersionNumber ;
 
 
     dependencies              ::=  "{" 
@@ -46,7 +46,7 @@ const bnf = `
     shortenedVersionNumber    ::=  /"(?:0|(?:[1-9]\\d*))\\.(?:0|(?:[1-9]\\d*))\\"/ ;
   
   
-    error!                    ::=  . ;
+    error.                    ::=  . ;
 
 `;
 

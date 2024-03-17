@@ -40,7 +40,7 @@ verticalSpace                        ::=   <END_OF_LINE>+ ;
 
 
 
-error!                               ::=   . ;
+error.                               ::=   . ;
 
 
 
@@ -310,13 +310,13 @@ consequent                           ::=   unqualifiedStatement ;
 
 
 
-unqualifiedMetastatement!            ::=   metastatement... <END_OF_LINE> 
+unqualifiedMetastatement..           ::=   metastatement... <END_OF_LINE> 
 
                                        |   nonsense... <END_OF_LINE> 
                                        
                                        ;
 
-qualifiedMetastatement!              ::=   metastatement... qualification <END_OF_LINE> 
+qualifiedMetastatement..             ::=   metastatement... qualification <END_OF_LINE> 
 
                                        |   nonsense... qualification <END_OF_LINE> 
                                         
@@ -324,13 +324,13 @@ qualifiedMetastatement!              ::=   metastatement... qualification <END_O
                                        
                                        
 
-unqualifiedStatement!                ::=   statement... <END_OF_LINE>
+unqualifiedStatement..               ::=   statement... <END_OF_LINE>
 
                                        |   nonsense... <END_OF_LINE> 
                                        
                                        ;
 
-qualifiedStatement!                  ::=   statement... qualification <END_OF_LINE> 
+qualifiedStatement..                 ::=   statement... qualification <END_OF_LINE> 
 
                                        |   nonsense... qualification <END_OF_LINE> 
                                        
@@ -364,11 +364,11 @@ labels                               ::=   label ( "," label )* ;
 
 
 
-reference!                           ::=   [name] ( <NO_WHITESPACE>"(" ( term... | nonsense... ) ")" )? ;
+reference.                           ::=   [name] ( <NO_WHITESPACE>"(" ( term... | nonsense... ) ")" )? ;
 
-context!                             ::=   [name] ( <NO_WHITESPACE>"(" ( term... | nonsense... ) ")" )? ;
+context.                             ::=   [name] ( <NO_WHITESPACE>"(" ( term... | nonsense... ) ")" )? ;
 
-label!                               ::=   [name] ( <NO_WHITESPACE>"(" ( term... | nonsense... ) ")" )? ;
+label.                               ::=   [name] ( <NO_WHITESPACE>"(" ( term... | nonsense... ) ")" )? ;
 
 
 
