@@ -1,8 +1,7 @@
 "use strict";
 
-import { CommonParser } from "occam-parsers";
-
 import bnf from "./bnf";
+import CommonParser from "../common/parser";
 
 export default class TeXParser extends CommonParser {
   static bnf = bnf;

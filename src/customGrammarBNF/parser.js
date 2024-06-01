@@ -2,4 +2,8 @@
 
 import { BNFParser } from "occam-parsers";
 
-export default class CustomGrammarBNFParser extends BNFParser {}
+import State from "../state";
+
+export default class CustomGrammarBNFParser extends BNFParser {
+  static State = State;
+}
