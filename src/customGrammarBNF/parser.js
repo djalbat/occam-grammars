@@ -2,8 +2,16 @@
 
 import { BNFParser } from "occam-parsers";
 
-import State from "../state";
+import CommonParser from "../common/parser";
 
-export default class CustomGrammarBNFParser extends BNFParser {
-  static State = State;
+const { bnf } = BNFParser;
+
+export default class CustomGrammarBNFParser extends CommonParser {
+  static bnf = bnf;
+
+  static fromNothing() { return CommonParser.fromNothing(CustomGrammarBNFParser); }
+
+  static fromBNF(bnf) { return CommonParser.fromBNF(CustomGrammarBNFParser, bnf); }
+
+  static fromRules(rules) { return CommonParser.fromRules(CustomGrammarBNFParser, rules); }
 }
