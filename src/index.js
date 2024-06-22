@@ -1,5 +1,7 @@
 "use strict";
 
+export { default as documentTypes } from "./documentTypes";
+
 export { default as State } from "./state";
 export { default as TeXLexer } from "./teX/lexer";
 export { default as BasicLexer } from "./basic/lexer";
