@@ -1,13 +1,13 @@
 "use strict";
 
-import { MetaJSONLexer, MetaJSONParser } from "../../index";  ///
+import { JSONLexer, JSONParser } from "../../index";  ///
 
 import View from "../view";
 
-export default class MetaJSONView extends View {
-  static Lexer = MetaJSONLexer;
+export default class JSONView extends View {
+  static Lexer = JSONLexer;
 
-  static Parser = MetaJSONParser;
+  static Parser = JSONParser;
 
   static readOnly = false;
 
@@ -22,6 +22,6 @@ export default class MetaJSONView extends View {
 `;
 
   static defaultProperties = {
-    className: "meta-json"
+    className: "json"
   };
 }

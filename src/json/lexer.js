@@ -7,7 +7,7 @@ import { WhitespaceToken,
 import entries from "./entries";
 import CommonLexer from "../common/lexer";
 
-export default class MetaJSONLexer extends CommonLexer {
+export default class JSONLexer extends CommonLexer {
   static entries = entries;
 
   static EndOfLineToken = EndOfLineNonSignificantToken; ///
@@ -16,9 +16,9 @@ export default class MetaJSONLexer extends CommonLexer {
 
   static EndOfLineCommentToken = null;
 
-  static RegularExpressionToken = null;
-
   static SingleLineCommentToken = null;
+
+  static RegularExpressionToken = null;
 
   static EndOfMultiLineCommentToken = null;
 
@@ -30,9 +30,9 @@ export default class MetaJSONLexer extends CommonLexer {
 
   static DoublyQuotedStringLiteralToken = DoublyQuotedStringLiteralToken;
 
-  static fromNothing() { return CommonLexer.fromNothing(MetaJSONLexer); }
+  static fromNothing() { return CommonLexer.fromNothing(JSONLexer); }
 
-  static fromRules(rules) { return CommonLexer.fromRules(MetaJSONLexer, rules); }
+  static fromRules(rules) { return CommonLexer.fromRules(JSONLexer, rules); }
 
-  static fromEntries(entries) { return CommonLexer.fromEntries(MetaJSONLexer, entries); }
+  static fromEntries(entries) { return CommonLexer.fromEntries(JSONLexer, entries); }
 }
