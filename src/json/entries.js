@@ -8,7 +8,10 @@ const entries = [
     "number": "^-?[1-9][0-9]*(\\.[0-9]+)?"
   },
   {
-    "keyword": "^(?:null|true|false)"
+    "boolean": "^(?:true|false)"
+  },
+  {
+    "null": "^(?:null)"
   },
   {
     "unassigned": "^[^\\s]+"

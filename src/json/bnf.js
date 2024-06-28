@@ -16,39 +16,27 @@ const bnf = `
     
                    |  [string-literal] 
     
+                   |  [boolean] 
+    
                    |  [number] 
     
-                   |  "true" 
+                   |  [null] 
     
-                   |  "false" 
-    
-                   |  "null" 
-                   
                    ;
   
   
-    object       ::=  "{" 
-    
-                        ( 
-                        
-                          [string-literal] ":" json ( "," [string-literal] ":" json )* 
-                        
-                        )? 
-                      
-                      "}" ;
+    object       ::=  "{" ( property ( "," property )* )? "}" ;
   
     
-    array        ::=  "[" 
+    array        ::=  "[" ( element ( "," element )* )? "]" ;
+  
+  
+    property     ::=  [string-literal] ":" json ;
     
-                        ( 
-                        
-                          json ( "," json )* 
-                        
-                        )? 
-                      
-                      "]" ;
-  
-  
+
+    element      ::=  json ;
+    
+
     error.       ::=  . ;
     
 
