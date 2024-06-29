@@ -12,12 +12,7 @@ export default class JSONView extends View {
   static readOnly = false;
 
   static initialContent = `{
-  "version": "0.0.1",
-  "repository": "https://github.com/djalbat/strings",
-  "dependencies": {
-    "natural-numbers": "0.1",
-    "arithmetic": "2.3"
-  }
+  "version": "1.2.3"
 }
 `;
 

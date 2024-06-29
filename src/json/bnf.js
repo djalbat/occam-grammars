@@ -10,6 +10,7 @@ const bnf = `
                    ;
   
   
+  
     json         ::=  array 
     
                    |  object 
@@ -25,17 +26,50 @@ const bnf = `
                    ;
   
   
-    object       ::=  "{" ( property ( "," property )* )? "}" ;
+  
+    object..     ::=  "{" 
+    
+                        ( 
+                        
+                          ( property ( "," property )* nonsense? ) 
+                          
+                          | 
+                          
+                          ( nonsense... property ( "," property )* nonsense? )
+                        
+                        )? 
+    
+                      "}" ;
+  
   
     
-    array        ::=  "[" ( element ( "," element )* )? "]" ;
+    array..      ::=  "[" 
+    
+                        ( 
+                        
+                          ( element ( "," element )* nonsense? ) 
+                          
+                          | 
+                          
+                          ( nonsense... element ( "," element )* nonsense? )
+                        
+                        )? 
+                      
+                      "]" ;
   
   
+     
     property     ::=  [string-literal] ":" json ;
+  
     
 
     element      ::=  json ;
+  
     
+
+    nonsense     ::=  ( ":" | "," | [string-literal] | [number] | [boolean] | [null] | [unassigned] )+ ;
+    
+
 
     error.       ::=  . ;
     
