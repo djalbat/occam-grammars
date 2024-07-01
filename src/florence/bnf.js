@@ -372,7 +372,7 @@ label.                               ::=   [name] ( <NO_WHITESPACE>"(" ( term...
 
 
 
-nonsense                             ::=   ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ ;
+nonsense.                            ::=   ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ ;
 
 
 
