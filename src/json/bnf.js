@@ -67,7 +67,7 @@ const bnf = `
   
     
 
-    nonsense     ::=  ( ":" | "," | [string-literal] | [number] | [boolean] | [null] | [unassigned] )+ ;
+    nonsense.    ::=  ( ":" | "," | [string-literal] | [number] | [boolean] | [null] | [unassigned] )+ ;
     
 
 
