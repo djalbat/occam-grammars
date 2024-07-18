@@ -342,12 +342,6 @@ qualification                        ::=   ( "by" | "from" ) reference ;
 
 
 
-metaArgument                         ::=   statement ( ) 
-
-                                       |   metaType ( ) 
-                                       
-                                       ;
-
 dependentType                        ::=   [type]<NO_WHITESPACE>"(" argument... ")" ;
 
 disjointType                         ::=   [type] ( "|" [type] )+ ;
@@ -381,6 +375,12 @@ metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" argument.
 variable                             ::=   [name] ;
 
 
+
+metaArgument                         ::=   statement ( ) 
+
+                                       |   metaType ( ) 
+                                       
+                                       ;
 
 argument                             ::=   term ( ) 
 
