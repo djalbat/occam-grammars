@@ -358,11 +358,11 @@ labels                               ::=   label ( "," label )* ;
 
 
 
-reference.                           ::=   [name] ( <NO_WHITESPACE>"(" ( term... | nonsense... ) ")" )? ;
+reference.                           ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
-context.                             ::=   [name] ( <NO_WHITESPACE>"(" ( term... | nonsense... ) ")" )? ;
+context.                             ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
-label.                               ::=   [name] ( <NO_WHITESPACE>"(" ( term... | nonsense... ) ")" )? ;
+label.                               ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
 
 
