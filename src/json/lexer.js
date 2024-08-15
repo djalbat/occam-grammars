@@ -1,11 +1,11 @@
 "use strict";
 
-import { WhitespaceToken,
+import { CommonLexer,
+         WhitespaceToken,
          EndOfLineNonSignificantToken,
          DoublyQuotedStringLiteralToken } from "occam-lexers";
 
 import entries from "./entries";
-import CommonLexer from "../common/lexer";
 
 export default class JSONLexer extends CommonLexer {
   static entries = entries;

@@ -1,6 +1,6 @@
 "use strict";
 
-import CommonParser from "../common/parser";
+import { CommonParser } from "occam-parsers";
 
 import bnf from "./bnf";
 

@@ -1,9 +1,8 @@
 "use strict";
 
-import { WhitespaceToken, EndOfLineSignificantToken } from "occam-lexers";
+import { CommonLexer, WhitespaceToken, EndOfLineSignificantToken } from "occam-lexers";
 
 import entries from "./entries";
-import CommonLexer from "../common/lexer";
 
 export default class PlainTextLexer extends CommonLexer {
   static entries = entries;

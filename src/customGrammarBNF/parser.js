@@ -1,8 +1,6 @@
 "use strict";
 
-import { BNFParser } from "occam-parsers";
-
-import CommonParser from "../common/parser";
+import { BNFParser, CommonParser } from "occam-parsers";
 
 const { bnf } = BNFParser;
 

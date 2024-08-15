@@ -1,6 +1,7 @@
 "use strict";
 
-import { WhitespaceToken,
+import { CommonLexer,
+         WhitespaceToken,
          EndOfLineSignificantToken,
          DoublyQuotedStringLiteralToken,
          EndOfLineCommentSignificantToken,
@@ -10,7 +11,6 @@ import { WhitespaceToken,
          PythonStyleMiddleOfMultiLineCommentToken } from "occam-lexers";
 
 import entries from "./entries";
-import CommonLexer from "../common/lexer";
 
 export default class FlorenceLexer extends CommonLexer {
   static entries = entries;

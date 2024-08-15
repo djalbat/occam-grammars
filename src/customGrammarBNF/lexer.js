@@ -1,8 +1,6 @@
 "use strict";
 
-import { BNFLexer, WhitespaceToken, RegularExpressionToken, EndOfLineNonSignificantToken, DoublyQuotedStringLiteralToken } from "occam-lexers";
-
-import CommonLexer from "../common/lexer";
+import { BNFLexer, CommonLexer, WhitespaceToken, RegularExpressionToken, EndOfLineNonSignificantToken, DoublyQuotedStringLiteralToken } from "occam-lexers";
 
 const { entries } = BNFLexer;
 
