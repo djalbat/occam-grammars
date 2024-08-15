@@ -360,8 +360,6 @@ labels                               ::=   label ( "," label )* ;
 
 reference.                           ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
-context.                             ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
-
 label.                               ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
 
