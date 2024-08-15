@@ -1,388 +1,388 @@
 "use strict";
 
-const bnf = `document                             ::=   ( topLevelDeclaration | verticalSpace | error )+ ;
+const bnf = `document                             ::=  ( topLevelDeclaration | verticalSpace | error )+ ;
 
 
 
-topLevelDeclaration                  ::=   typeDeclaration 
+topLevelDeclaration                  ::=  typeDeclaration 
                                            
-                                       |   variableDeclaration 
+                                       |  variableDeclaration 
                                            
-                                       |   combinatorDeclaration 
+                                       |  combinatorDeclaration 
                                            
-                                       |   constructorDeclaration 
+                                       |  constructorDeclaration 
                                            
-                                       |   disjointTypeDeclaration 
+                                       |  disjointTypeDeclaration 
                                            
-                                       |   metavariableDeclaration 
+                                       |  metavariableDeclaration 
                                            
-                                       |   dependentTypeDeclaration 
+                                       |  dependentTypeDeclaration 
                                            
-                                       |   rule 
+                                       |  rule 
 
-                                       |   axiom 
+                                       |  axiom 
 
-                                       |   lemma 
+                                       |  lemma 
 
-                                       |   theorem 
+                                       |  theorem 
 
-                                       |   conjecture 
+                                       |  conjecture 
 
-                                       |   metalemma 
+                                       |  metalemma 
 
-                                       |   metatheorem 
+                                       |  metatheorem 
 
                                        ;
 
 
 
-verticalSpace                        ::=   <END_OF_LINE>+ ;
+verticalSpace                        ::=  <END_OF_LINE>+ ;
 
 
 
-error.                               ::=   . ;
+error.                               ::=  . ;
 
 
 
-typeDeclaration                      ::=   "Type" type ( ":" type )? <END_OF_LINE> ;
+typeDeclaration                      ::=  "Type" type ( ":" type )? <END_OF_LINE> ;
  
-variableDeclaration                  ::=   "Variable" variable ( ":" type )? <END_OF_LINE> ;
+variableDeclaration                  ::=  "Variable" variable ( ":" type )? <END_OF_LINE> ;
  
-combinatorDeclaration                ::=   "Combinator" statement... <END_OF_LINE> ;
+combinatorDeclaration                ::=  "Combinator" statement... <END_OF_LINE> ;
  
-constructorDeclaration               ::=   "Constructor" term... ( ":" type )? <END_OF_LINE> ;
+constructorDeclaration               ::=  "Constructor" term... ( ":" type )? <END_OF_LINE> ;
  
-disjointTypeDeclaration              ::=   "DisjointType" disjointType ":" type ( "," type )+ <END_OF_LINE> ;
+disjointTypeDeclaration              ::=  "DisjointType" disjointType ":" type ( "," type )+ <END_OF_LINE> ;
                                        
-metavariableDeclaration              ::=   "Metavariable" metavariable ":" metaType <END_OF_LINE> ;
+metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaType <END_OF_LINE> ;
  
-dependentTypeDeclaration             ::=   "DependentType" dependentType ":" type <END_OF_LINE> ;
+dependentTypeDeclaration             ::=  "DependentType" dependentType ":" type <END_OF_LINE> ;
                                          
 
   
-rule                                 ::=   "Rule" parenthesisedLabels <END_OF_LINE> 
+rule                                 ::=  "Rule" parenthesisedLabels <END_OF_LINE> 
 
-                                           ( 
+                                          ( 
 
-                                             ( "Premises" <END_OF_LINE> premise premise+ ) 
+                                            ( "Premises" <END_OF_LINE> premise premise+ ) 
                                              
-                                             | 
+                                            | 
                                              
-                                             ( "Premise" <END_OF_LINE> premise ) 
+                                            ( "Premise" <END_OF_LINE> premise ) 
                                              
-                                           )?
+                                          )?
                                              
-                                           "Conclusion" <END_OF_LINE> conclusion 
+                                          "Conclusion" <END_OF_LINE> conclusion 
                                            
-                                           ruleProof?  ;
+                                          ruleProof?  ;
                                            
                                            
 
-ruleProof                            ::=   "Proof" <END_OF_LINE> ruleDerivation ;
+ruleProof                            ::=  "Proof" <END_OF_LINE> ruleDerivation ;
                                           
-ruleSubproof                         ::=   ( 
+ruleSubproof                         ::=  ( 
 
-                                             ( "Premises" <END_OF_LINE> premise premise+ ) 
+                                            ( "Premises" <END_OF_LINE> premise premise+ ) 
                                              
-                                             | 
+                                            | 
                                              
-                                             ( "Premise" <END_OF_LINE> premise ) 
+                                            ( "Premise" <END_OF_LINE> premise ) 
                                              
-                                           )
+                                          )
                                             
-                                           ruleSubDerivation ; 
+                                          ruleSubDerivation ; 
 
-ruleDerivation                       ::=   (
+ruleDerivation                       ::=  (
 
-                                             ( ruleSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
+                                            ( ruleSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
 
-                                             "Therefore" <END_OF_LINE> 
+                                            "Therefore" <END_OF_LINE> 
                                            
-                                           )? 
+                                          )? 
                                            
-                                           ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
+                                          ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
 
-ruleSubDerivation                    ::=   (
+ruleSubDerivation                    ::=  (
 
-                                             "Hence" <END_OF_LINE>
+                                            "Hence" <END_OF_LINE>
 
-                                             ( ruleSubproof | qualifiedMetastatement | unqualifiedMetastatement )+ 
+                                            ( ruleSubproof | qualifiedMetastatement | unqualifiedMetastatement )+ 
                                              
-                                           )? 
+                                          )? 
                                            
-                                           "Then" <END_OF_LINE> 
+                                          "Then" <END_OF_LINE> 
                                            
-                                           ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
+                                          ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
 
 
 
-metalemma                            ::=   "Metalemma" parenthesisedLabels? <END_OF_LINE> 
+metalemma                            ::=  "Metalemma" parenthesisedLabels? <END_OF_LINE> 
 
-                                           ( 
+                                          ( 
                                            
-                                             (
+                                            (
                                              
-                                               "Suppose" <END_OF_LINE> metaSupposition+ 
+                                              "Suppose" <END_OF_LINE> metaSupposition+ 
 
-                                               "Then" <END_OF_LINE> metaConsequent
+                                              "Then" <END_OF_LINE> metaConsequent
                                                
-                                             )
+                                            )
                                             
-                                             | 
+                                            | 
                                              
-                                             metaConsequent
+                                            metaConsequent
                                               
-                                           ) 
+                                          ) 
                                            
-                                           metaproof ;
+                                          metaproof ;
 
-metatheorem                          ::=   "Metatheorem" parenthesisedLabels <END_OF_LINE> 
+metatheorem                          ::=  "Metatheorem" parenthesisedLabels <END_OF_LINE> 
 
-                                           ( 
+                                          ( 
                                            
-                                             (
+                                            (
                                              
-                                               "Suppose" <END_OF_LINE> metaSupposition+ 
+                                              "Suppose" <END_OF_LINE> metaSupposition+ 
 
-                                               "Then" <END_OF_LINE> metaConsequent
+                                              "Then" <END_OF_LINE> metaConsequent
                                                
-                                             )
+                                            )
                                             
-                                             | 
+                                            | 
                                              
-                                             metaConsequent
+                                            metaConsequent
                                               
-                                           ) 
+                                          ) 
                                            
-                                           metaproof ;
+                                          metaproof ;
 
 
 
-metaproof                            ::=   "Proof" <END_OF_LINE> metaDerivation ;                                 
+metaproof                            ::=  "Proof" <END_OF_LINE> metaDerivation ;                                 
 
-metaSubproof                         ::=   "Suppose" <END_OF_LINE> metaSupposition+ metaSubDerivation ;
+metaSubproof                         ::=  "Suppose" <END_OF_LINE> metaSupposition+ metaSubDerivation ;
 
-metaDerivation                       ::=   (
+metaDerivation                       ::=  (
 
-                                             ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
+                                            ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
 
-                                             "Therefore" <END_OF_LINE> 
+                                            "Therefore" <END_OF_LINE> 
                                            
-                                           )? 
+                                          )? 
                                            
-                                           ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
+                                          ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
 
-metaSubDerivation                    ::=   (
+metaSubDerivation                    ::=  (
 
-                                             "Hence" <END_OF_LINE>
+                                            "Hence" <END_OF_LINE>
 
-                                             ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+ 
+                                            ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+ 
                                              
-                                           )? 
+                                          )? 
                                            
-                                           "Then" <END_OF_LINE> 
+                                          "Then" <END_OF_LINE> 
                                            
-                                           ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                           
+                                          ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                           
 
-axiom                                ::=   "Axiom" parenthesisedLabels <END_OF_LINE> 
+axiom                                ::=  "Axiom" parenthesisedLabels <END_OF_LINE> 
 
-                                           (
+                                          (
                                            
-                                             (
+                                            (
                                            
-                                               "Suppose" <END_OF_LINE> supposition+
+                                              "Suppose" <END_OF_LINE> supposition+
 
-                                               "Then" <END_OF_LINE> consequent 
+                                              "Then" <END_OF_LINE> consequent 
                                              
-                                             )
+                                            )
                                              
-                                             |
+                                            |
                                              
-                                             consequent
+                                            consequent
                                              
-                                           ) ;
+                                          ) ;
 
-lemma                                ::=   "Lemma" parenthesisedLabels? <END_OF_LINE> 
+lemma                                ::=  "Lemma" parenthesisedLabels? <END_OF_LINE> 
 
-                                           (
+                                          (
                                            
-                                             (
+                                            (
                                            
-                                               "Suppose" <END_OF_LINE> supposition+
+                                              "Suppose" <END_OF_LINE> supposition+
 
-                                               "Then" <END_OF_LINE> consequent 
+                                              "Then" <END_OF_LINE> consequent 
                                              
-                                             )
+                                            )
                                              
-                                             |
+                                            |
+                                            
+                                            consequent
                                              
-                                             consequent
-                                             
-                                           )
+                                          )
                                            
-                                           proof ;
+                                          proof ;
 
-theorem                              ::=   "Theorem" parenthesisedLabels <END_OF_LINE> 
+theorem                              ::=  "Theorem" parenthesisedLabels <END_OF_LINE> 
 
-                                           (
+                                          (
                                            
-                                             (
+                                            (
                                            
-                                               "Suppose" <END_OF_LINE> supposition+
+                                              "Suppose" <END_OF_LINE> supposition+
 
-                                               "Then" <END_OF_LINE> consequent 
+                                              "Then" <END_OF_LINE> consequent 
                                              
-                                             )
+                                            )
                                              
-                                             |
+                                            |
                                              
-                                             consequent
+                                            consequent
                                              
-                                           )
+                                          )
                                            
-                                           proof ;
+                                          proof ;
 
-conjecture                           ::=   "Conjecture" parenthesisedLabels <END_OF_LINE>
+conjecture                           ::=  "Conjecture" parenthesisedLabels <END_OF_LINE>
 
-                                           (
+                                          (
                                            
-                                             (
+                                            (
                                            
-                                               "Suppose" <END_OF_LINE> supposition+
+                                              "Suppose" <END_OF_LINE> supposition+
 
-                                               "Then" <END_OF_LINE> consequent 
+                                              "Then" <END_OF_LINE> consequent 
                                              
-                                             )
+                                            )
                                              
-                                             |
+                                            |
                                              
-                                             consequent
+                                            consequent
                                              
-                                           )
+                                          )
                                            
-                                           proof? ;
+                                          proof? ;
 
 
 
-proof                                ::=   "Proof" <END_OF_LINE> derivation ;
+proof                                ::=  "Proof" <END_OF_LINE> derivation ;
                                                                                          
-subproof                             ::=   "Suppose" <END_OF_LINE> supposition+ subDerivation ;
+subproof                             ::=  "Suppose" <END_OF_LINE> supposition+ subDerivation ;
 
-derivation                           ::=   (
+derivation                           ::=  (
 
-                                             ( subproof | qualifiedStatement | unqualifiedStatement )+ 
+                                            ( subproof | qualifiedStatement | unqualifiedStatement )+ 
 
-                                             "Therefore" <END_OF_LINE>
+                                            "Therefore" <END_OF_LINE>
                                              
-                                           )? 
+                                          )? 
                                            
-                                           ( qualifiedStatement | unqualifiedStatement ) ;
+                                          ( qualifiedStatement | unqualifiedStatement ) ;
 
-subDerivation                        ::=   (
+subDerivation                        ::=  (
 
-                                             "Hence" <END_OF_LINE>
+                                            "Hence" <END_OF_LINE>
 
-                                             ( subproof | qualifiedStatement | unqualifiedStatement )+ 
+                                            ( subproof | qualifiedStatement | unqualifiedStatement )+ 
                                              
-                                           )? 
+                                          )? 
                                            
-                                           "Then" <END_OF_LINE> 
+                                          "Then" <END_OF_LINE> 
                                            
-                                           ( qualifiedStatement | unqualifiedStatement ) ;                                           
+                                          ( qualifiedStatement | unqualifiedStatement ) ;                                           
 
 
 
-premise                              ::=   unqualifiedMetastatement ;
+premise                              ::=  unqualifiedMetastatement ;
 
-conclusion                           ::=   unqualifiedMetastatement ;
-
-
-
-metaSupposition                      ::=   unqualifiedMetastatement ;
-
-metaConsequent                       ::=   unqualifiedMetastatement ;
+conclusion                           ::=  unqualifiedMetastatement ;
 
 
 
-supposition                          ::=   unqualifiedStatement ;
+metaSupposition                      ::=  unqualifiedMetastatement ;
 
-consequent                           ::=   unqualifiedStatement ;
+metaConsequent                       ::=  unqualifiedMetastatement ;
 
 
 
-unqualifiedMetastatement..           ::=   metastatement... <END_OF_LINE> 
+supposition                          ::=  unqualifiedStatement ;
 
-                                       |   nonsense... <END_OF_LINE> 
+consequent                           ::=  unqualifiedStatement ;
+
+
+
+unqualifiedMetastatement..           ::=  metastatement... <END_OF_LINE> 
+
+                                       |  nonsense... <END_OF_LINE> 
                                        
                                        ;
 
-qualifiedMetastatement..             ::=   metastatement... qualification <END_OF_LINE> 
+qualifiedMetastatement..             ::=  metastatement... qualification <END_OF_LINE> 
 
-                                       |   nonsense... qualification <END_OF_LINE> 
+                                       |  nonsense... qualification <END_OF_LINE> 
                                         
                                        ;
                                        
                                        
 
-unqualifiedStatement..               ::=   statement... <END_OF_LINE>
+unqualifiedStatement..               ::=  statement... <END_OF_LINE>
 
-                                       |   nonsense... <END_OF_LINE> 
+                                       |  nonsense... <END_OF_LINE> 
                                        
                                        ;
 
-qualifiedStatement..                 ::=   statement... qualification <END_OF_LINE> 
+qualifiedStatement..                 ::=  statement... qualification <END_OF_LINE> 
 
-                                       |   nonsense... qualification <END_OF_LINE> 
+                                       |  nonsense... qualification <END_OF_LINE> 
                                        
                                        ;
 
 
 
-qualification                        ::=   ( "by" | "from" ) reference ;
+qualification                        ::=  ( "by" | "from" ) reference ;
 
 
 
-dependentType                        ::=   [type]<NO_WHITESPACE>"(" argument... ")" ;
+dependentType                        ::=  [type]<NO_WHITESPACE>"(" argument... ")" ;
 
-disjointType                         ::=   [type] ( "|" [type] )+ ;
+disjointType                         ::=  [type] ( "|" [type] )+ ;
 
-metaType                             ::=   [meta-type] ;
+metaType                             ::=  [meta-type] ;
 
-type                                 ::=   [type] ;
+type                                 ::=  [type] ;
 
 
 
 parenthesisedLabels                  ::=  "(" labels... ")" ; 
 
-labels                               ::=   label ( "," label )* ;
+labels                               ::=  label ( "," label )* ;
 
 
 
-reference.                           ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
+reference.                           ::=  [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
-label.                               ::=   [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
-
-
-
-nonsense.                            ::=   ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ ;
+label.                               ::=  [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
 
 
-metavariable                         ::=   [name] ( <NO_WHITESPACE>"(" argument... ")" )? ;
-
-variable                             ::=   [name] ;
+nonsense.                            ::=  ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ ;
 
 
 
-metaArgument                         ::=   statement ( ) 
+metavariable                         ::=  [name] ( <NO_WHITESPACE>"(" argument... ")" )? ;
 
-                                       |   metaType ( ) 
+variable                             ::=  [name] ;
+
+
+
+metaArgument                         ::=  statement ( ) 
+
+                                       |  metaType ( ) 
                                        
                                        ;
 
-argument                             ::=   term ( ) 
+argument                             ::=  term ( ) 
 
-                                       |   type ( )
+                                       |  type ( )
                                        
                                        ;`;
 
