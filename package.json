@@ -1,7 +1,7 @@
 {
   "name": "occam-grammars",
   "author": "James Smith",
-  "version": "1.0.686",
+  "version": "1.0.687",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/occam-grammars",
   "description": "Occam's grammars.",

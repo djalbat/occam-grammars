@@ -52,12 +52,8 @@ combinatorDeclaration                ::=  "Combinator" statement... <END_OF_LINE
  
 constructorDeclaration               ::=  "Constructor" term... ( ":" type )? <END_OF_LINE> ;
  
-disjointTypeDeclaration              ::=  "DisjointType" disjointType ":" type ( "," type )+ <END_OF_LINE> ;
-                                       
 metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaType <END_OF_LINE> ;
  
-dependentTypeDeclaration             ::=  "DependentType" dependentType ":" type <END_OF_LINE> ;
-                                         
 
   
 rule                                 ::=  "Rule" parenthesisedLabels <END_OF_LINE> 
@@ -332,14 +328,6 @@ qualifiedStatement..                 ::=  statement... qualification <END_OF_LIN
 
 
 
-qualification                        ::=  ( "by" | "from" ) reference ;
-
-
-
-dependentType                        ::=  [type]<NO_WHITESPACE>"(" argument... ")" ;
-
-disjointType                         ::=  [type] ( "|" [type] )+ ;
-
 metaType                             ::=  [meta-type] ;
 
 type                                 ::=  [type] ;
@@ -348,13 +336,11 @@ type                                 ::=  [type] ;
 
 parenthesisedLabels                  ::=  "(" labels... ")" ; 
 
-labels                               ::=  label ( "," label )* ;
+qualification.                       ::=  ( "by" | "from" ) label ;
 
+labels.                              ::=  label ( "," label )* ;
 
-
-reference.                           ::=  [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
-
-label.                               ::=  [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
+label                                ::=  [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
 
 
