@@ -56,7 +56,7 @@ metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaTy
  
 
   
-rule                                 ::=  "Rule" parenthesisedLabels <END_OF_LINE> 
+rule                                 ::=  "Rule" reference <END_OF_LINE> 
 
                                           ( 
 
@@ -72,7 +72,7 @@ rule                                 ::=  "Rule" parenthesisedLabels <END_OF_LIN
                                            
                                           ruleProof?  ;                                         
 
-axiom                                ::=  "Axiom" parenthesisedLabels <END_OF_LINE> 
+axiom                                ::=  "Axiom" reference <END_OF_LINE> 
 
                                           (
                                            
@@ -90,7 +90,7 @@ axiom                                ::=  "Axiom" parenthesisedLabels <END_OF_LI
                                              
                                           ) ;
 
-lemma                                ::=  "Lemma" parenthesisedLabels? <END_OF_LINE> 
+lemma                                ::=  "Lemma" reference? <END_OF_LINE> 
 
                                           (
                                            
@@ -110,7 +110,7 @@ lemma                                ::=  "Lemma" parenthesisedLabels? <END_OF_L
                                            
                                           proof ;
 
-theorem                              ::=  "Theorem" parenthesisedLabels <END_OF_LINE> 
+theorem                              ::=  "Theorem" reference <END_OF_LINE> 
 
                                           (
                                            
@@ -130,7 +130,7 @@ theorem                              ::=  "Theorem" parenthesisedLabels <END_OF_
                                            
                                           proof ;
 
-conjecture                           ::=  "Conjecture" parenthesisedLabels <END_OF_LINE>
+conjecture                           ::=  "Conjecture" reference <END_OF_LINE>
 
                                           (
                                            
@@ -150,7 +150,7 @@ conjecture                           ::=  "Conjecture" parenthesisedLabels <END_
                                            
                                           proof? ;
 
-metalemma                            ::=  "Metalemma" parenthesisedLabels? <END_OF_LINE> 
+metalemma                            ::=  "Metalemma" reference? <END_OF_LINE> 
 
                                           ( 
                                            
@@ -170,7 +170,7 @@ metalemma                            ::=  "Metalemma" parenthesisedLabels? <END_
                                            
                                           metaproof ;
 
-metatheorem                          ::=  "Metatheorem" parenthesisedLabels <END_OF_LINE> 
+metatheorem                          ::=  "Metatheorem" reference <END_OF_LINE> 
 
                                           ( 
                                            
@@ -328,29 +328,7 @@ qualifiedStatement..                 ::=  statement... qualification <END_OF_LIN
 
 
 
-metaType                             ::=  [meta-type] ;
-
-type                                 ::=  [type] ;
-
-
-
-parenthesisedLabels                  ::=  "(" labels... ")" ; 
-
-qualification.                       ::=  ( "by" | "from" ) label ;
-
-labels.                              ::=  label ( "," label )* ;
-
-label                                ::=  [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
-
-
-
 nonsense.                            ::=  ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ ;
-
-
-
-metavariable                         ::=  [name] ( <NO_WHITESPACE>"(" argument... ")" )? ;
-
-variable                             ::=  [name] ;
 
 
 
@@ -364,6 +342,26 @@ argument                             ::=  term ( )
 
                                        |  type ( )
                                        
-                                       ;`;
+                                       ;
+
+
+
+qualification.                       ::=  ( "by" | "from" ) label ;
+
+reference.                           ::=  "(" label ( "," label )* ")" ; 
+
+label                                ::=  [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
+
+
+
+metavariable                         ::=  [name] ( <NO_WHITESPACE>"(" argument... ")" )? ;
+
+variable                             ::=  [name] ;
+
+
+
+metaType                             ::=  [meta-type] ;
+
+type                                 ::=  [type] ;`;
 
 export default bnf;
