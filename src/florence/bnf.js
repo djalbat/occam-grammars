@@ -332,6 +332,14 @@ nonsense.                            ::=  ( [type] | [symbol] | [operator] | [sp
 
 
 
+qualification.                       ::=  ( "by" | "from" ) label ;
+
+reference.                           ::=  "(" label ( "," label )* ")" ; 
+
+label                                ::=  [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
+
+
+
 metaArgument                         ::=  statement ( ) 
 
                                        |  metaType ( ) 
@@ -343,14 +351,6 @@ argument                             ::=  term ( )
                                        |  type ( )
                                        
                                        ;
-
-
-
-qualification.                       ::=  ( "by" | "from" ) label ;
-
-reference.                           ::=  "(" label ( "," label )* ")" ; 
-
-label                                ::=  [name] ( <NO_WHITESPACE>"(" term... ")" )? ;
 
 
 
