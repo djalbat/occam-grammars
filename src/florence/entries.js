@@ -11,7 +11,7 @@ const entries = [
     "secondary-keyword": "^(?:from|by)\\b"
   },
   {
-    "meta-type": "^(?:Statement|Context|Label)\\b"
+    "meta-type": "^(?:Statement|Reference|Frame)\\b"
   },
   {
     "name": "^[A-Za-zΑ-Ωα-ω][A-Za-zΑ-Ωα-ω_0-9]*"
