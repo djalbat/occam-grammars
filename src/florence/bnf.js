@@ -56,7 +56,7 @@ metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaTy
  
 
   
-rule                                 ::=  "Rule" labels <END_OF_LINE> 
+rule                                 ::=  "Rule" "(" label ( "," label )* ")" <END_OF_LINE> 
 
                                           ( 
 
@@ -72,7 +72,7 @@ rule                                 ::=  "Rule" labels <END_OF_LINE>
                                            
                                           ruleProof?  ;                                         
 
-axiom                                ::=  "Axiom" labels <END_OF_LINE> 
+axiom                                ::=  "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> 
 
                                           (
                                            
@@ -90,7 +90,7 @@ axiom                                ::=  "Axiom" labels <END_OF_LINE>
                                              
                                           ) ;
 
-lemma                                ::=  "Lemma" labels? <END_OF_LINE> 
+lemma                                ::=  "Lemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
 
                                           (
                                            
@@ -110,7 +110,7 @@ lemma                                ::=  "Lemma" labels? <END_OF_LINE>
                                            
                                           proof ;
 
-theorem                              ::=  "Theorem" labels <END_OF_LINE> 
+theorem                              ::=  "Theorem" "(" label ( "," label )* ")" <END_OF_LINE> 
 
                                           (
                                            
@@ -130,7 +130,7 @@ theorem                              ::=  "Theorem" labels <END_OF_LINE>
                                            
                                           proof ;
 
-conjecture                           ::=  "Conjecture" labels <END_OF_LINE>
+conjecture                           ::=  "Conjecture" "(" label ( "," label )* ")" <END_OF_LINE>
 
                                           (
                                            
@@ -150,7 +150,7 @@ conjecture                           ::=  "Conjecture" labels <END_OF_LINE>
                                            
                                           proof? ;
 
-metalemma                            ::=  "Metalemma" labels? <END_OF_LINE> 
+metalemma                            ::=  "Metalemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
 
                                           ( 
                                            
@@ -170,7 +170,7 @@ metalemma                            ::=  "Metalemma" labels? <END_OF_LINE>
                                            
                                           metaproof ;
 
-metatheorem                          ::=  "Metatheorem" labels <END_OF_LINE> 
+metatheorem                          ::=  "Metatheorem" "(" label ( "," label )* ")" <END_OF_LINE> 
 
                                           ( 
                                            
@@ -308,9 +308,9 @@ unqualifiedMetastatement..           ::=  metastatement... <END_OF_LINE>
                                        
                                        ;
 
-qualifiedMetastatement..             ::=  metastatement... reference <END_OF_LINE> 
+qualifiedMetastatement..             ::=  metastatement... ( "by" | "from" ) reference <END_OF_LINE> 
 
-                                       |  nonsense... reference <END_OF_LINE> 
+                                       |  nonsense... ( "by" | "from" ) reference <END_OF_LINE> 
                                         
                                        ;                                     
 
@@ -320,9 +320,9 @@ unqualifiedStatement..               ::=  statement... <END_OF_LINE>
                                        
                                        ;
 
-qualifiedStatement..                 ::=  statement... reference <END_OF_LINE> 
+qualifiedStatement..                 ::=  statement... ( "by" | "from" ) reference <END_OF_LINE> 
 
-                                       |  nonsense... reference <END_OF_LINE> 
+                                       |  nonsense... ( "by" | "from" ) reference <END_OF_LINE> 
                                        
                                        ;
 
@@ -332,9 +332,9 @@ nonsense.                            ::=  ( [type] | [symbol] | [operator] | [sp
 
 
 
-reference.                           ::=  ( "by" | "from" ) metavariable ;
+reference.                           ::=  metavariable ;
 
-labels.                              ::=  "(" metavariable ( "," metavariable )* ")" ; 
+label.                               ::=  metavariable ;
 
 
 
