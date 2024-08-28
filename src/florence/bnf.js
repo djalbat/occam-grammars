@@ -28,7 +28,7 @@ topLevelDeclaration                  ::=  typeDeclaration
 
                                        |  conjecture 
 
-                                       |  metalemma 
+                                       |  metaLemma 
 
                                        |  metatheorem 
 
@@ -150,7 +150,7 @@ conjecture                           ::=  "Conjecture" "(" label ( "," label )* 
                                            
                                           proof? ;
 
-metalemma                            ::=  "Metalemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
+metaLemma                            ::=  "MetaLemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
 
                                           ( 
                                            
