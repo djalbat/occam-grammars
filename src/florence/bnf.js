@@ -78,7 +78,7 @@ metaLemma                            ::=  "MetaLemma" ( "(" label ( "," label )*
                                            
                                             "Suppose" <END_OF_LINE> metaSupposition+ 
 
-                                            "Then" <END_OF_LINE> metaConsequent
+                                            "Then" <END_OF_LINE> 
                                              
                                           )?
                                             
@@ -92,7 +92,7 @@ metatheorem                          ::=  "Metatheorem" "(" label ( "," label )*
                                            
                                             "Suppose" <END_OF_LINE> metaSupposition+ 
 
-                                            "Then" <END_OF_LINE> metaConsequent
+                                            "Then" <END_OF_LINE> 
                                              
                                           )?
                                             
