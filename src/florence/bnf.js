@@ -70,43 +70,59 @@ rule                                 ::=  "Rule" "(" label ( "," label )* ")" <E
                                              
                                           "Conclusion" <END_OF_LINE> conclusion 
                                            
-                                          ruleProof?  ;                                         
+                                          ruleProof? ;                                         
+
+metaLemma                            ::=  "MetaLemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
+
+                                          (
+                                           
+                                            "Suppose" <END_OF_LINE> metaSupposition+ 
+
+                                            "Then" <END_OF_LINE> metaConsequent
+                                             
+                                          )?
+                                            
+                                          metaConsequent
+                                                                                         
+                                          metaproof ;
+
+metatheorem                          ::=  "Metatheorem" "(" label ( "," label )* ")" <END_OF_LINE> 
+
+                                          (
+                                           
+                                            "Suppose" <END_OF_LINE> metaSupposition+ 
+
+                                            "Then" <END_OF_LINE> metaConsequent
+                                             
+                                          )?
+                                            
+                                          metaConsequent
+                                           
+                                          metaproof ;
 
 axiom                                ::=  "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> 
 
                                           (
                                            
-                                            (
-                                           
-                                              "Suppose" <END_OF_LINE> supposition+
+                                            "Suppose" <END_OF_LINE> supposition+
 
-                                              "Then" <END_OF_LINE> consequent 
+                                            "Then" <END_OF_LINE> 
                                              
-                                            )
+                                          )?
                                              
-                                            |
-                                             
-                                            consequent
-                                             
-                                          ) ;
+                                          consequent ;
 
 lemma                                ::=  "Lemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
 
                                           (
                                            
-                                            (
-                                           
-                                              "Suppose" <END_OF_LINE> supposition+
+                                            "Suppose" <END_OF_LINE> supposition+
 
-                                              "Then" <END_OF_LINE> consequent 
+                                            "Then" <END_OF_LINE> 
                                              
-                                            )
-                                             
-                                            |
+                                          )?
                                             
-                                            consequent
-                                             
-                                          )
+                                          consequent
                                            
                                           proof ;
 
@@ -114,19 +130,13 @@ theorem                              ::=  "Theorem" "(" label ( "," label )* ")"
 
                                           (
                                            
-                                            (
-                                           
-                                              "Suppose" <END_OF_LINE> supposition+
+                                            "Suppose" <END_OF_LINE> supposition+
 
-                                              "Then" <END_OF_LINE> consequent 
+                                            "Then" <END_OF_LINE> 
                                              
-                                            )
+                                          )?
                                              
-                                            |
-                                             
-                                            consequent
-                                             
-                                          )
+                                          consequent
                                            
                                           proof ;
 
@@ -134,70 +144,24 @@ conjecture                           ::=  "Conjecture" "(" label ( "," label )* 
 
                                           (
                                            
-                                            (
-                                           
-                                              "Suppose" <END_OF_LINE> supposition+
+                                            "Suppose" <END_OF_LINE> supposition+
 
-                                              "Then" <END_OF_LINE> consequent 
+                                            "Then" <END_OF_LINE> 
                                              
-                                            )
+                                          )?
                                              
-                                            |
-                                             
-                                            consequent
-                                             
-                                          )
+                                          consequent
                                            
                                           proof? ;
-
-metaLemma                            ::=  "MetaLemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
-
-                                          ( 
-                                           
-                                            (
-                                             
-                                              "Suppose" <END_OF_LINE> metaSupposition+ 
-
-                                              "Then" <END_OF_LINE> metaConsequent
-                                               
-                                            )
-                                            
-                                            | 
-                                             
-                                            metaConsequent
-                                              
-                                          ) 
-                                           
-                                          metaproof ;
-
-metatheorem                          ::=  "Metatheorem" "(" label ( "," label )* ")" <END_OF_LINE> 
-
-                                          ( 
-                                           
-                                            (
-                                             
-                                              "Suppose" <END_OF_LINE> metaSupposition+ 
-
-                                              "Then" <END_OF_LINE> metaConsequent
-                                               
-                                            )
-                                            
-                                            | 
-                                             
-                                            metaConsequent
-                                              
-                                          ) 
-                                           
-                                          metaproof ;
 
 
 
 ruleProof                            ::=  "Proof" <END_OF_LINE> ruleDerivation ;
                                           
+metaproof                            ::=  "Proof" <END_OF_LINE> metaDerivation ;
+                                                                                         
 proof                                ::=  "Proof" <END_OF_LINE> derivation ;
                                                                                          
-metaproof                            ::=  "Proof" <END_OF_LINE> metaDerivation ;                                 
-
 
 
 ruleSubproof                         ::=  ( 
@@ -212,41 +176,41 @@ ruleSubproof                         ::=  (
                                             
                                           ruleSubDerivation ; 
 
-subproof                             ::=  "Suppose" <END_OF_LINE> supposition+ subDerivation ;
-
 metaSubproof                         ::=  "Suppose" <END_OF_LINE> metaSupposition+ metaSubDerivation ;
 
+subproof                             ::=  "Suppose" <END_OF_LINE> supposition+ subDerivation ;
 
 
-ruleDerivation                       ::=  (
 
-                                            ( ruleSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
+ruleDerivation                       ::=  ( 
 
+                                            ruleProofStep+ 
+                                            
                                             "Therefore" <END_OF_LINE> 
-                                           
+                                            
                                           )? 
-                                           
-                                          ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
+                                          
+                                          lastRuleProofStep ;                                        
 
-derivation                           ::=  (
+metaDerivation                       ::=  ( 
 
-                                            ( subproof | qualifiedStatement | unqualifiedStatement )+ 
-
-                                            "Therefore" <END_OF_LINE>
-                                             
-                                          )? 
-                                           
-                                          ( qualifiedStatement | unqualifiedStatement ) ;
-
-metaDerivation                       ::=  (
-
-                                            ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+  
-
+                                            metaProofStep+ 
+                                            
                                             "Therefore" <END_OF_LINE> 
-                                           
+                                            
                                           )? 
-                                           
-                                          ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
+                                          
+                                          lastMetaProofStep ;                                        
+
+derivation                           ::=  ( 
+
+                                            proofStep+ 
+                                            
+                                            "Therefore" <END_OF_LINE> 
+                                            
+                                          )? 
+                                          
+                                          lastProofStep ;                                        
 
 
 
@@ -254,73 +218,127 @@ ruleSubDerivation                    ::=  (
 
                                             "Hence" <END_OF_LINE>
 
-                                            ( ruleSubproof | qualifiedMetastatement | unqualifiedMetastatement )+ 
+                                            ruleProofStep+ 
                                              
                                           )? 
                                            
                                           "Then" <END_OF_LINE> 
                                            
-                                          ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                        
-
-subDerivation                        ::=  (
-
-                                            "Hence" <END_OF_LINE>
-
-                                            ( subproof | qualifiedStatement | unqualifiedStatement )+ 
-                                             
-                                          )? 
-                                           
-                                          "Then" <END_OF_LINE> 
-                                           
-                                          ( qualifiedStatement | unqualifiedStatement ) ;                                           
+                                          lastRuleProofStep ;                                        
 
 metaSubDerivation                    ::=  (
 
                                             "Hence" <END_OF_LINE>
 
-                                            ( metaSubproof | qualifiedMetastatement | unqualifiedMetastatement )+ 
+                                            metaProofStep+ 
                                              
                                           )? 
                                            
                                           "Then" <END_OF_LINE> 
                                            
-                                          ( qualifiedMetastatement | unqualifiedMetastatement ) ;                                           
+                                          lastMetaProofStep ;                                        
+
+subDerivation                        ::=  (
+
+                                            "Hence" <END_OF_LINE>
+
+                                            proofStep+ 
+                                             
+                                          )? 
+                                           
+                                          "Then" <END_OF_LINE> 
+                                           
+                                          lastProofStep ;                                        
 
 
 
-premise                              ::=  unqualifiedMetastatement ;
+premise..                            ::=  unqualifiedMetastatement ;
 
-conclusion                           ::=  unqualifiedMetastatement ;
+conclusion..                         ::=  unqualifiedMetastatement ;
 
-supposition                          ::=  unqualifiedStatement ;
+metaSupposition..                    ::=  unqualifiedMetastatement ;
 
-consequent                           ::=  unqualifiedStatement ;
+metaConsequent..                     ::=  unqualifiedMetastatement ;
 
-metaSupposition                      ::=  unqualifiedMetastatement ;
+supposition..                        ::=  unqualifiedStatement ;
 
-metaConsequent                       ::=  unqualifiedMetastatement ;
+consequent..                         ::=  unqualifiedStatement ;
 
 
 
-unqualifiedMetastatement..           ::=  metastatement... <END_OF_LINE> 
+ruleProofStep..                      ::=  ruleSubproof 
+
+                                       |  qualifiedMetastatement 
+                                      
+                                       |  unqualifiedMetastatement 
+
+                                       |  qualifiedStatement 
+                                      
+                                       |  unqualifiedStatement 
+                                      
+                                       ;  
+
+metaProofStep..                      ::=  metaSubproof 
+
+                                       |  qualifiedMetastatement 
+                                      
+                                       |  unqualifiedMetastatement 
+
+                                       |  qualifiedStatement 
+                                      
+                                       |  unqualifiedStatement 
+                                      
+                                       ;  
+
+proofStep..                          ::=  subproof 
+
+                                       |  qualifiedStatement 
+                                      
+                                       |  unqualifiedStatement 
+                                      
+                                       ;  
+
+
+
+lastRuleProofStep..                  ::=  qualifiedMetastatement 
+
+                                       |  unqualifiedMetastatement 
+                                       
+                                       ;
+
+lastMetaProofStep..                  ::=  qualifiedMetastatement 
+
+                                       |  unqualifiedMetastatement 
+                                       
+                                       ;
+
+lastProofStep..                      ::=  qualifiedStatement 
+
+                                       |  unqualifiedStatement 
+                                       
+                                       ;
+
+
+
+unqualifiedMetastatement             ::=  metastatement... <END_OF_LINE> 
 
                                        |  nonsense... <END_OF_LINE> 
                                        
                                        ;
 
-qualifiedMetastatement..             ::=  metastatement... ( "by" | "from" ) reference <END_OF_LINE> 
+qualifiedMetastatement               ::=  metastatement... ( "by" | "from" ) reference <END_OF_LINE> 
 
                                        |  nonsense... ( "by" | "from" ) reference <END_OF_LINE> 
                                         
                                        ;                                     
 
-unqualifiedStatement..               ::=  statement... <END_OF_LINE>
+unqualifiedStatement                 ::=  statement... <END_OF_LINE>
 
                                        |  nonsense... <END_OF_LINE> 
                                        
                                        ;
 
-qualifiedStatement..                 ::=  statement... ( "by" | "from" ) reference <END_OF_LINE> 
+qualifiedStatement                   ::=  statement... ( "by" | "from" ) reference <END_OF_LINE> 
 
                                        |  nonsense... ( "by" | "from" ) reference <END_OF_LINE> 
                                        
