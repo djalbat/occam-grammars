@@ -252,17 +252,41 @@ subDerivation                        ::=  (
 
 
 
-premise..                            ::=  unqualifiedMetastatement ;
+premise..                            ::=  unqualifiedMetastatement 
 
-conclusion..                         ::=  unqualifiedMetastatement ;
+                                       |  unqualifiedStatement
+                                       
+                                       ;
 
-metaSupposition..                    ::=  unqualifiedMetastatement ;
+conclusion..                         ::=  unqualifiedMetastatement 
 
-metaConsequent..                     ::=  unqualifiedMetastatement ;
+                                       |  unqualifiedStatement
+                                       
+                                       ;
 
-supposition..                        ::=  unqualifiedStatement ;
+metaSupposition..                    ::=  unqualifiedMetastatement 
 
-consequent..                         ::=  unqualifiedStatement ;
+                                       |  unqualifiedStatement 
+
+                                       |  nonsense
+                                       
+                                       ;
+
+metaConsequent..                     ::=  unqualifiedMetastatement 
+
+                                       |  unqualifiedStatement 
+
+                                       |  nonsense
+                                       
+                                       ;
+
+supposition..                        ::=  unqualifiedStatement 
+
+                                       |  nonsense ;
+
+consequent..                         ::=  unqualifiedStatement 
+
+                                       |  nonsense ;
 
 
 
