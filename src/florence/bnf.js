@@ -266,87 +266,81 @@ consequent..                         ::=  unqualifiedStatement ;
 
 
 
-ruleProofStep..                      ::=  ruleSubproof 
+ruleProofStep..                      ::=  unqualifiedMetastatement 
 
                                        |  qualifiedMetastatement 
                                       
-                                       |  unqualifiedMetastatement 
-
-                                       |  qualifiedStatement 
-                                      
                                        |  unqualifiedStatement 
                                       
+                                       |  qualifiedStatement 
+                                      
+                                       |  ruleSubproof 
+
+                                       |  nonsense 
+
                                        ;  
 
-metaProofStep..                      ::=  metaSubproof 
+metaProofStep..                      ::=  unqualifiedMetastatement 
 
                                        |  qualifiedMetastatement 
                                       
-                                       |  unqualifiedMetastatement 
-
+                                       |  unqualifiedStatement 
+                                      
                                        |  qualifiedStatement 
                                       
-                                       |  unqualifiedStatement 
-                                      
+                                       |  metaSubproof 
+
+                                       |  nonsense 
+
                                        ;  
 
-proofStep..                          ::=  subproof 
-
+proofStep..                          ::=  unqualifiedStatement 
+                                      
                                        |  qualifiedStatement 
                                       
-                                       |  unqualifiedStatement 
-                                      
+                                       |  subproof 
+
+                                       |  nonsense 
+
                                        ;  
 
 
 
-lastRuleProofStep..                  ::=  qualifiedMetastatement 
-
-                                       |  unqualifiedMetastatement 
+lastRuleProofStep..                  ::=  unqualifiedMetastatement 
                                        
+                                       |  qualifiedMetastatement 
+
+                                       |  nonsense 
+
                                        ;
 
-lastMetaProofStep..                  ::=  qualifiedMetastatement 
-
-                                       |  unqualifiedMetastatement 
+lastMetaProofStep..                  ::=  unqualifiedMetastatement 
                                        
+                                       |  qualifiedMetastatement 
+
+                                       |  nonsense 
+
                                        ;
 
-lastProofStep..                      ::=  qualifiedStatement 
-
-                                       |  unqualifiedStatement 
+lastProofStep..                      ::=  unqualifiedStatement 
                                        
-                                       ;
+                                       |  qualifiedStatement 
 
+                                       |  nonsense 
 
-
-unqualifiedMetastatement             ::=  metastatement... <END_OF_LINE> 
-
-                                       |  nonsense... <END_OF_LINE> 
-                                       
-                                       ;
-
-qualifiedMetastatement               ::=  metastatement... ( "by" | "from" ) reference <END_OF_LINE> 
-
-                                       |  nonsense... ( "by" | "from" ) reference <END_OF_LINE> 
-                                        
-                                       ;                                     
-
-unqualifiedStatement                 ::=  statement... <END_OF_LINE>
-
-                                       |  nonsense... <END_OF_LINE> 
-                                       
-                                       ;
-
-qualifiedStatement                   ::=  statement... ( "by" | "from" ) reference <END_OF_LINE> 
-
-                                       |  nonsense... ( "by" | "from" ) reference <END_OF_LINE> 
-                                       
                                        ;
 
 
 
-nonsense.                            ::=  ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ ;
+unqualifiedMetastatement             ::=  metastatement... <END_OF_LINE>;
+
+qualifiedMetastatement               ::=  metastatement... ( "by" | "from" ) reference <END_OF_LINE> ;                                     
+
+unqualifiedStatement                 ::=  statement... <END_OF_LINE> ;
+
+qualifiedStatement                   ::=  statement... ( "by" | "from" ) reference <END_OF_LINE> ;
+
+nonsense                             ::=  ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ <END_OF_LINE> ;
 
 
 
