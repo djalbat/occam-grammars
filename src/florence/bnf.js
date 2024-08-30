@@ -256,11 +256,15 @@ premise..                            ::=  unqualifiedMetastatement
 
                                        |  unqualifiedStatement
                                        
+                                       |  nonsense
+                                       
                                        ;
 
 conclusion..                         ::=  unqualifiedMetastatement 
 
                                        |  unqualifiedStatement
+                                       
+                                       |  nonsense
                                        
                                        ;
 
