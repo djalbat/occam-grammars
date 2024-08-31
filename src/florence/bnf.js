@@ -194,13 +194,13 @@ ruleDerivation                       ::=  (
 
 metaDerivation                       ::=  ( 
 
-                                            metaProofStep+ 
+                                            metaproofStep+ 
                                             
                                             "Therefore" <END_OF_LINE> 
                                             
                                           )? 
                                           
-                                          lastMetaProofStep ;                                        
+                                          lastMetaproofStep ;                                        
 
 derivation                           ::=  ( 
 
@@ -230,13 +230,13 @@ metaSubDerivation                    ::=  (
 
                                             "Hence" <END_OF_LINE>
 
-                                            metaProofStep+ 
+                                            metaproofStep+ 
                                              
                                           )? 
                                            
                                           "Then" <END_OF_LINE> 
                                            
-                                          lastMetaProofStep ;                                        
+                                          lastMetaproofStep ;                                        
 
 subDerivation                        ::=  (
 
@@ -308,7 +308,7 @@ ruleProofStep..                      ::=  unqualifiedMetastatement
 
                                        ;  
 
-metaProofStep..                      ::=  unqualifiedMetastatement 
+metaproofStep..                      ::=  unqualifiedMetastatement 
 
                                        |  qualifiedMetastatement 
                                       
@@ -342,7 +342,7 @@ lastRuleProofStep..                  ::=  unqualifiedMetastatement
 
                                        ;
 
-lastMetaProofStep..                  ::=  unqualifiedMetastatement 
+lastMetaproofStep..                  ::=  unqualifiedMetastatement 
                                        
                                        |  qualifiedMetastatement 
 
