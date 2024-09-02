@@ -335,17 +335,25 @@ proofStep..                          ::=  unqualifiedStatement
 
 
 lastRuleProofStep..                  ::=  unqualifiedMetastatement 
-                                       
-                                       |  qualifiedMetastatement 
 
+                                       |  qualifiedMetastatement 
+                                      
+                                       |  unqualifiedStatement 
+                                      
+                                       |  qualifiedStatement 
+                                      
                                        |  nonsense 
 
                                        ;
 
 lastMetaproofStep..                  ::=  unqualifiedMetastatement 
-                                       
-                                       |  qualifiedMetastatement 
 
+                                       |  qualifiedMetastatement 
+                                      
+                                       |  unqualifiedStatement 
+                                      
+                                       |  qualifiedStatement 
+                                      
                                        |  nonsense 
 
                                        ;
