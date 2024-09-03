@@ -70,7 +70,7 @@ rule                                 ::=  "Rule" "(" label ( "," label )* ")" <E
                                              
                                           "Conclusion" <END_OF_LINE> conclusion 
                                            
-                                          ruleProof? ;                                         
+                                          metaproof? ;                                         
 
 metaLemma                            ::=  "MetaLemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
 
@@ -156,41 +156,17 @@ conjecture                           ::=  "Conjecture" "(" label ( "," label )* 
 
 
 
-ruleProof                            ::=  "Proof" <END_OF_LINE> ruleDerivation ;
-                                          
 metaproof                            ::=  "Proof" <END_OF_LINE> metaDerivation ;
                                                                                          
 proof                                ::=  "Proof" <END_OF_LINE> derivation ;
                                                                                          
 
 
-ruleSubproof                         ::=  ( 
-
-                                            ( "Premises" <END_OF_LINE> premise premise+ ) 
-                                             
-                                            | 
-                                             
-                                            ( "Premise" <END_OF_LINE> premise ) 
-                                             
-                                          )
-                                            
-                                          ruleSubDerivation ; 
-
 metaSubproof                         ::=  "Suppose" <END_OF_LINE> metaSupposition+ metaSubDerivation ;
 
 subproof                             ::=  "Suppose" <END_OF_LINE> supposition+ subDerivation ;
 
 
-
-ruleDerivation                       ::=  ( 
-
-                                            ruleProofStep+ 
-                                            
-                                            "Therefore" <END_OF_LINE> 
-                                            
-                                          )? 
-                                          
-                                          lastRuleProofStep ;                                        
 
 metaDerivation                       ::=  ( 
 
@@ -213,18 +189,6 @@ derivation                           ::=  (
                                           lastProofStep ;                                        
 
 
-
-ruleSubDerivation                    ::=  (
-
-                                            "Hence" <END_OF_LINE>
-
-                                            ruleProofStep+ 
-                                             
-                                          )? 
-                                           
-                                          "Then" <END_OF_LINE> 
-                                           
-                                          lastRuleProofStep ;                                        
 
 metaSubDerivation                    ::=  (
 
@@ -294,20 +258,6 @@ consequent..                         ::=  unqualifiedStatement
 
 
 
-ruleProofStep..                      ::=  unqualifiedMetastatement 
-
-                                       |  qualifiedMetastatement 
-                                      
-                                       |  unqualifiedStatement 
-                                      
-                                       |  qualifiedStatement 
-                                      
-                                       |  ruleSubproof 
-
-                                       |  nonsense 
-
-                                       ;  
-
 metaproofStep..                      ::=  unqualifiedMetastatement 
 
                                        |  qualifiedMetastatement 
@@ -333,18 +283,6 @@ proofStep..                          ::=  unqualifiedStatement
                                        ;  
 
 
-
-lastRuleProofStep..                  ::=  unqualifiedMetastatement 
-
-                                       |  qualifiedMetastatement 
-                                      
-                                       |  unqualifiedStatement 
-                                      
-                                       |  qualifiedStatement 
-                                      
-                                       |  nonsense 
-
-                                       ;
 
 lastMetaproofStep..                  ::=  unqualifiedMetastatement 
 
