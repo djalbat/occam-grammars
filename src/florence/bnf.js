@@ -1,10 +1,10 @@
 "use strict";
 
-const bnf = `document                             ::=  ( topLevelDeclaration | verticalSpace | error )+ ;
+const bnf = `document                             ::=  ( topLevelAssertion | verticalSpace | error )+ ;
 
 
 
-topLevelDeclaration                  ::=  typeDeclaration 
+topLevelAssertion                    ::=  typeDeclaration 
                                            
                                        |  variableDeclaration 
                                            
