@@ -218,7 +218,7 @@ unqualifiedStatement                 ::=  statement... <END_OF_LINE> ;
 
 qualifiedStatement                   ::=  statement... ( 
 
-                                                         "trivially" 
+                                                         "inherently" 
                                                          
                                                          | 
                                                          
