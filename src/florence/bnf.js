@@ -228,6 +228,12 @@ label.                               ::=  metavariable ;
 
 
 
+frameArgument                        ::=  frame ( ) 
+
+                                       |  metaType ( ) 
+                                       
+                                       ;
+
 metaArgument                         ::=  statement ( ) 
 
                                        |  metaType ( ) 
@@ -247,8 +253,6 @@ metavariable                         ::=  [name] ( <NO_WHITESPACE>"(" argument..
 variable                             ::=  [name] ;
 
 
-
-metaType                             ::=  [meta-type] ;
 
 type                                 ::=  [type] ;`;
 
