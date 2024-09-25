@@ -254,6 +254,8 @@ variable                             ::=  [name] ;
 
 
 
+metaType                             ::=  [meta-type] ;
+
 type                                 ::=  [type] ;`;
 
 export default bnf;
