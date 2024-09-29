@@ -218,14 +218,6 @@ unqualifiedStatement                 ::=  statement... <END_OF_LINE> ;
 
 qualifiedStatement                   ::=  statement... ( "by" | "from" ) reference <END_OF_LINE> ;
 
-nonsense                             ::=  ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ <END_OF_LINE> ;
-
-
-
-reference.                           ::=  metavariable ;
-
-label.                               ::=  metavariable ;
-
 
 
 frameArgument                        ::=  frame ( ) 
@@ -248,14 +240,24 @@ argument                             ::=  term ( )
 
 
 
-metavariable                         ::=  [name] ( <NO_WHITESPACE>"(" argument... ")" )? ;
+reference.                           ::=  metavariable ;
 
-variable                             ::=  [name] ;
+label.                               ::=  metavariable ;
 
 
 
-metaType                             ::=  [meta-type] ;
+metavariable.                        ::=  [name] ( <NO_WHITESPACE>"(" argument... ")" )? ;
 
-type                                 ::=  [type] ;`;
+variable.                            ::=  [name] ;
+
+
+
+metaType.                            ::=  [meta-type] ;
+
+type.                                ::=  [type] ;
+
+
+
+nonsense.                            ::=  ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ <END_OF_LINE> ;`;
 
 export default bnf;
