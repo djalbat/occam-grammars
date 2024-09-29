@@ -12,7 +12,7 @@ import { CommonLexer,
 
 import entries from "./entries";
 
-export default class FlorenceLexer extends CommonLexer {
+export default class NominalLexer extends CommonLexer {
   static entries = entries;
 
   static EndOfLineToken = EndOfLineSignificantToken; ///
