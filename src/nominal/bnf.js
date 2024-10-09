@@ -186,15 +186,15 @@ subDerivation                        ::=  (
                                            
                                           lastProofStep ;                                        
 
-premise..                            ::=  unqualifiedStatement ;
+premise                              ::=  unqualifiedStatement ;
 
-conclusion..                         ::=  unqualifiedStatement ;
+conclusion                           ::=  unqualifiedStatement ;
 
-supposition..                        ::=  unqualifiedStatement ;
+supposition                          ::=  unqualifiedStatement ;
 
-consequent..                         ::=  unqualifiedStatement ;
+consequent                           ::=  unqualifiedStatement ;
 
-proofStep..                          ::=  unqualifiedStatement 
+proofStep                            ::=  unqualifiedStatement 
                                       
                                        |  qualifiedStatement 
                                       
@@ -202,7 +202,7 @@ proofStep..                          ::=  unqualifiedStatement
 
                                        ;  
 
-lastProofStep..                      ::=  unqualifiedStatement 
+lastProofStep                        ::=  unqualifiedStatement 
                                        
                                        |  qualifiedStatement 
 
@@ -210,13 +210,13 @@ lastProofStep..                      ::=  unqualifiedStatement
 
 
 
-unqualifiedStatement                 ::=  statement... <END_OF_LINE>  
+unqualifiedStatement..               ::=  statement... <END_OF_LINE>  
 
                                        |  nonsense... <END_OF_LINE>
                                        
                                        ;
 
-qualifiedStatement                   ::=  statement... ( "by" | "from" ) reference <END_OF_LINE>
+qualifiedStatement..                 ::=  statement... ( "by" | "from" ) reference <END_OF_LINE>
 
                                        |  nonsense... ( "by" | "from" ) reference <END_OF_LINE>
                                        
