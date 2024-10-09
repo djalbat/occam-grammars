@@ -186,13 +186,13 @@ subDerivation                        ::=  (
                                            
                                           lastProofStep ;                                        
 
-premise..                            ::=  unqualifiedStatement | nonsense ;
+premise..                            ::=  unqualifiedStatement ;
 
-conclusion..                         ::=  unqualifiedStatement | nonsense ;
+conclusion..                         ::=  unqualifiedStatement ;
 
-supposition..                        ::=  unqualifiedStatement | nonsense ;
+supposition..                        ::=  unqualifiedStatement ;
 
-consequent..                         ::=  unqualifiedStatement | nonsense ;
+consequent..                         ::=  unqualifiedStatement ;
 
 proofStep..                          ::=  unqualifiedStatement 
                                       
@@ -200,23 +200,27 @@ proofStep..                          ::=  unqualifiedStatement
                                       
                                        |  subproof 
 
-                                       |  nonsense 
-
                                        ;  
 
 lastProofStep..                      ::=  unqualifiedStatement 
                                        
                                        |  qualifiedStatement 
 
-                                       |  nonsense 
-
                                        ;
 
 
 
-unqualifiedStatement                 ::=  statement... <END_OF_LINE> ;
+unqualifiedStatement                 ::=  statement... <END_OF_LINE>  
 
-qualifiedStatement                   ::=  statement... ( "by" | "from" ) reference <END_OF_LINE> ;
+                                       |  nonsense... <END_OF_LINE>
+                                       
+                                       ;
+
+qualifiedStatement                   ::=  statement... ( "by" | "from" ) reference <END_OF_LINE>
+
+                                       |  nonsense... ( "by" | "from" ) reference <END_OF_LINE>
+                                       
+                                       ;
 
 
 
