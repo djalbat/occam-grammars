@@ -194,17 +194,19 @@ supposition                          ::=  unqualifiedStatement ;
 
 consequent                           ::=  unqualifiedStatement ;
 
-proofStep                            ::=  unqualifiedStatement 
+
+
+proofStep                            ::=  subproof  
                                       
                                        |  qualifiedStatement 
                                       
-                                       |  subproof 
+                                       |  unqualifiedStatement
 
                                        ;  
 
-lastProofStep                        ::=  unqualifiedStatement 
+lastProofStep                        ::=  qualifiedStatement 
                                        
-                                       |  qualifiedStatement 
+                                       |  unqualifiedStatement 
 
                                        ;
 
