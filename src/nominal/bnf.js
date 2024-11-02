@@ -186,41 +186,45 @@ subDerivation                        ::=  (
                                            
                                           lastProofStep ;                                        
 
-premise                              ::=  unqualifiedStatement ;
-
-conclusion                           ::=  unqualifiedStatement ;
-
-supposition                          ::=  unqualifiedStatement ;
-
-consequent                           ::=  unqualifiedStatement ;
 
 
-
-proofStep                            ::=  subproof  
-                                      
-                                       |  qualifiedStatement 
-                                      
-                                       |  unqualifiedStatement
-
-                                       ;  
-
-lastProofStep                        ::=  qualifiedStatement 
-                                       
-                                       |  unqualifiedStatement 
-
-                                       ;
-
-
-
-unqualifiedStatement..               ::=  statement... <END_OF_LINE>  
+premise                              ::=  statement... <END_OF_LINE>  
 
                                        |  nonsense... <END_OF_LINE>
                                        
                                        ;
 
-qualifiedStatement..                 ::=  statement... ( "by" | "from" ) reference <END_OF_LINE>
+conclusion                           ::=  statement... <END_OF_LINE>  
 
-                                       |  nonsense... ( "by" | "from" ) reference <END_OF_LINE>
+                                       |  nonsense... <END_OF_LINE>
+                                       
+                                       ;
+
+supposition                          ::=  statement... <END_OF_LINE>  
+
+                                       |  nonsense... <END_OF_LINE>
+                                       
+                                       ;
+
+consequent                           ::=  statement... <END_OF_LINE>  
+
+                                       |  nonsense... <END_OF_LINE>
+                                       
+                                       ;
+
+
+
+proofStep                            ::=  subproof  
+                                      
+                                       |  statement... ( ( "by" | "from" ) reference )? <END_OF_LINE>  
+
+                                       |  nonsense... <END_OF_LINE>
+                                       
+                                       ;
+
+lastProofStep                        ::=  statement... <END_OF_LINE>  
+
+                                       |  nonsense... <END_OF_LINE>
                                        
                                        ;
 
