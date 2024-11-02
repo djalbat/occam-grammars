@@ -222,7 +222,7 @@ proofStep                            ::=  subproof
                                        
                                        ;
 
-lastProofStep                        ::=  statement... <END_OF_LINE>  
+lastProofStep                        ::=  statement... ( ( "by" | "from" ) reference )? <END_OF_LINE>  
 
                                        |  nonsense... <END_OF_LINE>
                                        
