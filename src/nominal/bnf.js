@@ -60,7 +60,7 @@ metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaTy
  
 
   
-rule                                 ::=  "Rule" "(" label ( "," label )* ")" <END_OF_LINE> 
+rule                                 ::=  "Rule" "(" labels... ")" <END_OF_LINE> 
 
                                           ( 
 
@@ -76,7 +76,7 @@ rule                                 ::=  "Rule" "(" label ( "," label )* ")" <E
                                            
                                           proof? ;                                         
 
-metaLemma                            ::=  "MetaLemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
+metaLemma                            ::=  "MetaLemma" ( "(" labels... ")" )? <END_OF_LINE> 
 
                                           (
                                            
@@ -90,7 +90,7 @@ metaLemma                            ::=  "MetaLemma" ( "(" label ( "," label )*
                                                                                          
                                           proof ;
 
-metatheorem                          ::=  "Metatheorem" "(" label ( "," label )* ")" <END_OF_LINE> 
+metatheorem                          ::=  "Metatheorem" "(" labels... ")" <END_OF_LINE> 
 
                                           (
                                            
@@ -104,7 +104,7 @@ metatheorem                          ::=  "Metatheorem" "(" label ( "," label )*
                                            
                                           proof ;
 
-axiom                                ::=  "Axiom" "(" label ( "," label )* ")" <END_OF_LINE> 
+axiom                                ::=  "Axiom" "(" labels... ")" <END_OF_LINE> 
 
                                           (
                                            
@@ -116,7 +116,7 @@ axiom                                ::=  "Axiom" "(" label ( "," label )* ")" <
                                              
                                           consequent ;
 
-lemma                                ::=  "Lemma" ( "(" label ( "," label )* ")" )? <END_OF_LINE> 
+lemma                                ::=  "Lemma" ( "(" labels... ")" )? <END_OF_LINE> 
 
                                           (
                                            
@@ -130,7 +130,7 @@ lemma                                ::=  "Lemma" ( "(" label ( "," label )* ")"
                                            
                                           proof ;
 
-theorem                              ::=  "Theorem" "(" label ( "," label )* ")" <END_OF_LINE> 
+theorem                              ::=  "Theorem" "(" labels... ")" <END_OF_LINE> 
 
                                           (
                                            
@@ -144,7 +144,7 @@ theorem                              ::=  "Theorem" "(" label ( "," label )* ")"
                                            
                                           proof ;
 
-conjecture                           ::=  "Conjecture" "(" label ( "," label )* ")" <END_OF_LINE>
+conjecture                           ::=  "Conjecture" "(" labels... ")" <END_OF_LINE>
 
                                           (
                                            
@@ -230,6 +230,22 @@ lastProofStep                        ::=  statement... ( ( "by" | "from" ) refer
 
 
 
+labels                               ::=  label ( "," label )* ;
+
+
+
+label.                               ::=  metavariable ;
+
+reference.                           ::=  metavariable ;
+
+
+
+metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" ( term | nonsense ) ")" )? ;
+
+variable.                            ::=  [name] ;
+
+
+
 frameArgument                        ::=  frame ( ) 
 
                                        |  metaType ( ) 
@@ -247,18 +263,6 @@ argument                             ::=  term ( )
                                        |  type ( )
                                        
                                        ;
-
-
-
-reference.                           ::=  metavariable ;
-
-label.                               ::=  metavariable ;
-
-
-
-metavariable.                        ::=  [name] ( <NO_WHITESPACE>"(" argument... ")" )? ;
-
-variable.                            ::=  [name] ;
 
 
 

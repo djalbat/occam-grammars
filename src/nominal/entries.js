@@ -17,7 +17,7 @@ const entries = [
     "name": "^[A-Za-zΑ-Ωα-ω][A-Za-zΑ-Ωα-ω_0-9]*"
   },
   {
-    "unassigned": "^[^\\s]+"
+    "unassigned": "^[^\\s\\(\\):,]+"
   }
 ];
 
