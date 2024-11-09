@@ -166,63 +166,53 @@ subproof                             ::=  "Suppose" <END_OF_LINE> supposition+ s
 
 derivation                           ::=  ( 
 
-                                            proofStep+ 
+                                            ( proofStep | subproof )+ 
                                             
                                             "Therefore" <END_OF_LINE> 
                                             
                                           )? 
                                           
-                                          lastProofStep ;                                        
+                                          proofStep ;                                        
 
 subDerivation                        ::=  (
 
                                             "Hence" <END_OF_LINE>
     
-                                            proofStep+ 
-                                             
+                                            ( proofStep | subproof )+ 
+                                                                                         
                                           )? 
                                            
                                           "Then" <END_OF_LINE> 
                                            
-                                          lastProofStep ;                                        
+                                          proofStep ;                                        
 
 
 
-premise                              ::=  statement... <END_OF_LINE>  
-
-                                       |  nonsense... <END_OF_LINE>
-                                       
-                                       ;
-
-conclusion                           ::=  statement... <END_OF_LINE>  
+premise.                             ::=  statement... <END_OF_LINE>  
 
                                        |  nonsense... <END_OF_LINE>
                                        
                                        ;
 
-supposition                          ::=  statement... <END_OF_LINE>  
+conclusion.                          ::=  statement... <END_OF_LINE>  
 
                                        |  nonsense... <END_OF_LINE>
                                        
                                        ;
 
-consequent                           ::=  statement... <END_OF_LINE>  
+supposition.                         ::=  statement... <END_OF_LINE>  
 
                                        |  nonsense... <END_OF_LINE>
                                        
                                        ;
 
+consequent.                          ::=  statement... <END_OF_LINE>  
 
-
-proofStep                            ::=  subproof  
-                                      
-                                       |  statement... ( ( "by" | "from" ) reference )? <END_OF_LINE>  
-
-                                       |  nonsense... ( ( "by" | "from" ) reference )? <END_OF_LINE>
+                                       |  nonsense... <END_OF_LINE>
                                        
                                        ;
 
-lastProofStep                        ::=  statement... ( ( "by" | "from" ) reference )? <END_OF_LINE>  
+proofStep.                           ::=  statement... ( ( "by" | "from" ) reference )? <END_OF_LINE>  
 
                                        |  nonsense... ( ( "by" | "from" ) reference )? <END_OF_LINE>
                                        
@@ -240,7 +230,7 @@ reference.                           ::=  metavariable ;
 
 
 
-metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" ( term | nonsense ) ")" )? ;
+metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" ( term | type | nonsense ) ")" )? ;
 
 variable.                            ::=  [name] ;
 
