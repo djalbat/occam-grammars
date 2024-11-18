@@ -230,7 +230,7 @@ reference.                           ::=  metavariable ;
 
 
 
-metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" ( term | type | nonsense ) ")" )? ;
+metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" ( term | type | stuff ) ")" )? ;
 
 variable.                            ::=  [name] ;
 
@@ -261,6 +261,8 @@ metaType.                            ::=  [meta-type] ;
 type.                                ::=  [type] ;
 
 
+
+stuff.                               ::=  ( [symbol] | [operator] | [name] | [unassigned] )+ ;
 
 nonsense.                            ::=  ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ ;`;
 
