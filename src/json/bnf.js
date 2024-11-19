@@ -27,38 +27,14 @@ const bnf = `
   
   
   
-    object..     ::=  "{" 
-    
-                        ( 
-                        
-                          ( property ( "," property )* nonsense? ) 
-                          
-                          | 
-                          
-                          ( nonsense... property ( "," property )* nonsense? )
-                        
-                        )? 
-    
-                      "}" ;
-  
-  
-    
-    array..      ::=  "[" 
-    
-                        ( 
-                        
-                          ( element ( "," element )* nonsense? ) 
-                          
-                          | 
-                          
-                          ( nonsense... element ( "," element )* nonsense? )
-                        
-                        )? 
-                      
-                      "]" ;
+    array        ::=  "[" ( element ( "," element )* )? nonsense? "]" ;
   
   
      
+    object       ::=  "{" ( property ( "," property )* )? nonsense? "}" ;
+  
+  
+    
     property     ::=  [string-literal] ":" json ;
   
     
