@@ -262,8 +262,8 @@ type.                                ::=  [type] ;
 
 
 
-stuff.                               ::=  ( [symbol] | [operator] | [name] | [unassigned] )+ ;
+stuff.                               ::=  ( [name] | [symbol] | [operator] | [brackets] | [unassigned] )+ ;
 
-nonsense.                            ::=  ( [type] | [symbol] | [operator] | [special] | [secondary-keyword] | [meta-type] | [name] | [unassigned] )+ ;`;
+nonsense.                            ::=  ( [type] | [name] | [symbol] | [operator] | [brackets] | [special] | [meta-type] | [secondary-keyword] | [unassigned] )+ ;`;
 
 export default bnf;
