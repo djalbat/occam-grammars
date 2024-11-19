@@ -3,7 +3,7 @@
 const bnf = `
 
 
-    document       ::=  pattern ( verticalSpace | error )* 
+    document       ::=  <NO_WHITESPACE> pattern ( verticalSpace | error )* 
     
                      |  ( verticalSpace | error )+ 
                      
