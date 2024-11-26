@@ -27,11 +27,11 @@ const bnf = `
   
   
   
-    array        ::=  "[" ( element ( "," element )* )? nonsense? "]" ;
+    array..      ::=  "[" ( element ( "," element )* )? nonsense? "]" ;
   
   
      
-    object       ::=  "{" ( property ( "," property )* )? nonsense? "}" ;
+    object..     ::=  "{" ( property ( "," property )* )? nonsense? "}" ;
   
   
     
