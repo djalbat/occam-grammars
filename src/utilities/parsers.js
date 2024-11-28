@@ -5,7 +5,7 @@ import { eliminateLeftRecursion } from "occam-grammar-utilities";
 
 import FurtleParser from "../furtle/parser";
 
-const { rulesFromBNF, parserFromRules } = parserUtilities;
+const { rulesFromBNF, parserFromRules, parserFromRulesAndStartRuleName } = parserUtilities;
 
 export function furtleParserFromBNF(bnf) {
   let rules;
@@ -33,7 +33,20 @@ export function furtleParserFromNothing() {
   return furtleParser;
 }
 
+export function furtleParserFromBNFAndStartRuleName(bnf, startRuleName) {
+  let rules;
+
+  rules = rulesFromBNF(bnf);
+
+  rules = eliminateLeftRecursion(rules);  ///
+
+  const furtleParser = parserFromRulesAndStartRuleName(FurtleParser, rules, startRuleName);
+
+  return furtleParser;
+}
+
 export default {
   furtleParserFromBNF,
-  furtleParserFromNothing
+  furtleParserFromNothing,
+  furtleParserFromBNFAndStartRuleName
 };
