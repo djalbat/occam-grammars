@@ -1,21 +1,17 @@
 "use strict";
 
-import { lexerUtilities } from "occam-lexers";
-import { parserUtilities } from "occam-parsers";
-import { eliminateLeftRecursion } from "occam-grammar-utilities";
-import { FurtleLexer, FurtleParser } from "../../index";  ///
+import { FurtleLexer, FurtleParser, lexersUtilities, parsersUtilities } from "../../index";  ///
 
 import View from "../view";
 
-const { rulesFromEntries, lexerFromRules } = lexerUtilities,
-      { rulesFromBNF, parserFromRulesAndStartRuleName } = parserUtilities;
+const { furtleParserFromBNF } = parsersUtilities,
+      { furtleLexerFromEntries } = lexersUtilities;
 
 export default class FurtleView extends View {
   getTokens() {
     const lexicalEntries = this.getLexicalEntries(),
-          entries = lexicalEntries, ///
-          rules = rulesFromEntries(entries),
-          furtleLexer = lexerFromRules(FurtleLexer, rules),
+          entries = lexicalEntries, ////
+          furtleLexer = furtleLexerFromEntries(entries),
           lexer = furtleLexer,  ///
           content = this.getContent(),
           tokens = lexer.tokenise(content);
@@ -26,17 +22,8 @@ export default class FurtleView extends View {
   getParseTree(tokens) {
     let parseTree = null;
 
-    const bnf = this.getBNF();
-
-    let rules;
-
-    rules = rulesFromBNF(bnf);
-
-    rules = eliminateLeftRecursion(rules);  ///
-
-    const ruleName = this.getRuleName(),
-          startRuleName = ruleName, ///
-          furtleParser = parserFromRulesAndStartRuleName(FurtleParser, rules, startRuleName),
+    const bnf = this.getBNF(),
+          furtleParser = furtleParserFromBNF(bnf),
           parser = furtleParser, ///
           node = parser.parse(tokens);
 

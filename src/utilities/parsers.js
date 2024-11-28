@@ -7,6 +7,18 @@ import FurtleParser from "../furtle/parser";
 
 const { rulesFromBNF, parserFromRules } = parserUtilities;
 
+export function furtleParserFromBNF(bnf) {
+  let rules;
+
+  rules = rulesFromBNF(bnf);
+
+  rules = eliminateLeftRecursion(rules);  ///
+
+  const furtleParser = parserFromRules(FurtleParser, rules);
+
+  return furtleParser;
+}
+
 export function furtleParserFromNothing() {
   const { bnf } = FurtleParser;
 
@@ -21,7 +33,7 @@ export function furtleParserFromNothing() {
   return furtleParser;
 }
 
-
 export default {
+  furtleParserFromBNF,
   furtleParserFromNothing
 };
