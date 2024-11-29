@@ -24,29 +24,29 @@ instruction           ::=  functionDeclaration
 
 functionDeclaration   ::=  [type] function ;
 
-variablesDeclaration  ::=  [type] [name] assignment? ( "," [name] assignment? )* ";" ;
+variablesDeclaration  ::=  [type] variable assignment? ( "," variable assignment? )* ";" ;
 
-variableAssignment    ::=  [name] assignment ";" ;
+variableAssignment    ::=  variable assignment ";" ;
 
 objectAssignment      ::=  "{" 
 
-                           [type]? [name] ( "," [type]? [name] )* 
+                           [type]? variable ( "," [type]? variable )* 
                            
-                           "}" "=" [name] ";" ;
+                           "}" "=" variable ";" ;
 
 arrayAssignment       ::=  "[" 
 
                            ( 
 
-                             ( "_" ( "," "_" )* ( "," [type]? [name] )+ ) 
+                             ( "_" ( "," "_" )* ( "," [type]? variable )+ ) 
                            
                              | 
                            
-                             ( [type]? [name] ( "," [type]? [name] )* ) 
+                             ( [type]? variable ( "," [type]? variable )* ) 
                                
                            ) 
                            
-                           "]" "=" [name] ";" ;
+                           "]" "=" variable ";" ;
 
 conditionalBlock      ::=  "If" "(" condition ")" block ( "Else" block )? ;                                            
 
@@ -54,7 +54,7 @@ forEachLoop           ::=  "ForEach"<NO_WHITESPACE>"(" [name] "," anonymousFunct
 
 
              
-assignment            ::=  "=" ( functionCall | isTerminalNode | nodesQuery | nodeQuery | value ) ;
+assignment            ::=  "=" ( functionCall | nodesQuery | nodeQuery | value ) ;
                                           
                                           
                                           
@@ -73,7 +73,7 @@ block                 ::=  "{" ( variablesDeclaration |
 
 
 
-functionCall          ::=  [name]<NO_WHITESPACE>"(" ( [name] ( "," [name] )* )? ")" ;
+functionCall          ::=  [name]<NO_WHITESPACE>"(" ( value ( "," value )* )? ")" ;
 
 function              ::=  [name]<NO_WHITESPACE>"(" ( argument ( "," argument )* )? ")" body ;
 
@@ -81,11 +81,9 @@ anonymousFunction     ::=  "(" ( argument ( "," argument )* )? ")" body ;
 
 
 
-isTerminalNode        ::=  "isTerminalNode"<NO_WHITESPACE>"(" [name] ")" ;
+nodesQuery            ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
 
-nodesQuery            ::=  "nodesQuery"<NO_WHITESPACE>"(" [name] "," expression ")" ;
-
-nodeQuery             ::=  "nodeQuery"<NO_WHITESPACE>"(" [name] "," expression ")" ;
+nodeQuery             ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
 
 
 
@@ -118,11 +116,15 @@ return                ::=  "Return" value ";" ;
 
 
 
-value                 ::=  [name] | [number] | [primitive] | [string-literal] ;
+value                 ::=  variable | [number] | [primitive] | [string-literal] ;
 
 
 
-argument              ::=  [type] [name] ;
+argument              ::=  [type] variable ;
+
+
+
+variable              ::=  [name] ;
 
 
 
