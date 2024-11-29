@@ -50,7 +50,7 @@ arrayAssignment       ::=  "["
 
 conditionalBlock      ::=  "If" "(" condition ")" block ( "Else" block )? ;                                            
 
-forEachLoop           ::=  "ForEach"<NO_WHITESPACE>"(" [name] "," anonymousFunction ")" ";" ;
+forEachLoop           ::=  "ForEach"<NO_WHITESPACE>"(" variable "," anonymousFunction ")" ";" ;
 
 
              
