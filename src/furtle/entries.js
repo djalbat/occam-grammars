@@ -5,13 +5,13 @@ const entries = [
     "type": "^(?:Boolean|String|Number|Nodes|Node|Void)"
   },
   {
-    "keyword": "^(?:If|Else|Return|ForEach|Break)"
+    "keyword": "^(?:If|Else|Return|ForEach)"
   },
   {
     "primitive": "^(?:null|true|false)"
   },
   {
-    "instruction": "^(?:nodeQuery|nodesQuery|isTerminalNode)"
+    "instruction": "^(?:nodeQuery|nodesQuery)"
   },
   {
     "special": "^(?:!=|==|=|;|,|_|&&|\\|\\||@|!|\\*|\\||\\/|\\(|\\)|\\[|\\]|\\{|\\}|\\.\\.\\.)"

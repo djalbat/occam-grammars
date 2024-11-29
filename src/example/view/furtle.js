@@ -40,26 +40,25 @@ export default class FurtleView extends View {
 
   static readOnly = false;
 
-  static initialContent = `Node* termNode, statementNode; Boolean* bound = false;
-  
-String variableName = variableNameFromTermNode(termNode);
-
-If (variableName == null) {
-  Break;
-}
-
-Nodes statementNodes = nodesQuery(statementNode, //statement);
-
-ForEach(statementNodes, (Node statementNode) {
-  String boundVariableName = boundVariableNameFromStatementNode(statementNode); 
-  
-  If (boundVariableName == variableName) {
-    bound = true;
+  static initialContent = `Boolean isBound(Node termNode, Node statementNode) {
+  Boolean bound = false;
     
-    Break;
-  }
-});
+  String variableName = variableNameFromTermNode(termNode);
   
+  If (variableName != null) {
+    Nodes statementNodes = nodesQuery(statementNode, //statement);
+
+    ForEach(statementNodes, (Node statementNode) {
+      String boundVariableName = boundVariableNameFromStatementNode(statementNode); 
+      
+      If (boundVariableName == variableName) {
+        bound = true;
+      }
+    });
+  }
+  
+  Return bound;
+}
   
 String variableNameFromTermNode(Node termNode) {
   String variableName = null;
@@ -67,9 +66,7 @@ String variableNameFromTermNode(Node termNode) {
   Node variableNameTerminalNode = nodeQuery(termNode, /term/variable/@name);
   
   If (variableNameTerminalNode != null) {
-    String content;
-    
-    { content } = variableNameTerminalNode;
+    { String content } = variableNameTerminalNode;
     
     variableName = content;
   }
@@ -80,37 +77,21 @@ String variableNameFromTermNode(Node termNode) {
 String boundVariableNameFromStatementNode(Node statementNode) {
   String boundVariableName = null;
   
-  Nodes childNodes;
+  { Nodes childNodes } = statementNode;
   
-  { childNodes } = statementNode;
+  [ Node firstChildNode ] = childNodes;
   
-  Node firstChildNode;
-
-  [ firstChildNode ] = childNodes;
+  { String content } = firstChildNode;
   
-  Boolean firstChildNodeTerminalNode = isTerminalNode(firstChildNode);
-  
-  If (firstChildNodeTerminalNode) {
-    Node terminalNode = firstChildNode;
+  If ((content == "∀") || (content == "∃")) {
+    [ _, Node argumentNode ] = childNodes;
     
-    String content;
+    Node boundVariableNameTerminalNode = nodeQuery(argumentNode, /argument/term/variable/@name);
     
-    { content } = firstChildNode;
-    
-    If ((content == "∀") || (content == "∃")) {
-      Node secondChildNode;
+    If (boundVariableNameTerminalNode != null) {
+      { content } = boundVariableNameTerminalNode;
       
-      [ _, secondChildNode ] = childNodes;
-      
-      Node argumentNode = secondChildNode;
-      
-      Node boundVariableNameTerminalNode = nodeQuery(argumentNode, /argument/term/variable/@name);
-      
-      If (boundVariableNameTerminalNode != null) {
-        { content } = boundVariableNameTerminalNode;
-        
-        boundVariableName = content;
-      }
+      boundVariableName = content;
     }
   }
     

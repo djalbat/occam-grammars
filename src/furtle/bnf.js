@@ -6,8 +6,6 @@ const bnf = `document              ::=  ( instruction | error )+ ;
 
 instruction           ::=  functionDeclaration
                         
-                        |  pointersDeclaration
-
                         |  variablesDeclaration
                         
                         |  variableAssignment 
@@ -20,15 +18,11 @@ instruction           ::=  functionDeclaration
 
                         |  forEachLoop 
                        
-                        |  break 
-
                         ;
 
 
 
 functionDeclaration   ::=  [type] function ;
-
-pointersDeclaration   ::=  [type]<NO_WHITESPACE>"*" [name] assignment? ( "," [name] assignment? )* ";" ;
 
 variablesDeclaration  ::=  [type] [name] assignment? ( "," [name] assignment? )* ";" ;
 
@@ -36,7 +30,7 @@ variableAssignment    ::=  [name] assignment ";" ;
 
 objectAssignment      ::=  "{" 
 
-                           [name] ( "," [name] )* 
+                           [type]? [name] ( "," [type]? [name] )* 
                            
                            "}" "=" [name] ";" ;
 
@@ -44,11 +38,11 @@ arrayAssignment       ::=  "["
 
                            ( 
 
-                             ( "_" ( "," "_" )* ( "," [name] )+ ) 
+                             ( "_" ( "," "_" )* ( "," [type]? [name] )+ ) 
                            
                              | 
                            
-                             ( [name] ( "," [name] )* ) 
+                             ( [type]? [name] ( "," [type]? [name] )* ) 
                                
                            ) 
                            
@@ -74,9 +68,7 @@ block                 ::=  "{" ( variablesDeclaration |
                         
                                  conditionalBlock |
 
-                                 forEachLoop |
-                                 
-                                 break )* "}" ;
+                                 forEachLoop )* "}" ;
 
 
 
@@ -118,15 +110,11 @@ body                  ::=  "{" ( variablesDeclaration |
                         
                                  conditionalBlock |
 
-                                 forEachLoop |
-
-                                 break )* return? "}" ;
+                                 forEachLoop )* return? "}" ;
                                  
                                  
 
 return                ::=  "Return" value ";" ; 
-
-break                 ::=  "Break" ";" ; 
 
 
 
