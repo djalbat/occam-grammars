@@ -5,7 +5,10 @@ const entries = [
     "type": "^(?:Boolean|String|Number|Nodes|Node|Void)"
   },
   {
-    "keyword": "^(?:If|Else|Return|ForEach)"
+    "return": "^Return"
+  },
+  {
+    "keyword": "^(?:If|Else|ForEach)"
   },
   {
     "primitive": "^(?:null|true|false)"
@@ -14,7 +17,10 @@ const entries = [
     "instruction": "^(?:nodeQuery|nodesQuery)"
   },
   {
-    "special": "^(?:!=|==|=|;|,|_|&&|\\|\\||@|!|\\*|\\||\\/|\\(|\\)|\\[|\\]|\\{|\\}|\\.\\.\\.)"
+    "brackets": "^(?:\\{|\\})"
+  },
+  {
+    "special": "^(?:!=|==|=|;|,|_|&&|\\|\\||@|!|\\*|\\||\\/|\\(|\\)|\\[|\\]|\\.\\.\\.)"
   },
   {
     "name": "^[a-zA-Z\-]+"

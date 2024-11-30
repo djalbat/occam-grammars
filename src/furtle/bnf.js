@@ -1,12 +1,22 @@
 "use strict";
 
-const bnf = `document              ::=  ( instruction | error )+ ;
+const bnf = `document              ::=  ( topLevelDeclaration | error )+ ;
 
 
 
-instruction           ::=  functionDeclaration
+topLevelDeclaration   ::=  functionDeclaration
                         
                         |  variablesDeclaration
+                        
+                        ;
+
+
+
+error.                ::=  . ;
+
+
+
+instruction           ::=  variablesDeclaration
                         
                         |  variableAssignment 
                         
@@ -14,15 +24,11 @@ instruction           ::=  functionDeclaration
                         
                         |  arrayAssignment
                         
-                        |  conditionalBlock
-
-                        |  forEachLoop 
-                       
                         ;
 
 
 
-functionDeclaration   ::=  [type] function ;
+functionDeclaration   ::=  [type] [name]<NO_WHITESPACE>"(" ( argument ( "," argument )* )? ")" returnBlock ;
 
 variablesDeclaration  ::=  [type] variable assignment? ( "," variable assignment? )* ";" ;
 
@@ -47,46 +53,14 @@ arrayAssignment       ::=  "["
                            ) 
                            
                            "]" "=" variable ";" ;
+                           
+                           
+
+anonymousFunction     ::=  "(" ( argument ( "," argument )* )? ")" returnBlock ;
 
 conditionalBlock      ::=  "If" "(" condition ")" block ( "Else" block )? ;                                            
 
 forEachLoop           ::=  "ForEach"<NO_WHITESPACE>"(" variable "," anonymousFunction ")" ";" ;
-
-
-             
-assignment            ::=  "=" ( functionCall | nodesQuery | nodeQuery | value ) ;
-                                          
-                                          
-                                          
-block                 ::=  "{" ( variablesDeclaration |
-
-                                 variableAssignment | 
-                        
-                                 objectAssignment | 
-                        
-                                 arrayAssignment |
-                        
-                                 conditionalBlock |
-
-                                 forEachLoop )* "}" ;
-
-
-
-
-functionCall          ::=  [name]<NO_WHITESPACE>"(" ( value ( "," value )* )? ")" ;
-
-function              ::=  [name]<NO_WHITESPACE>"(" ( argument ( "," argument )* )? ")" body ;
-
-anonymousFunction     ::=  "(" ( argument ( "," argument )* )? ")" body ;
-
-
-
-nodesQuery            ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
-
-nodeQuery             ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
-
-
-
 
 condition             ::=  "(" condition ")" 
 
@@ -95,36 +69,36 @@ condition             ::=  "(" condition ")"
                         |  value ( ( "!=" | "==" ) value )? 
                         
                         ;
+                        
 
 
-
-body                  ::=  "{" ( variablesDeclaration | 
-                        
-                                 variableAssignment | 
-                        
-                                 objectAssignment | 
-                        
-                                 arrayAssignment |
-                        
-                                 conditionalBlock |
-
-                                 forEachLoop )* return? "}" ;
+returnBlock..         ::=  "{" ( conditionalBlock | forEachLoop | instruction | nonsense )* return? "}" ;
                                  
-                                 
-
-return                ::=  "Return" value ";" ; 
+block..               ::=  "{" ( conditionalBlock | forEachLoop | instruction | nonsense )* "}" ;
 
 
+
+nonsense.             ::=  [type] | [keyword] | [primitive] | [instruction] | [special] | [name] | [number] | [unassigned] ;
+    
+
+    
+return                ::=  [return] value ";" ; 
 
 value                 ::=  variable | [number] | [primitive] | [string-literal] ;
 
-
-
 argument              ::=  [type] variable ;
 
-
-
 variable              ::=  [name] ;
+
+assignment            ::=  "=" ( functionCall | nodesQuery | nodeQuery | value ) ;
+
+
+
+functionCall          ::=  [name]<NO_WHITESPACE>"(" ( value ( "," value )* )? ")" ;
+
+nodesQuery            ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
+
+nodeQuery             ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
 
 
 
@@ -174,10 +148,6 @@ endIndex              ::=  [number] ;
                    
 index                 ::=  [number] ;
                    
-unique                ::=  "!" ;
-                   
-
-
-error.                ::=  . ;`;
+unique                ::=  "!" ;`;
 
 export default bnf;
