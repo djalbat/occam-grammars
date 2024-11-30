@@ -5,6 +5,9 @@ const entries = [
     "type": "^(?:Boolean|String|Number|Nodes|Node|Void)"
   },
   {
+    "query": "^(?:nodeQuery|nodesQuery)"
+  },
+  {
     "return": "^Return"
   },
   {
@@ -14,10 +17,7 @@ const entries = [
     "primitive": "^(?:null|true|false)"
   },
   {
-    "instruction": "^(?:nodeQuery|nodesQuery)"
-  },
-  {
-    "brackets": "^(?:\\{|\\})"
+    "bracket": "^(?:\\{|\\})"
   },
   {
     "special": "^(?:!=|==|=|;|,|_|&&|\\|\\||@|!|\\*|\\||\\/|\\(|\\)|\\[|\\]|\\.\\.\\.)"
