@@ -1,159 +1,159 @@
 "use strict";
 
-const bnf = `document              ::=  ( topLevelDeclaration | error )+ ;
+const bnf = `document               ::=  ( topLevelDeclaration | error )+ ;
 
 
 
-topLevelDeclaration   ::=  functionDeclaration
+topLevelDeclaration    ::=  procedureDeclaration
                         
-                        |  variablesDeclaration
+                         |  variablesDeclaration
                         
-                        ;
+                         ;
 
 
 
-error.                ::=  . ;
+error.                 ::=  . ;
 
 
 
-instruction           ::=  variablesDeclaration
+instruction            ::=  variablesDeclaration
                         
-                        |  variableAssignment 
+                         |  variableAssignment 
                         
-                        |  objectAssignment 
+                         |  objectAssignment 
                         
-                        |  arrayAssignment
+                         |  arrayAssignment
                         
-                        ;
+                         ;
 
 
 
-functionDeclaration   ::=  [type] label<NO_WHITESPACE>"(" ( argument ( "," argument )* )? ")" returnBlock ;
+procedureDeclaration   ::=  [type] label<NO_WHITESPACE>"(" ( argument ( "," argument )* )? ")" returnBlock ;
 
-variablesDeclaration  ::=  [type] variable assignment? ( "," variable assignment? )* ";" ;
+variablesDeclaration   ::=  [type] variable assignment? ( "," variable assignment? )* ";" ;
 
-variableAssignment    ::=  variable assignment ";" ;
+variableAssignment     ::=  variable assignment ";" ;
 
-objectAssignment      ::=  "{" 
+objectAssignment       ::=  "{" 
 
-                           [type]? variable ( "," [type]? variable )* 
+                            [type]? variable ( "," [type]? variable )* 
                            
-                           "}" "=" variable ";" ;
+                            "}" "=" variable ";" ;
 
-arrayAssignment       ::=  "[" 
+arrayAssignment        ::=  "[" 
 
-                           ( 
+                            ( 
 
-                             ( "_" ( "," "_" )* ( "," [type]? variable )+ ) 
+                              ( "_" ( "," "_" )* ( "," [type]? variable )+ ) 
                            
-                             | 
+                              | 
                            
-                             ( [type]? variable ( "," [type]? variable )* ) 
+                              ( [type]? variable ( "," [type]? variable )* ) 
                                
-                           ) 
+                            ) 
                            
-                           "]" "=" variable ";" ;
+                            "]" "=" variable ";" ;
                            
                            
 
-anonymousFunction     ::=  "(" ( argument ( "," argument )* )? ")" returnBlock ;
+anonymousFunction      ::=  "(" ( argument ( "," argument )* )? ")" returnBlock ;
 
-conditionalBlock      ::=  "If" "(" condition ")" block ( "Else" block )? ;                                            
+conditionalBlock       ::=  "If" "(" condition ")" block ( "Else" block )? ;                                            
 
-forEachLoop           ::=  "ForEach"<NO_WHITESPACE>"(" variable "," anonymousFunction ")" ";" ;
+forEachLoop            ::=  "ForEach"<NO_WHITESPACE>"(" variable "," anonymousFunction ")" ";" ;
 
-condition             ::=  "(" condition ")" 
+condition              ::=  "(" condition ")" 
 
-                        |  condition ( "||" | "&&" ) condition 
+                         |  condition ( "||" | "&&" ) condition 
 
-                        |  value ( ( "!=" | "==" ) value )? 
+                         |  value ( ( "!=" | "==" ) value )? 
                         
-                        ;
+                         ;
                         
 
 
-returnBlock..         ::=  "{" ( conditionalBlock | forEachLoop | instruction | nonsense )* return? "}" ;
+returnBlock..          ::=  "{" ( conditionalBlock | forEachLoop | instruction | nonsense )* return? "}" ;
                                  
-block..               ::=  "{" ( conditionalBlock | forEachLoop | instruction | nonsense )* "}" ;
+block..                ::=  "{" ( conditionalBlock | forEachLoop | instruction | nonsense )* "}" ;
 
 
 
-nonsense.             ::=  [type] | [keyword] | [primitive] | [instruction] | [special] | [name] | [number] | [unassigned] ;
+nonsense.              ::=  [type] | [keyword] | [primitive] | [instruction] | [special] | [name] | [number] | [unassigned] ;
     
 
     
-return                ::=  [return] value ";" ; 
+return                 ::=  [return] value ";" ; 
 
-value                 ::=  variable | [number] | [primitive] | [string-literal] ;
+value                  ::=  variable | [number] | [primitive] | [string-literal] ;
 
-argument              ::=  [type] variable ;
+argument               ::=  [type] variable ;
 
-variable              ::=  [name] ;
+variable               ::=  [name] ;
 
-assignment            ::=  "=" ( functionCall | nodesQuery | nodeQuery | value ) ;
-
-
-
-functionCall          ::=  reference<NO_WHITESPACE>"(" ( value ( "," value )* )? ")" ;
-
-nodesQuery            ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
-
-nodeQuery             ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
+assignment             ::=  "=" ( procedureCall | nodesQuery | nodeQuery | value ) ;
 
 
 
-label.                ::=  [name] ;
+procedureCall          ::=  reference<NO_WHITESPACE>"(" ( value ( "," value )* )? ")" ;
 
-reference.            ::=  [name] ;
+nodesQuery             ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
+
+nodeQuery              ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
 
 
 
-expression            ::=  path spread? subExpression? ;
+label.                 ::=  [name] ;
 
-path                  ::=  "/" infiniteDescent? selectors ;
+reference.             ::=  [name] ;
 
-subExpression         ::=  path spread? subExpression?;
 
-infiniteDescent       ::=  "/" ;
 
-selectors             ::=  selector ( "|" selector )* ;
+expression             ::=  path spread? subExpression? ;
 
-spread                ::=  unique
+path                   ::=  "/" infiniteDescent? selectors ;
 
-                        |  "[" 
+subExpression          ::=  path spread? subExpression?;
+
+infiniteDescent        ::=  "/" ;
+
+selectors              ::=  selector ( "|" selector )* ;
+
+spread                 ::=  unique
+
+                         |  "[" 
       
-                           ( 
+                            ( 
                               
-                             ( startIndex "..." endIndex ) 
+                              ( startIndex "..." endIndex ) 
                               
-                             | 
+                              | 
                               
-                             ( startIndex "..." ) 
+                              ( startIndex "..." ) 
                               
-                             | 
+                              | 
                               
-                             ( "..." endIndex )
+                              ( "..." endIndex )
                                
-                             | 
+                              | 
                               
-                             index 
+                              index 
                               
-                           )  
+                            )  
                             
-                           "]" ;
+                            "]" ;
 
-selector              ::=  ruleName | tokenType ;
+selector               ::=  ruleName | tokenType ;
                    
-ruleName              ::=  [name] | "*" ;
+ruleName               ::=  [name] | "*" ;
                    
-tokenType             ::=  "@"<NO_WHITESPACE>( [name] | "*" ) ;
+tokenType              ::=  "@"<NO_WHITESPACE>( [name] | "*" ) ;
                    
-startIndex            ::=  [number] ;
+startIndex             ::=  [number] ;
                    
-endIndex              ::=  [number] ;
+endIndex               ::=  [number] ;
                    
-index                 ::=  [number] ;
+index                  ::=  [number] ;
                    
-unique                ::=  "!" ;`;
+unique                 ::=  "!" ;`;
 
 export default bnf;
