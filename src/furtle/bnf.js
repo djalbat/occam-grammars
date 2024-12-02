@@ -28,7 +28,7 @@ instruction           ::=  variablesDeclaration
 
 
 
-functionDeclaration   ::=  [type] [name]<NO_WHITESPACE>"(" ( argument ( "," argument )* )? ")" returnBlock ;
+functionDeclaration   ::=  [type] label<NO_WHITESPACE>"(" ( argument ( "," argument )* )? ")" returnBlock ;
 
 variablesDeclaration  ::=  [type] variable assignment? ( "," variable assignment? )* ";" ;
 
@@ -94,11 +94,17 @@ assignment            ::=  "=" ( functionCall | nodesQuery | nodeQuery | value )
 
 
 
-functionCall          ::=  [name]<NO_WHITESPACE>"(" ( value ( "," value )* )? ")" ;
+functionCall          ::=  reference<NO_WHITESPACE>"(" ( value ( "," value )* )? ")" ;
 
 nodesQuery            ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
 
 nodeQuery             ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
+
+
+
+label.                ::=  [name] ;
+
+reference.            ::=  [name] ;
 
 
 
