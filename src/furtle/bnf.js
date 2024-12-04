@@ -16,18 +16,6 @@ error.                 ::=  . ;
 
 
 
-instruction            ::=  variablesDeclaration
-                        
-                         |  variableAssignment 
-                        
-                         |  objectAssignment 
-                        
-                         |  arrayAssignment
-                        
-                         ;
-
-
-
 procedureDeclaration   ::=  [type] label<NO_WHITESPACE>"(" ( parameter ( "," parameter )* )? ")" returnBlock ;
 
 variablesDeclaration   ::=  [type] variable assignment? ( "," variable assignment? )* ";" ;
@@ -72,13 +60,37 @@ condition              ::=  "(" condition ")"
                         
 
 
-returnBlock..          ::=  "{" ( conditionalBlock | forEachLoop | instruction | nonsense )* return? "}" ;
+returnBlock..          ::=  "{" ( variablesDeclaration |  
+                                  
+                                  variableAssignment |  
+                                  
+                                  objectAssignment |  
+                                  
+                                  arrayAssignment | 
+                                  
+                                  conditionalBlock | 
+                        
+                                  forEachLoop | 
+                                  
+                                  nonsense )* return? "}" ;
                                  
-block..                ::=  "{" ( conditionalBlock | forEachLoop | instruction | nonsense )* "}" ;
+block..                ::=  "{" ( variablesDeclaration |  
+                                  
+                                  variableAssignment |  
+                                  
+                                  objectAssignment |  
+                                  
+                                  arrayAssignment | 
+                                  
+                                  conditionalBlock | 
+                        
+                                  forEachLoop | 
+                                  
+                                  nonsense )* "}" ;
 
 
 
-nonsense.              ::=  [type] | [keyword] | [primitive] | [instruction] | [special] | [name] | [number] | [unassigned] ;
+nonsense.              ::=  [type] | [keyword] | [primitive] | [query] | [special] | [name] | [number] | [unassigned] ;
     
 
     
