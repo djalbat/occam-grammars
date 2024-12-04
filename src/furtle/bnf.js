@@ -52,15 +52,22 @@ forEachLoop            ::=  "ForEach"<NO_WHITESPACE>"(" variable "," anonymousFu
 
 
 
+condition              ::=  bracketedCondition 
 
-condition              ::=  "(" condition ")" 
+                         |  bitwiseCondition 
 
-                         |  condition ( "||" | "&&" ) condition 
+                         |  comparison 
 
-                         |  value ( ( "!=" | "==" ) value )? 
+                         |  value 
                         
                          ;
                         
+bracketedCondition     ::=  condition ( "||" | "&&" ) condition ; 
+
+bitwiseCondition       ::=  condition ( "||" | "&&" ) condition ; 
+
+comparison             ::=  value ( "!=" | "==" ) value ; 
+
 
 
 returnBlock..          ::=  "{" ( step | nonsense )* return? "}" ;
