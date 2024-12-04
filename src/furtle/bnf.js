@@ -50,6 +50,9 @@ conditionalBlock       ::=  "If" "(" condition ")" block ( "Else" block )? ;
 
 forEachLoop            ::=  "ForEach"<NO_WHITESPACE>"(" variable "," anonymousFunction ")" ";" ;
 
+
+
+
 condition              ::=  "(" condition ")" 
 
                          |  condition ( "||" | "&&" ) condition 
@@ -60,36 +63,26 @@ condition              ::=  "(" condition ")"
                         
 
 
-returnBlock..          ::=  "{" ( variablesDeclaration |  
-                                  
-                                  variableAssignment |  
-                                  
-                                  objectAssignment |  
-                                  
-                                  arrayAssignment | 
-                                  
-                                  conditionalBlock | 
-                        
-                                  forEachLoop | 
-                                  
-                                  nonsense )* return? "}" ;
+returnBlock..          ::=  "{" ( step | nonsense )* return? "}" ;
                                  
-block..                ::=  "{" ( variablesDeclaration |  
-                                  
-                                  variableAssignment |  
-                                  
-                                  objectAssignment |  
-                                  
-                                  arrayAssignment | 
-                                  
-                                  conditionalBlock | 
-                        
-                                  forEachLoop | 
-                                  
-                                  nonsense )* "}" ;
+block..                ::=  "{" ( step | nonsense )* "}" ;
 
 
 
+step                   ::=  variablesDeclaration
+ 
+                         |  variableAssignment
+                          
+                         |  objectAssignment
+                          
+                         |  arrayAssignment
+                          
+                         |  conditionalBlock
+                          
+                         |  forEachLoop
+                          
+                         ;  
+  
 nonsense.              ::=  [type] | [keyword] | [primitive] | [query] | [special] | [name] | [number] | [unassigned] ;
     
 
