@@ -62,7 +62,7 @@ condition              ::=  bracketedCondition
                         
                          ;
                         
-bracketedCondition     ::=  condition ( "||" | "&&" ) condition ; 
+bracketedCondition     ::=  "(" condition ")" ; 
 
 bitwiseCondition       ::=  condition ( "||" | "&&" ) condition ; 
 
