@@ -28,7 +28,7 @@ instruction            ::=  variablesDeclaration
 
 
 
-procedureDeclaration   ::=  [type] label<NO_WHITESPACE>"(" ( argument ( "," argument )* )? ")" returnBlock ;
+procedureDeclaration   ::=  [type] label<NO_WHITESPACE>"(" ( parameter ( "," parameter )* )? ")" returnBlock ;
 
 variablesDeclaration   ::=  [type] variable assignment? ( "," variable assignment? )* ";" ;
 
@@ -56,7 +56,7 @@ arrayAssignment        ::=  "["
                            
                            
 
-anonymousFunction      ::=  "(" ( argument ( "," argument )* )? ")" returnBlock ;
+anonymousFunction      ::=  "(" ( parameter ( "," parameter )* )? ")" returnBlock ;
 
 conditionalBlock       ::=  "If" "(" condition ")" block ( "Else" block )? ;                                            
 
@@ -86,7 +86,7 @@ return                 ::=  [return] value ";" ;
 
 value                  ::=  variable | [number] | [primitive] | [string-literal] ;
 
-argument               ::=  [type] variable ;
+parameter              ::=  [type] variable ;
 
 variable               ::=  [name] ;
 
