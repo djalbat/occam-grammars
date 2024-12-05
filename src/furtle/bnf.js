@@ -38,11 +38,11 @@ arrayAssignment        ::=  "["
                            
                            
 
-anonymousFunction      ::=  "(" ( parameter ( "," parameter )* )? ")" returnBlock ;
+anonymousProcedure     ::=  "(" ( parameter ( "," parameter )* )? ")" returnBlock ;
 
 conditionalBlock       ::=  "If" "(" condition ")" block ( "Else" block )? ;                                            
 
-forEachLoop            ::=  "ForEach"<NO_WHITESPACE>"(" variable "," anonymousFunction ")" ";" ;
+forEachLoop            ::=  "ForEach"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ";" ;
 
 
 
