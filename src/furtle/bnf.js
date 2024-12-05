@@ -1,22 +1,16 @@
 "use strict";
 
-const bnf = `document               ::=  ( topLevelDeclaration | error )+ ;
+const bnf = `document               ::=  ( procedureDeclaration | error )+ ;
 
 
 
-topLevelDeclaration    ::=  procedureDeclaration
-                        
-                         |  variablesDeclaration
-                        
-                         ;
+procedureDeclaration   ::=  [type] label<NO_WHITESPACE>"(" ( parameter ( "," parameter )* )? ")" returnBlock ;
 
 
 
 error.                 ::=  . ;
 
 
-
-procedureDeclaration   ::=  [type] label<NO_WHITESPACE>"(" ( parameter ( "," parameter )* )? ")" returnBlock ;
 
 variablesDeclaration   ::=  [type] variable assignment? ( "," variable assignment? )* ";" ;
 
