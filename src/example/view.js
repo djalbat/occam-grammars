@@ -108,18 +108,25 @@ class View extends Element {
   initialise() {
     this.assignContext();
 
-    const { Lexer, Parser, initialContent } = this.constructor,
+    const { Lexer, Parser, initialContent, initialRuleName } = this.constructor,
           { bnf } = Parser,
           { entries } = Lexer,
           content = initialContent, ///
+          ruleName = initialRuleName, ///
           lexicalEntries = entries; ///
 
     this.setBNF(bnf);
+
     this.setContent(content);
+
+    this.setRuleName(ruleName);
+
     this.setLexicalEntries(lexicalEntries);
 
     this.keyUpHandler();
   }
+
+  static initialRuleName = null;
 
   static tagName = "div";
 

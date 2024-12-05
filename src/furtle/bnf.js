@@ -16,11 +16,11 @@ variablesDeclaration   ::=  [type] variable assignment? ( "," variable assignmen
 
 variableAssignment     ::=  variable assignment ";" ;
 
-objectAssignment       ::=  "{" 
+objectAssignment       ::=  "(" 
 
                             [type] variable ( "," [type] variable )* 
                            
-                            "}" "=" variable ";" ;
+                            ")" "=" variable ";" ;
 
 arrayAssignment        ::=  "[" 
 

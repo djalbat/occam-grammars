@@ -4,8 +4,8 @@ import { FurtleLexer, FurtleParser, lexersUtilities, parsersUtilities } from "..
 
 import View from "../view";
 
-const { furtleParserFromBNF } = parsersUtilities,
-      { furtleLexerFromEntries } = lexersUtilities;
+const { furtleLexerFromEntries } = lexersUtilities,
+      { furtleParserFromBNFAndStartRuleName } = parsersUtilities;
 
 export default class FurtleView extends View {
   getTokens() {
@@ -23,7 +23,9 @@ export default class FurtleView extends View {
     let parseTree = null;
 
     const bnf = this.getBNF(),
-          furtleParser = furtleParserFromBNF(bnf),
+          ruleName = this.getRuleName(),
+          startRuleName = ruleName, ///
+          furtleParser = furtleParserFromBNFAndStartRuleName(bnf, startRuleName),
           parser = furtleParser, ///
           node = parser.parse(tokens);
 
@@ -40,64 +42,11 @@ export default class FurtleView extends View {
 
   static readOnly = false;
 
-  static initialContent = `Boolean isBound(Node termNode, Node statementNode) {
-  Boolean bound = false;
-    
-  String variableName = variableNameFromTermNode(termNode);
-  
-  If (variableName != null) {
-    Nodes statementNodes = nodesQuery(statementNode, //statement);
+  static initialContent = `{
+  ( content ) = foo;
+}`;
 
-    ForEach(statementNodes, (Node statementNode) {
-      String boundVariableName = boundVariableNameFromStatementNode(statementNode); 
-      
-      If (boundVariableName == variableName) {
-        bound = true;
-      }
-    });
-  }
-  
-  Return bound;
-}
-  
-String variableNameFromTermNode(Node termNode) {
-  String variableName = null;
-  
-  Node variableNameTerminalNode = nodeQuery(termNode, /term/variable/@name);
-  
-  If (variableNameTerminalNode != null) {
-    { String content } = variableNameTerminalNode;
-    
-    variableName = content;
-  }
-  
-  Return variableName;
-}
-
-String boundVariableNameFromStatementNode(Node statementNode) {
-  String boundVariableName = null;
-  
-  { Nodes childNodes } = statementNode;
-  
-  [ Node firstChildNode ] = childNodes;
-  
-  { String content } = firstChildNode;
-  
-  If ((content == "∀") || (content == "∃")) {
-    [ _, Node argumentNode ] = childNodes;
-    
-    Node boundVariableNameTerminalNode = nodeQuery(argumentNode, /argument/term/variable/@name);
-    
-    If (boundVariableNameTerminalNode != null) {
-      { content } = boundVariableNameTerminalNode;
-      
-      boundVariableName = content;
-    }
-  }
-    
-  Return boundVariableName;
-}
-`;
+  static initialRuleName = "block";
 
   static defaultProperties = {
     className: "furtle"

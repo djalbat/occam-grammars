@@ -12,11 +12,19 @@ class RuleNameInput extends Input {
     return ruleName;
   }
 
+  setRuleName(ruleName) {
+    const value = ruleName; ///
+
+    this.setValue(value);
+  }
+
   parentContext() {
-    const getRuleName = this.getRuleName.bind(this);
+    const getRuleName = this.getRuleName.bind(this),
+          setRuleName = this.setRuleName.bind(this);
 
     return ({
-      getRuleName
+      getRuleName,
+      setRuleName
     });
   }
 
