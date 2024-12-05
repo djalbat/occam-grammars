@@ -64,7 +64,7 @@ comparison             ::=  value ( "!=" | "==" ) value ;
 
 
 
-returnBlock..          ::=  "{" ( step | nonsense )* return? "}" ;
+returnBlock..          ::=  "{" ( step | nonsense )* returnStatement? "}" ;
                                  
 block..                ::=  "{" ( step | nonsense )* "}" ;
 
@@ -88,15 +88,7 @@ nonsense.              ::=  [type] | [keyword] | [primitive] | [query] | [specia
     
 
     
-return                 ::=  [return] value ";" ; 
-
-value                  ::=  variable | [number] | [primitive] | [string-literal] ;
-
-parameter              ::=  [type] variable ;
-
-variable               ::=  [name] ;
-
-assignment             ::=  "=" ( procedureCall | nodesQuery | nodeQuery | value ) ;
+returnStatement        ::=  [return] value ";" ; 
 
 
 
@@ -105,6 +97,16 @@ procedureCall          ::=  reference<NO_WHITESPACE>"(" ( value ( "," value )* )
 nodesQuery             ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
 
 nodeQuery              ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
+
+
+
+value                  ::=  variable | [number] | [primitive] | [string-literal] ;
+
+parameter              ::=  [type] variable ;
+
+variable               ::=  [name] ;
+
+assignment             ::=  "=" ( procedureCall | nodesQuery | nodeQuery | value ) ;
 
 
 
