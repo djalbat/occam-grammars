@@ -38,7 +38,7 @@ arrayAssignment        ::=  "["
                            
                            
 
-anonymousProcedure     ::=  "(" ( parameter ( "," parameter )* )? ")" returnBlock ;
+anonymousProcedure     ::=  "(" ( parameter ( "," parameter )* )? ")" block ;
 
 conditionalBlock       ::=  "If" "(" condition ")" block ( "Else" block )? ;                                            
 
