@@ -18,7 +18,7 @@ variableAssignment     ::=  variable assignment ";" ;
 
 objectAssignment       ::=  "{" 
 
-                            [type]? variable ( "," [type]? variable )* 
+                            [type] variable ( "," [type] variable )* 
                            
                             "}" "=" variable ";" ;
 
@@ -26,11 +26,11 @@ arrayAssignment        ::=  "["
 
                             ( 
 
-                              ( "_" ( "," "_" )* ( "," [type]? variable )+ ) 
+                              ( "_" ( "," "_" )* ( "," [type] variable )+ ) 
                            
                               | 
                            
-                              ( [type]? variable ( "," [type]? variable )* ) 
+                              ( [type] variable ( "," [type] variable )* ) 
                                
                             ) 
                            
