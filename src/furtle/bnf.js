@@ -26,7 +26,7 @@ arrayAssignment        ::=  "["
 
                             ( 
 
-                              ( "_" ( "," "_" )* ( "," [type] variable )+ ) 
+                              ( dummyVariable ( "," dummyVariable )* ( "," [type] variable )+ ) 
                            
                               | 
                            
@@ -107,6 +107,8 @@ parameter              ::=  [type] variable ;
 variable               ::=  [name] ;
 
 assignment             ::=  "=" ( procedureCall | nodesQuery | nodeQuery | value ) ;
+
+dummyVariable          ::=  "_" ;
 
 
 
