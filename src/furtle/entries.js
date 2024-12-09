@@ -2,7 +2,7 @@
 
 const entries = [
   {
-    "type": "^(?:Boolean|String|Number|Nodes|Node|Void)"
+    "type": "^(?:Node|Nodes|String|Number|Boolean)"
   },
   {
     "query": "^(?:nodeQuery|nodesQuery)"
