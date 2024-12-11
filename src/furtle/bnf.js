@@ -4,7 +4,7 @@ const bnf = `document               ::=  ( procedureDeclaration | error )+ ;
 
 
 
-procedureDeclaration   ::=  [type] label<NO_WHITESPACE>"(" ( parameter ( "," parameter )* )? ")" returnBlock ;
+procedureDeclaration   ::=  [type] label<NO_WHITESPACE>"(" parameters? ")" returnBlock ;
 
 
 
@@ -38,7 +38,7 @@ arrayAssignment        ::=  "["
                            
                            
 
-anonymousProcedure     ::=  "(" ( parameter ( "," parameter )* )? ")" block ;
+anonymousProcedure     ::=  "(" parameters? ")" block ;
 
 conditionalBlock       ::=  "If" "(" condition ")" block ( "Else" block )? ;                                            
 
@@ -92,7 +92,7 @@ returnStatement        ::=  [return] value ";" ;
 
 
 
-procedureCall          ::=  reference<NO_WHITESPACE>"(" ( value ( "," value )* )? ")" ;
+procedureCall          ::=  reference<NO_WHITESPACE>"(" values? ")" ;
 
 nodesQuery             ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
 
@@ -100,11 +100,17 @@ nodeQuery              ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expressio
 
 
 
+parameters             ::=  parameter ( "," parameter )* ;
+
+values                 ::=  value ( "," value )* ;
+
+
+
 value                  ::=  variable | [number] | [primitive] | [string-literal] ;
 
-parameter              ::=  [type] [name] ;
-
 variable               ::=  [name] ;
+
+parameter              ::=  [type] [name] ;
 
 assignment             ::=  "=" ( procedureCall | nodesQuery | nodeQuery | value ) ;
 
