@@ -102,7 +102,7 @@ nodeQuery              ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expressio
 
 value                  ::=  variable | [number] | [primitive] | [string-literal] ;
 
-parameter              ::=  [type] variable ;
+parameter              ::=  [type] [name] ;
 
 variable               ::=  [name] ;
 
