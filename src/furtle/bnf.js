@@ -16,35 +16,23 @@ variablesDeclaration   ::=  [type] variable assignment? ( "," variable assignmen
 
 variableAssignment     ::=  variable assignment ";" ;
 
-objectAssignment       ::=  "(" 
+objectAssignment       ::=  "(" parameters ")" "=" variable ";" ;
 
-                            [type] variable ( "," [type] variable )* 
-                           
-                            ")" "=" variable ";" ;
-
-arrayAssignment        ::=  "[" 
-
-                            ( 
-
-                              ( dummyVariable ( "," dummyVariable )* ( "," [type] variable )+ ) 
-                           
-                              | 
-                           
-                              ( [type] variable ( "," [type] variable )* ) 
-                               
-                            ) 
-                           
-                            "]" "=" variable ";" ;
-                           
-                           
-
-anonymousProcedure     ::=  "(" parameters? ")" block ;
-
+arrayAssignment        ::=  "[" parameters "]" "=" variable ";" ;
+                                                      
 conditionalBlock       ::=  "If" "(" condition ")" block ( "Else" block )? ;                                            
 
 forEachLoop            ::=  "ForEach"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ";" ;
 
 
+
+anonymousProcedure     ::=  "(" parameters? ")" block ;
+
+bracketedCondition     ::=  "(" condition ")" ; 
+
+bitwiseCondition       ::=  condition ( "||" | "&&" ) condition ; 
+
+comparison             ::=  value ( "!=" | "==" ) value ; 
 
 condition              ::=  bracketedCondition 
 
@@ -56,17 +44,13 @@ condition              ::=  bracketedCondition
                         
                          ;
                         
-bracketedCondition     ::=  "(" condition ")" ; 
-
-bitwiseCondition       ::=  condition ( "||" | "&&" ) condition ; 
-
-comparison             ::=  value ( "!=" | "==" ) value ; 
 
 
+block..                ::=  "{" ( step | nonsense )* "}" ;
 
 returnBlock..          ::=  "{" ( step | nonsense )* returnStatement? "}" ;
                                  
-block..                ::=  "{" ( step | nonsense )* "}" ;
+returnStatement        ::=  [return] value ";" ; 
 
 
 
@@ -88,7 +72,7 @@ nonsense.              ::=  [type] | [keyword] | [primitive] | [query] | [specia
     
 
     
-returnStatement        ::=  [return] value ";" ; 
+assignment             ::=  "=" ( procedureCall | nodesQuery | nodeQuery | value ) ;
 
 
 
@@ -110,11 +94,11 @@ value                  ::=  variable | [number] | [primitive] | [string-literal]
 
 variable               ::=  [name] ;
 
-parameter              ::=  [type] [name] ;
+parameter              ::=  [type] [name]
 
-assignment             ::=  "=" ( procedureCall | nodesQuery | nodeQuery | value ) ;
+                         |  "_" 
 
-dummyVariable          ::=  "_" ;
+                         ;
 
 
 
