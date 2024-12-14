@@ -48,7 +48,7 @@ condition              ::=  bracketedCondition
 
 block..                ::=  "{" ( step | nonsense )* "}" ;
 
-returnBlock..          ::=  "{" ( step | nonsense )* returnStatement? "}" ;
+returnBlock..          ::=  "{" ( step | nonsense )* returnStatement "}" ;
                                  
 returnStatement        ::=  [return] value ";" ; 
 
