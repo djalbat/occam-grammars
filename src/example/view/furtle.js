@@ -43,7 +43,7 @@ export default class FurtleView extends View {
   static readOnly = false;
 
   static initialContent = `{
-  ( content ) = foo;
+  { String content } = foo;
 }`;
 
   static initialRuleName = "block";

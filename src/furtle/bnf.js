@@ -18,7 +18,7 @@ variableAssignment     ::=  variable assignment ";" ;
 
 conditionalBlocks      ::=  "If" "(" condition ")" block ( "Else" block )? ;                                            
 
-objectAssignment       ::=  "(" parameters ")" "=" variable ";" ;
+objectAssignment       ::=  "{" parameters "}" "=" variable ";" ;
 
 arrayAssignment        ::=  "[" parameters "]" "=" variable ";" ;
                                                       
