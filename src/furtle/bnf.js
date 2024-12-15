@@ -28,15 +28,13 @@ forEachLoop            ::=  "ForEach"<NO_WHITESPACE>"(" variable "," anonymousPr
 
 anonymousProcedure     ::=  "(" parameters? ")" block ;
 
-bracketedCondition     ::=  "(" condition ")" ; 
 
-bitwiseCondition       ::=  condition ( "||" | "&&" ) condition ; 
-
-comparison             ::=  value ( "!=" | "==" ) value ; 
 
 condition              ::=  bracketedCondition 
 
                          |  bitwiseCondition 
+
+                         |  negatedCondition 
 
                          |  comparison 
 
@@ -44,6 +42,15 @@ condition              ::=  bracketedCondition
                         
                          ;
                         
+bracketedCondition     ::=  "(" condition ")" ; 
+
+bitwiseCondition       ::=  condition ( "||" | "&&" ) condition ; 
+
+negatedCondition       ::=  "!"<NO_WHITESPACE>condition ; 
+
+comparison             ::=  value ( "!=" | "==" ) value ; 
+
+
 
 
 block..                ::=  "{" ( step | nonsense )* "}" ;
@@ -68,10 +75,6 @@ step                   ::=  variablesDeclaration
                           
                          ;  
   
-nonsense.              ::=  [type] | [keyword] | [primitive] | [query] | [special] | [name] | [number] | [unassigned] ;
-    
-
-    
 assignment             ::=  "=" ( procedureCall | nodesQuery | nodeQuery | value ) ;
 
 
@@ -108,6 +111,10 @@ reference.             ::=  [name] ;
 
 
 
+nonsense.              ::=  [type] | [keyword] | [primitive] | [query] | [special] | [name] | [number] | [unassigned] ;
+    
+
+    
 expression             ::=  path spread? subExpression? ;
 
 path                   ::=  "/" infiniteDescent? selectors ;
