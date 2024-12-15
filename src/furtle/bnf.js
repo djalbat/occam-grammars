@@ -16,12 +16,12 @@ variablesDeclaration   ::=  [type] variable assignment? ( "," variable assignmen
 
 variableAssignment     ::=  variable assignment ";" ;
 
+conditionalBlocks      ::=  "If" "(" condition ")" block ( "Else" block )? ;                                            
+
 objectAssignment       ::=  "(" parameters ")" "=" variable ";" ;
 
 arrayAssignment        ::=  "[" parameters "]" "=" variable ";" ;
                                                       
-conditionalBlock       ::=  "If" "(" condition ")" block ( "Else" block )? ;                                            
-
 forEachLoop            ::=  "ForEach"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ";" ;
 
 
@@ -58,11 +58,11 @@ step                   ::=  variablesDeclaration
  
                          |  variableAssignment
                           
+                         |  conditionalBlocks
+                          
                          |  objectAssignment
                           
                          |  arrayAssignment
-                          
-                         |  conditionalBlock
                           
                          |  forEachLoop
                           
