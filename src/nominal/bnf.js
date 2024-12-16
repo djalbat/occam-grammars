@@ -12,11 +12,9 @@ topLevelDeclaration                  ::=  typeDeclaration
                                            
                                        |  constructorDeclaration 
                                            
-                                       |  disjointTypeDeclaration 
-                                           
                                        |  metavariableDeclaration 
-                                           
-                                       |  dependentTypeDeclaration 
+                                                                                      
+                                       |  complexTypeDeclaration 
                                            
                                        ;
 
@@ -57,6 +55,18 @@ combinatorDeclaration                ::=  "Combinator" statement... <END_OF_LINE
 constructorDeclaration               ::=  "Constructor" term... ( ":" type )? <END_OF_LINE> ;
  
 metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaType <END_OF_LINE> ;
+ 
+complexTypeDeclaration               ::=  "ComplexType" <END_OF_LINE> type ( ":" type )? <END_OF_LINE> 
+
+                                          ( 
+
+                                            ( "Properties" <END_OF_LINE> property property+ ) 
+                                             
+                                            | 
+                                             
+                                            ( "Property" <END_OF_LINE> property ) 
+                                             
+                                          ) ;
  
 
   
@@ -188,6 +198,14 @@ subDerivation                        ::=  (
 
 
 
+property.                            ::=  [property] <END_OF_LINE>  
+
+                                       |  nonsense... <END_OF_LINE>
+                                       
+                                       ;
+
+
+
 premise.                             ::=  statement... <END_OF_LINE>  
 
                                        |  nonsense... <END_OF_LINE>
@@ -262,8 +280,8 @@ type.                                ::=  [type] ;
 
 
 
-stuff.                               ::=  ( [name] | [symbol] | [operator] | [bracket] | [unassigned] )+ ;
+stuff.                               ::=  ( [name] | [symbol] | [property] | [operator] | [bracket] | [unassigned] )+ ;
 
-nonsense.                            ::=  ( [type] | [name] | [symbol] | [operator] | [bracket] | [special] | [meta-type] | [secondary-keyword] | [unassigned] )+ ;`;
+nonsense.                            ::=  ( [type] | [name] | [symbol] | [property] | [operator] | [bracket] | [special] | [meta-type] | [secondary-keyword] | [unassigned] )+ ;`;
 
 export default bnf;
