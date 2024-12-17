@@ -230,11 +230,17 @@ consequent.                          ::=  statement... <END_OF_LINE>
                                        
                                        ;
 
-proofStep.                           ::=  statement... ( ( "by" | "from" ) reference )? <END_OF_LINE>  
+proofStep.                           ::=  procedureCall... <END_OF_LINE>  
+
+                                       |  statement... ( ( "by" | "from" ) reference )? <END_OF_LINE>  
 
                                        |  nonsense... ( ( "by" | "from" ) reference )? <END_OF_LINE>
                                        
                                        ;
+
+
+
+procedureCall                        ::=  "@"<NO_WHITESPACE>reference<NO_WHITESPACE>"(" parameter ( "," parameter )* ")" ;
 
 
 
@@ -248,9 +254,12 @@ reference.                           ::=  metavariable ;
 
 
 
+
 metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" ( term | type | stuff ) ")" )? ;
 
 variable.                            ::=  [name] ;
+
+parameter.                           ::=  [name] ;
 
 
 
