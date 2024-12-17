@@ -8,10 +8,10 @@ const entries = [
     "bracket": "^(?:\\(|\\))"
   },
   {
-    "primary-keyword": "^(?:Rule|Axiom|Theorem|Lemma|Conjecture|MetaLemma|Metatheorem|Premises|Premise|Conclusion|Proof|Therefore|Suppose|Hence|Then|ComplexType|Type|Properties|Property|Variable|Constructor|Combinator|DependentType|DisjointType|Metavariable)\\b"
+    "primary-keyword": "^(?:Rule|Axiom|Theorem|Lemma|Conjecture|MetaLemma|Metatheorem|Premises|Premise|Conclusion|Proof|Therefore|Suppose|Hence|Then|Type|Properties|Property|Variable|Constructor|Combinator|DependentType|DisjointType|Metavariable)\\b"
   },
   {
-    "secondary-keyword": "^(?:by|from)\\b"
+    "secondary-keyword": "^(?:is|in|an|a|of|by|from)\\b"
   },
   {
     "meta-type": "^(?:Statement|Reference|Frame)\\b"

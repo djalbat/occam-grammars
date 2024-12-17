@@ -56,7 +56,7 @@ constructorDeclaration               ::=  "Constructor" term... ( ":" type )? <E
  
 metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaType <END_OF_LINE> ;
  
-complexTypeDeclaration               ::=  "ComplexType" <END_OF_LINE> type ( ":" type )? <END_OF_LINE> 
+complexTypeDeclaration               ::=  "Type" <END_OF_LINE> type ( ":" type )? <END_OF_LINE> 
 
                                           ( 
 
