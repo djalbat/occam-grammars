@@ -206,7 +206,17 @@ property.                            ::=  [property] <END_OF_LINE>
 
 
 
-premise.                             ::=  statement... <END_OF_LINE>  
+premise.                             ::=  procedureCall... <END_OF_LINE>  
+
+                                       |  statement... <END_OF_LINE>  
+
+                                       |  nonsense... <END_OF_LINE>
+                                       
+                                       ;
+
+supposition.                         ::=  procedureCall... <END_OF_LINE>  
+
+                                       |  statement... <END_OF_LINE>  
 
                                        |  nonsense... <END_OF_LINE>
                                        
@@ -218,21 +228,15 @@ conclusion.                          ::=  statement... <END_OF_LINE>
                                        
                                        ;
 
-supposition.                         ::=  statement... <END_OF_LINE>  
-
-                                       |  nonsense... <END_OF_LINE>
-                                       
-                                       ;
-
 consequent.                          ::=  statement... <END_OF_LINE>  
 
                                        |  nonsense... <END_OF_LINE>
                                        
                                        ;
 
-proofStep.                           ::=  procedureCall... <END_OF_LINE>  
 
-                                       |  statement... ( ( "by" | "from" ) reference )? <END_OF_LINE>  
+
+proofStep.                           ::=  statement... ( ( "by" | "from" ) reference )? <END_OF_LINE>  
 
                                        |  nonsense... ( ( "by" | "from" ) reference )? <END_OF_LINE>
                                        
