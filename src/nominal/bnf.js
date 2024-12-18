@@ -244,7 +244,7 @@ proofStep.                           ::=  statement... ( ( "by" | "from" ) refer
 
 
 
-procedureCall                        ::=  "@"<NO_WHITESPACE>reference<NO_WHITESPACE>"(" parameter ( "," parameter )* ")" ;
+procedureCall                        ::=  ( "!"<NO_WHITESPACE> )? "@"<NO_WHITESPACE>reference<NO_WHITESPACE>"(" parameter ( "," parameter )* ")" ;
 
 
 
