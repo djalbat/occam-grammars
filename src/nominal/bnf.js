@@ -86,7 +86,7 @@ rule                                 ::=  "Rule" "(" labels... ")" <END_OF_LINE>
                                            
                                           proof? ;                                         
 
-metaLemma                            ::=  "MetaLemma" ( "(" labels... ")" )? <END_OF_LINE> 
+metaLemma                            ::=  "MetaLemma" ( "(" label... ")" )? <END_OF_LINE> 
 
                                           (
                                            
@@ -100,7 +100,7 @@ metaLemma                            ::=  "MetaLemma" ( "(" labels... ")" )? <EN
                                                                                          
                                           proof ;
 
-metatheorem                          ::=  "Metatheorem" "(" labels... ")" <END_OF_LINE> 
+metatheorem                          ::=  "Metatheorem" "(" label... ")" <END_OF_LINE> 
 
                                           (
                                            
