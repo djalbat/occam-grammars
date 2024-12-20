@@ -60,11 +60,11 @@ complexTypeDeclaration               ::=  "Type" <END_OF_LINE> type ( ":" type )
 
                                           ( 
 
-                                            ( "Properties" <END_OF_LINE> property property+ ) 
+                                            ( "Properties" <END_OF_LINE> propertyDeclaration propertyDeclaration+ ) 
                                              
                                             | 
                                              
-                                            ( "Property" <END_OF_LINE> property ) 
+                                            ( "Property" <END_OF_LINE> propertyDeclaration ) 
                                              
                                           ) ;
  
@@ -198,7 +198,7 @@ subDerivation                        ::=  (
 
 
 
-property.                            ::=  [property] <END_OF_LINE>  
+propertyDeclaration.                 ::=  property ":" type <END_OF_LINE>  
 
                                        |  nonsense... <END_OF_LINE>
                                        
@@ -286,6 +286,8 @@ argument                             ::=  term ( )
                                        ;
 
 
+
+property.                            ::=  [property] ;
 
 metaType.                            ::=  [meta-type] ;
 
