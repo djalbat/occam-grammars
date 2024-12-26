@@ -259,14 +259,6 @@ reference.                           ::=  metavariable ;
 
 
 
-metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" ( term | type | stuff ) ")" )? ;
-
-variable.                            ::=  [name] ;
-
-parameter.                           ::=  [name] ;
-
-
-
 frameArgument                        ::=  frame ( ) 
 
                                        |  metaType ( ) 
@@ -287,16 +279,22 @@ argument                             ::=  term ( )
 
 
 
-property.                            ::=  [property] ;
+metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" ( term | type | stuff ) ")" )? ;
 
-metaType.                            ::=  [meta-type] ;
+parameter.                           ::=  [name] ;
+
+variable.                            ::=  [name] ;
+
+property.                            ::=  [name] ;
 
 type.                                ::=  [type] ;
 
+metaType.                            ::=  [meta-type] ;
 
 
-stuff.                               ::=  ( [name] | [symbol] | [property] | [operator] | [bracket] | [unassigned] )+ ;
 
-nonsense.                            ::=  ( [type] | [name] | [symbol] | [property] | [operator] | [bracket] | [special] | [meta-type] | [secondary-keyword] | [unassigned] )+ ;`;
+stuff.                               ::=  ( [name] | [symbol] | [operator] | [bracket] | [unassigned] )+ ;
+
+nonsense.                            ::=  ( [type] | [name] | [symbol] | [operator] | [bracket] | [special] | [meta-type] | [secondary-keyword] | [unassigned] )+ ;`;
 
 export default bnf;
