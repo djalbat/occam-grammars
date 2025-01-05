@@ -14,7 +14,7 @@ const entries = [
     "null": "^(?:null)"
   },
   {
-    "unassigned": "^[^\\t \\u000b]+"
+    "unassigned": "^[^\\s]+"
   }
 ];
 
