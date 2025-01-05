@@ -8,7 +8,7 @@ const entries = [
     "punctuation": "^[@,\\.\"'`]+"
   },
   {
-    "unassigned": "^[^\\s]+"
+    "unassigned": "^[^\\t \\u000b]+"
   }
 ];
 
