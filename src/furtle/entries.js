@@ -29,7 +29,7 @@ const entries = [
     "number": "^[0-9]+"
   },
   {
-    "unassigned": "^."
+    "unassigned": "^[^\\t \\u000b]+"
   }
 ];
 
