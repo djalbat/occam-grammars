@@ -198,7 +198,7 @@ subDerivation                        ::=  (
 
 
 
-propertyDeclaration.                 ::=  property ":" type <END_OF_LINE>  
+propertyDeclaration.                 ::=  property ( ":" type )? <END_OF_LINE>  
 
                                        |  nonsense... <END_OF_LINE>
                                        
