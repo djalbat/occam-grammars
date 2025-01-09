@@ -285,7 +285,7 @@ parameter.                           ::=  [name] ;
 
 variable.                            ::=  [name] ;
 
-property.                            ::=  [name] ;
+property.                            ::=  [name] | [symbol] | [operator] ;
 
 type.                                ::=  [type] ;
 
