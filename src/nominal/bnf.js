@@ -281,11 +281,11 @@ argument                             ::=  term ( )
 
 metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" ( term | type | stuff ) ")" )? ;
 
+property.                            ::=  [name]+ ;
+
 parameter.                           ::=  [name] ;
 
 variable.                            ::=  [name] ;
-
-property.                            ::=  [name] ;
 
 type.                                ::=  [type] ;
 
