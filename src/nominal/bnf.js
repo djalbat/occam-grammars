@@ -293,8 +293,8 @@ metaType.                            ::=  [meta-type] ;
 
 
 
-stuff.                               ::=  ( [name] | [symbol] | [operator] | [bracket] | [unassigned] )+ ;
+stuff.                               ::=  ( [name] | [symbol] | [bracket] | [unassigned] )+ ;
 
-nonsense.                            ::=  ( [type] | [name] | [symbol] | [operator] | [bracket] | [special] | [meta-type] | [secondary-keyword] | [unassigned] )+ ;`;
+nonsense.                            ::=  ( [type] | [name] | [symbol] | [bracket] | [special] | [meta-type] | [secondary-keyword] | [unassigned] )+ ;`;
 
 export default bnf;
