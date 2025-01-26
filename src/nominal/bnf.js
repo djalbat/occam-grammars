@@ -46,9 +46,9 @@ error.                               ::=  . ;
 
 
 
-typeDeclaration                      ::=  "Type" type ( ":" type )? <END_OF_LINE> ;
+typeDeclaration                      ::=  "Provisional"? "Type" type ( ":" type )? <END_OF_LINE> ;
  
-variableDeclaration                  ::=  "Variable" variable ( ":" type )? <END_OF_LINE> ;
+variableDeclaration                  ::=  "Variable" variable ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
 combinatorDeclaration                ::=  "Combinator" statement... <END_OF_LINE> ;
  
@@ -56,7 +56,7 @@ constructorDeclaration               ::=  "Constructor" term... ( ":" type )? <E
  
 metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaType <END_OF_LINE> ;
  
-complexTypeDeclaration               ::=  "Type" <END_OF_LINE> type ( ":" type )? <END_OF_LINE> 
+complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE> type ( ":" type )? <END_OF_LINE> 
 
                                           ( 
 
