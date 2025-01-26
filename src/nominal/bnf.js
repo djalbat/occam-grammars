@@ -52,7 +52,7 @@ variableDeclaration                  ::=  "Variable" variable ( ":" type "provis
  
 combinatorDeclaration                ::=  "Combinator" statement... <END_OF_LINE> ;
  
-constructorDeclaration               ::=  "Constructor" term... ( ":" type )? <END_OF_LINE> ;
+constructorDeclaration               ::=  "Constructor" term... ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
 metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaType <END_OF_LINE> ;
  
