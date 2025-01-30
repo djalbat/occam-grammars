@@ -114,7 +114,7 @@ metatheorem                          ::=  "Metatheorem" "(" label... ")" <END_OF
                                            
                                           proof ;
 
-axiom                                ::=  "Axiom" "(" labels... ")" <END_OF_LINE> 
+axiom                                ::=  "Satisfying"? "Axiom" "(" labels... ")" <END_OF_LINE> 
 
                                           (
                                            
