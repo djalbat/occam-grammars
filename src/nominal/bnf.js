@@ -56,7 +56,7 @@ constructorDeclaration               ::=  "Constructor" term... ( ":" type "prov
  
 metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaType <END_OF_LINE> ;
  
-complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE> type ( ":" type )? <END_OF_LINE> 
+complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE> type ( ":" types )? <END_OF_LINE> 
 
                                           ( 
 
