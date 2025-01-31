@@ -46,7 +46,7 @@ error.                               ::=  . ;
 
 
 
-typeDeclaration                      ::=  "Provisional"? "Type" type ( ":" type )? <END_OF_LINE> ;
+typeDeclaration                      ::=  "Provisional"? "Type" type ( ":" types )? <END_OF_LINE> ;
  
 variableDeclaration                  ::=  "Variable" variable ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
@@ -250,6 +250,7 @@ procedureCall                        ::=  "@"<NO_WHITESPACE>reference<NO_WHITESP
 
 labels                               ::=  label ( "," label )* ;
 
+types                                ::=  type ( "," type )* ;
 
 
 label.                               ::=  metavariable ;
