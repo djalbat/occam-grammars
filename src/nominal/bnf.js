@@ -96,7 +96,7 @@ metaLemma                            ::=  "MetaLemma" ( "(" label... ")" )? <END
                                              
                                           )?
                                             
-                                          consequent
+                                          deduction
                                                                                          
                                           proof ;
 
@@ -110,7 +110,7 @@ metatheorem                          ::=  "Metatheorem" "(" label... ")" <END_OF
                                              
                                           )?
                                             
-                                          consequent
+                                          deduction
                                            
                                           proof ;
 
@@ -124,7 +124,7 @@ axiom                                ::=  "Satisfying"? "Axiom" "(" labels... ")
                                              
                                           )?
                                              
-                                          consequent ;
+                                          deduction ;
 
 lemma                                ::=  "Lemma" ( "(" labels... ")" )? <END_OF_LINE> 
 
@@ -136,7 +136,7 @@ lemma                                ::=  "Lemma" ( "(" labels... ")" )? <END_OF
                                              
                                           )?
                                             
-                                          consequent
+                                          deduction
                                            
                                           proof ;
 
@@ -150,7 +150,7 @@ theorem                              ::=  "Theorem" "(" labels... ")" <END_OF_LI
                                              
                                           )?
                                              
-                                          consequent
+                                          deduction
                                            
                                           proof ;
 
@@ -164,7 +164,7 @@ conjecture                           ::=  "Conjecture" "(" labels... ")" <END_OF
                                              
                                           )?
                                              
-                                          consequent
+                                          deduction
                                            
                                           proof? ;
 
@@ -228,7 +228,7 @@ conclusion.                          ::=  statement... <END_OF_LINE>
                                        
                                        ;
 
-consequent.                          ::=  statement... <END_OF_LINE>  
+deduction.                           ::=  statement... <END_OF_LINE>  
 
                                        |  nonsense... <END_OF_LINE>
                                        
