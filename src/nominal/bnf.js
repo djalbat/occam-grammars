@@ -176,25 +176,25 @@ subproof                             ::=  "Suppose" <END_OF_LINE> supposition+ s
 
 derivation                           ::=  ( 
 
-                                            ( proofStep | subproof )+ 
+                                            ( step | subproof )+ 
                                             
                                             "Therefore" <END_OF_LINE> 
                                             
                                           )? 
                                           
-                                          proofStep ;                                        
+                                          step ;                                        
 
 subDerivation                        ::=  (
 
                                             "Hence" <END_OF_LINE>
     
-                                            ( proofStep | subproof )+ 
+                                            ( step | subproof )+ 
                                                                                          
                                           )? 
                                            
                                           "Then" <END_OF_LINE> 
                                            
-                                          proofStep ;                                        
+                                          step ;                                        
 
 
 
@@ -236,7 +236,7 @@ deduction.                           ::=  statement... <END_OF_LINE>
 
 
 
-proofStep.                           ::=  statement... ( ( "by" | "from" ) reference )? <END_OF_LINE>  
+step.                                ::=  statement... ( ( "by" | "from" ) reference )? <END_OF_LINE>  
 
                                        |  nonsense... ( ( "by" | "from" ) reference )? <END_OF_LINE>
                                        
