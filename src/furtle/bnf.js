@@ -24,7 +24,7 @@ arrayAssignment        ::=  "[" parameters "]" "=" variable ";" ;
                                                       
 
 
-anonymousProcedure     ::=  "(" parameters? ")" returnBlock ;
+anonymousProcedure     ::=  [type] "(" parameters? ")" returnBlock ;
 
 
 
