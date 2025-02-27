@@ -14,11 +14,9 @@ error.                 ::=  . ;
 
 variablesDeclaration   ::=  [type] variable assignment ( "," variable assignment )* ";" ;
 
-variableAssignment     ::=  variable assignment ";" ;
-
 conditionalBlocks      ::=  "If" "(" value ")" block ( "Else" block )? ;                                            
 
-objectAssignment       ::=  "{" parameters "}" "=" variable ";" ;
+objectAssignment       ::=  "{" namedParameters "}" "=" variable ";" ;
 
 arrayAssignment        ::=  "[" parameters "]" "=" variable ";" ;
                                                       
@@ -38,8 +36,6 @@ returnStatement        ::=  [return] value ";" ;
 
 step                   ::=  variablesDeclaration
  
-                         |  variableAssignment
-                          
                          |  conditionalBlocks
                           
                          |  objectAssignment
@@ -54,13 +50,13 @@ assignment             ::=  "=" value ;
 
 
 
+namedParameter         ::=  [type] [name] ( "As" [name] )? ;
+
 parameter              ::=  [type] [name]
 
                          |  "_" 
 
                          ;
-
-
 
 value                  ::=  procedureCall
  
@@ -115,6 +111,8 @@ ternary                ::=  "If" "(" value ")" value "Else" value ;
 some                   ::=  "Some"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
 
 
+
+namedParameters        ::=  namedParameter ( "," namedParameter )* ;
 
 parameters             ::=  parameter ( "," parameter )* ;
 
