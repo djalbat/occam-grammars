@@ -46,8 +46,6 @@ export default class FurtleView extends View {
   { String content } = foo;
 }`;
 
-  static initialRuleName = "block";
-
   static defaultProperties = {
     className: "furtle"
   };
