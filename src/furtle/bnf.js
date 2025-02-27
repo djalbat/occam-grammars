@@ -12,7 +12,7 @@ error.                 ::=  . ;
 
 
 
-variablesDeclaration   ::=  [type] variable assignment? ( "," variable assignment? )* ";" ;
+variablesDeclaration   ::=  [type] variable assignment ( "," variable assignment )* ";" ;
 
 variableAssignment     ::=  variable assignment ";" ;
 
@@ -75,7 +75,29 @@ step                   ::=  variablesDeclaration
                           
                          ;  
   
-assignment             ::=  "=" ( procedureCall | nodesQuery | nodeQuery | value ) ;
+  
+  
+assignment             ::=  "=" value ;
+
+
+
+value                  ::=  procedureCall
+ 
+                         |  nodesQuery
+                          
+                         |  nodeQuery
+                          
+                         |  variable
+                          
+                         |  ternary
+                          
+                         |  [number]
+                          
+                         |  [primitive]
+                          
+                         |  [string-literal] 
+                         
+                         ;
 
 
 
@@ -85,6 +107,10 @@ nodesQuery             ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," expressi
 
 nodeQuery              ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
 
+variable               ::=  [name] ;
+
+ternary                ::=  "If" "(" condition ")" value "Else" value ;
+
 
 
 parameters             ::=  parameter ( "," parameter )* ;
@@ -92,10 +118,6 @@ parameters             ::=  parameter ( "," parameter )* ;
 values                 ::=  value ( "," value )* ;
 
 
-
-value                  ::=  variable | [number] | [primitive] | [string-literal] ;
-
-variable               ::=  [name] ;
 
 parameter              ::=  [type] [name]
 
