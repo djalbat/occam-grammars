@@ -1,181 +1,187 @@
 "use strict";
 
-const bnf = `document               ::=  ( procedureDeclaration | error )+ ;
+const bnf = `document                ::=  ( procedureDeclaration | error )+ ;
 
 
 
-procedureDeclaration   ::=  [type] label<NO_WHITESPACE>"(" parameters? ")" returnBlock ;
+procedureDeclaration    ::=  [type] label<NO_WHITESPACE>"(" parameters? ")" returnBlock ;
 
 
 
-error.                 ::=  . ;
+error.                  ::=  . ;
 
 
 
-variablesDeclaration   ::=  [type] variable assignment ( "," variable assignment )* ";" ;
+variablesDeclaration    ::=  [type] variable assignment ( "," variable assignment )* ";" ;
 
-conditionalBlocks      ::=  "If" "(" value ")" block ( "Else" block )? ;                                            
+conditionalBlocks       ::=  "If" "(" value ")" block ( "Else" block )? ;                                            
 
-objectAssignment       ::=  "{" namedParameters "}" "=" variable ";" ;
+objectAssignment        ::=  "{" namedParameters "}" "=" variable ";" ;
 
-arrayAssignment        ::=  "[" parameters "]" "=" variable ";" ;
+arrayAssignment         ::=  "[" parameters "]" "=" variable ";" ;
                                                       
 
 
-anonymousProcedure     ::=  [type] "(" parameters? ")" returnBlock ;
+anonymousProcedure      ::=  [type] "(" parameters? ")" returnBlock ;
 
 
 
-block..                ::=  "{" ( step | nonsense )* "}" ;
+block..                 ::=  "{" ( step | nonsense )* "}" ;
 
-returnBlock..          ::=  "{" ( step | nonsense )* returnStatement "}" ;
+returnBlock..           ::=  "{" ( step | nonsense )* returnStatement "}" ;
                                  
-returnStatement        ::=  [return] value ";" ; 
+returnStatement         ::=  [return] value ";" ; 
 
 
 
-step                   ::=  variablesDeclaration
+step                    ::=  variablesDeclaration
  
-                         |  conditionalBlocks
+                          |  conditionalBlocks
                           
-                         |  objectAssignment
+                          |  objectAssignment
                           
-                         |  arrayAssignment
+                          |  arrayAssignment
                           
-                         ;  
+                          ;  
   
   
   
-assignment             ::=  "=" value ;
+assignment              ::=  "=" value ;
 
 
 
-namedParameter         ::=  [type] [name] ( "As" [name] )? ;
+namedParameter          ::=  [type] [name] ( "As" [name] )? ;
 
-parameter              ::=  [type] [name]
+parameter               ::=  [type] [name]
 
-                         |  "_" 
+                          |  "_" 
 
-                         ;
+                          ;
 
-value                  ::=  procedureCall
+value                   ::=  anonymousProcedureCall
  
-                         |  bracketedValue 
+                          |  procedureCall
+ 
+                          |  bracketedValue 
 
-                         |  bitwiseValue 
+                          |  bitwiseValue 
 
-                         |  negatedValue 
+                          |  negatedValue 
 
-                         |  comparison 
+                          |  comparison 
 
-                         |  nodesQuery
+                          |  nodesQuery
                           
-                         |  nodeQuery
+                          |  nodeQuery
                           
-                         |  variable
+                          |  variable
                           
-                         |  ternary
+                          |  ternary
                           
-                         |  some
+                          |  some
 
-                         |  [null]
+                          |  [null]
 
-                         |  [number]
+                          |  [number]
                           
-                         |  [primitive]
+                          |  [primitive]
                           
-                         |  [string-literal] 
+                          |  [string-literal] 
                          
-                         ;
+                          ;
 
 
 
-bracketedValue         ::=  "(" value ")" ; 
+anonymousProcedureCall  ::=  "(" anonymousProcedure ")"<NO_WHITESPACE>"(" values? ")" ;
 
-procedureCall          ::=  reference<NO_WHITESPACE>"(" values? ")" ;
+procedureCall           ::=  reference<NO_WHITESPACE>"(" values? ")" ;
 
-bitwiseValue           ::=  value ( "||" | "&&" ) value ; 
+bracketedValue          ::=  "(" value ")" ; 
 
-negatedValue           ::=  "!"<NO_WHITESPACE>value ; 
+bitwiseValue            ::=  value ( "||" | "&&" ) value ; 
 
-comparison             ::=  value ( "!=" | "==" ) value ; 
+negatedValue            ::=  "!"<NO_WHITESPACE>value ; 
 
-nodesQuery             ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
+comparison              ::=  value ( "!=" | "==" ) value ; 
 
-nodeQuery              ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
+nodesQuery              ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
 
-variable               ::=  [name] ;
+nodeQuery               ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
 
-ternary                ::=  "If" "(" value ")" value "Else" value ;
+variable                ::=  [name] ;
 
-some                   ::=  "Some"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
+ternary                 ::=  "If" "(" value ")" value "Else" value ;
 
-
-
-namedParameters        ::=  namedParameter ( "," namedParameter )* ;
-
-parameters             ::=  parameter ( "," parameter )* ;
-
-values                 ::=  value ( "," value )* ;
+some                    ::=  "Some"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
 
 
 
-label.                 ::=  [name] ;
+namedParameters         ::=  namedParameter ( "," namedParameter )* ;
 
-reference.             ::=  [name] ;
+parameters              ::=  parameter ( "," parameter )* ;
+
+values                  ::=  value ( "," value )* ;
 
 
 
-nonsense.              ::=  [type] | [keyword] | [primitive] | [query] | [special] | [name] | [number] | [unassigned] ;
+label.                  ::=  [name] ;
+
+reference.              ::=  [name] ;
+
+
+
+nonsense.               ::=  [type] | [keyword] | [primitive] | [query] | [special] | [name] | [number] | [unassigned] ;
     
 
     
-expression             ::=  path spread? subExpression? ;
+expression              ::=  path spread? subExpression? ;
 
-path                   ::=  "/" infiniteDescent? selectors ;
+path                    ::=  "/" infiniteDescent? selectors ;
 
-subExpression          ::=  path spread? subExpression?;
+subExpression           ::=  path spread? subExpression?;
 
-infiniteDescent        ::=  "/" ;
+infiniteDescent         ::=  "/" ;
 
-selectors              ::=  selector ( "|" selector )* ;
+selectors               ::=  selector ( "|" selector )* ;
 
-spread                 ::=  unique
+spread                  ::=  unique
 
-                         |  "[" 
+                          |  "[" 
       
-                            ( 
+                             ( 
                               
-                              ( startIndex "..." endIndex ) 
+                               ( startIndex "..." endIndex ) 
                               
-                              | 
+                               | 
                               
-                              ( startIndex "..." ) 
+                               ( startIndex "..." ) 
                               
-                              | 
+                               | 
                               
-                              ( "..." endIndex )
+                               ( "..." endIndex )
                                
-                              | 
+                               | 
                               
-                              index 
+                               index 
                               
-                            )  
+                             )  
                             
-                            "]" ;
+                             "]" 
+                             
+                          ;
 
-selector               ::=  ruleName | tokenType ;
+selector                ::=  ruleName | tokenType ;
                    
-ruleName               ::=  [name] | "*" ;
+ruleName                ::=  [name] | "*" ;
                    
-tokenType              ::=  "@"<NO_WHITESPACE>( [name] | "*" ) ;
+tokenType               ::=  "@"<NO_WHITESPACE>( [name] | "*" ) ;
                    
-startIndex             ::=  [number] ;
+startIndex              ::=  [number] ;
                    
-endIndex               ::=  [number] ;
+endIndex                ::=  [number] ;
                    
-index                  ::=  [number] ;
+index                   ::=  [number] ;
                    
-unique                 ::=  "!" ;`;
+unique                  ::=  "!" ;`;
 
 export default bnf;
