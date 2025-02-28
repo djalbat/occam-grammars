@@ -18,7 +18,7 @@ conditionalBlocks       ::=  "If" "(" value ")" block ( "Else" block )? ;
 
 objectAssignment        ::=  "{" namedParameters "}" "=" variable ";" ;
 
-arrayAssignment         ::=  "[" namedParameters "]" "=" variable ";" ;
+arrayAssignment         ::=  "[" parameters "]" "=" variable ";" ;
 
 
 
@@ -43,6 +43,30 @@ returnStatement         ::=  [return] value ";" ;
 returnBlock..           ::=  "{" ( step | nonsense )* returnStatement "}" ;
                                  
 block..                 ::=  "{" ( step | nonsense )* "}" ;
+
+
+
+anonymousProcedureCall  ::=  "(" anonymousProcedure ")"<NO_WHITESPACE>"(" values? ")" ;
+
+procedureCall           ::=  reference<NO_WHITESPACE>"(" values? ")" ;
+
+bracketedValue          ::=  "(" value ")" ; 
+
+bitwiseValue            ::=  value ( "||" | "&&" ) value ; 
+
+negatedValue            ::=  "!"<NO_WHITESPACE>value ; 
+
+comparison              ::=  value ( "!=" | "==" ) value ; 
+
+nodesQuery              ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
+
+nodeQuery               ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
+
+variable                ::=  [name] ;
+
+ternary                 ::=  "If" "(" value ")" value "Else" value ;
+
+some                    ::=  "Some"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
 
 
 
@@ -82,37 +106,9 @@ value                   ::=  anonymousProcedureCall
 
 
 
-anonymousProcedureCall  ::=  "(" anonymousProcedure ")"<NO_WHITESPACE>"(" values? ")" ;
-
-procedureCall           ::=  reference<NO_WHITESPACE>"(" values? ")" ;
-
-bracketedValue          ::=  "(" value ")" ; 
-
-bitwiseValue            ::=  value ( "||" | "&&" ) value ; 
-
-negatedValue            ::=  "!"<NO_WHITESPACE>value ; 
-
-comparison              ::=  value ( "!=" | "==" ) value ; 
-
-nodesQuery              ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
-
-nodeQuery               ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
-
-variable                ::=  [name] ;
-
-ternary                 ::=  "If" "(" value ")" value "Else" value ;
-
-some                    ::=  "Some"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
-
-
-
 namedParameters         ::=  namedParameter ( "," namedParameter )* ;
 
-namedParameter          ::=  [type] [name] ( "As" [name] )?
-
-                          |  "_" 
-
-                          ;
+namedParameter          ::=  [type] [name] ( "As" [name] )? ;
 
 
 
