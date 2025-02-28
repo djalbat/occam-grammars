@@ -12,29 +12,17 @@ error.                  ::=  . ;
 
 
 
-variablesDeclaration    ::=  [type] variable assignment ( "," variable assignment )* ";" ;
+variableAssignments     ::=  [type] variableAssignment ( "," variableAssignment )* ";" ;
 
 conditionalBlocks       ::=  "If" "(" value ")" block ( "Else" block )? ;                                            
 
 objectAssignment        ::=  "{" namedParameters "}" "=" variable ";" ;
 
 arrayAssignment         ::=  "[" parameters "]" "=" variable ";" ;
-                                                      
-
-
-anonymousProcedure      ::=  [type] "(" parameters? ")" returnBlock ;
 
 
 
-block..                 ::=  "{" ( step | nonsense )* "}" ;
-
-returnBlock..           ::=  "{" ( step | nonsense )* returnStatement "}" ;
-                                 
-returnStatement         ::=  [return] value ";" ; 
-
-
-
-step                    ::=  variablesDeclaration
+step                    ::=  variableAssignments
  
                           |  conditionalBlocks
                           
@@ -45,8 +33,16 @@ step                    ::=  variablesDeclaration
                           ;  
   
   
-  
-assignment              ::=  "=" value ;
+
+variableAssignment      ::=  variable "=" value ;
+
+anonymousProcedure      ::=  [type] "(" parameters? ")" returnBlock ;
+
+returnStatement         ::=  [return] value ";" ; 
+
+returnBlock..           ::=  "{" ( step | nonsense )* returnStatement "}" ;
+                                 
+block..                 ::=  "{" ( step | nonsense )* "}" ;
 
 
 
@@ -57,6 +53,8 @@ parameter               ::=  [type] [name]
                           |  "_" 
 
                           ;
+
+
 
 value                   ::=  anonymousProcedureCall
  
