@@ -18,7 +18,7 @@ conditionalBlocks       ::=  "If" "(" value ")" block ( "Else" block )? ;
 
 objectAssignment        ::=  "{" namedParameters "}" "=" variable ";" ;
 
-arrayAssignment         ::=  "[" parameters "]" "=" variable ";" ;
+arrayAssignment         ::=  "[" namedParameters "]" "=" variable ";" ;
 
 
 
@@ -46,15 +46,7 @@ block..                 ::=  "{" ( step | nonsense )* "}" ;
 
 
 
-namedParameter          ::=  [type] [name] ( "As" [name] )? ;
-
-parameter               ::=  [type] [name]
-
-                          |  "_" 
-
-                          ;
-
-
+values                  ::=  value ( "," value )* ;
 
 value                   ::=  anonymousProcedureCall
  
@@ -116,9 +108,21 @@ some                    ::=  "Some"<NO_WHITESPACE>"(" variable "," anonymousProc
 
 namedParameters         ::=  namedParameter ( "," namedParameter )* ;
 
+namedParameter          ::=  [type] [name] ( "As" [name] )?
+
+                          |  "_" 
+
+                          ;
+
+
+
 parameters              ::=  parameter ( "," parameter )* ;
 
-values                  ::=  value ( "," value )* ;
+parameter               ::=  [type] [name]
+
+                          |  "_" 
+
+                          ;
 
 
 
