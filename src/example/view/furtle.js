@@ -13,7 +13,8 @@ export default class FurtleView extends View {
   getTokens() {
     const lexicalEntries = this.getLexicalEntries(),
           entries = lexicalEntries, ////
-          furtleLexer = furtleLexerFromEntries(entries),
+          augmented = false,
+          furtleLexer = furtleLexerFromEntries(entries, augmented),
           lexer = furtleLexer,  ///
           content = this.getContent(),
           tokens = lexer.tokenise(content);
@@ -27,7 +28,8 @@ export default class FurtleView extends View {
     const bnf = this.getBNF(),
           ruleName = this.getRuleName(),
           startRuleName = ruleName, ///
-          furtleParser = furtleParserFromBNFAndStartRuleName(bnf, startRuleName),
+          augmented = false,
+          furtleParser = furtleParserFromBNFAndStartRuleName(bnf, startRuleName, augmented),
           parser = furtleParser, ///
           node = parser.parse(tokens);
 
@@ -61,9 +63,27 @@ export default class FurtleView extends View {
 
   static readOnly = false;
 
-  static initialContent = `{
-  { String content } = foo;
-}`;
+  static initialContent = `String boundVariableNameFromQualifiedStatementChildNodes(Nodes qualifiedStatementChildNodes) {
+  [ _, Node argumentNode ] = qualifiedStatementChildNodes;
+
+  Node boundVariableNameTerminalNode = nodeQuery(argumentNode, /argument/term/variable/@name);
+
+  String boundVariableName = 
+
+    If (boundVariableNameTerminalNode != null)
+      (String (Node boundVariableNameTerminalNode) {
+        { String content As boundVariableName } = boundVariableNameTerminalNode;
+      
+        Return boundVariableName;
+      })(boundVariableNameTerminalNode)
+
+    Else
+      ""
+  ;
+    
+  Return boundVariableName;
+}
+`;
 
   static defaultProperties = {
     className: "furtle"
