@@ -66,7 +66,7 @@ variable                ::=  [name] ;
 
 ternary                 ::=  "If" "(" value ")" value "Else" value ;
 
-reduce                  ::=  "Reduce"<NO_WHITESPACE>"(" variable "," anonymousProcedure "," variable ")" ;
+reduce                  ::=  "Reduce"<NO_WHITESPACE>"(" variable "," anonymousProcedure "," value ")" ;
 
 every                   ::=  "Every"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
 
