@@ -128,58 +128,6 @@ reference.              ::=  [name] ;
 
 
 
-nonsense.               ::=  [type] | [keyword] | [primitive] | [query] | [special] | [name] | [number] | [unassigned] ;
-    
-
-    
-expression              ::=  path spread? subExpression? ;
-
-path                    ::=  "/" infiniteDescent? selectors ;
-
-subExpression           ::=  path spread? subExpression?;
-
-infiniteDescent         ::=  "/" ;
-
-selectors               ::=  selector ( "|" selector )* ;
-
-spread                  ::=  unique
-
-                          |  "[" 
-      
-                             ( 
-                              
-                               ( startIndex "..." endIndex ) 
-                              
-                               | 
-                              
-                               ( startIndex "..." ) 
-                              
-                               | 
-                              
-                               ( "..." endIndex )
-                               
-                               | 
-                              
-                               index 
-                              
-                             )  
-                            
-                             "]" 
-                             
-                          ;
-
-selector                ::=  ruleName | tokenType ;
-                   
-ruleName                ::=  [name] | "*" ;
-                   
-tokenType               ::=  "@"<NO_WHITESPACE>( [name] | "*" ) ;
-                   
-startIndex              ::=  [number] ;
-                   
-endIndex                ::=  [number] ;
-                   
-index                   ::=  [number] ;
-                   
-unique                  ::=  "!" ;`;
+nonsense.               ::=  [type] | [keyword] | [primitive] | [query] | [special] | [name] | [number] | [unassigned] ;`;
 
 export default bnf;

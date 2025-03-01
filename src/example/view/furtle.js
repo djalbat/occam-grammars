@@ -1,8 +1,10 @@
 "use strict";
 
-import { FurtleLexer, FurtleParser, lexersUtilities, parsersUtilities } from "../../index";  ///
+import { lexersUtilities, parsersUtilities } from "../../index";  ///
 
 import View from "../view";
+
+import { bnfFromNothing, entriesFromNothing } from "../utilities/furtle";
 
 const { furtleLexerFromEntries } = lexersUtilities,
       { furtleParserFromBNFAndStartRuleName } = parsersUtilities;
@@ -36,9 +38,26 @@ export default class FurtleView extends View {
     return parseTree;
   }
 
-  static Lexer = FurtleLexer;
+  initialise() {
+    this.assignContext();
 
-  static Parser = FurtleParser;
+    const { initialContent, initialRuleName } = this.constructor,
+          bnf = bnfFromNothing(),
+          entries = entriesFromNothing(),
+          content = initialContent, ///
+          ruleName = initialRuleName, ///
+          lexicalEntries = entries; ///
+
+    this.setBNF(bnf);
+
+    this.setContent(content);
+
+    this.setRuleName(ruleName);
+
+    this.setLexicalEntries(lexicalEntries);
+
+    this.keyUpHandler();
+  }
 
   static readOnly = false;
 
