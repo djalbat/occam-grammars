@@ -66,6 +66,10 @@ variable                ::=  [name] ;
 
 ternary                 ::=  "If" "(" value ")" value "Else" value ;
 
+reduce                  ::=  "Reduce"<NO_WHITESPACE>"(" variable "," anonymousProcedure "," variable ")" ;
+
+every                   ::=  "Every"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
+
 some                    ::=  "Some"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
 
 
@@ -92,6 +96,10 @@ value                   ::=  anonymousProcedureCall
                           
                           |  ternary
                           
+                          |  reduce
+
+                          |  every
+
                           |  some
 
                           |  [null]
