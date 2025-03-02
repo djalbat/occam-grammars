@@ -14,8 +14,6 @@ error.                  ::=  . ;
 
 variableAssignments     ::=  [type] variableAssignment ( "," variableAssignment )* ";" ;
 
-conditionalBlocks       ::=  "If" "(" value ")" block ( "Else" block )? ;                                            
-
 objectAssignment        ::=  "{" namedParameters "}" "=" variable ";" ;
 
 arrayAssignment         ::=  "[" parameters "]" "=" variable ";" ;
@@ -42,11 +40,7 @@ returnStatement         ::=  [return] value ";" ;
 
 returnBlock..           ::=  "{" ( step | nonsense )* returnStatement "}" ;
                                  
-block..                 ::=  "{" ( step | nonsense )* "}" ;
 
-
-
-anonymousProcedureCall  ::=  "(" anonymousProcedure ")"<NO_WHITESPACE>"(" values? ")" ;
 
 procedureCall           ::=  reference<NO_WHITESPACE>"(" values? ")" ;
 
@@ -76,15 +70,15 @@ some                    ::=  "Some"<NO_WHITESPACE>"(" variable "," anonymousProc
 
 values                  ::=  value ( "," value )* ;
 
-value                   ::=  anonymousProcedureCall
- 
-                          |  procedureCall
- 
-                          |  bracketedValue 
+value                   ::=  bracketedValue 
 
                           |  bitwiseValue 
 
                           |  negatedValue 
+
+                          |  procedureCall
+ 
+                          |  returnBlock
 
                           |  comparison 
 
