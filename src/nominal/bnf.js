@@ -46,7 +46,7 @@ error.                               ::=  . ;
 
 
 
-typeDeclaration                      ::=  "Provisional"? "Type" type ( ":" superTypes )? <END_OF_LINE> ;
+typeDeclaration                      ::=  "Provisional"? "Type" type ( ":" types )? <END_OF_LINE> ;
  
 variableDeclaration                  ::=  "Variable" variable ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
@@ -56,7 +56,9 @@ constructorDeclaration               ::=  "Constructor" term... ( ":" type "prov
  
 metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaType <END_OF_LINE> ;
  
-complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE> type ( ":" superTypes )? <END_OF_LINE> 
+complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE> 
+
+                                          type ( ":" types )? <END_OF_LINE> 
 
                                           ( 
 
@@ -260,29 +262,19 @@ metaArgument                         ::=  statement ( )
                                        
                                        ;
 
-argument                             ::=  term ( ) 
+argument                             ::=  placeholder
+
+                                       |  term ( ) 
 
                                        |  type ( )
                                        
-                                       |  placeholder
-
                                        ;
 
 
-
-placeholders                         ::=  placeholder ( "," placeholder )* ;
-
-superTypes                           ::=  superType ( "," superType )* ;
 
 labels                               ::=  label ( "," label )* ;
 
-
-
-superType                            ::=  term 
-
-                                       |  type 
-                                       
-                                       ;
+types                                ::=  type ( "," type )* ;
 
 
 
@@ -304,7 +296,7 @@ property.                            ::=  [name]+ ;
 
 metaType.                            ::=  [meta-type] ;
 
-type.                                ::=  [type] ( <NO_WHITESPACE> "(" placeholders... ")" )? ;
+type.                                ::=  [type] ;
 
 
 
