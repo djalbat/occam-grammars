@@ -46,7 +46,7 @@ error.                               ::=  . ;
 
 
 
-typeDeclaration                      ::=  "Provisional"? "Type" type ( ":" types )? <END_OF_LINE> ;
+typeDeclaration                      ::=  "Provisional"? "Type" type ( ":" superTypes )? <END_OF_LINE> ;
  
 variableDeclaration                  ::=  "Variable" variable ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
@@ -56,7 +56,7 @@ constructorDeclaration               ::=  "Constructor" term... ( ":" type "prov
  
 metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaType <END_OF_LINE> ;
  
-complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE> type ( ":" types )? <END_OF_LINE> 
+complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE> type ( ":" superTypes )? <END_OF_LINE> 
 
                                           ( 
 
@@ -248,18 +248,6 @@ procedureCall                        ::=  "@"<NO_WHITESPACE>reference<NO_WHITESP
 
 
 
-labels                               ::=  label ( "," label )* ;
-
-types                                ::=  type ( "," type )* ;
-
-
-label.                               ::=  metavariable ;
-
-reference.                           ::=  metavariable ;
-
-
-
-
 frameArgument                        ::=  frame ( ) 
 
                                        |  metaType ( ) 
@@ -276,21 +264,47 @@ argument                             ::=  term ( )
 
                                        |  type ( )
                                        
+                                       |  placeholder
+
                                        ;
+
+
+
+placeholders                         ::=  placeholder ( "," placeholder )* ;
+
+superTypes                           ::=  superType ( "," superType )* ;
+
+labels                               ::=  label ( "," label )* ;
+
+
+
+superType                            ::=  term 
+
+                                       |  type 
+                                       
+                                       ;
+
+
+
+placeholder                          ::=  "_" ;
+
+reference.                           ::=  metavariable ;
+
+label.                               ::=  metavariable ;
 
 
 
 metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" ( term | type | stuff ) ")" )? ;
 
-property.                            ::=  [name]+ ;
-
 parameter.                           ::=  [name] ;
 
 variable.                            ::=  [name] ;
 
-type.                                ::=  [type] ;
+property.                            ::=  [name]+ ;
 
 metaType.                            ::=  [meta-type] ;
+
+type.                                ::=  [type] ( <NO_WHITESPACE> "(" placeholders... ")" )? ;
 
 
 
