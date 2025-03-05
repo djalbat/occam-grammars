@@ -2,7 +2,7 @@
 
 const entries = [
   {
-    "special": "^(?:@|:|,|_)"
+    "special": "^(?:@|:|,)"
   },
   {
     "bracket": "^(?:\\(|\\))"

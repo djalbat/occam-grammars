@@ -262,9 +262,7 @@ metaArgument                         ::=  statement ( )
                                        
                                        ;
 
-argument                             ::=  placeholder
-
-                                       |  term ( ) 
+argument                             ::=  term ( ) 
 
                                        |  type ( )
                                        
@@ -277,8 +275,6 @@ labels                               ::=  label ( "," label )* ;
 types                                ::=  type ( "," type )* ;
 
 
-
-placeholder                          ::=  "_" ;
 
 reference.                           ::=  metavariable ;
 
@@ -302,6 +298,6 @@ type.                                ::=  [type] ;
 
 stuff.                               ::=  ( [name] | [symbol] | [bracket] | [unassigned] )+ ;
 
-nonsense.                            ::=  ( [type] | [name] | [symbol] | [bracket] | [special] | [meta-type] | [secondary-keyword] | [unassigned] )+ ;`;
+nonsense.                            ::=  ( [type] | [meta-type] | [special] | [secondary-keyword] | [name] | [symbol] | [bracket] | [unassigned] )+ ;`;
 
 export default bnf;
