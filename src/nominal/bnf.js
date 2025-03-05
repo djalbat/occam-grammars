@@ -292,8 +292,6 @@ property.                            ::=  [name]+ ;
 
 metaType.                            ::=  [meta-type] ;
 
-type.                                ::=  [type] ;
-
 
 
 stuff.                               ::=  ( [name] | [symbol] | [bracket] | [unassigned] )+ ;
