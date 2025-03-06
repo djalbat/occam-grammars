@@ -250,9 +250,17 @@ procedureCall                        ::=  "@"<NO_WHITESPACE>reference<NO_WHITESP
 
 
 
-frameArgument                        ::=  frame ( ) 
+arguments                            ::=  argument ( "," argument )* ;
 
-                                       |  metaType ( ) 
+labels                               ::=  label ( "," label )* ;
+
+types                                ::=  type ( "," type )* ;
+
+
+
+argument                             ::=  term ( ) 
+
+                                       |  type ( )
                                        
                                        ;
 
@@ -262,17 +270,11 @@ metaArgument                         ::=  statement ( )
                                        
                                        ;
 
-argument                             ::=  term ( ) 
+frameArgument                        ::=  frame ( ) 
 
-                                       |  type ( )
+                                       |  metaType ( ) 
                                        
                                        ;
-
-
-
-labels                               ::=  label ( "," label )* ;
-
-types                                ::=  type ( "," type )* ;
 
 
 
