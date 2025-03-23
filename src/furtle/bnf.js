@@ -52,9 +52,9 @@ negatedValue            ::=  "!"<NO_WHITESPACE>value ;
 
 comparison              ::=  value ( "!=" | "==" ) value ; 
 
-nodesQuery              ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
+nodesQuery              ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," [string-literal] ")" ;
 
-nodeQuery               ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," expression ")" ;
+nodeQuery               ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," [string-literal] ")" ;
 
 variable                ::=  [name] ;
 
