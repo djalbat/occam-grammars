@@ -130,6 +130,6 @@ reference.              ::=  [name] ;
 
 
 
-nonsense.               ::=  [type] | [keyword] | [primitive] | [query] | [special] | [name] | [number] | [unassigned] ;`;
+nonsense.               ::=  [type] | [keyword] | [primitive] | [string-literal] | [query] | [special] | [name] | [number] | [unassigned] ;`;
 
 export default bnf;
