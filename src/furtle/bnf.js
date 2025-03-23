@@ -36,7 +36,7 @@ variableAssignment      ::=  variable "=" value ;
 
 anonymousProcedure      ::=  [type] "(" parameters? ")" returnBlock ;
 
-returnStatement         ::=  [return] value ";" ; 
+returnStatement         ::=  "Return" value ";" ; 
 
 returnBlock..           ::=  "{" ( step | nonsense )* returnStatement "}" ;
                                  
