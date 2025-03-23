@@ -13,8 +13,7 @@ export default class FurtleView extends View {
   getTokens() {
     const lexicalEntries = this.getLexicalEntries(),
           entries = lexicalEntries, ////
-          augmented = false,
-          furtleLexer = furtleLexerFromEntries(entries, augmented),
+          furtleLexer = furtleLexerFromEntries(entries),
           lexer = furtleLexer,  ///
           content = this.getContent(),
           tokens = lexer.tokenise(content);
@@ -28,8 +27,7 @@ export default class FurtleView extends View {
     const bnf = this.getBNF(),
           ruleName = this.getRuleName(),
           startRuleName = ruleName, ///
-          augmented = false,
-          furtleParser = furtleParserFromBNFAndStartRuleName(bnf, startRuleName, augmented),
+          furtleParser = furtleParserFromBNFAndStartRuleName(bnf, startRuleName),
           parser = furtleParser, ///
           node = parser.parse(tokens);
 
