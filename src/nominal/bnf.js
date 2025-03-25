@@ -72,7 +72,7 @@ complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE>
  
 
   
-rule                                 ::=  "Rule" "(" labels... ")" <END_OF_LINE> 
+rule                                 ::=  "Rule" parenthesisedLabels <END_OF_LINE> 
 
                                           ( 
 
@@ -88,7 +88,7 @@ rule                                 ::=  "Rule" "(" labels... ")" <END_OF_LINE>
                                            
                                           proof? ;                                         
 
-metaLemma                            ::=  "MetaLemma" ( "(" label... ")" )? <END_OF_LINE> 
+metaLemma                            ::=  "MetaLemma" parenthesisedLabel? <END_OF_LINE> 
 
                                           (
                                            
@@ -102,7 +102,7 @@ metaLemma                            ::=  "MetaLemma" ( "(" label... ")" )? <END
                                                                                          
                                           proof ;
 
-metatheorem                          ::=  "Metatheorem" "(" label... ")" <END_OF_LINE> 
+metatheorem                          ::=  "Metatheorem" parenthesisedLabel <END_OF_LINE> 
 
                                           (
                                            
@@ -116,7 +116,7 @@ metatheorem                          ::=  "Metatheorem" "(" label... ")" <END_OF
                                            
                                           proof ;
 
-axiom                                ::=  "Satisfiable"? "Axiom" "(" labels... ")" <END_OF_LINE> 
+axiom                                ::=  "Satisfiable"? "Axiom" parenthesisedLabels <END_OF_LINE> 
 
                                           (
                                            
@@ -128,7 +128,7 @@ axiom                                ::=  "Satisfiable"? "Axiom" "(" labels... "
                                              
                                           deduction ;
 
-lemma                                ::=  "Lemma" ( "(" labels... ")" )? <END_OF_LINE> 
+lemma                                ::=  "Lemma" parenthesisedLabels? <END_OF_LINE> 
 
                                           (
                                            
@@ -142,7 +142,7 @@ lemma                                ::=  "Lemma" ( "(" labels... ")" )? <END_OF
                                            
                                           proof ;
 
-theorem                              ::=  "Theorem" "(" labels... ")" <END_OF_LINE> 
+theorem                              ::=  "Theorem" parenthesisedLabels <END_OF_LINE> 
 
                                           (
                                            
@@ -156,7 +156,7 @@ theorem                              ::=  "Theorem" "(" labels... ")" <END_OF_LI
                                            
                                           proof ;
 
-conjecture                           ::=  "Conjecture" "(" labels... ")" <END_OF_LINE>
+conjecture                           ::=  "Conjecture" parenthesisedLabels <END_OF_LINE>
 
                                           (
                                            
@@ -243,6 +243,12 @@ step.                                ::=  statement... ( ( "by" | "from" ) refer
                                        |  nonsense... ( ( "by" | "from" ) reference )? <END_OF_LINE>
                                        
                                        ;
+
+
+
+parenthesisedLabels                  ::=  "(" labels... ")" ; 
+
+parenthesisedLabel                   ::=  "(" label... ")" ; 
 
 
 
