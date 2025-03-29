@@ -32,25 +32,25 @@ step                    ::=  variableAssignments
   
   
 
-variableAssignment      ::=  variable "=" value ;
+variableAssignment      ::=  variable "=" expression ;
 
 anonymousProcedure      ::=  [type] "(" parameters? ")" returnBlock ;
 
-returnStatement         ::=  "Return" value ";" ; 
+returnStatement         ::=  "Return" expression ";" ; 
 
 returnBlock..           ::=  "{" ( step | nonsense )* returnStatement "}" ;
                                  
 
 
-procedureCall           ::=  reference<NO_WHITESPACE>"(" values? ")" ;
+procedureCall           ::=  reference<NO_WHITESPACE>"(" expressions? ")" ;
 
-bracketedValue          ::=  "(" value ")" ; 
+bracketedExpression     ::=  "(" expression ")" ; 
 
-bitwiseValue            ::=  value ( "||" | "&&" ) value ; 
+bitwiseExpression       ::=  expression ( "||" | "&&" ) expression ; 
 
-negatedValue            ::=  "!"<NO_WHITESPACE>value ; 
+negatedExpression       ::=  "!"<NO_WHITESPACE>expression ; 
 
-comparison              ::=  value ( "!=" | "==" ) value ; 
+comparison              ::=  expression ( "!=" | "==" ) expression ; 
 
 nodesQuery              ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," [string-literal] ")" ;
 
@@ -58,9 +58,9 @@ nodeQuery               ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," [string-
 
 variable                ::=  [name] ;
 
-ternary                 ::=  "If" "(" value ")" value "Else" value ;
+ternary                 ::=  "If" "(" expression ")" expression "Else" expression ;
 
-reduce                  ::=  "Reduce"<NO_WHITESPACE>"(" variable "," anonymousProcedure "," value ")" ;
+reduce                  ::=  "Reduce"<NO_WHITESPACE>"(" variable "," anonymousProcedure "," expression ")" ;
 
 every                   ::=  "Every"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
 
@@ -68,13 +68,13 @@ some                    ::=  "Some"<NO_WHITESPACE>"(" variable "," anonymousProc
 
 
 
-values                  ::=  value ( "," value )* ;
+expressions             ::=  expression ( "," expression )* ;
 
-value                   ::=  bracketedValue 
+expression              ::=  bracketedExpression 
 
-                          |  bitwiseValue 
+                          |  bitwiseExpression 
 
-                          |  negatedValue 
+                          |  negatedExpression 
 
                           |  procedureCall
  
