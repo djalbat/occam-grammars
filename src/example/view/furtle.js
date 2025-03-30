@@ -61,25 +61,12 @@ export default class FurtleView extends View {
 
   static readOnly = false;
 
-  static initialContent = `String boundVariableNameFromStatementChildNodes(Nodes statementChildNodes) {
-  [ Node terminalNode ] = statementChildNodes;
+  static initialContent = `Boolean isMetavariableFree(Node frameNode, Node statementNode) {
+  Boolean metavariableBound = isMetavariableBound(frameNode, statementNode);
 
-  { String content } = terminalNode;
+  Boolean metavariableFree = !metavariableBound;
 
-  String boundVariableName = 
-
-    If ((content == "∀") || (content == "∃")) {
-      [ _, Node argumentNode ] = statementChildNodes;
-
-      String boundVariableName = boundVariableNameFromArgumentNode(argumentNode);
-  
-      Return boundVariableName;
-    }
-    Else
-     ""
-  ;
-
-  Return boundVariableName;
+  Return metavariableFree;
 }
 `;
 
