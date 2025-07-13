@@ -62,26 +62,18 @@ complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE>
                                           
                                           (
                                           
-                                            ( "Alias" <END_OF_LINE> [type] <END_OF_LINE> )
-                                            
-                                            |
-                                            
-                                            (
-                                            
-                                              ( "Alias" <END_OF_LINE> [type] <END_OF_LINE> )? 
-    
-                                              ( 
-    
-                                                ( "Properties" <END_OF_LINE> propertyDeclaration propertyDeclaration+ ) 
-                                                 
-                                                | 
-                                                 
-                                                ( "Property" <END_OF_LINE> propertyDeclaration ) 
-                                                 
-                                              )
+                                            ( "Alias" <END_OF_LINE> [type] <END_OF_LINE> )? 
+  
+                                            ( 
+  
+                                              ( "Properties" <END_OF_LINE> propertyDeclaration propertyDeclaration+ ) 
                                                
-                                            )
-                                            
+                                              | 
+                                               
+                                              ( "Property" <END_OF_LINE> propertyDeclaration ) 
+                                               
+                                            )?
+                                               
                                           );
  
 
