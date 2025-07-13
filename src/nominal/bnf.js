@@ -58,7 +58,9 @@ metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaTy
  
 complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE> 
 
-                                          type ( ":" types )? <END_OF_LINE> 
+                                          type ( ":" types )? <END_OF_LINE>
+                                          
+                                          ( "Alias" <END_OF_LINE> [type] <END_OF_LINE> )? 
 
                                           ( 
 
