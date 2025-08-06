@@ -122,7 +122,7 @@ metatheorem                          ::=  "Metatheorem" parenthesisedLabel <END_
                                            
                                           proof ;
 
-axiom                                ::=  "Satisfiable"? "Axiom" parenthesisedLabels <END_OF_LINE> 
+axiom                                ::=  "Axiom" signature? parenthesisedLabels <END_OF_LINE> 
 
                                           (
                                            
@@ -259,6 +259,10 @@ parenthesisedLabel                   ::=  "(" label... ")" ;
 
 
 procedureCall                        ::=  "@"<NO_WHITESPACE>reference<NO_WHITESPACE>"(" parameter ( "," parameter )* ")" ;
+
+
+
+signature                            ::=  "[" term ( "," term )* "]" ;
 
 
 
