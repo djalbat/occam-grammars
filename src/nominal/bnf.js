@@ -4,9 +4,7 @@ const bnf = `document                             ::=  ( topLevelDeclaration | t
 
 
 
-topLevelDeclaration                  ::=  typeDeclaration 
-                                           
-                                       |  variableDeclaration 
+topLevelDeclaration                  ::=  variableDeclaration 
                                            
                                        |  combinatorDeclaration 
                                            
@@ -14,6 +12,8 @@ topLevelDeclaration                  ::=  typeDeclaration
                                            
                                        |  metavariableDeclaration 
                                                                                       
+                                       |  simpleTypeDeclaration 
+                                           
                                        |  complexTypeDeclaration 
                                            
                                        ;
@@ -46,8 +46,6 @@ error.                               ::=  . ;
 
 
 
-typeDeclaration                      ::=  "Provisional"? "Type" type ( ":" types )? <END_OF_LINE> ;
- 
 variableDeclaration                  ::=  "Variable" variable ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
 combinatorDeclaration                ::=  "Combinator" statement... <END_OF_LINE> ;
@@ -55,6 +53,8 @@ combinatorDeclaration                ::=  "Combinator" statement... <END_OF_LINE
 constructorDeclaration               ::=  "Constructor" term... ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
 metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaType <END_OF_LINE> ;
+ 
+simpleTypeDeclaration                ::=  "Provisional"? "Type" type ( ":" types )? <END_OF_LINE> ;
  
 complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE> 
 
