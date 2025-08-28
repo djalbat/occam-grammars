@@ -1,6 +1,6 @@
 "use strict";
 
-const bnf = `document                             ::=  ( topLevelDeclaration | topLevelAssertion | verticalSpace | error )+ ;
+const bnf = `document                             ::=  ( topLevelDeclaration | topLevelAssertion | section | verticalSpace | error )+ ;
 
 
 
@@ -38,6 +38,22 @@ topLevelAssertion                    ::=  rule
 
 
 
+section                              ::=  "Given" <END_OF_LINE>
+
+                                          hypothesis+
+                                          
+                                          <END_OF_LINE>
+                                          
+                                          ( axiom 
+                                          
+                                          | lemma 
+                                          
+                                          | theorem 
+                                          
+                                          | conjecture ) ; 
+
+
+
 verticalSpace                        ::=  <END_OF_LINE>+ ;
 
 
@@ -62,18 +78,12 @@ complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE>
                                           
                                           (
                                           
-                                            ( "Alias" <END_OF_LINE> [type] <END_OF_LINE> )? 
-  
-                                            ( 
-  
-                                              ( "Properties" <END_OF_LINE> propertyDeclaration propertyDeclaration+ ) 
-                                               
-                                              | 
-                                               
-                                              ( "Property" <END_OF_LINE> propertyDeclaration ) 
-                                               
-                                            )?
-                                               
+                                            ( "Properties" <END_OF_LINE> propertyDeclaration propertyDeclaration+ ) 
+                                             
+                                            | 
+                                             
+                                            ( "Property" <END_OF_LINE> propertyDeclaration ) 
+                                             
                                           );
  
 
@@ -237,6 +247,12 @@ conclusion.                          ::=  statement... <END_OF_LINE>
                                        ;
 
 deduction.                           ::=  statement... <END_OF_LINE>  
+
+                                       |  nonsense... <END_OF_LINE>
+                                       
+                                       ;
+
+hypothesis.                          ::=  statement... <END_OF_LINE>  
 
                                        |  nonsense... <END_OF_LINE>
                                        

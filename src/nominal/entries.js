@@ -8,7 +8,7 @@ const entries = [
     "bracket": "^(?:\\(|\\))"
   },
   {
-    "primary-keyword": "^(?:Rule|Axiom|Theorem|Lemma|Conjecture|MetaLemma|Metatheorem|Premises|Premise|Conclusion|Proof|Therefore|Suppose|Hence|Then|Provisional|Type|Alias|Properties|Property|Variable|Constructor|Combinator|DependentType|DisjointType|Metavariable)\\b"
+    "primary-keyword": "^(?:Rule|Axiom|Theorem|Lemma|Conjecture|MetaLemma|Metatheorem|Premises|Premise|Conclusion|Proof|Therefore|Suppose|Hence|Then|Provisional|Type|Properties|Property|Variable|Constructor|Combinator|Metavariable|Given)\\b"
   },
   {
     "secondary-keyword": "^(?:is|in|an|a|of|by|from|for|satisfies|provisionally)\\b"
