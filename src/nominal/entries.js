@@ -11,7 +11,7 @@ const entries = [
     "primary-keyword": "^(?:Rule|Axiom|Theorem|Lemma|Conjecture|MetaLemma|Metatheorem|Premises|Premise|Conclusion|Proof|Therefore|Suppose|Hence|Then|Provisional|Type|Properties|Property|Variable|Constructor|Combinator|Metavariable|Given)\\b"
   },
   {
-    "secondary-keyword": "^(?:is|in|an|a|of|by|from|for|satisfies|provisionally)\\b"
+    "secondary-keyword": "^(?:is|in|an|a|of|by|from|because|for|satisfies|provisionally)\\b"
   },
   {
     "meta-type": "^(?:Statement|Reference|Frame)\\b"

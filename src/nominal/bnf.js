@@ -260,9 +260,25 @@ hypothesis.                          ::=  statement... <END_OF_LINE>
 
 
 
-step.                                ::=  statement... ( ( "by" | "from" ) reference )? <END_OF_LINE>  
+step.                                ::=  statement... ( 
 
-                                       |  nonsense... ( ( "by" | "from" ) reference )? <END_OF_LINE>
+                                                         ( ( "by" | "from" ) reference )
+                                                         
+                                                         |
+                                                         
+                                                         ( "because" satisfiesAssertion ) 
+                                                         
+                                                       )? <END_OF_LINE>  
+
+                                       |  nonsense... ( 
+
+                                                        ( ( "by" | "from" ) reference )
+                                                         
+                                                        |
+                                                         
+                                                        ( "because" satisfiesAssertion ) 
+                                                         
+                                                      )? <END_OF_LINE>
                                        
                                        ;
 
