@@ -68,7 +68,7 @@ combinatorDeclaration                ::=  "Combinator" statement... <END_OF_LINE
  
 constructorDeclaration               ::=  "Constructor" term... ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
-metavariableDeclaration              ::=  "Metavariable" metavariable ":" metaType <END_OF_LINE> ;
+metavariableDeclaration              ::=  "Metavariable" metavariable... ":" metaType <END_OF_LINE> ;
  
 simpleTypeDeclaration                ::=  "Provisional"? "Type" type ( ":" types )? <END_OF_LINE> ;
  
@@ -88,9 +88,39 @@ complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE>
  
 
   
-rule                                 ::=  "Rule" parenthesisedLabels <END_OF_LINE> 
+rule                                 ::=  ruleHeading ruleBody ;                                         
 
-                                          ( 
+metaLemma                            ::=  metaLemmaHeading metaLemmaBody ;
+
+metatheorem                          ::=  metatheoremHeading metatheoremBody ;
+
+axiom                                ::=  axiomHeading axiomBody ;
+
+lemma                                ::=  lemmaHeading lemmaBody ;
+
+theorem                              ::=  theoremHeading theoremBody ;
+
+conjecture                           ::=  conjectureHeading conjectureBody ;
+
+
+
+ruleHeading                          ::=  "Rule" parenthesisedLabels... <END_OF_LINE> ; 
+
+metaLemmaHeading                     ::=  "MetaLemma" parenthesisedLabel... <END_OF_LINE> | "MetaLemma" <END_OF_LINE> ;
+
+metatheoremHeading                   ::=  "Metatheorem" parenthesisedLabel... <END_OF_LINE> ; 
+
+axiomHeading                         ::=  "Axiom" signature? parenthesisedLabels... <END_OF_LINE> ; 
+
+lemmaHeading                         ::=  "Lemma" parenthesisedLabels... <END_OF_LINE> | "Lemma" <END_OF_LINE> ; 
+
+theoremHeading                       ::=  "Theorem" parenthesisedLabels... <END_OF_LINE> ; 
+
+conjectureHeading                    ::=  "Conjecture" parenthesisedLabels... <END_OF_LINE>
+
+
+
+ruleBody                             ::=  ( 
 
                                             ( "Premises" <END_OF_LINE> premise premise+ ) 
                                              
@@ -104,9 +134,7 @@ rule                                 ::=  "Rule" parenthesisedLabels <END_OF_LIN
                                            
                                           proof? ;                                         
 
-metaLemma                            ::=  "MetaLemma" parenthesisedLabel? <END_OF_LINE> 
-
-                                          (
+metaLemmaBody                        ::=  (
                                            
                                             "Suppose" <END_OF_LINE> supposition+ 
 
@@ -118,9 +146,7 @@ metaLemma                            ::=  "MetaLemma" parenthesisedLabel? <END_O
                                                                                          
                                           proof ;
 
-metatheorem                          ::=  "Metatheorem" parenthesisedLabel <END_OF_LINE> 
-
-                                          (
+metatheoremBody                      ::=  (
                                            
                                             "Suppose" <END_OF_LINE> supposition+ 
 
@@ -132,21 +158,17 @@ metatheorem                          ::=  "Metatheorem" parenthesisedLabel <END_
                                            
                                           proof ;
 
-axiom                                ::=  "Axiom" signature? parenthesisedLabels <END_OF_LINE> 
-
-                                          (
+axiomBody                            ::=  (
                                            
                                             "Suppose" <END_OF_LINE> supposition+
-
+    
                                             "Then" <END_OF_LINE> 
-                                             
+                                                 
                                           )?
-                                             
+                                                 
                                           deduction ;
 
-lemma                                ::=  "Lemma" parenthesisedLabels? <END_OF_LINE> 
-
-                                          (
+lemmaBody                            ::=  (
                                            
                                             "Suppose" <END_OF_LINE> supposition+
 
@@ -158,9 +180,7 @@ lemma                                ::=  "Lemma" parenthesisedLabels? <END_OF_L
                                            
                                           proof ;
 
-theorem                              ::=  "Theorem" parenthesisedLabels <END_OF_LINE> 
-
-                                          (
+theoremBody                          ::=  (
                                            
                                             "Suppose" <END_OF_LINE> supposition+
 
@@ -172,9 +192,7 @@ theorem                              ::=  "Theorem" parenthesisedLabels <END_OF_
                                            
                                           proof ;
 
-conjecture                           ::=  "Conjecture" parenthesisedLabels <END_OF_LINE>
-
-                                          (
+conjectureBody                       ::=  (
                                            
                                             "Suppose" <END_OF_LINE> supposition+
 
@@ -260,33 +278,25 @@ hypothesis.                          ::=  statement... <END_OF_LINE>
 
 
 
-step.                                ::=  statement... ( 
+step.                                ::=  statement... qualification? <END_OF_LINE>  
 
-                                                         ( ( "by" | "from" ) reference )
-                                                         
-                                                         |
-                                                         
-                                                         ( "because" satisfiesAssertion ) 
-                                                         
-                                                       )? <END_OF_LINE>  
-
-                                       |  nonsense... ( 
-
-                                                        ( ( "by" | "from" ) reference )
-                                                         
-                                                        |
-                                                         
-                                                        ( "because" satisfiesAssertion ) 
-                                                         
-                                                      )? <END_OF_LINE>
+                                       |  nonsense... qualification? <END_OF_LINE>
                                        
                                        ;
 
 
 
-parenthesisedLabels                  ::=  "(" labels... ")" ; 
+qualification                        ::=  ( "by" | "from" ) reference
+                                                         
+                                       |  "because" satisfiesAssertion 
+                                       
+                                       ; 
 
-parenthesisedLabel                   ::=  "(" label... ")" ; 
+
+
+parenthesisedLabels                  ::=  "(" labels ")" ; 
+
+parenthesisedLabel                   ::=  "(" label ")" ; 
 
 
 
@@ -332,13 +342,13 @@ label.                               ::=  metavariable ;
 
 
 
-metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" ( term | type | stuff ) ")" )? ;
+metavariable.                        ::=  [identifier] ( <NO_WHITESPACE> "(" ( term | type | stuff ) ")" )? ;
 
-parameter.                           ::=  [name] ;
+parameter.                           ::=  [identifier] ;
 
-variable.                            ::=  [name] ;
+variable.                            ::=  [identifier] ;
 
-property.                            ::=  [name]+ ;
+property.                            ::=  [identifier]+ ;
 
 metaType.                            ::=  [meta-type] ;
 
@@ -346,8 +356,8 @@ type.                                ::=  [type] ;
 
 
 
-stuff.                               ::=  ( [name] | [symbol] | [bracket] | [unassigned] )+ ;
+stuff.                               ::=  ( [type] | [symbol] | [bracket] | [reserved] | [identifier] | [unassigned] )+ ;
 
-nonsense.                            ::=  ( [type] | [meta-type] | [special] | [secondary-keyword] | [name] | [symbol] | [bracket] | [unassigned] )+ ;`;
+nonsense.                            ::=  ( [meta-type] | [special] | [secondary-keyword] | [type] | [symbol] | [bracket] | [reserved] | [identifier] | [unassigned] )+ ;`;
 
 export default bnf;
