@@ -7,7 +7,7 @@ import entries from "./entries";
 export default class CustomGrammarPatternLexer extends CommonLexer {
   static entries = entries;
 
-  static EndOfLineToken = EndOfLineSignificantToken; ///
+  static EndOfLineToken = EndOfLineSignificantToken;
 
   static WhitespaceToken = WhitespaceToken;
 

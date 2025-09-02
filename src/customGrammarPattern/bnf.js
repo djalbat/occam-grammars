@@ -3,21 +3,17 @@
 const bnf = `
 
 
-    document       ::=  <NO_WHITESPACE> pattern ( verticalSpace | error )* 
-    
-                     |  ( verticalSpace | error )+ 
+    document  ::=  string+ error*
+     
+                |  error
                      
-                     ;
+                ;
 
 
-    pattern        ::=  [unassigned]+ ;
+    string    ::=  <NO_WHITESPACE>[unassigned] <END_OF_LINE> ;
 
 
-    verticalSpace  ::=  <END_OF_LINE>+ ;
-
-
-    error.         ::=  . ;
-
+    error.    ::=  . ;
 
 `;
 
