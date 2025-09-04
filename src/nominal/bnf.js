@@ -286,9 +286,9 @@ step.                                ::=  statement... qualification? <END_OF_LI
 
 
 
-qualification                        ::=  ( "by" | "from" ) reference
-                                                         
-                                       |  "because" satisfiesAssertion 
+qualification                        ::=  "because" satisfiesAssertion
+
+                                       |  "by" reference
                                        
                                        ; 
 
@@ -320,6 +320,8 @@ argument                             ::=  term ( )
 
                                        |  type ( )
                                        
+                                       |  stuff
+
                                        ;
 
 metaArgument                         ::=  statement ( ) 
@@ -342,7 +344,7 @@ label.                               ::=  metavariable ;
 
 
 
-metavariable.                        ::=  [identifier] ( <NO_WHITESPACE> "(" ( term | type | stuff ) ")" )? ;
+metavariable.                        ::=  [identifier] ( <NO_WHITESPACE> "(" argument ")" )? ;
 
 parameter.                           ::=  [identifier] ;
 
@@ -358,6 +360,6 @@ type.                                ::=  [type] ;
 
 stuff.                               ::=  ( [type] | [symbol] | [bracket] | [reserved] | [identifier] | [unassigned] )+ ;
 
-nonsense.                            ::=  ( [meta-type] | [special] | [secondary-keyword] | [type] | [symbol] | [bracket] | [reserved] | [identifier] | [unassigned] )+ ;`;
+nonsense.                            ::=  ( [special] | [meta-type] | [secondary-keyword] | [type] | [symbol] | [bracket] | [reserved] | [identifier] | [unassigned] )+ ;`;
 
 export default bnf;

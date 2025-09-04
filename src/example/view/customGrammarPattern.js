@@ -11,7 +11,10 @@ export default class CustomGrammarPatternView extends View {
 
   static readOnly = false;
 
-  static initialContent = "<=|>=|<|>|\\+|\\-|×|÷";
+  static initialContent = `adsf
+
+aadf
+`;
 
   static defaultProperties = {
     className: "custom-grammar-pattern"
