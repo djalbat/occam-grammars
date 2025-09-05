@@ -3,17 +3,13 @@
 const bnf = `
 
 
-    document  ::=  string+ error*
-     
-                |  error
-                     
-                ;
+    document    ::=  ( expression | error )+ ;
 
 
-    string    ::=  <NO_WHITESPACE>[unassigned] <END_OF_LINE> ;
+    expression  ::=  <NO_WHITESPACE>[unassigned]<NO_WHITESPACE><END_OF_LINE> ;
 
 
-    error.    ::=  . ;
+    error.      ::=  . ;
 
 `;
 
