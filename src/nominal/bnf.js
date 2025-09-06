@@ -344,7 +344,7 @@ label.                               ::=  metavariable ;
 
 
 
-metavariable.                        ::=  [identifier] ( <NO_WHITESPACE> "(" argument ")" )? ;
+metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" argument ")" )? ;
 
 parameter.                           ::=  [identifier] ;
 
@@ -358,8 +358,8 @@ type.                                ::=  [type] ;
 
 
 
-stuff.                               ::=  ( [type] | [symbol] | [bracket] | [reserved] | [identifier] | [unassigned] )+ ;
+stuff.                               ::=  ( [type] | [symbol] | [name] | [identifier] | [bracket] | [reserved] | [unassigned] )+ ;
 
-nonsense.                            ::=  ( [special] | [meta-type] | [secondary-keyword] | [type] | [symbol] | [bracket] | [reserved] | [identifier] | [unassigned] )+ ;`;
+nonsense.                            ::=  ( [special] | [meta-type] | [secondary-keyword] | [type] | [symbol] | [name] | [identifier] | [bracket] | [reserved] | [unassigned] )+ ;`;
 
 export default bnf;
