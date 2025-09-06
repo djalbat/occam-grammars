@@ -4,7 +4,7 @@ import { CommonLexer, WhitespaceToken, EndOfLineSignificantToken } from "occam-l
 
 import entries from "./entries";
 
-export default class CustomGrammarPatternLexer extends CommonLexer {
+export default class CustomGrammarVocabularyLexer extends CommonLexer {
   static entries = entries;
 
   static EndOfLineToken = EndOfLineSignificantToken;
@@ -27,9 +27,9 @@ export default class CustomGrammarPatternLexer extends CommonLexer {
 
   static DoublyQuotedStringLiteralToken = null;
 
-  static fromNothing() { return CommonLexer.fromNothing(CustomGrammarPatternLexer); }
+  static fromNothing() { return CommonLexer.fromNothing(CustomGrammarVocabularyLexer); }
 
-  static fromRules(rules) { return CommonLexer.fromRules(CustomGrammarPatternLexer, rules); }
+  static fromRules(rules) { return CommonLexer.fromRules(CustomGrammarVocabularyLexer, rules); }
 
-  static fromEntries(entries) { return CommonLexer.fromEntries(CustomGrammarPatternLexer, entries); }
+  static fromEntries(entries) { return CommonLexer.fromEntries(CustomGrammarVocabularyLexer, entries); }
 }
