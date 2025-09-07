@@ -1,8 +1,8 @@
 "use strict";
 
-import { BNFParser, CommonParser } from "occam-parsers";
+import { CommonParser } from "occam-parsers";
 
-const { bnf } = BNFParser;
+import bnf from "./bnf";
 
 export default class CustomGrammarBNFParser extends CommonParser {
   static bnf = bnf;
