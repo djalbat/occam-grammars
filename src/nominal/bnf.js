@@ -88,35 +88,35 @@ complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE>
  
 
   
-rule                                 ::=  ruleHeading ruleBody ;                                         
+rule                                 ::=  ruleHeader ruleBody ;                                         
 
-metaLemma                            ::=  metaLemmaHeading metaLemmaBody ;
+metaLemma                            ::=  metaLemmaHeader metaLemmaBody ;
 
-metatheorem                          ::=  metatheoremHeading metatheoremBody ;
+metatheorem                          ::=  metatheoremHeader metatheoremBody ;
 
-axiom                                ::=  axiomHeading axiomBody ;
+axiom                                ::=  axiomHeader axiomBody ;
 
-lemma                                ::=  lemmaHeading lemmaBody ;
+lemma                                ::=  lemmaHeader lemmaBody ;
 
-theorem                              ::=  theoremHeading theoremBody ;
+theorem                              ::=  theoremHeader theoremBody ;
 
-conjecture                           ::=  conjectureHeading conjectureBody ;
+conjecture                           ::=  conjectureHeader conjectureBody ;
 
 
 
-ruleHeading                          ::=  "Rule" parenthesisedLabels... <END_OF_LINE> ; 
+ruleHeader                          ::=  "Rule" parenthesisedLabels... <END_OF_LINE> ; 
 
-metaLemmaHeading                     ::=  "MetaLemma" parenthesisedLabel... <END_OF_LINE> | "MetaLemma" <END_OF_LINE> ;
+metaLemmaHeader                     ::=  "MetaLemma" parenthesisedLabel... <END_OF_LINE> | "MetaLemma" <END_OF_LINE> ;
 
-metatheoremHeading                   ::=  "Metatheorem" parenthesisedLabel... <END_OF_LINE> ; 
+metatheoremHeader                   ::=  "Metatheorem" parenthesisedLabel... <END_OF_LINE> ; 
 
-axiomHeading                         ::=  "Axiom" signature? parenthesisedLabels... <END_OF_LINE> ; 
+axiomHeader                         ::=  "Axiom" signature? parenthesisedLabels... <END_OF_LINE> ; 
 
-lemmaHeading                         ::=  "Lemma" parenthesisedLabels... <END_OF_LINE> | "Lemma" <END_OF_LINE> ; 
+lemmaHeader                         ::=  "Lemma" parenthesisedLabels... <END_OF_LINE> | "Lemma" <END_OF_LINE> ; 
 
-theoremHeading                       ::=  "Theorem" parenthesisedLabels... <END_OF_LINE> ; 
+theoremHeader                       ::=  "Theorem" parenthesisedLabels... <END_OF_LINE> ; 
 
-conjectureHeading                    ::=  "Conjecture" parenthesisedLabels... <END_OF_LINE>
+conjectureHeader                    ::=  "Conjecture" parenthesisedLabels... <END_OF_LINE>
 
 
 
