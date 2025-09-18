@@ -11,10 +11,10 @@ const entries = [
     "meta-type": "^(?:Statement|Reference|Frame)\\b"
   },
   {
-    "name": "^[\\p{Latin}&&\\p{Uppercase}][\\p{Latin}]*"
+    "name": "^[A-Z][A-Za-z]*"
   },
   {
-    "identifier": "^[\\p{Latin}&&\\p{Lowercase}\\p{Greek}][\\p{Latin}\\p{Greek}_0-9']*"
+    "identifier": "^[\\p{Latin}\\p{Greek}][\\p{Latin}\\p{Greek}_0-9']*"
   },
   {
     "special": "^(?:\\.\\.\\.|\\|-|@|,|::|:|=)"
