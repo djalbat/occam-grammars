@@ -346,7 +346,7 @@ label.                               ::=  metavariable ;
 
 metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" argument ")" )? ;
 
-parameter.                           ::=  [identifier] ;
+parameter.                           ::=  [name] | [identifier] ;
 
 variable.                            ::=  [identifier] ;
 
