@@ -14,7 +14,7 @@ const entries = [
     "name": "^[A-Z][A-Za-z]*"
   },
   {
-    "identifier": "^[\\p{Latin}\\p{Greek}][\\p{Latin}\\p{Greek}_0-9']*"
+    "identifier": "^[\\p{Script=Latin}\\p{Script=Greek}][\\p{Script=Latin}\\p{Script=Greek}_0-9']*"
   },
   {
     "special": "^(?:\\.\\.\\.|\\|-|@|,|::|:|=)"
