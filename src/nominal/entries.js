@@ -11,7 +11,7 @@ const entries = [
     "meta-type": "^(?:Statement|Reference|Frame)\\b"
   },
   {
-    "name": "^[A-Z][A-Za-z]*"
+    "name": "^(?:[A-Z]|[A-Za-z]{2,})"
   },
   {
     "identifier": "^[\\p{Script=Latin}\\p{Script=Greek}][\\p{Script=Latin}\\p{Script=Greek}_0-9']*"
