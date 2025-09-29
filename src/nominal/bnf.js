@@ -342,7 +342,7 @@ label.                               ::=  metavariable ;
 
 
 
-metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" term | type| stuff ")" )? ;
+metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" ( term | type | stuff ) ")" )? ;
 
 parameter.                           ::=  [name] | [identifier] ;
 
