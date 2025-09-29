@@ -320,8 +320,6 @@ argument                             ::=  term ( )
 
                                        |  type ( )
                                        
-                                       |  stuff
-
                                        ;
 
 metaArgument                         ::=  statement ( ) 
@@ -344,7 +342,7 @@ label.                               ::=  metavariable ;
 
 
 
-metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" argument ")" )? ;
+metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" term | type| stuff ")" )? ;
 
 parameter.                           ::=  [name] | [identifier] ;
 
