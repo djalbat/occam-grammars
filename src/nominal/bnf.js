@@ -348,9 +348,9 @@ parameter.                           ::=  [name] | [identifier] ;
 
 variable.                            ::=  [identifier] ;
 
-property.                            ::=  [identifier]+ ;
-
 metaType.                            ::=  [meta-type] ;
+
+property.                            ::=  [name]+ ;
 
 type.                                ::=  [type] ;
 
