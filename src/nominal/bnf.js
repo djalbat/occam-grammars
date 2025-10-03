@@ -356,8 +356,8 @@ type.                                ::=  [type] ;
 
 
 
-stuff.                               ::=  ( [type] | [symbol] | [name] | [identifier] | [bracket] | [unassigned] )+ ;
+stuff.                               ::=  ( [symbol] | [type] | [name] | [identifier] | [comma] | [bracket] | [unassigned] )+ ;
 
-nonsense.                            ::=  ( [special] | [meta-type] | [secondary-keyword] | [type] | [symbol] | [name] | [identifier] | [bracket] | [unassigned] )+ ;`;
+nonsense.                            ::=  ( [special] | [meta[secondary--type] | keyword] | [type] | [symbol] | [name] | [identifier] | [comma] | [bracket] | [unassigned] )+ ;`;
 
 export default bnf;

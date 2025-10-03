@@ -17,7 +17,10 @@ const entries = [
     "identifier": "^[\\p{Script=Latin}\\p{Script=Greek}][\\p{Script=Latin}\\p{Script=Greek}_0-9']*"
   },
   {
-    "special": "^(?:\\.\\.\\.|\\|-|@|,|::|:|=)"
+    "special": "^(?:\\.\\.\\.|\\|-|@|::|:|=)"
+  },
+  {
+    "comma": "^,"
   },
   {
     "bracket": "^(?:\\(|\\)|\\[|\\])"
