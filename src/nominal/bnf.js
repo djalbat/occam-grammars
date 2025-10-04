@@ -116,7 +116,7 @@ lemmaHeader                         ::=  "Lemma" parenthesisedLabels... <END_OF_
 
 theoremHeader                       ::=  "Theorem" parenthesisedLabels... <END_OF_LINE> ; 
 
-conjectureHeader                    ::=  "Conjecture" parenthesisedLabels... <END_OF_LINE>
+conjectureHeader                    ::=  "Conjecture" parenthesisedLabels... <END_OF_LINE> ;
 
 
 
