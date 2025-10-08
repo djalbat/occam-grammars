@@ -5,7 +5,7 @@ const LATIN = "[\\p{Script=Latin}]",
       SCRIPT = "[\\u{1D49C}-\\u{1D4CF}\\u{210A}\\u{210B}\\u{2110}\\u{2112}\\u{211B}\\u{212C}\\u{2130}\\u{2131}\\u{2133}\\u{2134}]",
       DECIMAL = "[0-9]",
       FRAKTUR = "[\\u{1D504}-\\u{1D537}\\u{210C}\\u{2111}\\u{211C}\\u{2128}\\u{212D}]",
-      SANS_SERIF = "[\\u{1D5D4}-\\u{1D607}]";
+      SANS_SERIF_BOLD = "[\\u{1D5D4}-\\u{1D607}]";
 
 const entries = [
   {
@@ -21,7 +21,7 @@ const entries = [
     "name": "^(?:[a-z][A-Za-z]+[0-9]*|[A-Z][A-Za-z]*[0-9]*)"
   },
   {
-    "identifier": `^(?:${LATIN}+${DECIMAL}*|${GREEK}+|${FRAKTUR}+|${SCRIPT}+|${SANS_SERIF}+)`
+    "identifier": `^(?:${LATIN}+${DECIMAL}*|${GREEK}+|${FRAKTUR}+|${SCRIPT}+|${SANS_SERIF_BOLD}+)`
   },
   {
     "delimiter": "^(?:\\.\\.\\.|,|\\(|\\)|\\[|\\])"
