@@ -21,7 +21,7 @@ const entries = [
     "name": "^(?:[a-z][A-Za-z]+[0-9]*|[A-Z][A-Za-z]*[0-9]*)"
   },
   {
-    "identifier": `^(?:${LATIN}+${DECIMAL}*|${GREEK}+|${SANS_SERIF}+|${FRAKTUR}+|${SCRIPT}+)`
+    "identifier": `^(?:${LATIN}+${DECIMAL}*|${GREEK}+|${FRAKTUR}+|${SCRIPT}+|${SANS_SERIF}+)`
   },
   {
     "delimiter": "^(?:\\.\\.\\.|,|\\(|\\)|\\[|\\])"
