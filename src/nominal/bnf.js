@@ -16,6 +16,8 @@ topLevelDeclaration                  ::=  variableDeclaration
                                            
                                        |  complexTypeDeclaration 
                                            
+                                       |  typeAliasDeclaration 
+                                           
                                        ;
 
 
@@ -85,6 +87,8 @@ complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE>
                                             ( "Property" <END_OF_LINE> propertyDeclaration ) 
                                              
                                           );
+ 
+typeAliasDeclaration                 ::=  "TypeAlias" typeAlias <END_OF_LINE> ;
  
 
   
@@ -342,7 +346,7 @@ label.                               ::=  metavariable ;
 
 
 
-metavariable.                        ::=  [name] ( <NO_WHITESPACE> "(" ( term | type | stuff ) ")" )? ;
+metavariable.                        ::=  [name] ( <NO_WHITESPACE>"(" ( term | type | stuff ) ")" )? ;
 
 parameter.                           ::=  [name] | [identifier] ;
 
@@ -352,7 +356,9 @@ metaType.                            ::=  [meta-type] ;
 
 property.                            ::=  [name]+ ;
 
-type.                                ::=  [type] ;
+typeAlias.                           ::=  [type] ;
+
+type.                                ::=  [type] ( <NO_WHITESPACE>[type] )? ;
 
 
 
