@@ -11,12 +11,12 @@ topLevelDeclaration                  ::=  variableDeclaration
                                        |  constructorDeclaration 
                                            
                                        |  metavariableDeclaration 
+                                           
+                                       |  typePrefixDeclaration  
                                                                                       
                                        |  simpleTypeDeclaration 
                                            
-                                       |  complexTypeDeclaration 
-                                           
-                                       |  typePrefixDeclaration 
+                                       |  complexTypeDeclaration
                                            
                                        ;
 
@@ -72,6 +72,8 @@ constructorDeclaration               ::=  "Constructor" term... ( ":" type "prov
  
 metavariableDeclaration              ::=  "Metavariable" metavariable... ":" metaType <END_OF_LINE> ;
  
+typePrefixDeclaration                ::=  "TypePrefix" typePrefix <END_OF_LINE> ;
+
 simpleTypeDeclaration                ::=  "Provisional"? "Type" type ( ":" types )? <END_OF_LINE> ;
  
 complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE> 
@@ -87,9 +89,7 @@ complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE>
                                             ( "Property" <END_OF_LINE> propertyDeclaration ) 
                                              
                                           );
- 
-typePrefixDeclaration                ::=  "TypePrefix" typePrefix <END_OF_LINE> ;
- 
+  
 
   
 rule                                 ::=  ruleHeader ruleBody ;                                         
