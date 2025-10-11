@@ -9,7 +9,7 @@ const LATIN = "[\\p{Script=Latin}]",
 
 const entries = [
   {
-    "primary-keyword": "^(?:Rule|Axiom|Theorem|Lemma|Conjecture|MetaLemma|Metatheorem|Premises|Premise|Conclusion|Proof|Therefore|Suppose|Hence|Then|Provisional|Type|TypeAlias|Properties|Property|Variable|Constructor|Combinator|Metavariable|Given)\\b"
+    "primary-keyword": "^(?:Rule|Axiom|Theorem|Lemma|Conjecture|MetaLemma|Metatheorem|Premises|Premise|Conclusion|Proof|Therefore|Suppose|Hence|Then|Provisional|Type|TypePrefix|Properties|Property|Variable|Constructor|Combinator|Metavariable|Given)\\b"
   },
   {
     "secondary-keyword": "^(?:is|in|an|a|of|by|because|for|satisfies|provisionally|defined|undefined|missing|present)\\b"

@@ -16,7 +16,7 @@ topLevelDeclaration                  ::=  variableDeclaration
                                            
                                        |  complexTypeDeclaration 
                                            
-                                       |  typeAliasDeclaration 
+                                       |  typePrefixDeclaration 
                                            
                                        ;
 
@@ -88,7 +88,7 @@ complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE>
                                              
                                           );
  
-typeAliasDeclaration                 ::=  "TypeAlias" typeAlias <END_OF_LINE> ;
+typePrefixDeclaration                ::=  "TypePrefix" typePrefix <END_OF_LINE> ;
  
 
   
@@ -356,7 +356,7 @@ metaType.                            ::=  [meta-type] ;
 
 property.                            ::=  [name]+ ;
 
-typeAlias.                           ::=  [type] ;
+typePrefix.                           ::=  [type] ;
 
 type.                                ::=  [type] ( <NO_WHITESPACE>[type] )? ;
 
