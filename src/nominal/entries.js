@@ -1,10 +1,12 @@
 "use strict";
 
-const LATIN = "[\\p{Script=Latin}]",
+const DECIMAL = "[0-9]",
       GREEK = "[\\p{Script=Greek}]",
-      DECIMAL = "[0-9]",
-      MATHEMATICAL_SCRIPT = "[\\u{1D49C}-\\u{1D4CF}\\u{210A}\\u{210B}\\u{2110}\\u{2112}\\u{211B}\\u{212C}\\u{2130}\\u{2131}\\u{2133}\\u{2134}]",
-      MATHEMATICAL_FRAKTUR = "[\\u{1D504}-\\u{1D537}\\u{210C}\\u{2111}\\u{211C}\\u{2128}\\u{212D}]",
+      LATIN = "[\\p{Script=Latin}]",
+      LOWER_CASE_LATIN = "[\\p{Script=Latin}&&\\p{Lowercase}]",
+      UPPER_CASE_LATIN = "[\\p{Script=Latin}&&\\p{Uppercase}]",
+      MATHEMATICAL_SCRIPT = "[\\p{Style=Math_Script}]",
+      MATHEMATICAL_FRAKTUR = "[\\p{Style=Math_Fraktur}]",
       MATHEMATICAL_SANS_SERIF_BOLD = "[\\u{1D5D4}-\\u{1D607}]";
 
 const entries = [
@@ -18,7 +20,7 @@ const entries = [
     "meta-type": "^(?:Statement|Reference|Frame)\\b"
   },
   {
-    "name": "^(?:[a-z][A-Za-z]+[0-9]*|[A-Z][A-Za-z]*[0-9]*)"
+    "name": `^(?:${LOWER_CASE_LATIN}${LATIN}+${DECIMAL}*|${UPPER_CASE_LATIN}${LATIN}*${DECIMAL}*)`,
   },
   {
     "identifier": `^(?:${LATIN}+${DECIMAL}*|${GREEK}+|${MATHEMATICAL_SCRIPT}+|${MATHEMATICAL_FRAKTUR}+|${MATHEMATICAL_SANS_SERIF_BOLD}+)`
