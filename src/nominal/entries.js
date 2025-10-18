@@ -21,7 +21,7 @@ const entries = [
     "meta-type": "^(?:Statement|Reference|Frame)\\b"
   },
   {
-    "name": `^(?:${LATIN_UPPER_CASE}${LATIN}*${DECIMAL}*|${LATIN_LOWER_CASE}${LATIN_LOWER_CASE}+${DECIMAL}*)`,
+    "name": `^(?:${LATIN_UPPER_CASE}${LATIN}*${DECIMAL}*|${LATIN_LOWER_CASE}${LATIN}+${DECIMAL}*)`,
   },
   {
     "identifier": `^(?:${LATIN_LOWER_CASE}${DECIMAL}*|${GREEK}+|${MATHEMATICAL_SANS_SERIF_BOLD}+|${MATHEMATICAL_ITALIC_UPPER_CASE}+|${MATHEMATICAL_SCRIPT_UPPER_CASE}+|${MATHEMATICAL_FRAKTUR_UPPER_CASE}+)`
