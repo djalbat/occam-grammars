@@ -356,9 +356,13 @@ metaType.                            ::=  [meta-type] ;
 
 property.                            ::=  [name]+ ;
 
-typePrefix.                           ::=  [type] ;
+typePrefix.                          ::=  [type] ;
 
-type.                                ::=  [type] ( <NO_WHITESPACE>[type] )? ;
+type.                                ::=  [type] ( <NO_WHITESPACE>[type] )? 
+
+                                       |  "<"<NO_WHITESPACE>">"
+
+                                       ;
 
 
 

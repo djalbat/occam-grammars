@@ -27,10 +27,10 @@ const entries = [
     "identifier": `^(?:${LATIN_LOWER_CASE}${DECIMAL}*|${GREEK}+|${MATHEMATICAL_SANS_SERIF_BOLD}+|${MATHEMATICAL_ITALIC_UPPER_CASE}+|${MATHEMATICAL_SCRIPT_UPPER_CASE}+|${MATHEMATICAL_FRAKTUR_UPPER_CASE}+)`
   },
   {
-    "delimiter": "^(?:\\.\\.\\.|,|\\(|\\)|\\[|\\])"
+    "delimiter": "^(?:\\||\\.\\.\\.|\\(|\\)|\\[|\\]|<|>|,)"
   },
   {
-    "special": "^(?:\\|-|@|::|:|=)"
+    "special": "^(?:@|::|:|=|-)"
   },
   {
     "unassigned": "^[^\\s\\(\\)\\[\\]:,]+"
