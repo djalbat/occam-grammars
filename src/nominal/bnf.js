@@ -366,8 +366,8 @@ type.                                ::=  [type] ( <NO_WHITESPACE>[type] )?
 
 
 
-stuff.                               ::=  ( [string-literal] | [symbol] | [type] | [name] | [identifier] | [delimiter] | [unassigned] )+ ;
+stuff.                               ::=  ( [string-literal] | [symbol] | [type] | [name] | [identifier] | [primitive] | [unassigned] )+ ;
 
-nonsense.                            ::=  ( [secondary-keyword] | [meta-type] | [special] | [symbol] | [type] | [name] | [identifier] | [delimiter] | [unassigned] )+ ;`;
+nonsense.                            ::=  ( [secondary-keyword] | [meta-type] | [special] | [symbol] | [type] | [name] | [identifier] | [primitive] | [unassigned] )+ ;`;
 
 export default bnf;
