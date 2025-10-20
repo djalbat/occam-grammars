@@ -304,7 +304,7 @@ parenthesisedLabel                   ::=  "(" label ")" ;
 
 
 
-procedureCall                        ::=  "@"<NO_WHITESPACE>reference<NO_WHITESPACE>"(" parameter ( "," parameter )* ")" ;
+procedureCall                        ::=  "@"<NO_WHITESPACE>simpleReference<NO_WHITESPACE>"(" parameter ( "," parameter )* ")" ;
 
 
 
@@ -339,6 +339,7 @@ frameArgument                        ::=  frame ( )
                                        ;
 
 
+simpleReference.                     ::=  [name] ;
 
 reference.                           ::=  metavariable ;
 
