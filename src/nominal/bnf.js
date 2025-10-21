@@ -246,7 +246,7 @@ propertyDeclaration.                 ::=  property ( ":" type )? <END_OF_LINE>
 
 
 
-premise.                             ::=  procedureCall... <END_OF_LINE>  
+premise.                             ::=  procedureCall <END_OF_LINE>  
 
                                        |  statement... <END_OF_LINE>  
 
@@ -254,7 +254,7 @@ premise.                             ::=  procedureCall... <END_OF_LINE>
                                        
                                        ;
 
-supposition.                         ::=  procedureCall... <END_OF_LINE>  
+supposition.                         ::=  procedureCall <END_OF_LINE>  
 
                                        |  statement... <END_OF_LINE>  
 
@@ -304,7 +304,7 @@ parenthesisedLabel                   ::=  "(" label ")" ;
 
 
 
-procedureCall                        ::=  "@"<NO_WHITESPACE>simpleReference<NO_WHITESPACE>"(" parameter ( "," parameter )* ")" ;
+procedureCall                        ::=  "@"<NO_WHITESPACE>procedureReference<NO_WHITESPACE>"(" parameter ( "," parameter )* ")" ;
 
 
 
@@ -339,7 +339,7 @@ frameArgument                        ::=  frame ( )
                                        ;
 
 
-simpleReference.                     ::=  [name] ;
+procedureReference.                  ::=  [name] ;
 
 reference.                           ::=  metavariable ;
 
