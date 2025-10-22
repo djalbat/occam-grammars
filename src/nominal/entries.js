@@ -1,8 +1,8 @@
 "use strict";
 
-const DECIMAL = "[0-9]",
-      GREEK = "[\\p{Script=Greek}]",
+const GREEK = "[\\p{Script=Greek}]",
       LATIN = "[\\p{Script=Latin}]",
+      DECIMAL = "[0-9]",
       LATIN_LOWER_CASE = "[\\p{Script=Latin}&&\\p{Lowercase}]",
       LATIN_UPPER_CASE = "[\\p{Script=Latin}&&\\p{Uppercase}]",
       MATHEMATICAL_SANS_SERIF_BOLD = "[\\u{1D5D4}-\\u{1D607}]",

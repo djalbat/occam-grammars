@@ -1,5 +1,8 @@
 "use strict";
 
+const LATIN = "[\\p{Script=Latin}]",
+      DECIMAL = "[0-9]";
+
 const entries = [
   {
     "type": "^(?:Nodes|Node|String|Number|Boolean)"
@@ -23,13 +26,13 @@ const entries = [
     "special": "^(?:!=|==|=|,|;|_|&&|\\|\\||\\(|\\)|\\[|\\])"
   },
   {
-    "name": "^[a-zA-Z\\-]+"
+    "name": `^${LATIN}+${DECIMAL}*`,
   },
   {
-    "number": "^[0-9]+"
+    "number": `^${DECIMAL}+`
   },
   {
-    "unassigned": "^."
+    "unassigned": "^[^\\s\\(\\),]+"
   }
 ];
 
