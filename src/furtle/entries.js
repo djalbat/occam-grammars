@@ -23,7 +23,7 @@ const entries = [
     "bracket": "^(?:\\{|\\})"
   },
   {
-    "special": "^(?:!=|==|=|,|;|_|&&|\\|\\||\\(|\\)|\\[|\\])"
+    "special": "^(?:!=|==|!|=|,|;|_|&&|\\|\\||\\(|\\)|\\[|\\])"
   },
   {
     "name": `^${LATIN}+${DECIMAL}*`,
@@ -32,7 +32,7 @@ const entries = [
     "number": `^${DECIMAL}+`
   },
   {
-    "unassigned": "^[^\\s\\(\\),]+"
+    "unassigned": "^[^\\s]+"
   }
 ];
 
