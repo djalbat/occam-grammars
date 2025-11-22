@@ -2,7 +2,6 @@
 
 const bnf = `
 
-
     document     ::=  json error* 
     
                    |  error+ 
@@ -49,7 +48,6 @@ const bnf = `
 
     error.       ::=  . ;
     
-
 `;
 
 export default bnf;

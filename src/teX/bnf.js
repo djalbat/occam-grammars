@@ -2,7 +2,6 @@
 
 const bnf = `
 
-
     document                        ::=   ( delimitedTeX | plainMarkup )+ ;
     
     
