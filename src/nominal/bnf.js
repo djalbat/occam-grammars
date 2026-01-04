@@ -367,6 +367,10 @@ type.                                ::=  [type] ( <NO_WHITESPACE>[type] )?
 
 
 
+equivalence                          ::=  term+ ;
+
+
+
 stuff.                               ::=  ( [string-literal] | [symbol] | [type] | [name] | [identifier] | [primitive] | [unassigned] )+ ;
 
 nonsense.                            ::=  ( [secondary-keyword] | [meta-type] | [special] | [symbol] | [type] | [name] | [identifier] | [primitive] | [unassigned] )+ ;`;
