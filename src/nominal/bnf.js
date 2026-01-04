@@ -347,6 +347,12 @@ label.                               ::=  metavariable ;
 
 
 
+equivalences                         ::=  equivalence ( "," equivalence )* ;
+
+equivalence                          ::=  "[" term ( "," term )+ "]" ;
+
+
+
 metavariable.                        ::=  [name] ( <NO_WHITESPACE>"(" ( term | type | stuff ) ")" )? ;
 
 parameter.                           ::=  [name] | [identifier] ;
@@ -364,10 +370,6 @@ type.                                ::=  [type] ( <NO_WHITESPACE>[type] )?
                                        |  "<"<NO_WHITESPACE>">"
 
                                        ;
-
-
-
-equivalence                          ::=  term+ ;
 
 
 
