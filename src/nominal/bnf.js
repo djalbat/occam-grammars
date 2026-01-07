@@ -66,9 +66,9 @@ error.                               ::=  . ;
 
 variableDeclaration                  ::=  "Variable" variable ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
-combinatorDeclaration                ::=  "Combinator" statement... <END_OF_LINE> ;
+combinatorDeclaration                ::=  "Combinator" combinator... <END_OF_LINE> ;
  
-constructorDeclaration               ::=  "Constructor" term... ( ":" type "provisionally"? )? <END_OF_LINE> ;
+constructorDeclaration               ::=  "Constructor" constructor... ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
 metavariableDeclaration              ::=  "Metavariable" metavariable... ":" metaType <END_OF_LINE> ;
  
@@ -245,6 +245,12 @@ propertyDeclaration.                 ::=  property ( ":" type )? <END_OF_LINE>
                                        ;
 
 
+
+combinator                           ::=  statement ;
+
+constructor                          ::=  term ; 
+
+ 
 
 premise.                             ::=  procedureCall <END_OF_LINE>  
 
