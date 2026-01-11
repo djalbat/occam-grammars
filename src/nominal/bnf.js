@@ -298,7 +298,7 @@ step.                                ::=  statement... qualification? <END_OF_LI
 
 qualification                        ::=  "because" satisfiesAssertion
 
-                                       |  "by" reference
+                                       |  ( "by" | "from" ) reference
                                        
                                        ; 
 
