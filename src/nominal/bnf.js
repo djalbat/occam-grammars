@@ -1,42 +1,38 @@
 "use strict";
 
-const bnf = `document                             ::=  ( topLevelDeclaration | topLevelAssertion | section | verticalSpace | error )+ ;
-
-
-
-topLevelDeclaration                  ::=  variableDeclaration 
+const bnf = `document                             ::=  ( variableDeclaration 
                                            
-                                       |  combinatorDeclaration 
-                                           
-                                       |  constructorDeclaration 
-                                           
-                                       |  metavariableDeclaration 
-                                           
-                                       |  typePrefixDeclaration  
-                                                                                      
-                                       |  simpleTypeDeclaration 
-                                           
-                                       |  complexTypeDeclaration
-                                           
-                                       ;
-
-
-
-topLevelAssertion                    ::=  rule 
-
-                                       |  axiom 
-
-                                       |  lemma 
-
-                                       |  theorem 
-
-                                       |  conjecture 
-
-                                       |  metaLemma 
-
-                                       |  metatheorem 
-
-                                       ;
+                                          | combinatorDeclaration 
+                                                          
+                                          | constructorDeclaration 
+                                                          
+                                          | metavariableDeclaration 
+                                                          
+                                          | typePrefixDeclaration  
+                                                                                                     
+                                          | simpleTypeDeclaration 
+                                                          
+                                          | complexTypeDeclaration 
+                                                      
+                                          | rule 
+               
+                                          | axiom 
+               
+                                          | lemma 
+               
+                                          | theorem 
+               
+                                          | conjecture 
+               
+                                          | metaLemma 
+               
+                                          | metatheorem  
+                                                      
+                                          | section 
+                                                      
+                                          | verticalSpace 
+                                                      
+                                          | error )+ ;
 
 
 
