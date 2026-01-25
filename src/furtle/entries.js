@@ -11,7 +11,10 @@ const entries = [
     "query": "^(?:nodeQuery|nodesQuery)"
   },
   {
-    "keyword": "^(?:if|else|reduce|every|some|as|return)"
+    "return": "^return"
+  },
+  {
+    "keyword": "^(?:if|else|reduce|every|some|as)"
   },
   {
     "primitive": "^(?:null|true|false)"
