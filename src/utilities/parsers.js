@@ -7,19 +7,29 @@ import FurtleParser from "../furtle/parser";
 
 const { rulesFromBNF, parserFromRules, parserFromRulesAndStartRuleName } = parserUtilities;
 
-export function furtleParserFromBNF(bnf) {
+export function furtleParserFromBNF(Class, bnf) {
+  if (bnf === undefined) {
+    bnf = Class;  ///
+
+    Class = FurtleParser;  ///
+  }
+
   let rules;
 
   rules = rulesFromBNF(bnf);
 
   rules = eliminateLeftRecursion(rules);  ///
 
-  const furtleParser = parserFromRules(FurtleParser, rules);
+  const furtleParser = parserFromRules(Class, rules);
 
   return furtleParser;
 }
 
-export function furtleParserFromNothing() {
+export function furtleParserFromNothing(Class) {
+  if (Class === undefined) {
+    Class = FurtleParser;  ///
+  }
+
   const { bnf } = FurtleParser;
 
   let rules;
@@ -28,19 +38,27 @@ export function furtleParserFromNothing() {
 
   rules = eliminateLeftRecursion(rules);  ///
 
-  const furtleParser = parserFromRules(FurtleParser, rules);
+  const furtleParser = parserFromRules(Class, rules);
 
   return furtleParser;
 }
 
-export function furtleParserFromBNFAndStartRuleName(bnf, startRuleName) {
+export function furtleParserFromBNFAndStartRuleName(Class, bnf, startRuleName) {
+  if (startRuleName === undefined) {
+    startRuleName = bnf;  ///
+
+    bnf = Class;  ///
+
+    Class = FurtleParser;  ///
+  }
+
   let rules;
 
   rules = rulesFromBNF(bnf);
 
   rules = eliminateLeftRecursion(rules);  ///
 
-  const furtleParser = parserFromRulesAndStartRuleName(FurtleParser, rules, startRuleName);
+  const furtleParser = parserFromRulesAndStartRuleName(Class, rules, startRuleName);
 
   return furtleParser;
 }

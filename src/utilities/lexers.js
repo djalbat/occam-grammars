@@ -6,24 +6,34 @@ import FurtleLexer from "../furtle/lexer";
 
 const { lexerFromRules, rulesFromEntries } = lexerUtilities;
 
-export function furtleLexerFromEntries(entries) {
+export function furtleLexerFromEntries(Class, entries) {
+  if (entries === undefined) {
+    entries = Class;  ///
+
+    Class = FurtleLexer;  ///
+  }
+
   let rules;
 
   rules = rulesFromEntries(entries);
 
-  const furtleLexer = lexerFromRules(FurtleLexer, rules);
+  const furtleLexer = lexerFromRules(Class, rules);
 
   return furtleLexer;
 }
 
-export function furtleLexerFromNothing() {
+export function furtleLexerFromNothing(Class) {
+  if (Class === undefined) {
+    Class = FurtleLexer;  ///
+  }
+
   const { entries } = FurtleLexer;
 
   let rules;
 
   rules = rulesFromEntries(entries);
 
-  const furtleLexer = lexerFromRules(FurtleLexer, rules);
+  const furtleLexer = lexerFromRules(Class, rules);
 
   return furtleLexer;
 }
