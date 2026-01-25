@@ -34,7 +34,7 @@ const bnf = `
     
     anonymousProcedure      ::=  [type] "(" parameters? ")" returnBlock ;
     
-    returnStatement         ::=  "Return" expression ";" ; 
+    returnStatement         ::=  "return" expression ";" ; 
     
     returnBlock..           ::=  "{" ( step | nonsense )* returnStatement "}" ;
                                      
@@ -56,13 +56,13 @@ const bnf = `
     
     variable                ::=  [name] ;
     
-    ternary                 ::=  "If" "(" expression ")" expression "Else" expression ;
+    ternary                 ::=  "if" "(" expression ")" expression "else" expression ;
     
-    reduce                  ::=  "Reduce"<NO_WHITESPACE>"(" variable "," anonymousProcedure "," expression ")" ;
+    reduce                  ::=  "reduce"<NO_WHITESPACE>"(" variable "," anonymousProcedure "," expression ")" ;
     
-    every                   ::=  "Every"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
+    every                   ::=  "every"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
     
-    some                    ::=  "Some"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
+    some                    ::=  "some"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
     
     
     
@@ -108,7 +108,7 @@ const bnf = `
     
     namedParameters         ::=  namedParameter ( "," namedParameter )* ;
     
-    namedParameter          ::=  [type] [name] ( "As" [name] )? ;
+    namedParameter          ::=  [type] [name] ( "as" [name] )? ;
     
     
     
