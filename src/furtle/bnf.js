@@ -128,7 +128,7 @@ const bnf = `
     
     
     
-    nonsense.               ::=  [type] | [keyword] | [primitive] | [string-literal] | [query] | [special] | [name] | [number] | [unassigned] ;
+    nonsense.               ::=  [secondary-keyword] | [type] | [primitive] | [string-literal] | [query] | [special] | [name] | [number] | [unassigned] ;
 
 
     
