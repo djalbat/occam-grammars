@@ -44,11 +44,11 @@ const bnf = `
     
     bracketedExpression     ::=  "(" expression ")" ; 
     
-    bitwiseExpression       ::=  expression ( "||" | "&&" ) expression ; 
-    
     negatedExpression       ::=  "!"<NO_WHITESPACE>expression ; 
     
-    comparison              ::=  expression ( "!=" | "==" ) expression ; 
+    bitwiseExpression       ::=  expression [bitwise-operator] expression ; 
+    
+    comparison              ::=  expression [comparison-operator] expression ; 
     
     nodesQuery              ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," [string-literal] ")" ;
     

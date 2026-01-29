@@ -17,13 +17,19 @@ const entries = [
     "secondary-keyword": "^(?:if|else|reduce|every|some|as)"
   },
   {
+    "comparison-operator": "^(?:!=|==)"
+  },
+  {
+    "bitwise-operator": "^(?:\\|\\||&&)"
+  },
+  {
     "primitive": "^(?:null|true|false)"
   },
   {
     "bracket": "^(?:\\{|\\})"
   },
   {
-    "special": "^(?:!=|==|!|=|,|;|_|&&|\\|\\||\\(|\\)|\\[|\\])"
+    "special": "^(?:!|=|!=|==|,|;|_|\\(|\\)|\\[|\\])"
   },
   {
     "name": `^${LATIN}+${DECIMAL}*`,
