@@ -94,8 +94,6 @@ const bnf = `
     
                               |  some
     
-                              |  [null]
-    
                               |  [number]
                               
                               |  [primitive]
