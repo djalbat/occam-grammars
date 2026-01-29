@@ -46,9 +46,9 @@ const bnf = `
     
     negatedExpression       ::=  "!"<NO_WHITESPACE>expression ; 
     
-    bitwiseExpression       ::=  expression [bitwise-operator] expression ; 
+    bitwiseExpression       ::=  expression ( "||" | "&&" ) expression ; 
     
-    comparison              ::=  expression [comparison-operator] expression ; 
+    comparison              ::=  expression ( "==" | "!=" ) expression ; 
     
     nodesQuery              ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," [string-literal] ")" ;
     
