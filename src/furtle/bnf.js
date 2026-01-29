@@ -46,7 +46,7 @@ const bnf = `
     
     negatedExpression       ::=  "!"<NO_WHITESPACE>expression ; 
     
-    bitwiseExpression       ::=  expression ( "||" | "&&" ) expression ; 
+    logicalExpression       ::=  expression ( "||" | "&&" ) expression ; 
     
     comparison              ::=  expression ( "==" | "!=" ) expression ; 
     
@@ -70,7 +70,7 @@ const bnf = `
     
     expression              ::=  bracketedExpression 
     
-                              |  bitwiseExpression 
+                              |  logicalExpression 
     
                               |  negatedExpression 
     
