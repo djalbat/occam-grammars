@@ -34,13 +34,9 @@ const bnf = `
     
     anonymousProcedure      ::=  [type] "(" parameters? ")" returnBlock ;
     
-    returnStatement         ::=  "return" expression ";" ; 
-    
-    returnBlock..           ::=  "{" ( step | nonsense )* returnStatement "}" ;
-                                     
+    returnStatement         ::=  "return" primitive ";" ; 
     
     
-    procedureCall           ::=  reference<NO_WHITESPACE>"(" expressions? ")" ;
     
     bracketedExpression     ::=  "(" expression ")" ; 
     
@@ -48,6 +44,10 @@ const bnf = `
     
     logicalExpression       ::=  expression ( "||" | "&&" ) expression ; 
     
+    procedureCall           ::=  reference<NO_WHITESPACE>"(" primitives? ")" ;
+    
+    returnBlock..           ::=  "{" ( step | nonsense )* returnStatement "}" ;
+                                     
     nodeQuery               ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," [string-literal] ")" ;
     
     nodesQuery              ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," [string-literal] ")" ;
@@ -63,8 +63,6 @@ const bnf = `
     some                    ::=  "some"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
     
     
-    
-    expressions             ::=  expression ( "," expression )* ;
     
     expression              ::=  bracketedExpression 
     
@@ -104,6 +102,20 @@ const bnf = `
     
     
     
+    primitives              ::=  primitive ( "," primitive )* ;
+    
+    primitive               ::=  [string-literal]
+                              
+                              |  [boolean]
+                              
+                              |  [number]
+                              
+                              |  [null] 
+                             
+                              ;
+
+
+
     parameters              ::=  parameter ( "," parameter )* ;
     
     parameter               ::=  [type] [name]
@@ -114,18 +126,6 @@ const bnf = `
     
     
     
-    primitive               ::=  [null]
-                              
-                              |  [number]
-                              
-                              |  [boolean]
-                              
-                              |  [string-literal] 
-                             
-                              ;
-
-
-
     reference.              ::=  [name] ;
     
     variable                ::=  [name] ;
