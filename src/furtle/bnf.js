@@ -8,36 +8,32 @@ const bnf = `
     
     procedureDeclaration    ::=  [type] label<NO_WHITESPACE>"(" parameters? ")" returnBlock ;
     
-    
-    
-    variableAssignments     ::=  [type] variableAssignment ( "," variableAssignment )* ";" ;
-    
-    objectAssignment        ::=  "{" namedParameters "}" "=" variable ";" ;
-    
-    arrayAssignment         ::=  "[" parameters "]" "=" variable ";" ;
-    
-    
-    
-    step                    ::=  variableAssignments
-     
-                              |  conditionalBlocks
-                              
-                              |  objectAssignment
-                              
-                              |  arrayAssignment
-                              
-                              ;  
-      
-      
-    
-    variableAssignment      ::=  variable "=" expression ;
-    
     anonymousProcedure      ::=  [type] "(" parameters? ")" returnBlock ;
     
     returnStatement         ::=  "return" term ";" ; 
     
     
     
+    step                    ::=  arrayAssignment
+                              
+                              |  objectAssignment
+                              
+                              |  variableAssignments
+     
+                              ;  
+      
+      
+    
+    arrayAssignment         ::=  "[" parameters "]" "=" variable ";" ;
+    
+    objectAssignment        ::=  "{" namedParameters "}" "=" variable ";" ;
+    
+    variableAssignments     ::=  [type] variableAssignment ( "," variableAssignment )* ";" ;
+    
+    variableAssignment      ::=  variable "=" expression ;
+    
+
+
     bracketedExpression     ::=  "(" expression ")" ; 
     
     negatedExpression       ::=  "!"<NO_WHITESPACE>expression ; 
