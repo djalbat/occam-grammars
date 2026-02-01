@@ -94,9 +94,11 @@ const bnf = `
     
                               |  some
     
+                              |  [null]
+                              
                               |  [number]
                               
-                              |  [primitive]
+                              |  [boolean]
                               
                               |  [string-literal] 
                              
@@ -120,13 +122,13 @@ const bnf = `
     
     
     
-    label.                  ::=  [name] ;
-    
     reference.              ::=  [name] ;
     
+    label.                  ::=  [name] ;
     
     
-    nonsense.               ::=  [secondary-keyword] | [type] | [primitive] | [string-literal] | [query] | [special] | [name] | [number] | [unassigned] ;
+    
+    nonsense.               ::=  [secondary-keyword] | [type] | [null] | [boolean] | [string-literal] | [query] | [special] | [name] | [number] | [unassigned] ;
 
 
     

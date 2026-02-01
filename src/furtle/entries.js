@@ -17,7 +17,10 @@ const entries = [
     "secondary-keyword": "^(?:if|else|reduce|every|some|as)"
   },
   {
-    "primitive": "^(?:null|true|false)"
+    "null": "^null"
+  },
+  {
+    "boolean": "^(?:true|false)"
   },
   {
     "bracket": "^(?:\\{|\\})"
