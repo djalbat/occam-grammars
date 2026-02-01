@@ -34,7 +34,7 @@ const bnf = `
     
     anonymousProcedure      ::=  [type] "(" parameters? ")" returnBlock ;
     
-    returnStatement         ::=  "return" primitive ";" ; 
+    returnStatement         ::=  "return" term ";" ; 
     
     
     
@@ -44,7 +44,7 @@ const bnf = `
     
     logicalExpression       ::=  expression ( "||" | "&&" ) expression ; 
     
-    procedureCall           ::=  reference<NO_WHITESPACE>"(" primitives? ")" ;
+    procedureCall           ::=  reference<NO_WHITESPACE>"(" terms? ")" ;
     
     returnBlock..           ::=  "{" ( step | nonsense )* returnStatement "}" ;
                                      
@@ -102,15 +102,19 @@ const bnf = `
     
     
     
-    primitives              ::=  primitive ( "," primitive )* ;
+    terms                   ::=  term ( "," term )* ;
     
-    primitive               ::=  [string-literal]
-                              
-                              |  [boolean]
+    term                    ::=  variable | primitive ;
+    
+    variable                ::=  [name] ;
+    
+    primitive               ::=  [null] 
                               
                               |  [number]
                               
-                              |  [null] 
+                              |  [boolean]
+                              
+                              |  [string-literal]
                              
                               ;
 
@@ -127,8 +131,6 @@ const bnf = `
     
     
     reference.              ::=  [name] ;
-    
-    variable                ::=  [name] ;
     
     label.                  ::=  [name] ;
     
