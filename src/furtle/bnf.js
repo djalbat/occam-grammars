@@ -50,7 +50,7 @@ const bnf = `
     
     comparison              ::=  expression ( "==" | "!=" ) expression ; 
     
-    ternary                 ::=  "if" "(" expression ")" expression "else" expression ;
+    ternary                 ::=  "if" "(" term ")" expression "else" expression ;
     
     reduce                  ::=  "reduce"<NO_WHITESPACE>"(" variable "," anonymousProcedure "," expression ")" ;
     
