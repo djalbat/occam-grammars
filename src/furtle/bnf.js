@@ -102,6 +102,16 @@ const bnf = `
     
     
     
+    parameters              ::=  parameter ( "," parameter )* ;
+    
+    parameter               ::=  [type] [name]
+    
+                              |  "_" 
+    
+                              ;
+    
+    
+    
     terms                   ::=  term ( "," term )* ;
     
     term                    ::=  variable | primitive ;
@@ -120,16 +130,6 @@ const bnf = `
 
 
 
-    parameters              ::=  parameter ( "," parameter )* ;
-    
-    parameter               ::=  [type] [name]
-    
-                              |  "_" 
-    
-                              ;
-    
-    
-    
     reference.              ::=  [name] ;
     
     label.                  ::=  [name] ;
