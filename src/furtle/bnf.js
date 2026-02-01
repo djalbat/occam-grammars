@@ -48,13 +48,11 @@ const bnf = `
     
     logicalExpression       ::=  expression ( "||" | "&&" ) expression ; 
     
-    comparison              ::=  expression ( "==" | "!=" ) expression ; 
+    nodeQuery               ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," [string-literal] ")" ;
     
     nodesQuery              ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," [string-literal] ")" ;
     
-    nodeQuery               ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," [string-literal] ")" ;
-    
-    variable                ::=  [name] ;
+    comparison              ::=  expression ( "==" | "!=" ) expression ; 
     
     ternary                 ::=  "if" "(" expression ")" expression "else" expression ;
     
@@ -78,14 +76,12 @@ const bnf = `
      
                               |  returnBlock
     
-                              |  comparison 
-    
-                              |  nodesQuery
-                              
                               |  nodeQuery
                               
-                              |  variable
+                              |  nodesQuery
                               
+                              |  comparison 
+    
                               |  ternary
                               
                               |  reduce
@@ -93,15 +89,11 @@ const bnf = `
                               |  every
     
                               |  some
-    
-                              |  [null]
-                              
-                              |  [number]
-                              
-                              |  [boolean]
-                              
-                              |  [string-literal] 
                              
+                              |  variable
+                              
+                              |  primitive
+                              
                               ;
     
     
@@ -122,7 +114,21 @@ const bnf = `
     
     
     
+    primitive               ::=  [null]
+                              
+                              |  [number]
+                              
+                              |  [boolean]
+                              
+                              |  [string-literal] 
+                             
+                              ;
+
+
+
     reference.              ::=  [name] ;
+    
+    variable                ::=  [name] ;
     
     label.                  ::=  [name] ;
     
