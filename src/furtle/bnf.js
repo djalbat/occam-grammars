@@ -34,13 +34,23 @@ const bnf = `
     
 
 
-    comparisonExpression    ::=  expression ( "==" | "!=" ) expression ; 
+    namedParameters         ::=  namedParameter ( "," namedParameter )* ;
     
-    bracketedExpression     ::=  "(" expression ")" ; 
+    parameters              ::=  parameter ( "," parameter )* ;
     
-    negatedExpression       ::=  "!"<NO_WHITESPACE>expression ; 
+    terms                   ::=  term ( "," term )* ;
     
-    logicalExpression       ::=  expression ( "||" | "&&" ) expression ; 
+
+
+    namedParameter          ::=  [type] [name] ( "as" [name] )? ;   
+    
+    parameter               ::=  [type] [name]
+    
+                              |  "_" 
+    
+                              ;
+
+
     
     procedureCall           ::=  reference<NO_WHITESPACE>"(" terms? ")" ;
     
@@ -59,6 +69,26 @@ const bnf = `
     some                    ::=  "some"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
     
     
+    
+    comparisonExpression    ::=  expression ( "==" | "!=" ) expression ; 
+    
+    bracketedExpression     ::=  "(" expression ")" ; 
+    
+    negatedExpression       ::=  "!"<NO_WHITESPACE>expression ; 
+    
+    logicalExpression       ::=  expression ( "||" | "&&" ) expression ; 
+    
+
+
+    comparisonTerm          ::=  term ( "==" | "!=" ) term ; 
+    
+    bracketedTerm           ::=  "(" term ")" ; 
+    
+    negatedTerm             ::=  "!"<NO_WHITESPACE>term ; 
+    
+    logicalTerm             ::=  term ( "||" | "&&" ) term ; 
+
+
     
     expression              ::=  comparisonExpression 
     
@@ -92,24 +122,6 @@ const bnf = `
     
     
     
-    namedParameters         ::=  namedParameter ( "," namedParameter )* ;
-    
-    namedParameter          ::=  [type] [name] ( "as" [name] )? ;
-    
-    
-    
-    parameters              ::=  parameter ( "," parameter )* ;
-    
-    parameter               ::=  [type] [name]
-    
-                              |  "_" 
-    
-                              ;
-    
-    
-    
-    terms                   ::=  term ( "," term )* ;
-    
     term                    ::=  comparisonTerm 
     
                               |  bracketedTerm 
@@ -123,16 +135,6 @@ const bnf = `
                               |  variable 
                               
                               ;
-
-
-    
-    comparisonTerm          ::=  term ( "==" | "!=" ) term ; 
-    
-    bracketedTerm           ::=  "(" term ")" ; 
-    
-    negatedTerm             ::=  "!"<NO_WHITESPACE>term ; 
-    
-    logicalTerm             ::=  term ( "||" | "&&" ) term ; 
 
 
     
