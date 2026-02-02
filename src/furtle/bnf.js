@@ -34,6 +34,8 @@ const bnf = `
     
 
 
+    comparisonExpression    ::=  expression ( "==" | "!=" ) expression ; 
+    
     bracketedExpression     ::=  "(" expression ")" ; 
     
     negatedExpression       ::=  "!"<NO_WHITESPACE>expression ; 
@@ -48,8 +50,6 @@ const bnf = `
     
     nodesQuery              ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," [string-literal] ")" ;
     
-    comparison              ::=  expression ( "==" | "!=" ) expression ; 
-    
     ternary                 ::=  "if" "(" term ")" expression "else" expression ;
     
     reduce                  ::=  "reduce"<NO_WHITESPACE>"(" variable "," anonymousProcedure "," expression ")" ;
@@ -60,7 +60,9 @@ const bnf = `
     
     
     
-    expression              ::=  bracketedExpression 
+    expression              ::=  comparisonExpression 
+    
+                              |  bracketedExpression 
     
                               |  logicalExpression 
     
@@ -74,8 +76,6 @@ const bnf = `
                               
                               |  nodesQuery
                               
-                              |  comparison 
-    
                               |  ternary
                               
                               |  reduce
@@ -110,23 +110,47 @@ const bnf = `
     
     terms                   ::=  term ( "," term )* ;
     
-    term                    ::=  variable | primitive ;
+    term                    ::=  comparisonTerm 
     
-    variable                ::=  [name] ;
+                              |  bracketedTerm 
     
-    primitive               ::=  [null] 
+                              |  logicalTerm 
+    
+                              |  negatedTerm 
+    
+                              |  primitive 
+    
+                              |  variable 
                               
-                              |  [number]
+                              ;
+
+
+    
+    comparisonTerm          ::=  term ( "==" | "!=" ) term ; 
+    
+    bracketedTerm           ::=  "(" term ")" ; 
+    
+    negatedTerm             ::=  "!"<NO_WHITESPACE>term ; 
+    
+    logicalTerm             ::=  term ( "||" | "&&" ) term ; 
+
+
+    
+    primitive               ::=  [string-literal]
                               
                               |  [boolean]
                               
-                              |  [string-literal]
+                              |  [number] 
+                              
+                              |  [null]
                              
                               ;
 
 
 
     reference.              ::=  [name] ;
+    
+    variable                ::=  [name] ;
     
     label.                  ::=  [name] ;
     
