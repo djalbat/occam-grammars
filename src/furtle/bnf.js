@@ -30,7 +30,7 @@ const bnf = `
     
     variableAssignments     ::=  [type] variableAssignment ( "," variableAssignment )* ";" ;
     
-    variableAssignment      ::=  variable "=" ( term | expression ) ;
+    variableAssignment      ::=  variable "=" expression ;
     
 
 
@@ -56,9 +56,9 @@ const bnf = `
     
     returnBlock..           ::=  "{" ( step | nonsense )* returnStatement "}" ;
                                      
-    nodeQuery               ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," [string-literal] ")" ;
-    
     nodesQuery              ::=  "nodesQuery"<NO_WHITESPACE>"(" variable "," [string-literal] ")" ;
+    
+    nodeQuery               ::=  "nodeQuery"<NO_WHITESPACE>"(" variable "," [string-literal] ")" ;
     
     ternary                 ::=  "if" "(" term ")" expression "else" expression ;
     
@@ -84,9 +84,9 @@ const bnf = `
      
                               |  returnBlock
     
-                              |  nodeQuery
-                              
                               |  nodesQuery
+                              
+                              |  nodeQuery
                               
                               |  ternary
                               
@@ -96,9 +96,7 @@ const bnf = `
     
                               |  some
                              
-                              |  variable
-                              
-                              |  primitive
+                              |  term
                               
                               ;
     
