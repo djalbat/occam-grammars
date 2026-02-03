@@ -30,7 +30,7 @@ const bnf = `
     
     variableAssignments     ::=  [type] variableAssignment ( "," variableAssignment )* ";" ;
     
-    variableAssignment      ::=  variable "=" expression ;
+    variableAssignment      ::=  variable "=" ( term | expression ) ;
     
 
 
@@ -70,16 +70,6 @@ const bnf = `
     
     
     
-    comparisonExpression    ::=  expression ( "==" | "!=" ) expression ; 
-    
-    bracketedExpression     ::=  "(" expression ")" ; 
-    
-    negatedExpression       ::=  "!"<NO_WHITESPACE>expression ; 
-    
-    logicalExpression       ::=  expression ( "||" | "&&" ) expression ; 
-    
-
-
     comparisonTerm          ::=  term ( "==" | "!=" ) term ; 
     
     bracketedTerm           ::=  "(" term ")" ; 
@@ -90,15 +80,7 @@ const bnf = `
 
 
     
-    expression              ::=  comparisonExpression 
-    
-                              |  bracketedExpression 
-    
-                              |  logicalExpression 
-    
-                              |  negatedExpression 
-    
-                              |  procedureCall
+    expression              ::=  procedureCall
      
                               |  returnBlock
     
