@@ -292,7 +292,7 @@ step.                                ::=  statement... qualification? <END_OF_LI
 
 
 
-qualification                        ::=  "because" satisfiesAssertion
+qualification                        ::=  "because" signatureAssertion
 
                                        |  ( "by" | "from" ) reference
                                        
