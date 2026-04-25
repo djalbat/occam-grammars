@@ -17,6 +17,6 @@ aadf
 `;
 
   static defaultProperties = {
-    className: "custom-grammar-vocabulary",
+    className: "custom-grammar vocabulary",
   };
 }

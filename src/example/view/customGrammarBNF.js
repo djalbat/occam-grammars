@@ -26,6 +26,6 @@ export default class CustomGrammarBNFView extends View {
 `;
 
   static defaultProperties = {
-    className: "custom-grammar-bnf"
+    className: "custom-grammar bnf"
   };
 }

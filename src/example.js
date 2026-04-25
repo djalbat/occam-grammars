@@ -23,8 +23,8 @@ switch (example) {
   case "tex" : View = TeXView; break;
   case "json" : View = JSONView; break;
   case "plain-text" : View = PlainTextView; break;
-  case "custom-grammar-bnf" : View = CustomGrammarBNFView; break;
-  case "custom-grammar-vocabulary" : View = CustomGrammarVocabularyView; break;
+  case "custom-grammar bnf" : View = CustomGrammarBNFView; break;
+  case "custom-grammar vocabulary" : View = CustomGrammarVocabularyView; break;
 }
 
 renderStyles();
