@@ -15,7 +15,7 @@ const bnf = `
     
     
     step                    ::=  arrayAssignment
-                              
+                              §
                               |  objectAssignment
                               
                               |  variableAssignments
