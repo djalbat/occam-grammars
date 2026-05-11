@@ -10,10 +10,6 @@ const bnf = `
     
     anonymousProcedure      ::=  [type] "(" parameters? ")" returnBlock ;
     
-    returnStatement         ::=  "return" term ";" ; 
-    
-    
-    
     step                    ::=  arrayAssignment
                               
                               |  objectAssignment
@@ -24,9 +20,9 @@ const bnf = `
       
       
     
-    arrayAssignment         ::=  "[" parameters "]" "=" variable ";" ;
+    arrayAssignment         ::=  "[" bindings "]" "=" variable ";" ;
     
-    objectAssignment        ::=  "{" namedParameters "}" "=" variable ";" ;
+    objectAssignment        ::=  "{" namedBindings "}" "=" variable ";" ;
     
     variableAssignments     ::=  [type] variableAssignment ( "," variableAssignment )* ";" ;
     
@@ -34,25 +30,31 @@ const bnf = `
     
 
 
-    namedParameters         ::=  namedParameter ( "," namedParameter )* ;
+    namedBindings           ::=  namedBinding ( "," namedBinding )* ;
     
     parameters              ::=  parameter ( "," parameter )* ;
+    
+    bindings                ::=  binding ( "," binding )* ;
+    
+    values                  ::=  value ( "," value )* ;
     
     terms                   ::=  term ( "," term )* ;
     
 
 
-    namedParameter          ::=  [type] [name] ( "as" [name] )? ;   
+    namedBinding          ::=  [type] [name] ( "as" [name] )? ;   
     
-    parameter               ::=  [type] [name]
+    parameter             ::=  [type] [name] ;
+
+    binding               ::=  [type] [name]
     
-                              |  "_" 
-    
-                              ;
+                            |  ε 
+                                  
+                            ;
 
 
     
-    procedureCall           ::=  reference<NO_WHITESPACE>"(" terms? ")" ;
+    procedureCall           ::=  reference<NO_WHITESPACE>"(" values? ")" ;
     
     returnBlock..           ::=  "{" ( step | nonsense )* returnStatement "}" ;
                                      
@@ -67,6 +69,10 @@ const bnf = `
     every                   ::=  "every"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
     
     some                    ::=  "some"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
+    
+    
+    
+    returnStatement         ::=  "return" value ";" ; 
     
     
     
@@ -114,6 +120,14 @@ const bnf = `
     
                               |  variable 
                               
+                              ;
+
+
+    
+    value                   ::=  primitive 
+    
+                              |  variable 
+
                               ;
 
 
