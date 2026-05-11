@@ -10,23 +10,23 @@ const bnf = `
     
     anonymousProcedure      ::=  [type] "(" parameters? ")" returnBlock ;
     
-    step                    ::=  arrayAssignment
+    step                    ::=  variableAssignments
                               
                               |  objectAssignment
-                              
-                              |  variableAssignments
      
+                              |  arrayAssignment
+                              
                               ;  
       
       
     
-    arrayAssignment         ::=  "[" bindings "]" "=" variable ";" ;
-    
-    objectAssignment        ::=  "{" namedBindings "}" "=" variable ";" ;
-    
     variableAssignments     ::=  [type] variableAssignment ( "," variableAssignment )* ";" ;
     
     variableAssignment      ::=  variable "=" expression ;
+    
+    objectAssignment        ::=  "{" namedBindings "}" "=" variable ";" ;
+    
+    arrayAssignment         ::=  "[" bindings "]" "=" variable ";" ;
     
 
 
@@ -64,7 +64,7 @@ const bnf = `
     
     ternary                 ::=  "if" "(" term ")" expression "else" expression ;
     
-    reduce                  ::=  "reduce"<NO_WHITESPACE>"(" variable "," anonymousProcedure "," expression ")" ;
+    reduce                  ::=  "reduce"<NO_WHITESPACE>"(" variable "," anonymousProcedure "," value ")" ;
     
     every                   ::=  "every"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
     
