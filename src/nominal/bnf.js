@@ -24,9 +24,7 @@ const bnf = `document                             ::=  ( variableDeclaration
                
                                           | conjecture 
                
-                                          | metaLemma 
-               
-                                          | metatheorem  
+                                          | schema  
                                                       
                                           | section 
                                                       
@@ -90,10 +88,6 @@ complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE>
   
 rule                                 ::=  ruleHeader ruleBody ;                                         
 
-metaLemma                            ::=  metaLemmaHeader metaLemmaBody ;
-
-metatheorem                          ::=  metatheoremHeader metatheoremBody ;
-
 axiom                                ::=  axiomHeader axiomBody ;
 
 lemma                                ::=  lemmaHeader lemmaBody ;
@@ -102,13 +96,13 @@ theorem                              ::=  theoremHeader theoremBody ;
 
 conjecture                           ::=  conjectureHeader conjectureBody ;
 
+schema                               ::=  schemaHeader schemaBody ;
+
 
 
 ruleHeader                          ::=  "Rule" parenthesisedLabels... <END_OF_LINE> ; 
 
-metaLemmaHeader                     ::=  "MetaLemma" parenthesisedLabel... <END_OF_LINE> | "MetaLemma" <END_OF_LINE> ;
-
-metatheoremHeader                   ::=  "Metatheorem" parenthesisedLabel... <END_OF_LINE> ; 
+schemaHeader                        ::=  "Schema" parenthesisedLabel... ;
 
 axiomHeader                         ::=  "Axiom" signature? parenthesisedLabels... <END_OF_LINE> ; 
 
@@ -134,7 +128,7 @@ ruleBody                             ::=  (
                                            
                                           proof? ;                                         
 
-metaLemmaBody                        ::=  (
+schemaBody                           ::=  (
                                            
                                             "Suppose" <END_OF_LINE> supposition+ 
 
@@ -144,18 +138,6 @@ metaLemmaBody                        ::=  (
                                             
                                           deduction
                                                                                          
-                                          proof ;
-
-metatheoremBody                      ::=  (
-                                           
-                                            "Suppose" <END_OF_LINE> supposition+ 
-
-                                            "Then" <END_OF_LINE> 
-                                             
-                                          )?
-                                            
-                                          deduction
-                                           
                                           proof ;
 
 axiomBody                            ::=  (
