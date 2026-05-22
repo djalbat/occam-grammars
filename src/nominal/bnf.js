@@ -102,7 +102,7 @@ schema                               ::=  schemaHeader schemaBody ;
 
 ruleHeader                          ::=  "Rule" parenthesisedLabels... <END_OF_LINE> ; 
 
-schemaHeader                        ::=  "Schema" parenthesisedLabel... ;
+schemaHeader                        ::=  "Schema" parenthesisedLabel... <END_OF_LINE> ;
 
 axiomHeader                         ::=  "Axiom" signature? parenthesisedLabels... <END_OF_LINE> ; 
 
