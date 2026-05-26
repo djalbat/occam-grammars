@@ -2,11 +2,13 @@
 
 const bnf = `document                             ::=  ( variableDeclaration 
                                            
+                                          | metavariableDeclaration 
+                                                          
                                           | combinatorDeclaration 
                                                           
                                           | constructorDeclaration 
                                                           
-                                          | metavariableDeclaration 
+                                          | generatorDeclaration 
                                                           
                                           | typePrefixDeclaration  
                                                                                                      
@@ -60,11 +62,13 @@ error.                               ::=  . ;
 
 variableDeclaration                  ::=  "Variable" variable ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
+metavariableDeclaration              ::=  "Metavariable" metavariable... ":" metaType <END_OF_LINE> ;
+ 
 combinatorDeclaration                ::=  "Combinator" combinator... <END_OF_LINE> ;
  
 constructorDeclaration               ::=  "Constructor" constructor... ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
-metavariableDeclaration              ::=  "Metavariable" metavariable... ":" metaType <END_OF_LINE> ;
+generatorDeclaration                 ::=  "Generator" generator... ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
 typePrefixDeclaration                ::=  "TypePrefix" typePrefix <END_OF_LINE> ;
 
@@ -227,6 +231,8 @@ propertyDeclaration.                 ::=  property ( ":" type )? <END_OF_LINE>
 combinator                           ::=  statement ;
 
 constructor                          ::=  term ; 
+
+generator                            ::=  term ; 
 
  
 
