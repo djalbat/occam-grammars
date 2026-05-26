@@ -10,9 +10,9 @@ const bnf = `document                             ::=  ( variableDeclaration
                                                           
                                           | typePrefixDeclaration  
                                                                                                      
-                                          | simpleTypeDeclaration 
+                                          | typeDeclaration 
                                                           
-                                          | complexTypeDeclaration 
+                                          | cotypeDeclaration 
                                                       
                                           | rule 
                
@@ -68,9 +68,9 @@ metavariableDeclaration              ::=  "Metavariable" metavariable... ":" met
  
 typePrefixDeclaration                ::=  "TypePrefix" typePrefix <END_OF_LINE> ;
 
-simpleTypeDeclaration                ::=  "Provisional"? "Type" type ( ":" types )? <END_OF_LINE> ;
+typeDeclaration                      ::=  "Provisional"? "Type" type ( ":" types )? <END_OF_LINE> ;
  
-complexTypeDeclaration               ::=  "Provisional"? "Type" <END_OF_LINE> 
+cotypeDeclaration                    ::=  "Provisional"? "Type" <END_OF_LINE> 
 
                                           type ( ":" types )? <END_OF_LINE>
                                           
