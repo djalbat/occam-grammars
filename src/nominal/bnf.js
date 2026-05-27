@@ -234,6 +234,8 @@ constructor                          ::=  term ;
 
 generator                            ::=  term ; 
 
+property                             ::=  term ; 
+
  
 
 premise.                             ::=  procedureCall <END_OF_LINE>  
@@ -355,9 +357,7 @@ signatureAssertion                   ::=  signature "satisfies" metavariable ;
 
 subproofAssertion                    ::=  "[" statement ( "," statement )* "]" "..." statement ;
 
-propertyAssertion                    ::=  term "is" ( "a" | "an" ) propertyRelation ;
-
-propertyRelation                     ::=  property "of" term ;
+propertyAssertion                    ::=  term "is" ( "a" | "an" ) property ;
 
 judgement                            ::=  frame "|"<NO_WHITESPACE>"-" goal ;
 
@@ -388,8 +388,6 @@ parameter.                           ::=  [name] | [identifier] ;
 variable.                            ::=  [identifier] ;
 
 metaType.                            ::=  [meta-type] ;
-
-property.                            ::=  [name]+ ;
 
 typePrefix.                          ::=  [type] ;
 
