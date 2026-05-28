@@ -357,7 +357,7 @@ signatureAssertion                   ::=  signature "satisfies" metavariable ;
 
 subproofAssertion                    ::=  "[" statement ( "," statement )* "]" "..." statement ;
 
-propertyAssertion                    ::=  term "is" ( "a" | "an" ) property ;
+propertyAssertion                    ::=  term "is" ( "a" | "an" ) term ;
 
 judgement                            ::=  frame "|"<NO_WHITESPACE>"-" goal ;
 
