@@ -23,7 +23,7 @@ const entries = [
     "boolean": "^(?:true|false)"
   },
   {
-    "integer": "^[-+]?\\d+"
+    "integer": "^[+\\-]?\\d+"
   },
   {
     "bracket": "^(?:\\{|\\})"
