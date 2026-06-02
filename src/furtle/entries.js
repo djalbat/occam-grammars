@@ -14,7 +14,7 @@ const entries = [
     "primary-keyword": "^return"
   },
   {
-    "secondary-keyword": "^(?:if|else|reduce|every|some|as)"
+    "secondary-keyword": "^(?:as|if|else|reduce|every|some|toInteger|tryInteger)"
   },
   {
     "null": "^null"
