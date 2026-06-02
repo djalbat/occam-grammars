@@ -5,7 +5,7 @@ const LATIN = "[\\p{Script=Latin}]",
 
 const entries = [
   {
-    "type": "^(?:List|Node|String|Number|Boolean)"
+    "type": "^(?:List|Node|String|Number|Boolean|Integer)"
   },
   {
     "query": "^(?:nodeQuery|nodesQuery)"
@@ -21,6 +21,9 @@ const entries = [
   },
   {
     "boolean": "^(?:true|false)"
+  },
+  {
+    "integer": "^[-+]?\\d+"
   },
   {
     "bracket": "^(?:\\{|\\})"
