@@ -2,6 +2,9 @@
 
 const entries = [
   {
+    "backtick": "^`"
+  },
+  {
     "special": "^(?:\\||\\(|\\)|\\?|\\*|\\+|::=|;|<NO_WHITESPACE>|<END_OF_LINE>)"
   },
   {

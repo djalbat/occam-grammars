@@ -17,7 +17,7 @@ const { renderStyles } = withStyle;
 let View;
 
 const body = new Body(),
-      example = window.location.search.substring(1);  ///
+      example = decodeURIComponent(window.location.search.substring(1));  ///
 
 switch (example) {
   case "tex" : View = TeXView; break;
