@@ -30,8 +30,6 @@ const bnf = `
   
                                  |  stringLiteral
   
-                                 |  backtick
-  
                                  |  endOfLine
   
                                  |  noWhitespace
@@ -49,8 +47,6 @@ const bnf = `
       significantTokenType     ::=  [type] ;
 
       stringLiteral            ::=  [string-literal] ;
-
-      backtick                 ::=  [backtick] ;
 
       precedence               ::=  "(" [number]? ")" ;
       
