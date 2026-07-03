@@ -28,6 +28,8 @@ const bnf = `
 
       terminalPart             ::=  significantTokenType
   
+                                 |  regularExpression
+ 
                                  |  stringLiteral
   
                                  |  backtick
@@ -47,6 +49,8 @@ const bnf = `
       ruleName                 ::=  [name] ;
 
       significantTokenType     ::=  [type] ;
+
+      regularExpression        ::=  [regular-expression] ;
 
       stringLiteral            ::=  [string-literal] ;
 

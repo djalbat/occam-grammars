@@ -1,6 +1,6 @@
 "use strict";
 
-import { CommonLexer, WhitespaceToken, EndOfLineNonSignificantToken, DoublyQuotedStringLiteralToken } from "occam-lexers";
+import { CommonLexer, WhitespaceToken, RegularExpressionToken, EndOfLineNonSignificantToken, DoublyQuotedStringLiteralToken } from "occam-lexers";
 
 import entries from "./entries";
 
@@ -13,7 +13,7 @@ export default class CustomGrammarBNFnLexer extends CommonLexer {
 
   static EndOfLineCommentToken = null;
 
-  static RegularExpressionToken = null;
+  static RegularExpressionToken = RegularExpressionToken;
 
   static SingleLineCommentToken = null;
 
