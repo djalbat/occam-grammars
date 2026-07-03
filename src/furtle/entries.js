@@ -8,7 +8,7 @@ const entries = [
     "bracket": "^(?:\\{|\\})"
   },
   {
-    "primary-keyword": "^return"
+    "primary-keyword": "^(?:export|import|from|return)"
   },
   {
     "secondary-keyword": "^(?:as|if|else)"

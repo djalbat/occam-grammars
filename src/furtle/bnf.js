@@ -2,11 +2,13 @@
 
 const bnf = `
 
-    document                ::=  ( procedureDeclaration | error )+ ;
+    document                ::=  ( importDeclaration | procedureDeclaration | error )+ ;
     
     
     
-    procedureDeclaration    ::=  type label<NO_WHITESPACE>"(" parameters? ")" returnBlock ;
+    importDeclaration       ::=  "import" importBindings "from" [string-literal] ";" ;
+    
+    procedureDeclaration    ::=  "export"? type label<NO_WHITESPACE>"(" parameters? ")" returnBlock ;
     
     anonymousProcedure      ::=  type "(" parameters? ")" returnBlock ;
     
@@ -30,6 +32,8 @@ const bnf = `
     
 
 
+    importBindings          ::=  importBinding ( "," importBinding )* ;
+    
     namedBindings           ::=  namedBinding ( "," namedBinding )* ;
     
     parameters              ::=  parameter ( "," parameter )* ;
@@ -42,6 +46,8 @@ const bnf = `
     
 
 
+    importBinding           ::=  label ( "as" label )? ;   
+    
     namedBinding            ::=  type [name] ( "as" [name] )? ;   
     
     parameter               ::=  type [name] ;
