@@ -1,6 +1,6 @@
 "use strict";
 
-import { CommonLexer, WhitespaceToken, EndOfLineSignificantToken } from "occam-lexers";
+import { CommonLexer, WhitespaceToken, RegularExpressionToken, EndOfLineSignificantToken } from "occam-lexers";
 
 import entries from "./entries";
 
@@ -15,7 +15,7 @@ export default class CustomGrammarVocabularyLexer extends CommonLexer {
 
   static SingleLineCommentToken = null;
 
-  static RegularExpressionToken = null;
+  static RegularExpressionToken = RegularExpressionToken;
 
   static EndOfMultiLineCommentToken = null;
 
