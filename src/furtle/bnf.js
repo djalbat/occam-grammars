@@ -46,7 +46,7 @@ const bnf = `
     
 
 
-    importBinding           ::=  label ( "as" label )? ;   
+    importBinding           ::=  reference ( "as" label )? ;   
     
     namedBinding            ::=  type [name] ( "as" [name] )? ;   
     
