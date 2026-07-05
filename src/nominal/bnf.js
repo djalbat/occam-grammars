@@ -48,8 +48,12 @@ section                              ::=  "Given" <END_OF_LINE>
                                           
                                           | theorem 
                                           
-                                          | conjecture ) ; 
-
+                                          | conjecture 
+                                          
+                                          | generatorDeclaration 
+                                          
+                                          | constructorDeclaration ) ; 
+                                          
 
 
 verticalSpace                        ::=  <END_OF_LINE>+ ;
@@ -266,7 +270,9 @@ deduction.                           ::=  statement... <END_OF_LINE>
                                        
                                        ;
 
-hypothesis.                          ::=  statement... <END_OF_LINE>  
+hypothesis.                          ::=  procedureCall <END_OF_LINE>  
+
+                                       |  statement... <END_OF_LINE>  
 
                                        |  nonsense... <END_OF_LINE>
                                        
