@@ -33,7 +33,7 @@ const entries = [
     "backtick": "^`"
   },
   {
-    "special": "^(?:@|::|:|=)"
+    "special": "^(?:@|::|:|!=|=)"
   },
   {
     "unassigned": "^[^\\s\\(\\)\\[\\]:,]+"
