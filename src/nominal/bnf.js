@@ -359,7 +359,7 @@ equality                             ::=  term ( "=" | "!=" ) term ;
 
 typeAssertion                        ::=  term ":" type ;
 
-definedAssertion                     ::=  ( frame | term ) "is" ( "defined" | "undefined" ) ;
+definedAssertion                     ::=  term "is" ( "defined" | "undefined" ) ;
 
 containedAssertion                   ::=  ( frame | term ) "is" ( "present" | "missing" ) "in" statement ;
 
