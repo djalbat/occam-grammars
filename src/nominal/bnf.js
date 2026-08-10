@@ -359,15 +359,15 @@ equality                             ::=  term ( "=" | "!=" ) term ;
 
 typeAssertion                        ::=  term ":" type ;
 
+propertyAssertion                    ::=  term "is" ( "a" | "an" ) term ;
+
 definedAssertion                     ::=  term "is" ( "defined" | "undefined" ) ;
 
-containedAssertion                   ::=  ( frame | term ) "is" ( "present" | "missing" ) "in" statement ;
-
-signatureAssertion                   ::=  signature "satisfies" metavariable ;  
+containedAssertion                   ::=  ( term | frame ) "is" ( "present" | "missing" ) "in" statement ;
 
 subproofAssertion                    ::=  "[" statement ( "," statement )* "]" "..." statement ;
 
-propertyAssertion                    ::=  term "is" ( "a" | "an" ) term ;
+signatureAssertion                   ::=  signature "satisfies" metavariable ;  
 
 schemaAssertion                      ::=  metavariable "-"<NO_WHITESPACE>"|" frame ;
 
