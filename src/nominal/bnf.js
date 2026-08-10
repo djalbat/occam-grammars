@@ -292,6 +292,8 @@ step.                                ::=  statement... qualification? <END_OF_LI
 
 qualification                        ::=  "because" signatureAssertion
 
+                                       |  "via" schemaAssertion
+
                                        |  ( "by" | "from" ) reference
                                        
                                        ; 
@@ -367,16 +369,14 @@ subproofAssertion                    ::=  "[" statement ( "," statement )* "]" "
 
 propertyAssertion                    ::=  term "is" ( "a" | "an" ) term ;
 
-judgement                            ::=  frame "|"<NO_WHITESPACE>"-" goal ;
+schemaAssertion                      ::=  metavariable "-"<NO_WHITESPACE>"|" frame ;
 
 frame                                ::=  "[" ( ( metavariable | assumption ) ( "," assumption )* ) "]" ;
  
-goal                                 ::=  metavariable "::" statement ;
+assumption                           ::=  metavariable "::" statement ;
 
 constraint                           ::=  reference "::" statement ;
  
-assumption                           ::=  metavariable "::" statement ;
-
 implicitAssumption                   ::=  "." "::" statement ;
 
 termSubstitution                     ::=  "[" term "for" term "]" ;
