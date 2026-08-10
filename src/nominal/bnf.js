@@ -334,13 +334,6 @@ metaArgument                         ::=  statement ( )
                                        
                                        ;
 
-frameArgument                        ::=  frame ( ) 
-
-                                       |  metaType ( ) 
-                                       
-                                       ;
-
-
 procedureReference.                  ::=  [name] ;
 
 reference.                           ::=  metavariable ;
@@ -363,7 +356,7 @@ propertyAssertion                    ::=  term "is" ( "a" | "an" ) term ;
 
 definedAssertion                     ::=  term "is" ( "defined" | "undefined" ) ;
 
-containedAssertion                   ::=  ( term | frame ) "is" ( "present" | "missing" ) "in" statement ;
+containedAssertion                   ::=  term "is" ( "present" | "missing" ) "in" statement ;
 
 subproofAssertion                    ::=  "[" statement ( "," statement )* "]" "..." statement ;
 
