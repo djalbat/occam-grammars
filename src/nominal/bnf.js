@@ -352,7 +352,7 @@ equality                             ::=  term ( "=" | "!=" ) term ;
 
 typeAssertion                        ::=  term ":" type ;
 
-propertyAssertion                    ::=  term "is" ( "a" | "an" ) term ;
+propertyAssertion                    ::=  term "is" ( "a" | "an" | "the" ) term ;
 
 definedAssertion                     ::=  term "is" ( "defined" | "undefined" ) ;
 
