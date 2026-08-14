@@ -358,9 +358,9 @@ definedAssertion                     ::=  term "is" ( "defined" | "undefined" ) 
 
 containedAssertion                   ::=  term "is" ( "present" | "missing" ) "in" statement ;
 
-subproofAssertion                    ::=  "[" statement ( "," statement )* "]" "..." statement ;
+signatureAssertion                   ::=  "[" term ( "," term )* "]" "satisfies" metavariable ;  
 
-signatureAssertion                   ::=  signature "satisfies" metavariable ;  
+subproofAssertion                    ::=  "[" statement ( "," statement )* "]" "..." statement ;
 
 schemaAssertion                      ::=  metavariable "-"<NO_WHITESPACE>"|" frame ;
 
