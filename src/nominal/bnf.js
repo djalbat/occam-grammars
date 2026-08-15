@@ -344,7 +344,7 @@ label.                               ::=  metavariable ;
 
 equivalences                         ::=  equivalence ( "," equivalence )* ;
 
-equivalence                          ::=  "[" term ( "," term )+ "]" ;
+equivalence                          ::=  "[" term ( "," term )* "]" ;
 
 
 
