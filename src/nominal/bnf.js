@@ -76,7 +76,7 @@ generatorDeclaration                 ::=  "Generator" generator... ( ":" type "p
  
 typePrefixDeclaration                ::=  "TypePrefix" typePrefix <END_OF_LINE> ;
 
-typeDeclaration                      ::=  "Provisional"? "Type" type ( ":" types )? <END_OF_LINE> ;
+typeDeclaration                      ::=  "Provisional"? "Closed"? "Type" type ( ":" types )? <END_OF_LINE> ;
  
 cotypeDeclaration                    ::=  "Provisional"? "Type" <END_OF_LINE> 
 
