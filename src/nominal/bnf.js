@@ -70,9 +70,9 @@ metavariableDeclaration              ::=  "Metavariable" metavariable... ":" met
  
 combinatorDeclaration                ::=  "Combinator" combinator... <END_OF_LINE> ;
  
-constructorDeclaration               ::=  "Constructor" constructor... ( ":" type "provisionally"? )? <END_OF_LINE> ;
- 
 generatorDeclaration                 ::=  "Generator" generator... ( ":" type "provisionally"? )? <END_OF_LINE> ;
+ 
+constructorDeclaration               ::=  "Constructor" constructor... ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
 typePrefixDeclaration                ::=  "TypePrefix" typePrefix <END_OF_LINE> ;
 
@@ -224,21 +224,17 @@ subDerivation                        ::=  (
 
 
 
-propertyDeclaration.                 ::=  property ( ":" type )? <END_OF_LINE>  
-
-                                       |  nonsense... <END_OF_LINE>
-                                       
-                                       ;
+propertyDeclaration.                 ::=  property... ( ":" type )? <END_OF_LINE> ;
 
 
 
-combinator                           ::=  statement ;
+combinator                           ::=  statement | nonsense ;
 
-constructor                          ::=  term ; 
+constructor                          ::=  term | stuff ; 
 
-generator                            ::=  term ; 
+generator                            ::=  term | stuff ; 
 
-property                             ::=  term ; 
+property                             ::=  term | stuff ; 
 
  
 
@@ -400,7 +396,7 @@ type.                                ::=  [type] ( <NO_WHITESPACE>[type] )?
 
 
 
-stuff.                               ::=  ( [string-literal] | [symbol] | [type] | [name] | [backtick] | [identifier] | [primitive] | [unassigned] )+ ;
+stuff.                               ::=  ( [symbol] | [type] | [name] | [backtick] | [identifier] | [primitive] | [unassigned] )+ ;
 
 nonsense.                            ::=  ( [secondary-keyword] | [meta-type] | [special] | [symbol] | [type] | [name] | [backtick] | [identifier] | [primitive] | [unassigned] )+ ;`;
 
