@@ -68,12 +68,6 @@ variableDeclaration                  ::=  "Variable" variable ( ":" type "provis
  
 metavariableDeclaration              ::=  "Metavariable" metavariable... ":" metaType <END_OF_LINE> ;
  
-combinatorDeclaration                ::=  "Combinator" combinator... <END_OF_LINE> ;
- 
-generatorDeclaration                 ::=  "Generator" generator... ( ":" type "provisionally"? )? <END_OF_LINE> ;
- 
-constructorDeclaration               ::=  "Constructor" constructor... ( ":" type "provisionally"? )? <END_OF_LINE> ;
- 
 typePrefixDeclaration                ::=  "TypePrefix" typePrefix <END_OF_LINE> ;
 
 typeDeclaration                      ::=  "Provisional"? "Closed"? "Type" type ( ":" types )? <END_OF_LINE> ;
@@ -91,7 +85,16 @@ cotypeDeclaration                    ::=  "Provisional"? "Type" <END_OF_LINE>
                                             ( "Property" <END_OF_LINE> propertyDeclaration ) 
                                              
                                           );
-  
+
+combinatorDeclaration                ::=  "Combinator" combinator... <END_OF_LINE> ;
+ 
+propertyDeclaration.                 ::=  property... ( ":" ( type | stuff ) )? <END_OF_LINE> ;
+
+generatorDeclaration                 ::=  "Generator" generator... ( ":" ( type | stuff ) "provisionally"? )? <END_OF_LINE> ;
+ 
+constructorDeclaration               ::=  "Constructor" constructor... ( ":" ( type | stuff ) "provisionally"? )? <END_OF_LINE> ;
+ 
+
 
   
 rule                                 ::=  ruleHeader ruleBody ;                                         
@@ -223,20 +226,6 @@ subDerivation                        ::=  (
                                           step ;                                        
 
 
-
-propertyDeclaration.                 ::=  property... ( ":" type )? <END_OF_LINE> ;
-
-
-
-combinator                           ::=  statement | nonsense ;
-
-constructor                          ::=  term | stuff ; 
-
-generator                            ::=  term | stuff ; 
-
-property                             ::=  term | stuff ; 
-
- 
 
 premise.                             ::=  procedureCall <END_OF_LINE>  
 
@@ -377,6 +366,16 @@ statementSubstitution                ::=  "[" statement "for" statement "]" ;
 referenceSubstitution                ::=  "[" reference "for" reference "]" ;
 
 
+
+combinator                           ::=  statement | nonsense ;
+
+constructor                          ::=  term | stuff ; 
+
+generator                            ::=  term | stuff ; 
+
+property                             ::=  term | stuff ; 
+
+ 
 
 metavariable.                        ::=  [name] ( <NO_WHITESPACE>"(" ( term | type | stuff ) ")" )? ;
 
