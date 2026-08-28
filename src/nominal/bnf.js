@@ -325,6 +325,8 @@ reference.                           ::=  metavariable ;
 
 label.                               ::=  metavariable ;
 
+link.                                ::=  metavariable ;
+
 
 
 equivalences                         ::=  equivalence ( "," equivalence )* ;
@@ -343,15 +345,15 @@ definedAssertion                     ::=  term "is" ( "defined" | "undefined" ) 
 
 containedAssertion                   ::=  term "is" ( "present" | "missing" ) "in" statement ;
 
-signatureAssertion                   ::=  "[" term ( "," term )* "]" "satisfies" metavariable ;  
+signatureAssertion                   ::=  "[" term ( "," term )* "]" "satisfies" link ;  
 
 subproofAssertion                    ::=  "[" statement ( "," statement )* "]" "..." statement ;
 
-schemaAssertion                      ::=  metavariable "-"<NO_WHITESPACE>"|" frame ;
+schemaAssertion                      ::=  link "-"<NO_WHITESPACE>"|" frame ;
 
-frame                                ::=  "[" ( ( metavariable | assumption ) ( "," assumption )* ) "]" ;
+frame                                ::=  "[" ( ( link | assumption ) ( "," assumption )* ) "]" ;
  
-assumption                           ::=  metavariable "::" statement ;
+assumption                           ::=  link "::" statement ;
 
 constraint                           ::=  reference "::" statement ;
  
