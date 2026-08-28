@@ -365,8 +365,6 @@ frameSubstitution                    ::=  "[" frame "for" frame "]" ;
 
 statementSubstitution                ::=  "[" statement "for" statement "]" ;
 
-referenceSubstitution                ::=  "[" reference "for" reference "]" ;
-
 
 
 combinator                           ::=  statement | nonsense ;
