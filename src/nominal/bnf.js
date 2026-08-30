@@ -351,7 +351,7 @@ subproofAssertion                    ::=  "[" statement ( "," statement )* "]" "
 
 schemaAssertion                      ::=  link "-"<NO_WHITESPACE>"|" frame ;
 
-frame                                ::=  "[" ( ( link | assumption ) ( "," assumption )* ) "]" ;
+frame                                ::=  "[" ( ( metavariable | assumption ) ( "," assumption )* ) "]" ;
  
 assumption                           ::=  link "::" statement ;
 
