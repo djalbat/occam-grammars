@@ -329,12 +329,6 @@ link.                                ::=  metavariable ;
 
 
 
-equivalences                         ::=  equivalence ( "," equivalence )* ;
-
-equivalence                          ::=  "[" term ( "," term )* "]" ;
-
-
-
 equality                             ::=  term ( "=" | "!=" ) term ;
 
 typeAssertion                        ::=  term ":" type ;
@@ -360,8 +354,6 @@ constraint                           ::=  reference "::" statement ;
 implicitAssumption                   ::=  "." "::" statement ;
 
 termSubstitution                     ::=  "[" term "for" term "]" ;
-
-frameSubstitution                    ::=  "[" frame "for" frame "]" ;
 
 statementSubstitution                ::=  "[" statement "for" statement "]" ;
 
