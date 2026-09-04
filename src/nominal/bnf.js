@@ -349,7 +349,7 @@ frame                                ::=  "[" ( ( metavariable | assumption ) ( 
  
 assumption                           ::=  link "::" statement ;
 
-constraint                           ::=  reference "::" statement ;
+constraint                           ::=  metavariable "::" statement ;
  
 implicitAssumption                   ::=  "." "::" statement ;
 
