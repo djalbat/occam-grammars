@@ -44,7 +44,7 @@ const bnf = `
     
     some                    ::=  "some"<NO_WHITESPACE>"(" variable "," anonymousProcedure ")" ;
 
-    apply                   ::=  "all"<NO_WHITESPACE>"(" variable "," referencesListLiteral ( "," values )? ")" ;
+    apply                   ::=  "apply"<NO_WHITESPACE>"(" variable "," referencesListLiteral ( "," values )? ")" ;
     
     
     
