@@ -126,9 +126,7 @@ const bnf = `
     
                               |  some
                               
-                              |  all
-                              
-                              |  exists
+                              |  apply
                               
                               |  nodesQuery
                               
