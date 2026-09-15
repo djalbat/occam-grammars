@@ -11,7 +11,9 @@ const bnf = `document                             ::=  ( variableDeclaration
                                           | generatorDeclaration 
                                                           
                                           | typePrefixDeclaration  
-                                                                                                     
+                                                                   
+                                          | typeAliasDeclaration  
+                                                                   
                                           | typeDeclaration 
                                                           
                                           | cotypeDeclaration 
@@ -69,6 +71,8 @@ variableDeclaration                  ::=  "Variable" variable ( ":" type "provis
 metavariableDeclaration              ::=  "Metavariable" metavariable... ":" metaType <END_OF_LINE> ;
  
 typePrefixDeclaration                ::=  "TypePrefix" typePrefix <END_OF_LINE> ;
+
+typeAliasDeclaration                 ::=  "TypeAlias" type ( ":" type )? <END_OF_LINE> ;
 
 typeDeclaration                      ::=  "Provisional"? "Closed"? "Type" type ( ":" types )? <END_OF_LINE> ;
  
