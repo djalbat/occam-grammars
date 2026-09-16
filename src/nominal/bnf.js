@@ -72,7 +72,7 @@ metavariableDeclaration              ::=  "Metavariable" metavariable... ":" met
  
 typePrefixDeclaration                ::=  "TypePrefix" typePrefix <END_OF_LINE> ;
 
-typeAliasDeclaration                 ::=  "TypeAlias" type ( ":" type )? <END_OF_LINE> ;
+typeAliasDeclaration                 ::=  "TypeAlias" typeAlias <END_OF_LINE> ;
 
 typeDeclaration                      ::=  "Provisional"? "Closed"? "Type" type ( ":" types )? <END_OF_LINE> ;
  
@@ -382,6 +382,8 @@ variable.                            ::=  [identifier] ;
 metaType.                            ::=  [meta-type] ;
 
 typePrefix.                          ::=  [type] ;
+
+typeAlias.                           ::=  [type] ( ":" type )? ;
 
 type.                                ::=  [type] ( <NO_WHITESPACE>[type] )? 
 
