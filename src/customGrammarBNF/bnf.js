@@ -58,7 +58,7 @@ const bnf = `
 
       stringLiteral            ::=  [string-literal] ;
 
-      precedence               ::=  "(" [number]? ")" ;
+      precedence               ::=  "(" [integer]? ")" ;
       
       backtick                 ::=  "\`" ;
 
