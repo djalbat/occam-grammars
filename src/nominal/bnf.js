@@ -333,7 +333,7 @@ link.                                ::=  metavariable ;
 
 
 
-equality                             ::=  term \`( "=" | "!=" ) term ;
+equality                             ::=  term ( "=" | "!=" ) \` term ;
 
 typeAssertion                        ::=  term ":" type ;
 

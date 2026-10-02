@@ -34,8 +34,8 @@ const bnf = `
  
                                  |  stringLiteral
   
-                                 |  backtick
-  
+                                 |  cut
+
                                  |  endOfLine
   
                                  |  noWhitespace
@@ -60,7 +60,7 @@ const bnf = `
 
       precedence               ::=  "(" [integer]? ")" ;
       
-      backtick                 ::=  "\`" ;
+      cut                      ::=  "\`" ;
 
       endOfLine                ::=  "<END_OF_LINE>" ;
       
