@@ -4,9 +4,9 @@ const bnf = `document                             ::=  ( variableDeclaration
                                            
                                           | metavariableDeclaration 
                                                           
-                                          | combinatorDeclaration 
-                                                          
                                           | constructorDeclaration 
+                                                          
+                                          | combinatorDeclaration 
                                                           
                                           | generatorDeclaration 
                                                           
@@ -90,14 +90,14 @@ cotypeDeclaration                    ::=  "Provisional"? "Type" <END_OF_LINE>
                                              
                                           );
 
+constructorDeclaration               ::=  "Constructor" constructor... ( ":" ( type | stuff ) "provisionally"? )? <END_OF_LINE> ;
+ 
 combinatorDeclaration                ::=  "Combinator" combinator... <END_OF_LINE> ;
+ 
+generatorDeclaration                 ::=  "Generator" generator... ( ":" ( type | stuff ) "provisionally"? )? <END_OF_LINE> ;
  
 propertyDeclaration.                 ::=  property... ( ":" ( type | stuff ) )? <END_OF_LINE> ;
 
-generatorDeclaration                 ::=  "Generator" generator... ( ":" ( type | stuff ) "provisionally"? )? <END_OF_LINE> ;
- 
-constructorDeclaration               ::=  "Constructor" constructor... ( ":" ( type | stuff ) "provisionally"? )? <END_OF_LINE> ;
- 
 
 
   
