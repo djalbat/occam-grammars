@@ -104,13 +104,13 @@ const bnf = `
 
 
     
-    comparisonTerm          ::=  term ( "==" | "!=" ) term ; 
+    comparisonTerm          ::=  term ( "==" | "!=" ) \` term ; 
     
     bracketedTerm           ::=  "(" term ")" ; 
     
     negatedTerm             ::=  "!"<NO_WHITESPACE>term ; 
     
-    logicalTerm             ::=  term ( "||" | "&&" ) term ; 
+    logicalTerm             ::=  term ( "||" | "&&" ) \` term ; 
 
 
     
@@ -154,9 +154,9 @@ const bnf = `
     
                               |  bracketedTerm 
     
-                              |  logicalTerm 
-    
                               |  negatedTerm 
+    
+                              |  logicalTerm 
     
                               |  primitive 
     
