@@ -68,7 +68,7 @@ error.                               ::=  . ;
 
 variableDeclaration                  ::=  "Variable" variable ( ":" type "provisionally"? )? <END_OF_LINE> ;
  
-metavariableDeclaration              ::=  "Metavariable" metavariable... ":" metaType <END_OF_LINE> ;
+metavariableDeclaration              ::=  "Metavariable" ( metavariable ... ( ":" metaType <END_OF_LINE> ) ) ;
  
 typePrefixDeclaration                ::=  "TypePrefix" typePrefix <END_OF_LINE> ;
 
@@ -90,13 +90,13 @@ cotypeDeclaration                    ::=  "Provisional"? "Type" <END_OF_LINE>
                                              
                                           );
 
-constructorDeclaration               ::=  "Constructor" constructor... ( ":" ( type | stuff ) "provisionally"? )? <END_OF_LINE> ;
+constructorDeclaration               ::=  "Constructor" ( constructor ... ( ( ":" ( type | stuff ) "provisionally"? )? <END_OF_LINE> ) ) ;
  
-combinatorDeclaration                ::=  "Combinator" combinator... <END_OF_LINE> ;
+combinatorDeclaration                ::=  "Combinator" ( combinator ... <END_OF_LINE> ) ;
  
-generatorDeclaration                 ::=  "Generator" generator... ( ":" ( type | stuff ) "provisionally"? )? <END_OF_LINE> ;
+generatorDeclaration                 ::=  "Generator" ( generator ... ( ( ":" ( type | stuff ) "provisionally"? )? <END_OF_LINE> ) ) ;
  
-propertyDeclaration.                 ::=  property... ( ":" ( type | stuff ) )? <END_OF_LINE> ;
+propertyDeclaration.                 ::=  ( property ... ( ":" ( type | stuff ) )? <END_OF_LINE> ) ;
 
 
 
@@ -115,17 +115,21 @@ schema                               ::=  schemaHeader schemaBody ;
 
 
 
-ruleHeader                          ::=  "Rule" parenthesisedLabels... <END_OF_LINE> ; 
+ruleHeader                          ::=  "Rule" ( parenthesisedLabels ... <END_OF_LINE> ) ; 
 
-schemaHeader                        ::=  "Schema" parenthesisedLabel... <END_OF_LINE> ;
+schemaHeader                        ::=  "Schema" ( parenthesisedLabel ... <END_OF_LINE> ) ;
 
-axiomHeader                         ::=  "Axiom" signature? parenthesisedLabels... <END_OF_LINE> ; 
+axiomHeader                         ::=  "Axiom" signature? ( parenthesisedLabels ... <END_OF_LINE> ) ; 
 
-lemmaHeader                         ::=  "Lemma" parenthesisedLabels... <END_OF_LINE> | "Lemma" <END_OF_LINE> ; 
+lemmaHeader                         ::=  "Lemma" ( parenthesisedLabels ... <END_OF_LINE> ) 
 
-theoremHeader                       ::=  "Theorem" parenthesisedLabels... <END_OF_LINE> ; 
+                                      |  "Lemma" <END_OF_LINE> 
+                                      
+                                      ; 
 
-conjectureHeader                    ::=  "Conjecture" parenthesisedLabels... <END_OF_LINE> ;
+theoremHeader                       ::=  "Theorem" ( parenthesisedLabels ... <END_OF_LINE> ) ; 
+
+conjectureHeader                    ::=  "Conjecture" ( parenthesisedLabels ... <END_OF_LINE> ) ;
 
 
 
@@ -233,47 +237,47 @@ subDerivation                        ::=  (
 
 premise.                             ::=  procedureReference <END_OF_LINE>  
 
-                                       |  statement... <END_OF_LINE>  
+                                       |  ( statement ... <END_OF_LINE> )  
 
-                                       |  nonsense... <END_OF_LINE>
+                                       |  ( nonsense ... <END_OF_LINE> )
                                        
                                        ;
 
 supposition.                         ::=  procedureReference <END_OF_LINE>  
 
-                                       |  statement... <END_OF_LINE>  
+                                       |  ( statement ... <END_OF_LINE> )  
 
-                                       |  nonsense... <END_OF_LINE>
+                                       |  ( nonsense ... <END_OF_LINE> )
                                        
                                        ;
 
-conclusion.                          ::=  statement... <END_OF_LINE>  
+conclusion.                          ::=  ( statement ... <END_OF_LINE> )  
 
-                                       |  nonsense... <END_OF_LINE>
+                                       |  ( nonsense ... <END_OF_LINE> )
                                        
                                        ;
 
-deduction.                           ::=  statement... <END_OF_LINE>  
+deduction.                           ::=  ( statement ... <END_OF_LINE> )  
 
-                                       |  nonsense... <END_OF_LINE>
+                                       |  ( nonsense ... <END_OF_LINE> )
                                        
                                        ;
 
 hypothesis.                          ::=  procedureReference <END_OF_LINE>  
 
-                                       |  statement... <END_OF_LINE>  
+                                       |  ( statement ... <END_OF_LINE> )  
 
-                                       |  nonsense... <END_OF_LINE>
+                                       |  ( nonsense ... <END_OF_LINE> )
                                        
                                        ;
 
 
 
-step.                                ::=  statement... qualification? <END_OF_LINE>  
+step.                                ::=  ( statement ... ( qualification? <END_OF_LINE> ) )  
 
-                                       |  nonsense... qualification <END_OF_LINE>
+                                       |  ( nonsense ... ( qualification <END_OF_LINE> ) )
                                        
-                                       |  nonsense... <END_OF_LINE>
+                                       |  ( nonsense ... <END_OF_LINE> )
                                        
                                        ;
 
