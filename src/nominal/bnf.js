@@ -96,7 +96,7 @@ combinatorDeclaration                ::=  "Combinator" ( combinator ... <END_OF_
  
 generatorDeclaration                 ::=  "Generator" ( generator ... ( ( ":" ( type | stuff ) "provisionally"? )? <END_OF_LINE> ) ) ;
  
-propertyDeclaration.                 ::=  ( property ... ( ":" ( type | stuff ) )? <END_OF_LINE> ) ;
+propertyDeclaration.                 ::=  ( property ... ( ( ":" ( type | stuff ) )? <END_OF_LINE> ) ) ;
 
 
 
