@@ -385,11 +385,13 @@ variable.                            ::=  [identifier] ;
 
 metaType.                            ::=  [meta-type] ;
 
+
+
 type.                                ::=  [type] |  "<"<NO_WHITESPACE>">" ;
 
 typePrefix.                          ::=  [type] ;
 
-typeAlias.                           ::=  type ":" typePrefix<NO_WHITESPACE>type ;
+typeAlias.                           ::=  type ( ":" typePrefix<NO_WHITESPACE>type )? ;
 
 
 
